@@ -1,6 +1,8 @@
 import winston from 'winston';
-import DailyRotateFile from 'winston-daily-rotate-file';
 import path from 'path';
+
+// Dynamic import for CommonJS module
+const { default: DailyRotateFile } = await import('winston-daily-rotate-file');
 
 // Custom log format
 const logFormat = winston.format.combine(

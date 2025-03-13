@@ -1,3 +1,4 @@
+// models/Meal.js
 import { DataTypes } from 'sequelize';
 import sequelize from '../config/database.js';
 import { User } from './User.js';
@@ -43,7 +44,6 @@ const Meal = sequelize.define('Meal', {
   ]
 });
 
-// MealFood junction table
 const MealFood = sequelize.define('MealFood', {
   id: {
     type: DataTypes.INTEGER,
@@ -81,7 +81,6 @@ const MealFood = sequelize.define('MealFood', {
   ]
 });
 
-// Define associations
 Meal.belongsTo(User, { foreignKey: 'user_id' });
 User.hasMany(Meal, { foreignKey: 'user_id' });
 
@@ -97,5 +96,4 @@ Food.belongsToMany(Meal, {
   otherKey: 'meal_id'
 });
 
-export default Meal;
-export { MealFood };
+export { Meal, MealFood };

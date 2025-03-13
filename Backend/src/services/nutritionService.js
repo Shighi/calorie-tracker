@@ -1,110 +1,119 @@
-import { Op } from 'sequelize';
-import Meal from '../models/Meal';
-import User from '../models/User';
+// services/nutritionService.js
+import { Op, fn, col } from 'sequelize';
+import { Meal } from '../models/Meal.js';
+import { User } from '../models/User.js';
+import sequelize from '../config/database.js';
+import cacheService from './cacheService.js';
 
 class NutritionService {
   async getDailyNutrition(userId, date) {
+    // Normalize date for consistent cache keys
+    const normalizedDate = date || new Date().toISOString().split('T')[0];
+    
+    // Generate cache key
+    const cacheKey = `nutrition:daily:${userId}:${normalizedDate}`;
+    
+    // Try to get from cache first
+    const cachedResult = await cacheService.get(cacheKey);
+    if (cachedResult) {
+      return cachedResult;
+    }
+    
     try {
       const dailyMeals = await Meal.findAll({
         where: {
           user_id: userId,
-          log_date: date || new Date().toISOString().split('T')[0]
+          meal_date: normalizedDate
         }
       });
 
       const dailyNutrition = dailyMeals.reduce((acc, meal) => ({
-        total_calories: acc.total_calories + meal.total_calories,
-        total_proteins: acc.total_proteins + meal.total_proteins,
-        total_carbs: acc.total_carbs + meal.total_carbs,
-        total_fats: acc.total_fats + meal.total_fats
+        total_calories: acc.total_calories + (meal.calories || 0)
       }), {
-        total_calories: 0,
-        total_proteins: 0,
-        total_carbs: 0,
-        total_fats: 0
+        total_calories: 0
       });
 
       const userProfile = await User.findOne({
-        where: { user_id: userId },
+        where: { id: userId },
         include: ['profile']
       });
 
-      return {
+      const result = {
         ...dailyNutrition,
-        daily_goal: userProfile.profile.daily_calorie_goal || null
+        daily_goal: userProfile?.profile?.dailyCalorieGoal || null
       };
+      
+      // Cache the result
+      await cacheService.set(cacheKey, result);
+      
+      return result;
     } catch (error) {
       throw new Error(`Error fetching daily nutrition: ${error.message}`);
     }
   }
-
-  async getWeeklyNutrition(userId) {
+  
+  async getWeeklyNutritionSummary(userId, startDate, endDate) {
+    // Generate cache key based on date range
+    const cacheKey = `nutrition:weekly:${userId}:${startDate}:${endDate}`;
+    
+    // Try to get from cache first
+    const cachedResult = await cacheService.get(cacheKey);
+    if (cachedResult) {
+      return cachedResult;
+    }
+    
     try {
-      const endDate = new Date();
-      const startDate = new Date(endDate);
-      startDate.setDate(endDate.getDate() - 7);
-
       const weeklyMeals = await Meal.findAll({
         where: {
           user_id: userId,
-          log_date: {
-            [Op.between]: [
-              startDate.toISOString().split('T')[0],
-              endDate.toISOString().split('T')[0]
-            ]
+          meal_date: {
+            [Op.between]: [startDate, endDate]
           }
         },
-        group: ['log_date'],
         attributes: [
-          'log_date',
-          [sequelize.fn('SUM', sequelize.col('total_calories')), 'total_calories'],
-          [sequelize.fn('SUM', sequelize.col('total_proteins')), 'total_proteins'],
-          [sequelize.fn('SUM', sequelize.col('total_carbs')), 'total_carbs'],
-          [sequelize.fn('SUM', sequelize.col('total_fats')), 'total_fats']
-        ]
+          [fn('date', col('meal_date')), 'date'],
+          [fn('sum', col('calories')), 'total_calories']
+        ],
+        group: [fn('date', col('meal_date'))],
+        order: [[col('date'), 'ASC']]
       });
-
-      return {
-        weekly_nutrition: weeklyMeals,
-        average_daily_calories: weeklyMeals.reduce((sum, day) => sum + day.total_calories, 0) / 7
+      
+      const userProfile = await User.findOne({
+        where: { id: userId },
+        include: ['profile']
+      });
+      
+      const dailyGoal = userProfile?.profile?.dailyCalorieGoal || null;
+      
+      const result = {
+        summary: weeklyMeals,
+        daily_goal: dailyGoal
       };
+      
+      // Cache the result
+      await cacheService.set(cacheKey, result);
+      
+      return result;
     } catch (error) {
       throw new Error(`Error fetching weekly nutrition: ${error.message}`);
     }
   }
-
-  async getMonthlyNutrition(userId) {
+  
+  async invalidateUserNutritionCache(userId, date) {
     try {
-      const endDate = new Date();
-      const startDate = new Date(endDate);
-      startDate.setMonth(endDate.getMonth() - 1);
-
-      const monthlyMeals = await Meal.findAll({
-        where: {
-          user_id: userId,
-          log_date: {
-            [Op.between]: [
-              startDate.toISOString().split('T')[0],
-              endDate.toISOString().split('T')[0]
-            ]
-          }
-        },
-        attributes: [
-          [sequelize.fn('date_trunc', 'week', sequelize.col('log_date')), 'week'],
-          [sequelize.fn('SUM', sequelize.col('total_calories')), 'total_calories'],
-          [sequelize.fn('SUM', sequelize.col('total_proteins')), 'total_proteins'],
-          [sequelize.fn('SUM', sequelize.col('total_carbs')), 'total_carbs'],
-          [sequelize.fn('SUM', sequelize.col('total_fats')), 'total_fats']
-        ],
-        group: [sequelize.fn('date_trunc', 'week', sequelize.col('log_date'))]
-      });
-
-      return {
-        monthly_nutrition: monthlyMeals,
-        total_monthly_calories: monthlyMeals.reduce((sum, week) => sum + week.total_calories, 0)
-      };
+      // Invalidate daily nutrition cache for the specific date
+      if (date) {
+        const normalizedDate = new Date(date).toISOString().split('T')[0];
+        await cacheService.delete(`nutrition:daily:${userId}:${normalizedDate}`);
+      } else {
+        // If no specific date, invalidate all nutrition caches for this user
+        await cacheService.deleteByPattern(`nutrition:daily:${userId}:*`);
+        await cacheService.deleteByPattern(`nutrition:weekly:${userId}:*`);
+      }
+      return true;
     } catch (error) {
-      throw new Error(`Error fetching monthly nutrition: ${error.message}`);
+      console.error(`Error invalidating nutrition cache: ${error.message}`);
+      return false;
     }
   }
 }

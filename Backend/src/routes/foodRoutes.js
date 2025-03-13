@@ -1,40 +1,42 @@
-const express = require('express');
+import express from 'express';
+import foodController from '../controllers/foodController.js';
+import authMiddleware from '../middleware/authMiddleware.js';
+import { foodValidation, foodFilterValidation } from '../middleware/validationMiddleware.js';
+
+const { authenticate, isAdmin } = authMiddleware;
 const router = express.Router();
-const foodController = require('../controllers/foodController');
-const authMiddleware = require('../middleware/authMiddleware');
-const validationMiddleware = require('../middleware/validationMiddleware');
 
 // Public routes
-router.get('/', foodController.listFoods);
+router.get('/', foodFilterValidation, foodController.getFoods);
 router.get('/:id', foodController.getFoodById);
 
 // Protected routes (admin only)
 router.post(
   '/',
-  authMiddleware.authenticate,
-  authMiddleware.isAdmin,
-  validationMiddleware.validateFoodCreation,
+  authenticate,
+  isAdmin,
+  foodValidation,
   foodController.createFood
 );
 
 router.put(
   '/:id',
-  authMiddleware.authenticate,
-  authMiddleware.isAdmin,
-  validationMiddleware.validateFoodUpdate,
+  authenticate,
+  isAdmin,
+  foodValidation,
   foodController.updateFood
 );
 
 router.delete(
   '/:id',
-  authMiddleware.authenticate,
-  authMiddleware.isAdmin,
+  authenticate,
+  isAdmin,
   foodController.deleteFood
 );
 
-// Advanced search and filtering
-router.get('/search', foodController.searchFoods);
+// Advanced search and filtering (these methods need to be implemented in controller)
+router.get('/search', foodFilterValidation, foodController.getFoods);
 router.get('/category/:category', foodController.getFoodsByCategory);
 router.get('/locale/:localeId', foodController.getFoodsByLocale);
 
-module.exports = router;
+export default router;

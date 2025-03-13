@@ -3,12 +3,13 @@
  * @module routes/authRoutes
  */
 
-const express = require('express');
+import express from 'express';
+import { registerValidation, loginValidation, profileUpdateValidation } from '../middleware/validationMiddleware.js';
+import authMiddleware from '../middleware/authMiddleware.js';
+import { strictLimiter, standardLimiter } from '../middleware/rateLimiter.js';
+import { register, login, getProfile, updateProfile } from '../controllers/authController.js';
+
 const router = express.Router();
-const authController = require('../controllers/authController');
-const { registerValidation, loginValidation, profileUpdateValidation } = require('../middleware/validationMiddleware');
-const { authenticate } = require('../middleware/authMiddleware');
-const rateLimiter = require('../middleware/rateLimiter');
 
 /**
  * @swagger
@@ -46,7 +47,7 @@ const rateLimiter = require('../middleware/rateLimiter');
  *       500:
  *         description: Server error
  */
-router.post('/register', rateLimiter.strict, registerValidation, authController.register);
+router.post('/register', strictLimiter, registerValidation, register);
 
 /**
  * @swagger
@@ -79,7 +80,7 @@ router.post('/register', rateLimiter.strict, registerValidation, authController.
  *       500:
  *         description: Server error
  */
-router.post('/login', rateLimiter.standard, loginValidation, authController.login);
+router.post('/login', standardLimiter, loginValidation, login);
 
 /**
  * @swagger
@@ -97,7 +98,7 @@ router.post('/login', rateLimiter.standard, loginValidation, authController.logi
  *       500:
  *         description: Server error
  */
-router.get('/profile', authenticate, authController.getProfile);
+router.get('/profile', authMiddleware.authenticate, getProfile);
 
 /**
  * @swagger
@@ -139,6 +140,6 @@ router.get('/profile', authenticate, authController.getProfile);
  *       500:
  *         description: Server error
  */
-router.put('/profile', authenticate, profileUpdateValidation, authController.updateProfile);
+router.put('/profile', authMiddleware.authenticate, profileUpdateValidation, updateProfile);
 
-module.exports = router;
+export default router;

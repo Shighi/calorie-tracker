@@ -1,4 +1,4 @@
-import logger from '../utils/logger';
+import logger from '../utils/logger.js';
 
 const errorHandler = (err, req, res, next) => {
   // Log the error
@@ -23,9 +23,7 @@ const errorHandler = (err, req, res, next) => {
   // Specific error type handling
   if (err.name === 'ValidationError') {
     errorResponse.errors = err.errors;
-  }
-
-  if (err.name === 'UnauthorizedError') {
+  } else if (err.name === 'UnauthorizedError') {
     errorResponse.message = 'Authentication failed';
   }
 
@@ -35,7 +33,7 @@ const errorHandler = (err, req, res, next) => {
 
 // Catch unhandled promise rejections
 process.on('unhandledRejection', (reason, promise) => {
-  logger.error('Unhandled Rejection at:', promise, 'reason:', reason);
+  logger.error(`Unhandled Rejection at: ${promise}, reason:`, reason);
 });
 
 // Catch uncaught exceptions

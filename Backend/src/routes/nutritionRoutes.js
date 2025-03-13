@@ -1,8 +1,9 @@
 import express from 'express';
-import NutritionController from '../controllers/nutritionController';
-import { authenticate } from '../middleware/authMiddleware';
-import { apiLimiter } from '../middleware/rateLimiter';
+import NutritionController from '../controllers/nutritionController.js';
+import authMiddleware from '../middleware/authMiddleware.js';
+import { apiLimiter } from '../middleware/rateLimiter.js';
 
+const { authenticate } = authMiddleware;
 const router = express.Router();
 
 // Apply authentication and rate limiting to all nutrition routes

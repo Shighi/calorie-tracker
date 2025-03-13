@@ -1,6 +1,7 @@
 // src/config/env.js
-const dotenv = require('dotenv');
-const path = require('path');
+
+import dotenv from 'dotenv';
+import path from 'path';
 
 // Determine the environment
 const nodeEnv = process.env.NODE_ENV || 'development';
@@ -29,7 +30,7 @@ requiredEnvs.forEach(env => {
   }
 });
 
-module.exports = {
+const config = {
   database: {
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
@@ -50,3 +51,5 @@ module.exports = {
     openFoodFactsUrl: process.env.OPEN_FOOD_FACTS_API_KEY,
   },
 };
+
+export default config;

@@ -1,14 +1,31 @@
-const express = require('express');
+import express from 'express';
+import mealController from '../controllers/mealController.js';
+import authMiddleware from '../middleware/authMiddleware.js';
+import validate, { validateMealCreation, validateMealUpdate, validateMealTemplate } from '../middleware/validationMiddleware.js';
+
+const { authenticate } = authMiddleware;
 const router = express.Router();
-const mealController = require('../controllers/mealController');
-const authMiddleware = require('../middleware/authMiddleware');
-const validationMiddleware = require('../middleware/validationMiddleware');
 
 // All routes require authentication
-router.use(authMiddleware.authenticate);
+router.use(authenticate);
 
 // Get user's meal logs with pagination
-router.get('/', mealController.listMeals);
+router.get('/', mealController.getUserMeals);
+
+// Routes for meal templates - these must come before the /:id routes
+router.get('/templates', mealController.getMealTemplates);
+router.post(
+  '/templates',
+  validateMealTemplate,
+  mealController.createMealTemplate
+);
+router.get('/templates/:id', mealController.getMealTemplateById);
+router.put(
+  '/templates/:id',
+  validateMealTemplate,
+  mealController.updateMealTemplate
+);
+router.delete('/templates/:id', mealController.deleteMealTemplate);
 
 // Get specific meal details
 router.get('/:id', mealController.getMealById);
@@ -16,33 +33,18 @@ router.get('/:id', mealController.getMealById);
 // Create new meal log
 router.post(
   '/',
-  validationMiddleware.validateMealCreation,
+  validateMealCreation,
   mealController.createMeal
 );
 
 // Update meal log
 router.put(
   '/:id',
-  validationMiddleware.validateMealUpdate,
+  validateMealUpdate,
   mealController.updateMeal
 );
 
 // Delete meal log
 router.delete('/:id', mealController.deleteMeal);
 
-// Routes for meal templates
-router.get('/templates', mealController.listMealTemplates);
-router.post(
-  '/templates',
-  validationMiddleware.validateMealTemplate,
-  mealController.createMealTemplate
-);
-router.get('/templates/:id', mealController.getMealTemplateById);
-router.put(
-  '/templates/:id',
-  validationMiddleware.validateMealTemplate,
-  mealController.updateMealTemplate
-);
-router.delete('/templates/:id', mealController.deleteMealTemplate);
-
-module.exports = router;
+export default router;

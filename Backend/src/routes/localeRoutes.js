@@ -1,8 +1,9 @@
 import express from 'express';
-import LocaleController from '../controllers/localeController';
-import { authenticate, authorize } from '../middleware/authMiddleware';
-import validate from '../middleware/validationMiddleware';
+import LocaleController from '../controllers/localeController.js';
+import authMiddleware from '../middleware/authMiddleware.js';
+import { checkValidation } from '../utils/validation.js';
 
+const { authenticate, authorize } = authMiddleware;
 const router = express.Router();
 
 // Public routes
@@ -14,14 +15,16 @@ router.get('/:id', LocaleController.getLocaleById);
 router.post('/', 
   authenticate, 
   authorize(['admin']), 
-  validate('createLocale'), 
+  // Since there's no createLocale validation in your validation middleware,
+  // you'll need to create it or remove this line
   LocaleController.createLocale
 );
 
 router.put('/:id', 
   authenticate, 
   authorize(['admin']), 
-  validate('updateLocale'), 
+  // Since there's no updateLocale validation in your validation middleware,
+  // you'll need to create it or remove this line
   LocaleController.updateLocale
 );
 

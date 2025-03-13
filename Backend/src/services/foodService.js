@@ -1,49 +1,34 @@
-const { Op } = require('sequelize');
-const Food = require('../models/Food');
-const Nutrient = require('../models/Nutrient');
-const Locale = require('../models/Locale');
-const { ApiError } = require('../utils/apiResponse');
-const externalApiService = require('./externalApiService');
+// src/services/foodService.js
+import { Op } from 'sequelize';
+import Food from '../models/Food.js';
+import Nutrient from '../models/Nutrient.js';
+import Locale from '../models/Locale.js';
+import { ApiError } from '../utils/apiResponse.js';
+import externalApiService from './externalApiService.js';
+import cacheService from './cacheService.js';
 
 class FoodService {
-  /**
-   * Get list of foods with filtering and pagination
-   * @param {Object} filters - Filter parameters
-   * @param {Object} pagination - Pagination options
-   * @returns {Object} Foods list and pagination metadata
-   */
   async listFoods(filters = {}, pagination = { page: 1, limit: 20 }) {
     const { page, limit } = pagination;
+    
+    // Generate cache key based on filters and pagination
+    const cacheKey = `foods:list:${JSON.stringify(filters)}:page${page}:limit${limit}`;
+    
+    // Try to get from cache first
+    const cachedResult = await cacheService.get(cacheKey);
+    if (cachedResult) {
+      return cachedResult;
+    }
+    
     const offset = (page - 1) * limit;
     
-    // Build where clause based on filters
     const where = {};
+    if (filters.name) where.name = { [Op.iLike]: `%${filters.name}%` };
+    if (filters.category) where.category = filters.category;
+    if (filters.localeId) where.localeId = filters.localeId;
+    if (filters.minCalories) where['$nutrients.calories$'] = { [Op.gte]: filters.minCalories };
+    if (filters.maxCalories) where['$nutrients.calories$'] = { ...where['$nutrients.calories$'] || {}, [Op.lte]: filters.maxCalories };
     
-    if (filters.name) {
-      where.name = { [Op.iLike]: `%${filters.name}%` };
-    }
-    
-    if (filters.category) {
-      where.category = filters.category;
-    }
-    
-    if (filters.localeId) {
-      where.localeId = filters.localeId;
-    }
-    
-    // Add nutritional value filters if provided
-    if (filters.minCalories) {
-      where['$nutrients.calories$'] = { [Op.gte]: filters.minCalories };
-    }
-    
-    if (filters.maxCalories) {
-      where['$nutrients.calories$'] = { 
-        ...(where['$nutrients.calories$'] || {}),
-        [Op.lte]: filters.maxCalories 
-      };
-    }
-    
-    // Query foods with pagination
     const { rows, count } = await Food.findAndCountAll({
       where,
       include: [
@@ -55,44 +40,40 @@ class FoodService {
       order: [['name', 'ASC']]
     });
     
-    return {
+    const result = {
       foods: rows,
-      pagination: {
-        total: count,
-        page,
-        limit,
-        pages: Math.ceil(count / limit)
-      }
+      pagination: { total: count, page, limit, pages: Math.ceil(count / limit) }
     };
+    
+    // Cache the result
+    await cacheService.set(cacheKey, result);
+    
+    return result;
   }
 
-  /**
-   * Get food by ID
-   * @param {number} id - Food ID
-   * @returns {Object} Food details
-   */
   async getFoodById(id) {
+    // Generate cache key
+    const cacheKey = `food:${id}`;
+    
+    // Try to get from cache first
+    const cachedFood = await cacheService.get(cacheKey);
+    if (cachedFood) {
+      return cachedFood;
+    }
+    
     const food = await Food.findByPk(id, {
-      include: [
-        { model: Nutrient, as: 'nutrients' },
-        { model: Locale, as: 'locale' }
-      ]
+      include: [{ model: Nutrient, as: 'nutrients' }, { model: Locale, as: 'locale' }]
     });
     
-    if (!food) {
-      throw new ApiError('Food not found', 404);
-    }
+    if (!food) throw new ApiError('Food not found', 404);
+    
+    // Cache the result
+    await cacheService.set(cacheKey, food);
     
     return food;
   }
 
-  /**
-   * Create new food item
-   * @param {Object} foodData - Food data
-   * @returns {Object} Created food
-   */
   async createFood(foodData) {
-    // Create food record
     const food = await Food.create({
       name: foodData.name,
       description: foodData.description,
@@ -103,153 +84,124 @@ class FoodService {
       externalId: foodData.externalId
     });
     
-    // Create associated nutrients
-    if (foodData.nutrients) {
-      await food.createNutrients(foodData.nutrients);
-    }
+    if (foodData.nutrients) await food.createNutrients(foodData.nutrients);
     
-    // Return created food with its nutrients
+    // Invalidate list cache
+    await cacheService.deleteByPattern('foods:list:*');
+    
     return this.getFoodById(food.id);
   }
 
-  /**
-   * Update food item
-   * @param {number} id - Food ID
-   * @param {Object} foodData - Updated food data
-   * @returns {Object} Updated food
-   */
   async updateFood(id, foodData) {
     const food = await Food.findByPk(id);
+    if (!food) throw new ApiError('Food not found', 404);
     
-    if (!food) {
-      throw new ApiError('Food not found', 404);
-    }
-    
-    // Update food properties
     await food.update(foodData);
     
-    // Update nutrients if provided
     if (foodData.nutrients) {
       const nutrients = await food.getNutrients();
-      
-      if (nutrients) {
-        await nutrients.update(foodData.nutrients);
-      } else {
-        await food.createNutrients(foodData.nutrients);
-      }
+      if (nutrients) await nutrients.update(foodData.nutrients);
+      else await food.createNutrients(foodData.nutrients);
     }
     
-    // Return updated food with its nutrients
+    // Invalidate caches
+    await cacheService.delete(`food:${id}`);
+    await cacheService.deleteByPattern('foods:list:*');
+    
     return this.getFoodById(id);
   }
 
-  /**
-   * Delete food item
-   * @param {number} id - Food ID
-   * @returns {boolean} Success status
-   */
   async deleteFood(id) {
     const food = await Food.findByPk(id);
-    
-    if (!food) {
-      throw new ApiError('Food not found', 404);
-    }
+    if (!food) throw new ApiError('Food not found', 404);
     
     await food.destroy();
+    
+    // Invalidate caches
+    await cacheService.delete(`food:${id}`);
+    await cacheService.deleteByPattern('foods:list:*');
+    
     return true;
   }
 
-  /**
-   * Search foods by name or description
-   * @param {string} query - Search query
-   * @param {Object} pagination - Pagination options
-   * @returns {Object} Foods list and pagination metadata
-   */
   async searchFoods(query, pagination = { page: 1, limit: 20 }) {
-    return this.listFoods(
-      {
-        name: query,
-        // Add additional search conditions if needed
-      },
-      pagination
-    );
+    // Generate cache key
+    const cacheKey = `foods:search:${query}:page${pagination.page}:limit${pagination.limit}`;
+    
+    // Try to get from cache first
+    const cachedResult = await cacheService.get(cacheKey);
+    if (cachedResult) {
+      return cachedResult;
+    }
+    
+    const result = await this.listFoods({ name: query }, pagination);
+    
+    // Cache the result
+    await cacheService.set(cacheKey, result);
+    
+    return result;
   }
 
-  /**
-   * Get foods by category
-   * @param {string} category - Food category
-   * @param {Object} pagination - Pagination options
-   * @returns {Object} Foods list and pagination metadata
-   */
   async getFoodsByCategory(category, pagination = { page: 1, limit: 20 }) {
-    return this.listFoods({ category }, pagination);
+    // Generate cache key
+    const cacheKey = `foods:category:${category}:page${pagination.page}:limit${pagination.limit}`;
+    
+    // Try to get from cache first
+    const cachedResult = await cacheService.get(cacheKey);
+    if (cachedResult) {
+      return cachedResult;
+    }
+    
+    const result = await this.listFoods({ category }, pagination);
+    
+    // Cache the result
+    await cacheService.set(cacheKey, result);
+    
+    return result;
   }
 
-  /**
-   * Get foods by locale
-   * @param {number} localeId - Locale ID
-   * @param {Object} pagination - Pagination options
-   * @returns {Object} Foods list and pagination metadata
-   */
   async getFoodsByLocale(localeId, pagination = { page: 1, limit: 20 }) {
-    return this.listFoods({ localeId }, pagination);
+    // Generate cache key
+    const cacheKey = `foods:locale:${localeId}:page${pagination.page}:limit${pagination.limit}`;
+    
+    // Try to get from cache first
+    const cachedResult = await cacheService.get(cacheKey);
+    if (cachedResult) {
+      return cachedResult;
+    }
+    
+    const result = await this.listFoods({ localeId }, pagination);
+    
+    // Cache the result
+    await cacheService.set(cacheKey, result);
+    
+    return result;
   }
 
-  /**
-   * Import foods from external API
-   * @param {string} source - External API source ('usda' or 'off')
-   * @param {Object} query - Search query parameters
-   * @returns {Array} Imported foods
-   */
   async importFromExternalApi(source, query) {
     let externalFoods;
-    
-    // Fetch foods from external API
-    if (source === 'usda') {
-      externalFoods = await externalApiService.fetchUsdaFoods(query);
-    } else if (source === 'off') {
-      externalFoods = await externalApiService.fetchOpenFoodFactsFoods(query);
-    } else {
-      throw new ApiError('Invalid external API source', 400);
-    }
-    
-    // Transform and save foods to our database
+    if (source === 'usda') externalFoods = await externalApiService.fetchUsdaFoods(query);
+    else if (source === 'off') externalFoods = await externalApiService.fetchOpenFoodFactsFoods(query);
+    else throw new ApiError('Invalid external API source', 400);
+
     const importedFoods = [];
-    
     for (const externalFood of externalFoods) {
-      // Convert external food data to our format
       const transformedFood = this.transformExternalFood(externalFood, source);
-      
-      // Check if food already exists
       const existingFood = await Food.findOne({
-        where: {
-          externalId: transformedFood.externalId,
-          localeId: transformedFood.localeId
-        }
+        where: { externalId: transformedFood.externalId, localeId: transformedFood.localeId }
       });
-      
       let food;
-      
-      if (existingFood) {
-        // Update existing food
-        food = await this.updateFood(existingFood.id, transformedFood);
-      } else {
-        // Create new food
-        food = await this.createFood(transformedFood);
-      }
-      
+      if (existingFood) food = await this.updateFood(existingFood.id, transformedFood);
+      else food = await this.createFood(transformedFood);
       importedFoods.push(food);
     }
+    
+    // Invalidate all food caches after bulk import
+    await cacheService.deleteByPattern('foods:*');
     
     return importedFoods;
   }
 
-  /**
-   * Transform external food data to our format
-   * @param {Object} externalFood - External food data
-   * @param {string} source - External API source
-   * @returns {Object} Transformed food data
-   */
   transformExternalFood(externalFood, source) {
     if (source === 'usda') {
       return {
@@ -258,7 +210,7 @@ class FoodService {
         category: this.mapUsdaCategory(externalFood.foodCategory?.description),
         servingSize: externalFood.servingSize || 100,
         servingUnit: externalFood.servingSizeUnit || 'g',
-        localeId: 1, // US locale
+        localeId: 1,
         externalId: `usda:${externalFood.fdcId}`,
         nutrients: {
           calories: this.findUsdaNutrient(externalFood, 'Energy'),
@@ -269,7 +221,6 @@ class FoodService {
         }
       };
     } else if (source === 'off') {
-      // Transform Open Food Facts data
       return {
         name: externalFood.product_name,
         description: externalFood.ingredients_text || '',
@@ -287,73 +238,71 @@ class FoodService {
         }
       };
     }
-    
     throw new ApiError('Unsupported external API source', 400);
   }
-
-  /**
-   * Helper method to find USDA nutrient value
-   * @param {Object} food - USDA food data
-   * @param {string} nutrientName - Nutrient name
-   * @returns {number} Nutrient value
-   */
-  findUsdaNutrient(food, nutrientName) {
-    const nutrient = food.foodNutrients?.find(n => 
+  
+  findUsdaNutrient(externalFood, nutrientName) {
+    const nutrient = externalFood.foodNutrients?.find(n => 
       n.nutrient?.name === nutrientName
     );
-    
-    return nutrient?.amount || 0;
+    return nutrient ? nutrient.amount : 0;
   }
-
-  /**
-   * Map USDA food category to our categories
-   * @param {string} usdaCategory - USDA category
-   * @returns {string} Mapped category
-   */
-  mapUsdaCategory(usdaCategory) {
-    // Implement category mapping logic
+  
+  mapUsdaCategory(category) {
+    if (!category) return 'uncategorized';
     const categoryMap = {
       'Vegetables and Vegetable Products': 'vegetables',
       'Fruits and Fruit Juices': 'fruits',
       'Dairy and Egg Products': 'dairy',
-      // Add more mappings as needed
+      'Meat, Poultry, Fish and Seafood': 'protein',
+      'Legumes and Legume Products': 'legumes',
+      'Grain Products': 'grains',
+      'Nuts and Seeds': 'nuts_seeds',
+      'Sweets': 'sweets',
+      'Beverages': 'beverages'
     };
-    
-    return categoryMap[usdaCategory] || 'other';
+    return categoryMap[category] || 'other';
   }
-
-  /**
-   * Map Open Food Facts category to our categories
-   * @param {string} offCategories - OFF categories string
-   * @returns {string} Mapped category
-   */
-  mapOffCategory(offCategories) {
-    if (!offCategories) return 'other';
+  
+  mapOffCategory(categories) {
+    if (!categories) return 'uncategorized';
     
-    // Implement category mapping logic
-    if (offCategories.includes('Vegetables')) return 'vegetables';
-    if (offCategories.includes('Fruits')) return 'fruits';
-    if (offCategories.includes('Dairy')) return 'dairy';
-    // Add more mappings as needed
+    const categoriesLower = categories.toLowerCase();
+    if (categoriesLower.includes('vegetable')) return 'vegetables';
+    if (categoriesLower.includes('fruit')) return 'fruits';
+    if (categoriesLower.includes('dairy') || categoriesLower.includes('milk') || categoriesLower.includes('cheese')) return 'dairy';
+    if (categoriesLower.includes('meat') || categoriesLower.includes('poultry') || categoriesLower.includes('fish') || categoriesLower.includes('seafood')) return 'protein';
+    if (categoriesLower.includes('legume') || categoriesLower.includes('bean') || categoriesLower.includes('pea')) return 'legumes';
+    if (categoriesLower.includes('grain') || categoriesLower.includes('bread') || categoriesLower.includes('cereal') || categoriesLower.includes('pasta')) return 'grains';
+    if (categoriesLower.includes('nut') || categoriesLower.includes('seed')) return 'nuts_seeds';
+    if (categoriesLower.includes('sweet') || categoriesLower.includes('candy') || categoriesLower.includes('chocolate')) return 'sweets';
+    if (categoriesLower.includes('beverage') || categoriesLower.includes('drink')) return 'beverages';
     
     return 'other';
   }
-
-  /**
-   * Get locale ID from Open Food Facts country
-   * @param {string} countries - OFF countries string
-   * @returns {number} Locale ID
-   */
+  
   getLocaleIdFromOffCountry(countries) {
     if (!countries) return 1; // Default to US
     
-    // Implement country to locale mapping
-    if (countries.includes('United States')) return 1;
-    if (countries.includes('France')) return 2;
-    // Add more mappings as needed
+    const countriesLower = countries.toLowerCase();
+    const countryLocaleMap = {
+      'united states': 1,
+      'france': 2,
+      'italy': 3,
+      'spain': 4,
+      'japan': 5,
+      'mexico': 6,
+      'india': 7,
+      'china': 8,
+      'united kingdom': 9
+    };
     
-    return 1; // Default to US
+    for (const [country, localeId] of Object.entries(countryLocaleMap)) {
+      if (countriesLower.includes(country)) return localeId;
+    }
+    
+    return 1; // Default to US if no match
   }
 }
 
-module.exports = new FoodService();
+export default new FoodService();

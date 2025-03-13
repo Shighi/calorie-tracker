@@ -1,35 +1,29 @@
 import axios from 'axios';
-import redis from 'redis';
-import { promisify } from 'util';
+import cacheService from './cacheService.js';
 
 class ExternalApiService {
   constructor() {
     this.usdaApiBaseUrl = 'https://api.nal.usda.gov/fdc/v1';
     this.openFoodFactsBaseUrl = 'https://world.openfoodfacts.org/api/v0';
-    
-    // Redis setup for caching
-    this.redisClient = redis.createClient({
-      host: process.env.REDIS_HOST || 'localhost',
-      port: process.env.REDIS_PORT || 6379
-    });
-    this.getAsync = promisify(this.redisClient.get).bind(this.redisClient);
-    this.setAsync = promisify(this.redisClient.set).bind(this.redisClient);
   }
 
   async fetchUsdaFoodDetails(fdcId) {
-    const cacheKey = `usda_food_${fdcId}`;
-    
-    // Check cache first
-    const cachedData = await this.getAsync(cacheKey);
-    if (cachedData) return JSON.parse(cachedData);
+    // Generate cache key
+    const cacheKey = `external:usda:food:${fdcId}`;
+
+    // Try to get from cache first
+    const cachedData = await cacheService.get(cacheKey);
+    if (cachedData) {
+      return cachedData;
+    }
 
     try {
       const response = await axios.get(`${this.usdaApiBaseUrl}/food/${fdcId}`, {
         params: { api_key: process.env.USDA_API_KEY }
       });
 
-      // Cache the response
-      await this.setAsync(cacheKey, JSON.stringify(response.data), 'EX', 86400); // 24-hour cache
+      // Cache the response for 24 hours
+      await cacheService.set(cacheKey, response.data, 86400);
 
       return response.data;
     } catch (error) {
@@ -39,6 +33,15 @@ class ExternalApiService {
   }
 
   async searchUsdaFoods(query, options = {}) {
+    // Generate cache key based on query and pagination
+    const cacheKey = `external:usda:search:${query}:page${options.page || 1}:limit${options.limit || 10}`;
+
+    // Try to get from cache first
+    const cachedData = await cacheService.get(cacheKey);
+    if (cachedData) {
+      return cachedData;
+    }
+
     try {
       const response = await axios.get(`${this.usdaApiBaseUrl}/foods/search`, {
         params: {
@@ -49,6 +52,9 @@ class ExternalApiService {
         }
       });
 
+      // Cache the response for 1 hour
+      await cacheService.set(cacheKey, response.data, 3600);
+
       return response.data;
     } catch (error) {
       console.error('USDA Search Error:', error);
@@ -57,17 +63,20 @@ class ExternalApiService {
   }
 
   async fetchOpenFoodFactsProduct(barcode) {
-    const cacheKey = `off_product_${barcode}`;
-    
-    // Check cache first
-    const cachedData = await this.getAsync(cacheKey);
-    if (cachedData) return JSON.parse(cachedData);
+    // Generate cache key
+    const cacheKey = `external:off:product:${barcode}`;
+
+    // Try to get from cache first
+    const cachedData = await cacheService.get(cacheKey);
+    if (cachedData) {
+      return cachedData;
+    }
 
     try {
       const response = await axios.get(`${this.openFoodFactsBaseUrl}/product/${barcode}.json`);
 
-      // Cache the response
-      await this.setAsync(cacheKey, JSON.stringify(response.data), 'EX', 86400); // 24-hour cache
+      // Cache the response for 24 hours
+      await cacheService.set(cacheKey, response.data, 86400);
 
       return response.data;
     } catch (error) {
@@ -76,9 +85,62 @@ class ExternalApiService {
     }
   }
 
+  async fetchUsdaFoods(query) {
+    // Generate cache key
+    const cacheKey = `external:usda:foods:${query}`;
+
+    // Try to get from cache first
+    const cachedData = await cacheService.get(cacheKey);
+    if (cachedData) {
+      return cachedData;
+    }
+
+    try {
+      const searchResults = await this.searchUsdaFoods(query, { limit: 10 });
+      const foods = searchResults.foods || [];
+
+      // Cache the response for 6 hours
+      await cacheService.set(cacheKey, foods, 21600);
+
+      return foods;
+    } catch (error) {
+      console.error('USDA Foods Error:', error);
+      throw new Error('Failed to fetch foods from USDA');
+    }
+  }
+
+  async fetchOpenFoodFactsFoods(query) {
+    // Generate cache key
+    const cacheKey = `external:off:foods:${query}`;
+
+    // Try to get from cache first
+    const cachedData = await cacheService.get(cacheKey);
+    if (cachedData) {
+      return cachedData;
+    }
+
+    try {
+      const response = await axios.get(`${this.openFoodFactsBaseUrl}/search`, {
+        params: {
+          search_terms: query,
+          page_size: 10,
+          json: 1
+        }
+      });
+
+      const products = response.data.products || [];
+
+      // Cache the response for 6 hours
+      await cacheService.set(cacheKey, products, 21600);
+
+      return products;
+    } catch (error) {
+      console.error('Open Food Facts Search Error:', error);
+      throw new Error('Failed to search foods in Open Food Facts database');
+    }
+  }
+
   async normalizeExternalFoodData(externalFood) {
-    // Implement data normalization logic
-    // This would transform USDA or Open Food Facts data into your internal Food model structure
     return {
       name: externalFood.description || externalFood.product_name,
       calories: externalFood.calories || 0,

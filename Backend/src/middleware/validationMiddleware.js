@@ -3,13 +3,13 @@
  * @module middleware/validationMiddleware
  */
 
-const { body, param, query } = require('express-validator');
-const validation = require('../utils/validation');
+import { body, param, query } from 'express-validator';
+import { checkValidation } from '../utils/validation.js';
 
 /**
  * Validation rules for user registration
  */
-exports.registerValidation = [
+export const registerValidation = [
   body('email')
     .isEmail().withMessage('Enter a valid email address')
     .normalizeEmail(),
@@ -28,7 +28,7 @@ exports.registerValidation = [
 /**
  * Validation rules for user login
  */
-exports.loginValidation = [
+export const loginValidation = [
   body('email')
     .isEmail().withMessage('Enter a valid email address')
     .normalizeEmail(),
@@ -39,7 +39,7 @@ exports.loginValidation = [
 /**
  * Validation rules for user profile update
  */
-exports.profileUpdateValidation = [
+export const profileUpdateValidation = [
   body('name')
     .optional()
     .trim()
@@ -65,7 +65,7 @@ exports.profileUpdateValidation = [
 /**
  * Validation rules for food creation
  */
-exports.foodValidation = [
+export const foodValidation = [
   body('name')
     .notEmpty().withMessage('Food name is required')
     .trim()
@@ -95,7 +95,7 @@ exports.foodValidation = [
 /**
  * Validation rules for food filters
  */
-exports.foodFilterValidation = [
+export const foodFilterValidation = [
   query('page')
     .optional()
     .isInt({ min: 1 }).withMessage('Page must be a positive integer'),
@@ -108,7 +108,7 @@ exports.foodFilterValidation = [
   query('sortDir')
     .optional()
     .isIn(['asc', 'desc']).withMessage('Sort direction must be asc or desc'),
-  query('minProtein', 'maxProtein', 'minCarbs', 'maxCarbs', 'minFat', 'maxFat', 'minCalories', 'maxCalories')
+  query(['minProtein', 'maxProtein', 'minCarbs', 'maxCarbs', 'minFat', 'maxFat', 'minCalories', 'maxCalories'])
     .optional()
     .isFloat({ min: 0 }).withMessage('Nutrient filter values must be non-negative')
 ];
@@ -116,7 +116,7 @@ exports.foodFilterValidation = [
 /**
  * Validation rules for meal creation
  */
-exports.mealValidation = [
+export const mealValidation = [
   body('date')
     .notEmpty().withMessage('Meal date is required')
     .isISO8601().withMessage('Invalid date format')
@@ -139,9 +139,56 @@ exports.mealValidation = [
 ];
 
 /**
+ * Validation rules for meal template
+ */
+export const mealTemplateValidation = [
+  body('name')
+    .notEmpty().withMessage('Template name is required')
+    .trim()
+    .isLength({ min: 2, max: 100 }).withMessage('Template name must be between 2 and 100 characters'),
+  body('type')
+    .notEmpty().withMessage('Meal type is required')
+    .isIn(['breakfast', 'lunch', 'dinner', 'snack']).withMessage('Invalid meal type'),
+  body('foods')
+    .isArray({ min: 1 }).withMessage('At least one food item is required'),
+  body('foods.*.foodId')
+    .notEmpty().withMessage('Food ID is required')
+    .isUUID().withMessage('Invalid Food ID format'),
+  body('foods.*.quantity')
+    .notEmpty().withMessage('Food quantity is required')
+    .isFloat({ min: 0.01 }).withMessage('Food quantity must be positive')
+];
+
+/**
+ * Validation rules for meal update
+ */
+export const mealUpdateValidation = [
+  body('date')
+    .optional()
+    .isISO8601().withMessage('Invalid date format')
+    .toDate(),
+  body('type')
+    .optional()
+    .isIn(['breakfast', 'lunch', 'dinner', 'snack']).withMessage('Invalid meal type'),
+  body('name')
+    .optional()
+    .trim()
+    .isLength({ max: 100 }).withMessage('Meal name must not exceed 100 characters'),
+  body('foods')
+    .optional()
+    .isArray({ min: 1 }).withMessage('At least one food item is required'),
+  body('foods.*.foodId')
+    .optional()
+    .isUUID().withMessage('Invalid Food ID format'),
+  body('foods.*.quantity')
+    .optional()
+    .isFloat({ min: 0.01 }).withMessage('Food quantity must be positive')
+];
+
+/**
  * Validation rules for nutrition report date range
  */
-exports.nutritionReportValidation = [
+export const nutritionReportValidation = [
   query('startDate')
     .notEmpty().withMessage('Start date is required')
     .isISO8601().withMessage('Invalid start date format')
@@ -150,10 +197,123 @@ exports.nutritionReportValidation = [
     .notEmpty().withMessage('End date is required')
     .isISO8601().withMessage('Invalid end date format')
     .toDate(),
-  validation.customValidator('endDate', (value, { req }) => {
+  query('endDate').custom((value, { req }) => {
     if (new Date(value) < new Date(req.query.startDate)) {
       throw new Error('End date must be greater than or equal to start date');
     }
     return true;
   })
 ];
+
+/**
+ * Validation rules for locale creation
+ */
+export const createLocaleValidation = [
+  body('name')
+    .notEmpty().withMessage('Locale name is required')
+    .trim()
+    .isLength({ min: 2, max: 50 }).withMessage('Locale name must be between 2 and 50 characters'),
+  body('code')
+    .notEmpty().withMessage('Locale code is required')
+    .trim()
+    .isLength({ min: 2, max: 10 }).withMessage('Locale code must be between 2 and 10 characters'),
+  body('language')
+    .optional()
+    .trim()
+    .isLength({ min: 2, max: 50 }).withMessage('Language must be between 2 and 50 characters'),
+  body('region')
+    .optional()
+    .trim()
+    .isLength({ min: 2, max: 50 }).withMessage('Region must be between 2 and 50 characters'),
+  body('isDefault')
+    .optional()
+    .isBoolean().withMessage('isDefault must be a boolean value')
+];
+
+/**
+ * Validation rules for locale update
+ */
+export const updateLocaleValidation = [
+  body('name')
+    .optional()
+    .trim()
+    .isLength({ min: 2, max: 50 }).withMessage('Locale name must be between 2 and 50 characters'),
+  body('code')
+    .optional()
+    .trim()
+    .isLength({ min: 2, max: 10 }).withMessage('Locale code must be between 2 and 10 characters'),
+  body('language')
+    .optional()
+    .trim()
+    .isLength({ min: 2, max: 50 }).withMessage('Language must be between 2 and 50 characters'),
+  body('region')
+    .optional()
+    .trim()
+    .isLength({ min: 2, max: 50 }).withMessage('Region must be between 2 and 50 characters'),
+  body('isDefault')
+    .optional()
+    .isBoolean().withMessage('isDefault must be a boolean value')
+];
+
+/**
+ * Helper function to validate meal creation
+ */
+export const validateMealCreation = [...mealValidation, checkValidation];
+
+/**
+ * Helper function to validate meal update
+ */
+export const validateMealUpdate = [...mealUpdateValidation, checkValidation];
+
+/**
+ * Helper function to validate meal template
+ */
+export const validateMealTemplate = [...mealTemplateValidation, checkValidation];
+
+/**
+ * Helper function to validate locale creation
+ */
+export const validateLocaleCreation = [...createLocaleValidation, checkValidation];
+
+/**
+ * Helper function to validate locale update
+ */
+export const validateLocaleUpdate = [...updateLocaleValidation, checkValidation];
+
+/**
+ * Validation selector function
+ * Allows selection of validation schema using a string identifier
+ */
+const validate = (validationType) => {
+  switch (validationType) {
+    case 'register':
+      return [...registerValidation, checkValidation];
+    case 'login':
+      return [...loginValidation, checkValidation];
+    case 'profileUpdate':
+      return [...profileUpdateValidation, checkValidation];
+    case 'createFood':
+      return [...foodValidation, checkValidation];
+    case 'foodFilter':
+      return [...foodFilterValidation, checkValidation];
+    case 'createMeal':
+      return validateMealCreation;
+    case 'updateMeal':
+      return validateMealUpdate;
+    case 'createMealTemplate':
+      return validateMealTemplate;
+    case 'nutritionReport':
+      return [...nutritionReportValidation, checkValidation];
+    case 'createLocale':
+      return validateLocaleCreation;
+    case 'updateLocale':
+      return validateLocaleUpdate;
+    default:
+      return checkValidation;
+  }
+};
+
+/**
+ * Export all validation rules
+ */
+export default validate;

@@ -1,18 +1,8 @@
-/**
- * User model
- * @module models/User
- */
-
 import { DataTypes, Model } from 'sequelize';
 import bcrypt from 'bcrypt';
-import sequelize from '../config/database.js';  // Updated import, no destructuring needed
+import sequelize from '../config/database.js';  
 
 class User extends Model {
-  /**
-   * Compare password with hashed password in database
-   * @param {string} password - Password to check
-   * @returns {Promise<boolean>} True if passwords match
-   */
   async comparePassword(password) {
     return bcrypt.compare(password, this.password);
   }

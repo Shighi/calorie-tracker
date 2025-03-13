@@ -1,9 +1,13 @@
 // src/config/database.js
-import { Pool } from 'pg';
+import pkg from 'pg';
 import dotenv from 'dotenv';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import logger from '../utils/logger.js';
+import { Sequelize } from 'sequelize';
+
+// Extract Pool from `pg` (CommonJS module workaround)
+const { Pool } = pkg;
 
 // Get directory path in ESM
 const __filename = fileURLToPath(import.meta.url);
@@ -35,9 +39,7 @@ pool.on('error', (err) => {
   process.exit(-1);
 });
 
-// For Sequelize connection
-import { Sequelize } from 'sequelize';
-
+// Sequelize connection setup
 const sequelize = new Sequelize(
   process.env.DB_NAME,
   process.env.DB_USER,

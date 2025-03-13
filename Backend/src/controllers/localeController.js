@@ -1,5 +1,5 @@
-import LocaleService from '../services/localeService';
-import { successResponse, errorResponse } from '../utils/apiResponse';
+import LocaleService from '../services/localeService.js';
+import { successResponse, errorResponse } from '../utils/apiResponse.js';
 
 class LocaleController {
   async getAllLocales(req, res) {
@@ -14,17 +14,11 @@ class LocaleController {
   async getFoodsByLocale(req, res) {
     try {
       const { id } = req.params;
-      const { 
-        page, 
-        limit, 
-        category, 
-        sortBy, 
-        sortOrder 
-      } = req.query;
+      const { page = 1, limit = 10, category, sortBy, sortOrder } = req.query;
 
       const result = await LocaleService.getFoodsByLocale(id, {
-        page: parseInt(page),
-        limit: parseInt(limit),
+        page: parseInt(page, 10) || 1,
+        limit: parseInt(limit, 10) || 10,
         category,
         sortBy,
         sortOrder
@@ -50,7 +44,12 @@ class LocaleController {
     try {
       const { id } = req.params;
       const localeData = req.body;
+
       const updatedLocale = await LocaleService.updateLocale(id, localeData);
+      if (!updatedLocale) {
+        return errorResponse(res, 'Locale not found', null, 404);
+      }
+
       return successResponse(res, 'Locale updated successfully', updatedLocale);
     } catch (error) {
       return errorResponse(res, 'Error updating locale', error, 400);
@@ -61,9 +60,14 @@ class LocaleController {
     try {
       const { id } = req.params;
       const locale = await LocaleService.getLocaleById(id);
+
+      if (!locale) {
+        return errorResponse(res, 'Locale not found', null, 404);
+      }
+
       return successResponse(res, 'Locale retrieved successfully', locale);
     } catch (error) {
-      return errorResponse(res, 'Error retrieving locale', error, 404);
+      return errorResponse(res, 'Error retrieving locale', error, 500);
     }
   }
 }
