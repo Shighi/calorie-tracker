@@ -16,34 +16,101 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-[#008000] text-white p-4">
-      <div className="max-w-7xl mx-auto flex justify-between items-center">
-        <Link to="/" className="text-xl font-bold">NutriTrack</Link>
-        
-        <div className="flex gap-4 items-center">
+    <nav className="bg-primary text-white border-b border-gray-200 px-4 py-2.5 fixed w-full top-0 z-50">
+      <div className="flex flex-wrap justify-between items-center">
+        <Link to="/" className="flex items-center">
+          <span className="self-center text-xl font-semibold whitespace-nowrap text-white">
+            NutriTrack
+          </span>
+        </Link>
+
+        <div className="flex md:order-2">
           {user ? (
-            <>
-              <Link to="/dashboard" className="hover:text-gray-200">Dashboard</Link>
-              <Link to="/food-database" className="hover:text-gray-200">Food Database</Link>
-              <Link to="/meal-tracker" className="hover:text-gray-200">Meal Tracker</Link>
-              <Link to="/profile" className="hover:text-gray-200">Profile</Link>
-              <Button 
-                variant="secondary"
-                className="text-primary hover:text-primary/80 bg-white hover:bg-gray-100"
-                onClick={handleLogout}
-              >
-                Logout
-              </Button>
-            </>
+            <Button 
+              variant="destructive" 
+              onClick={handleLogout}
+              className="ml-2"
+            >
+              Logout
+            </Button>
           ) : (
-            <>
-              <Link to="/home" className="hover:text-gray-200">Home</Link>
-              <Link to="/about-us" className="hover:text-gray-200">About Us</Link>
-              <Link to="/contact-us" className="hover:text-gray-200">Contact Us</Link>
-              <Link to="/login" className="hover:text-gray-200">Login</Link>
-              <Link to="/signup" className="hover:text-gray-200">Signup</Link>
-            </>
+            <div className="flex space-x-2">
+              <Button variant="outline" className="text-white border-white hover:bg-primary-dark" asChild>
+                <Link to="/login">Login</Link>
+              </Button>
+              <Button className="bg-white text-primary hover:bg-gray-100" asChild>
+                <Link to="/signup">Signup</Link>
+              </Button>
+            </div>
           )}
+        </div>
+
+        <div className="hidden w-full md:flex md:w-auto md:order-1">
+          <ul className="flex flex-col p-4 mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
+            {user ? (
+              <>
+                <li>
+                  <Link 
+                    to="/dashboard" 
+                    className="block py-2 pr-4 pl-3 text-white hover:text-gray-200 rounded md:p-0"
+                  >
+                    Dashboard
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    to="/meal-tracker" 
+                    className="block py-2 pr-4 pl-3 text-white hover:text-gray-200 rounded md:p-0"
+                  >
+                    Meal Tracker
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    to="/food-database" 
+                    className="block py-2 pr-4 pl-3 text-white hover:text-gray-200 rounded md:p-0"
+                  >
+                    Food Database
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    to="/profile" 
+                    className="block py-2 pr-4 pl-3 text-white hover:text-gray-200 rounded md:p-0"
+                  >
+                    Profile
+                  </Link>
+                </li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <Link 
+                    to="/" 
+                    className="block py-2 pr-4 pl-3 text-white hover:text-gray-200 rounded md:p-0"
+                  >
+                    Home
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    to="/about" 
+                    className="block py-2 pr-4 pl-3 text-white hover:text-gray-200 rounded md:p-0"
+                  >
+                    About Us
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    to="/contact" 
+                    className="block py-2 pr-4 pl-3 text-white hover:text-gray-200 rounded md:p-0"
+                  >
+                    Contact Us
+                  </Link>
+                </li>
+              </>
+            )}
+          </ul>
         </div>
       </div>
     </nav>

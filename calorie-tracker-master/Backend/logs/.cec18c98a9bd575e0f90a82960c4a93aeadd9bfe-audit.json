@@ -1,0 +1,25 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "C:\\Users\\User\\Desktop\\calorie-tracker\\calorie-tracker-master\\Backend\\logs\\.cec18c98a9bd575e0f90a82960c4a93aeadd9bfe-audit.json",
+    "files": [
+        {
+            "date": 1742189392256,
+            "name": "C:\\Users\\User\\Desktop\\calorie-tracker\\calorie-tracker-master\\Backend\\logs\\application-2025-03-17.log",
+            "hash": "db9023fc96f9c269887741c512c037d24ac495c28d71ecd8bc9082354565ed37"
+        },
+        {
+            "date": 1742272337901,
+            "name": "C:\\Users\\User\\Desktop\\calorie-tracker\\calorie-tracker-master\\Backend\\logs\\application-2025-03-18.log",
+            "hash": "d9aff9d6ea735c75138721b6ea0edeb0db2f3abe883d2781d47c3a796e1600e0"
+        },
+        {
+            "date": 1742366373779,
+            "name": "C:\\Users\\User\\Desktop\\calorie-tracker\\calorie-tracker-master\\Backend\\logs\\application-2025-03-19.log",
+            "hash": "314ecffb3d0bda016e277a4343cb5ecd1e9897360078fa1afbe8343cc95eb267"
+        }
+    ],
+    "hashType": "sha256"
+}

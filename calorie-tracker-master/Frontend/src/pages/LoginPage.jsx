@@ -1,12 +1,14 @@
-import { useState } from 'react';
+import { useState } from 'react'; 
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { Button } from '../components/ui/button';
+import axios from 'axios';
 
 export default function LoginPage() {
-  const [email, setEmail] = useState('');
+  const [identifier, setIdentifier] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
   const { login } = useAuth();
   const navigate = useNavigate();
 
@@ -14,10 +16,45 @@ export default function LoginPage() {
     e.preventDefault();
     try {
       setError('');
-      await login(email, password);
+      setLoading(true);
+      
+      // Call API endpoint to login
+      // Using the field name that matches the backend's expectation
+      const response = await axios.post('http://localhost:3000/api/auth/login', {
+        emailOrUsername: identifier, // Changed from 'email' to 'emailOrUsername'
+        password
+      });
+      
+      // Store JWT token from response
+      const token = response.data.token;
+      
+      // Update auth context with the token
+      await login(identifier, password, token);
+      
+      // Navigate to dashboard
       navigate('/dashboard');
     } catch (err) {
-      setError('Failed to sign in');
+      let errorMessage = 'Failed to sign in';
+      
+      console.error('Login error:', err);
+      
+      // Handle specific error responses from API
+      if (err.response) {
+        switch (err.response.status) {
+          case 400:
+            errorMessage = 'Email/username and password are required';
+            break;
+          case 401:
+            errorMessage = 'Invalid credentials';
+            break;
+          default:
+            errorMessage = err.response.data?.message || errorMessage;
+        }
+      }
+      
+      setError(errorMessage);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -38,19 +75,20 @@ export default function LoginPage() {
 
             <form className="space-y-6" onSubmit={handleSubmit}>
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                  Email address
+                <label htmlFor="identifier" className="block text-sm font-medium text-gray-700">
+                  Email or Username
                 </label>
                 <div className="mt-1">
                   <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    autoComplete="email"
+                    id="identifier"
+                    name="identifier"
+                    type="text"
+                    autoComplete="email username"
                     required
                     className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    value={identifier}
+                    onChange={(e) => setIdentifier(e.target.value)}
+                    placeholder="Enter your email or username"
                   />
                 </div>
               </div>
@@ -87,8 +125,12 @@ export default function LoginPage() {
               </div>
 
               <div>
-                <Button type="submit" className="w-full">
-                  Sign in
+                <Button 
+                  type="submit" 
+                  className="w-full" 
+                  disabled={loading}
+                >
+                  {loading ? 'Signing in...' : 'Sign in'}
                 </Button>
               </div>
             </form>
@@ -97,22 +139,17 @@ export default function LoginPage() {
             <div className="mt-4 text-center">
               <p className="text-sm text-gray-600">
                 Forgot your password?{' '}
-                <a
-                  href="/forgot-password"
-                  className="font-medium text-primary hover:text-primary-dark"
-                >
+                <a href="/forgot-password" className="font-medium text-primary hover:text-primary-dark">
                   Reset it here
                 </a>
               </p>
             </div>
 
+            {/* Don't have an account? */}
             <div className="mt-6 text-center">
               <p className="text-sm text-gray-600">
                 Don't have an account?{' '}
-                <a
-                  href="/signup"
-                  className="font-medium text-primary hover:text-primary-dark"
-                >
+                <a href="/signup" className="font-medium text-primary hover:text-primary-dark">
                   Sign up
                 </a>
               </p>
