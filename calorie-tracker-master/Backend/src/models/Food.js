@@ -4,7 +4,7 @@ import Locale from './Locale.js';
 import Nutrient from './Nutrient.js';
 
 const Food = sequelize.define('Food', {
-  food_id: {
+  id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true
@@ -12,6 +12,10 @@ const Food = sequelize.define('Food', {
   name: {
     type: DataTypes.STRING,
     allowNull: false
+  },
+  description: {
+    type: DataTypes.TEXT,
+    allowNull: true
   },
   calories: {
     type: DataTypes.FLOAT,
@@ -49,22 +53,29 @@ const Food = sequelize.define('Food', {
     type: DataTypes.BOOLEAN,
     defaultValue: false
   },
-  location_id: {
+  locale_id: {
     type: DataTypes.INTEGER,
     allowNull: true,
     references: {
       model: 'locales',
       key: 'id'
     }
+  },
+  external_id: {
+    type: DataTypes.STRING,
+    allowNull: true
   }
 }, {
   tableName: 'foods',
-  timestamps: true
+  timestamps: true,
+  underscored: true, // Use snake_case for timestamps
+  createdAt: 'created_at',
+  updatedAt: 'updated_at'
 });
 
 // Associations
 Food.belongsTo(Locale, {
-  foreignKey: 'location_id',
+  foreignKey: 'locale_id',
   as: 'locale'
 });
 

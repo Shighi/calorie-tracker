@@ -13,60 +13,78 @@ import LandingPage from './pages/LandingPage';
 import About from './pages/Aboutus';
 import Contact from './pages/Contactus';
 
-// Protected route component
-const ProtectedRoute = ({ children }) => {
-  const { user } = useAuth();
-  
-  if (!user) {
-    return <Navigate to="/login" replace />;
-  }
-  
-  return children;
-};
-
 function AppContent() {
+  const { user, loading } = useAuth();
+  
+  // Protected route component as an inline function
+  const ProtectedRoute = ({ children }) => {
+    // Show loading state while checking auth
+    if (loading) {
+      return (
+        <div className="flex items-center justify-center h-screen">
+          <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-primary"></div>
+        </div>
+      );
+    }
+    
+    if (!user) {
+      return <Navigate to="/login" replace />;
+    }
+    
+    return children;
+  };
+
   return (
-    <div className="min-h-screen flex flex-col">
+    <>
       <Navbar />
-      <div className="pt-16 flex-1">
-        <Routes>
-          {/* Public routes */}
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          
-          {/* Protected routes */}
-          <Route path="/dashboard" element={
+      <Routes>
+        {/* Public routes */}
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        
+        {/* Protected routes */}
+        <Route 
+          path="/dashboard" 
+          element={
             <ProtectedRoute>
               <Dashboard />
             </ProtectedRoute>
-          } />
-          <Route path="/meal-tracker" element={
+          } 
+        />
+        <Route 
+          path="/meal-tracker" 
+          element={
             <ProtectedRoute>
               <MealTracker />
             </ProtectedRoute>
-          } />
-          <Route path="/food-database" element={
+          } 
+        />
+        <Route 
+          path="/food-database" 
+          element={
             <ProtectedRoute>
               <FoodDatabase />
             </ProtectedRoute>
-          } />
-          <Route path="/profile" element={
+          } 
+        />
+        <Route 
+          path="/profile" 
+          element={
             <ProtectedRoute>
               <Profile />
             </ProtectedRoute>
-          } />
-          
-          {/* Fallback route */}
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
-      </div>
-      
+          } 
+        />
+        
+        {/* Fallback route */}
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
       {/* Toast Notifications */}
-      <Toaster position="bottom-right" />
-    </div>
+      <Toaster />
+    </>
   );
 }
 

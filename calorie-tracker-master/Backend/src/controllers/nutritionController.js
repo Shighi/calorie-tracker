@@ -4,7 +4,7 @@ import { successResponse, errorResponse } from '../utils/apiResponse.js';
 class NutritionController {
   async getDailyNutrition(req, res) {
     try {
-      const userId = req.user?.user_id; // Use optional chaining to avoid crashes
+      const userId = req.user?.id; // Changed from user_id to id
       if (!userId) {
         return errorResponse(res, 'User ID not provided', null, 400);
       }
@@ -21,7 +21,7 @@ class NutritionController {
 
   async getWeeklyNutrition(req, res) {
     try {
-      const userId = req.user?.user_id;
+      const userId = req.user?.id; // Changed from user_id to id
       if (!userId) {
         return errorResponse(res, 'User ID not provided', null, 400);
       }
@@ -36,7 +36,7 @@ class NutritionController {
 
   async getMonthlyNutrition(req, res) {
     try {
-      const userId = req.user?.user_id;
+      const userId = req.user?.id; // Changed from user_id to id
       if (!userId) {
         return errorResponse(res, 'User ID not provided', null, 400);
       }

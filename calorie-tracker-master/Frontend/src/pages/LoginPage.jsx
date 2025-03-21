@@ -2,10 +2,9 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { Button } from '../components/ui/button';
-import axios from 'axios';
 
 export default function LoginPage() {
-  const [identifier, setIdentifier] = useState('');
+  const [emailOrUsername, setEmailOrUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -18,21 +17,15 @@ export default function LoginPage() {
       setError('');
       setLoading(true);
       
-      // Call API endpoint to login
-      // Using the field name that matches the backend's expectation
-      const response = await axios.post('http://localhost:3000/api/auth/login', {
-        emailOrUsername: identifier, // Changed from 'email' to 'emailOrUsername'
-        password
-      });
+      // Call the login function from AuthContext with the correct parameter names
+      const success = await login(emailOrUsername, password);
       
-      // Store JWT token from response
-      const token = response.data.token;
-      
-      // Update auth context with the token
-      await login(identifier, password, token);
-      
-      // Navigate to dashboard
-      navigate('/dashboard');
+      if (success) {
+        // Navigate to dashboard on successful login
+        navigate('/dashboard');
+      } else {
+        setError('Invalid credentials');
+      }
     } catch (err) {
       let errorMessage = 'Failed to sign in';
       
@@ -75,19 +68,19 @@ export default function LoginPage() {
 
             <form className="space-y-6" onSubmit={handleSubmit}>
               <div>
-                <label htmlFor="identifier" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="emailOrUsername" className="block text-sm font-medium text-gray-700">
                   Email or Username
                 </label>
                 <div className="mt-1">
                   <input
-                    id="identifier"
-                    name="identifier"
+                    id="emailOrUsername"
+                    name="emailOrUsername"
                     type="text"
                     autoComplete="email username"
                     required
                     className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
-                    value={identifier}
-                    onChange={(e) => setIdentifier(e.target.value)}
+                    value={emailOrUsername}
+                    onChange={(e) => setEmailOrUsername(e.target.value)}
                     placeholder="Enter your email or username"
                   />
                 </div>

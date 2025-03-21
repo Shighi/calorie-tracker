@@ -7,7 +7,7 @@ import cacheService from './cacheService.js';
 import { Op } from 'sequelize';
 
 class AuthService {
-  async registerUser(email, password, username, last_name = null, daily_calorie_target = null) {
+  async registerUser(email, password, username, first_name = null, last_name = null, daily_calorie_target = null) {
     // Check if email already exists
     const existingEmail = await User.findOne({ where: { email } });
     if (existingEmail) {
@@ -25,6 +25,7 @@ class AuthService {
       email,
       username,
       password, // Password will be hashed by the User model hooks
+      first_name,
       last_name,
       daily_calorie_target,
       is_active: true
@@ -37,72 +38,72 @@ class AuthService {
   }
 
   async loginUser(emailOrUsername, password) {
-    if (!emailOrUsername) {
-      throw new ApiError('Email or username is required', 400);
-    }
-
-    // Find the user by either email or username
+    // Find the user by email or username
     const user = await User.findOne({
       where: {
-        [Op.or]: [
-          { email: emailOrUsername },
-          { username: emailOrUsername }
-        ]
+        [Op.or]: [{ email: emailOrUsername }, { username: emailOrUsername }]
       }
     });
-    
+
     if (!user) {
       throw new ApiError('Invalid credentials', 401);
     }
 
-    // Use the comparePassword method from the User model
-    const isPasswordValid = await user.comparePassword(password);
+    // Check if the account is active
+    if (!user.is_active) {
+      throw new ApiError('Account is deactivated', 403);
+    }
+
+    // Verify password
+    const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) {
       throw new ApiError('Invalid credentials', 401);
     }
 
-    // Check if the user is active
-    if (!user.is_active) {
-      throw new ApiError('Account is inactive', 403);
-    }
+    // Generate JWT token
+    const token = jwt.sign(
+      { id: user.id, email: user.email, username: user.username },
+      config.auth.jwtSecret, // Fixed: Now using config.auth.jwtSecret
+      { expiresIn: config.auth.jwtExpiration } // Fixed: Now using config.auth.jwtExpiration
+    );
 
-    const token = this.generateToken(user.id);
+    // Store token in cache with user ID as key
+    await cacheService.set(
+      `auth:token:${user.id}`,
+      token,
+      config.auth.jwtExpiration // Fixed: Now using config.auth.jwtExpiration
+    );
+
+    // Return user data and token
     const userResponse = user.toJSON();
     delete userResponse.password;
 
-    return { user: userResponse, token };
-  }
-
-  generateToken(userId) {
-    return jwt.sign(
-      { id: userId },
-      config.JWT_SECRET,
-      { expiresIn: config.JWT_EXPIRATION }
-    );
+    return {
+      user: userResponse,
+      token
+    };
   }
 
   async getUserProfile(userId) {
-    // Generate cache key
-    const cacheKey = `user:profile:${userId}`;
-    
-    // Try to get from cache first
-    const cachedProfile = await cacheService.get(cacheKey);
+    // Try to get user profile from cache
+    const cachedProfile = await cacheService.get(`user:profile:${userId}`);
     if (cachedProfile) {
-      return cachedProfile;
+      return JSON.parse(cachedProfile);
     }
-    
-    const user = await User.findByPk(userId, {
-      attributes: { exclude: ['password'] }
-    });
 
+    // If not in cache, fetch from database
+    const user = await User.findByPk(userId);
     if (!user) {
       throw new ApiError('User not found', 404);
     }
-    
-    // Cache the result
-    await cacheService.set(cacheKey, user);
-    
-    return user;
+
+    const profile = user.toJSON();
+    delete profile.password;
+
+    // Cache the profile
+    await cacheService.set(`user:profile:${userId}`, JSON.stringify(profile), 3600); // Cache for 1 hour
+
+    return profile;
   }
 
   async updateUserProfile(userId, profileData) {
@@ -128,6 +129,7 @@ class AuthService {
       user.email = profileData.email;
     }
 
+    if (profileData.first_name !== undefined) user.first_name = profileData.first_name;
     if (profileData.last_name !== undefined) user.last_name = profileData.last_name;
     if (profileData.daily_calorie_target !== undefined) user.daily_calorie_target = profileData.daily_calorie_target;
     if (profileData.is_active !== undefined) user.is_active = profileData.is_active;
@@ -150,16 +152,11 @@ class AuthService {
 
     return this.getUserProfile(userId);
   }
-  
+
   async deleteUserSession(userId) {
-    try {
-      // When a user logs out, we can invalidate their profile cache
-      await cacheService.delete(`user:profile:${userId}`);
-      return true;
-    } catch (error) {
-      console.error(`Error invalidating user session: ${error.message}`);
-      return false;
-    }
+    // Delete token from cache
+    await cacheService.delete(`auth:token:${userId}`);
+    return true;
   }
 }
 

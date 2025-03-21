@@ -1,116 +1,116 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import { Button } from "./ui/button";
+import { useState } from 'react';
 
 export default function Navbar() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const handleLogout = async () => {
-    try {
-      await logout();
-      navigate('/'); // This will redirect to the landing page
-    } catch (error) {
-      console.error('Failed to logout:', error);
-    }
+  const handleLogout = () => {
+    logout();
+    navigate('/');
   };
 
+  // Common style for both authenticated and non-authenticated navbars
+  const navbarBgColor = "bg-primary"; // Use the same green as buttons
+
   return (
-    <nav className="bg-primary text-white border-b border-gray-200 px-4 py-2.5 fixed w-full top-0 z-50">
-      <div className="flex flex-wrap justify-between items-center">
-        <Link to="/" className="flex items-center">
-          <span className="self-center text-xl font-semibold whitespace-nowrap text-white">
-            NutriTrack
-          </span>
-        </Link>
-
-        <div className="flex md:order-2">
-          {user ? (
-            <Button 
-              variant="destructive" 
-              onClick={handleLogout}
-              className="ml-2"
-            >
-              Logout
-            </Button>
-          ) : (
-            <div className="flex space-x-2">
-              <Button variant="outline" className="text-white border-white hover:bg-primary-dark" asChild>
-                <Link to="/login">Login</Link>
-              </Button>
-              <Button className="bg-white text-primary hover:bg-gray-100" asChild>
-                <Link to="/signup">Signup</Link>
-              </Button>
+    <nav className={`${navbarBgColor} text-white fixed w-full z-50`}> {/* Increased z-index from 10 to 50 */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          <div className="flex items-center">
+            <div className="flex-shrink-0">
+              <Link to="/" className="font-bold text-xl">NutriTrack</Link>
             </div>
-          )}
+            <div className="hidden md:block">
+              <div className="ml-10 flex items-baseline space-x-4">
+                {user ? (
+                  // Authenticated navigation
+                  <>
+                    <Link to="/dashboard" className="px-3 py-2 rounded-md text-sm font-medium hover:bg-green-600">Dashboard</Link>
+                    <Link to="/meal-tracker" className="px-3 py-2 rounded-md text-sm font-medium hover:bg-green-600">Meal Tracker</Link>
+                    <Link to="/food-database" className="px-3 py-2 rounded-md text-sm font-medium hover:bg-green-600">Food Database</Link>
+                    <Link to="/profile" className="px-3 py-2 rounded-md text-sm font-medium hover:bg-green-600">Profile</Link>
+                  </>
+                ) : (
+                  // Non-authenticated navigation
+                  <>
+                    <Link to="/" className="px-3 py-2 rounded-md text-sm font-medium hover:bg-green-600">Home</Link>
+                    <Link to="/about" className="px-3 py-2 rounded-md text-sm font-medium hover:bg-green-600">About Us</Link>
+                    <Link to="/contact" className="px-3 py-2 rounded-md text-sm font-medium hover:bg-green-600">Contact Us</Link>
+                  </>
+                )}
+              </div>
+            </div>
+          </div>
+          <div className="hidden md:block">
+            <div className="ml-4 flex items-center md:ml-6">
+              {user ? (
+                <button
+                  onClick={handleLogout}
+                  className="px-3 py-2 rounded-md text-sm font-medium hover:bg-green-600"
+                >
+                  Logout
+                </button>
+              ) : (
+                <div className="flex space-x-4">
+                  <Link to="/login" className="px-3 py-2 rounded-md text-sm font-medium hover:bg-green-600">Login</Link>
+                  <Link to="/signup" className="px-3 py-2 rounded-md text-sm font-medium bg-white text-primary hover:bg-gray-200">Sign Up</Link>
+                </div>
+              )}
+            </div>
+          </div>
+          <div className="-mr-2 flex md:hidden">
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              type="button"
+              className="inline-flex items-center justify-center p-2 rounded-md text-white hover:bg-green-600 focus:outline-none"
+              aria-expanded="false"
+            >
+              <span className="sr-only">Open main menu</span>
+              {/* Icon for menu (hamburger or X) */}
+              {isMenuOpen ? (
+                <svg className="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg className="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              )}
+            </button>
+          </div>
         </div>
+      </div>
 
-        <div className="hidden w-full md:flex md:w-auto md:order-1">
-          <ul className="flex flex-col p-4 mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
-            {user ? (
-              <>
-                <li>
-                  <Link 
-                    to="/dashboard" 
-                    className="block py-2 pr-4 pl-3 text-white hover:text-gray-200 rounded md:p-0"
-                  >
-                    Dashboard
-                  </Link>
-                </li>
-                <li>
-                  <Link 
-                    to="/meal-tracker" 
-                    className="block py-2 pr-4 pl-3 text-white hover:text-gray-200 rounded md:p-0"
-                  >
-                    Meal Tracker
-                  </Link>
-                </li>
-                <li>
-                  <Link 
-                    to="/food-database" 
-                    className="block py-2 pr-4 pl-3 text-white hover:text-gray-200 rounded md:p-0"
-                  >
-                    Food Database
-                  </Link>
-                </li>
-                <li>
-                  <Link 
-                    to="/profile" 
-                    className="block py-2 pr-4 pl-3 text-white hover:text-gray-200 rounded md:p-0"
-                  >
-                    Profile
-                  </Link>
-                </li>
-              </>
-            ) : (
-              <>
-                <li>
-                  <Link 
-                    to="/" 
-                    className="block py-2 pr-4 pl-3 text-white hover:text-gray-200 rounded md:p-0"
-                  >
-                    Home
-                  </Link>
-                </li>
-                <li>
-                  <Link 
-                    to="/about" 
-                    className="block py-2 pr-4 pl-3 text-white hover:text-gray-200 rounded md:p-0"
-                  >
-                    About Us
-                  </Link>
-                </li>
-                <li>
-                  <Link 
-                    to="/contact" 
-                    className="block py-2 pr-4 pl-3 text-white hover:text-gray-200 rounded md:p-0"
-                  >
-                    Contact Us
-                  </Link>
-                </li>
-              </>
-            )}
-          </ul>
+      {/* Mobile menu, toggle based on menu state */}
+      <div className={`${isMenuOpen ? 'block' : 'hidden'} md:hidden`}>
+        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+          {user ? (
+            // Authenticated mobile navigation
+            <>
+              <Link to="/dashboard" className="block px-3 py-2 rounded-md text-base font-medium hover:bg-green-600">Dashboard</Link>
+              <Link to="/meal-tracker" className="block px-3 py-2 rounded-md text-base font-medium hover:bg-green-600">Meal Tracker</Link>
+              <Link to="/food-database" className="block px-3 py-2 rounded-md text-base font-medium hover:bg-green-600">Food Database</Link>
+              <Link to="/profile" className="block px-3 py-2 rounded-md text-base font-medium hover:bg-green-600">Profile</Link>
+              <button
+                onClick={handleLogout}
+                className="block w-full text-left px-3 py-2 rounded-md text-base font-medium hover:bg-green-600"
+              >
+                Logout
+              </button>
+            </>
+          ) : (
+            // Non-authenticated mobile navigation
+            <>
+              <Link to="/" className="block px-3 py-2 rounded-md text-base font-medium hover:bg-green-600">Home</Link>
+              <Link to="/about" className="block px-3 py-2 rounded-md text-base font-medium hover:bg-green-600">About Us</Link>
+              <Link to="/contact" className="block px-3 py-2 rounded-md text-base font-medium hover:bg-green-600">Contact Us</Link>
+              <Link to="/login" className="block px-3 py-2 rounded-md text-base font-medium hover:bg-green-600">Login</Link>
+              <Link to="/signup" className="block px-3 py-2 rounded-md text-base font-medium hover:bg-green-600">Sign Up</Link>
+            </>
+          )}
         </div>
       </div>
     </nav>

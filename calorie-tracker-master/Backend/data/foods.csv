@@ -1,0 +1,890 @@
+food_id,name,calories ,protein,fat,carbs,categories,locale
+1_1,Biscuit ,434.0,9.2,11.8,71.5,cereals,East Africa
+2_2,Bread roll,274.0,8.8,3.0,51.9,cereals,East Africa
+3_3,"Bread, white",274.0,8.8,3.0,51.9,cereals,East Africa
+6_6,Cake,320.0,4.7,12.3,48.6,cereals,East Africa
+7_7,Cookie,478.0,5.1,21.1,67.9,cereals,East Africa
+8_8,Donut,478.0,5.1,21.1,67.9,cereals,East Africa
+9_9,"Infant cereal, Cerelac",387.0,14.0,1.0,78.1,cereals,East Africa
+33,Macaroni or spaghetti,371.0,10.5,1.0,77.8,cereals,East Africa
+10,"Maize, cracked, cooked",119.0,2.7,1.2,25.4,cereals,East Africa
+11,"Maize, dried, raw",362.0,8.1,3.6,76.9,cereals,East Africa
+12,"Maize, flour, dry",362.0,8.1,3.6,76.9,cereals,East Africa
+13,"Maize, green, cooked",246.0,7.5,3.0,57.2,cereals,East Africa
+14,"Maize, on the cob, immature",59.0,1.8,0.7,13.8,cereals,East Africa
+15,"Maize, yellow, flour",362.0,8.1,3.6,76.9,cereals,East Africa
+16,"Millet, bulrush",361.0,11.6,5.0,68.7,cereals,East Africa
+17,"Millet, finger, grain or flour",328.0,6.6,1.3,76.2,cereals,East Africa
+34,Mixed porridge flour (maize and oil),414.4,16.9,15.6,56.1,cereals,East Africa
+19,Mixed porridge flour (no maize),332.2,10.1,7.0,62.1,cereals,East Africa
+18,Mixed porridge flour (with maize),382.2,13.8,10.2,63.5,cereals,East Africa
+20,"Porridge, fermented",43.0,1.0,0.4,9.2,cereals,East Africa
+22,"Rice, flour, local",366.0,5.9,1.4,80.1,cereals,East Africa
+21,"Rice, fried and boiled",174.0,2.6,7.4,24.6,cereals,East Africa
+23,"Rice, white, grain, raw",358.0,6.5,0.5,79.8,cereals,East Africa
+35,Semolina,364.0,10.3,1.0,76.3,cereals,East Africa
+24,Sorghum,339.0,11.3,3.3,74.6,cereals,East Africa
+26,"Sorghum, flour",339.0,11.3,3.3,73.7,cereals,East Africa
+27,"Vermicelli, uncooked",395.0,13.4,2.0,79.2,cereals,East Africa
+29,"Wheat, flour, whole grain",339.0,13.7,1.9,72.6,cereals,East Africa
+28,"Wheat,dough, deep fried",317.0,7.2,7.7,53.4,cereals,East Africa
+30,"Wheat, flour, 72% extract",364.0,10.3,1.0,76.3,cereals,East Africa
+31,"Wheat, flour, maida",349.0,12.3,1.5,74.1,cereals,East Africa
+534,Cake (home made),375.6,4.6,21.3,42.4,cereals,East Africa
+513,"Chapati, dry, Indian",207.9,5.2,3.5,38.2,cereals,East Africa
+512,Chapati with oil,372.6,5.9,19.5,43.9,cereals,East Africa
+532,Donut-African,316.6,5.2,10.5,50.6,cereals,East Africa
+525,Maize and kidney bean dish,156.5,3.6,7.0,21.4,cereals,East Africa
+523,Maize and sorgum ugali (stiff porridge) ,110.3,3.0,0.9,24.7,cereals,East Africa
+531,Maize porirdge with margarine and sugar,100.2,1.1,0.8,23.1,cereals,East Africa
+505,Maize porridge no sugar no milk,36.2,0.8,0.4,7.7,cereals,East Africa
+506,Maize porridge with sugar,94.0,0.8,0.4,22.7,cereals,East Africa
+502,Maize porridge with sugar and egg,106.6,4.4,3.6,14.4,cereals,East Africa
+507,Maize porridge with sugar and milk,129.8,1.2,1.0,30.0,cereals,East Africa
+519,Maize ugali (stiff porridge) ,123.8,2.7,1.2,25.6,cereals,East Africa
+508,Millet porridge with sugar,91.0,0.7,0.1,22.6,cereals,East Africa
+509,Mix flour porridge with sugar,130.3,2.2,6.7,16.4,cereals,East Africa
+514,Pancake ,291.4,7.0,12.1,383.0,cereals,East Africa
+543,Rice biriyani ,208.3,9.9,10,19.5,cereals,East Africa
+516,Rice boiled no oil,159.1,2.6,0.6,34.8,cereals,East Africa
+517,Rice boiled with oil,199.1,2.9,3.0,39.2,cereals,East Africa
+530,Rice bread ,239.1,2.2,7.5,41.1,cereals,East Africa
+524,Rice bun,416.2,4.7,11.1,73.7,cereals,East Africa
+515, Rice and meat pillau ,177.0,7.1,5.6,23.6,cereals,East Africa
+544,Rice and mung dish with coconut milk,262.8,5.0,11.4,36.2,cereals,East Africa
+545,Rice and mung dish no coconut milk,124.1,3.3,0.2,26.7,cereals,East Africa
+533,Rice porridge with coconut milk no sugar,152.9,2.0,8.2,18.5,cereals,East Africa
+528,Rice porridge with sugar,94.6,0.6,0.1,23.0,cereals,East Africa
+521,Rice ugali (stiff porridge) ,149.0,2.7,0.2,32.8,cereals,East Africa
+518,Rice with coconut milk,170.0,2.9,1.5,35.5,cereals,East Africa
+540,Rice with ground meat,288.4,8.5,14.7,30.7,cereals,East Africa
+522,Sorgum and millet ugali (stiff porridge) ,112.1,3.4,0.9,24.7,cereals,East Africa
+511,Sorgum porridge with sugar,91.0,1.0,0.3,22.0,cereals,East Africa
+527,"Vermicelli, cooked ",209.0,6.7,2.3,39.6,cereals,East Africa
+535,Vermicelli with coconut milk and sugar,227.6,7.0,3.6,41.5,cereals,East Africa
+536,Vermicell with oil and sugar,228.2,6.7,3.7,41.6,cereals,East Africa
+537,Vermicelli with coconut milk and salt,260.4,7.7,6.2,43.3,cereals,East Africa
+529,"Wheat fritter, sweet",318.0,1.9,14.2,46.7,cereals,East Africa
+542,Wheat porridge,91.9,1.4,0.2,22.2,cereals,East Africa
+352,"Banana, cooked",116.0,0.8,0.2,31.2,tubers,East Africa
+365,"Breadfruit, raw",103.0,1.1,0.2,27.1,tubers,East Africa
+362,"Cassava, dried ",314.0,2.6,0.7,76.6,tubers,East Africa
+359,"Cassava, dried, flour",314.0,2.6,0.7,76.6,tubers,East Africa
+358,"Cassava, raw",160.0,1.4,0.3,38.1,tubers,East Africa
+364,"Cassava, spicy crisps or chips",288.0,2.4,0.7,70.2,tubers,East Africa
+367,"Edible starch, tapioca or corn",381.0,0.3,0.1,91.3,tubers,East Africa
+354,"Potato, crisps, plain, salted",547.0,6.6,37.5,49.7,tubers,East Africa
+353,"Potato, English, cooked",93.0,2.0,0.1,21.6,tubers,East Africa
+355,"Potato, raw, with skin",58.0,2.6,0.1,12.4,tubers,East Africa
+357,"Squash, fresh - AP",16.0,0.7,0.2,3.4,tubers,East Africa
+366,"Squash, fresh-EP",20.0,0.9,0.3,4.3,tubers,East Africa
+360,"Sweet potato, fresh-AP",74.0,1.2,0.1,17.5,tubers,East Africa
+361,"Sweet potato, fresh--EP",103.0,1.7,0.1,24.3,tubers,East Africa
+369,"Sweet potato, orange",103.0,1.7,0.1,24.3,tubers,East Africa
+356,"Taro, raw",112.0,1.5,0.2,26.5,tubers,East Africa
+368,"Yam, raw",97.0,2.1,0.1,22.9,tubers,East Africa
+974,"Banana porridge, plain",105.3,0.6,3.2,21.3,tubers,East Africa
+975,Banana porridge with meat,280.5,7.0,16.0,29.5,tubers,East Africa
+976,Banana porridge with fish,118.7,2.5,5.9,15.8,tubers,East Africa
+977,Banana porridge with  meat and spinach,212.0,8.6,13.3,16.5,tubers,East Africa
+954,Banana with cashew nut,108.0,2.0,2.8,22.2,tubers,East Africa
+955,Banana with coconut milk,191.2,1.5,10.7,26.1,tubers,East Africa
+968,Banana with kidney beans,93.4,3.0,1.2,19.5,tubers,East Africa
+953,Banana with meat,77.4,2.7,3.6,9.4,tubers,East Africa
+952,Banana with meat and coconut milk,130.3,1.5,2.4,2.9,tubers,East Africa
+973,"Banana with meat, oil, vegetable",121.8,4.0,8.0,9.8,tubers,East Africa
+951,Banana with oil  (no meat ),112.0,0.7,2.7,24.0,tubers,East Africa
+969,"Banana,  boiled",110.0,0.7,0.2,29.6,tubers,East Africa
+964,"Banana, fried",159.1,0.8,5.2,31.2,tubers,East Africa
+971,"Banana, roast",116.0,0.0,0.0,0.2,tubers,East Africa
+541,Cassava porridge with sugar,85.8,0.4,0.1,21.5,tubers,East Africa
+526,Cassava stiff porridge ,140.0,2.7,1.2,30.7,tubers,East Africa
+956,Cassava with coconut milk,216.3,1.9,11.9,12.9,tubers,East Africa
+965,"Cassava, boiled",131.0,1.1,0.3,31.9,tubers,East Africa
+957,"Cassava, fried",346.5,1.1,25.2,10.5,tubers,East Africa
+978,Kachori (spicy potato balls),237.6,6.1,11.4,28.8,tubers,East Africa
+960,"Potato chips, fried",249.0,1.7,20.1,18.0,tubers,East Africa
+959,Potato relish with beef,128.8,2.8,5.8,17.1,tubers,East Africa
+972,Potato relish with coconut milk,388.0,4.7,28.0,34.2,tubers,East Africa
+958,Potato relish with oil,75.0,1.3,1.7,14.2,tubers,East Africa
+961,"Potato, boiled",93.0,2.0,0.1,21.6,tubers,East Africa
+963,Roots and tubers mixed ,93.5,0.8,0.2,23.2,tubers,East Africa
+967,"Sweet potato, boiled",97.0,2.1,0.1,22.9,tubers,East Africa
+966,"Sweet potato, fried",146.1,1.7,5.1,24.3,tubers,East Africa
+970,"Taro, cooked, without salt",142.0,0.5,0.1,34.6,tubers,East Africa
+1102,Butter refined-ghee,876.0,0.3,99.5,0.0,fat and oils,East Africa
+1101,Butter with salt ,717.0,0.9,81.1,0.0,fat and oils,East Africa
+1105,Coconut cream,330.0,3.6,34.7,6.7,fat and oils,East Africa
+1114,"Coconut meat, raw",354.0,3.3,33.5,15.2,fat and oils,East Africa
+1104,Coconut milk and water ,106.0,1.0,10.1,4.6,fat and oils,East Africa
+1103,Coconut oil,862.0,0.0,100.0,0.0,fat and oils,East Africa
+1115,Coconut water,19.0,0.7,0.2,3.7,fat and oils,East Africa
+1107,Margarine ,716.0,0.0,81.0,0.0,fat and oils,East Africa
+1108,Palm oil,862.0,0.0,100.0,0.0,fat and oils,East Africa
+1109,Sesame oil,884.0,0.0,100.0,0.0,fat and oils,East Africa
+1110,Vegetable fat,884.0,0.0,100.0,0.0,fat and oils,East Africa
+1111,"Vegetable fat, Cowboy",884.0,0.0,100.0,0.0,fat and oils,East Africa
+1112,"Vegetable fat, Kimbo",884.0,0.0,100.0,0.0,fat and oils,East Africa
+1113,Vegetable oil,862.0,0.0,100.0,0.0,fat and oils,East Africa
+451,"Beer, commercial",41.0,0.3,0.0,3.7,beverage,East Africa
+452,"Beer, local, grain",41.0,0.3,0.0,3.7,beverage,East Africa
+453,"Beer, local, non-specific",41.0,0.3,0.0,3.7,beverage,East Africa
+454,"Blackcurrant, syrup, ribena",338.0,1.1,2.3,87.7,beverage,East Africa
+455,"Candy, choclate",479.0,4.2,30.0,63.1,sweet,East Africa
+458,"Carbonated, beverage, coca cola",37.0,0.1,0.0,9.6,beverage,East Africa
+471,"Chili powder, red",318.0,12.0,17.3,56.6,others,East Africa
+481,Chili sauce,169.9,0.5,0.1,38.3,others,East Africa
+160,"Coconu immature, meat and water",70.0,0.5,3.4,10.0,others,East Africa
+459,Cod liver oil,884.0,0.0,100.0,0.0,others,East Africa
+472,"Coffee, instant",200.0,10.0,0.0,40.0,beverage,East Africa
+460,Cricket,274.0,18.2,21.5,2.0,insect,East Africa
+476,"Fruit flavored drink, concentrated",27.0,0.0,0.0,6.8,beverage,East Africa
+477,"Garlic, fresh-AP",149.0,6.4,0.5,33.1,others,East Africa
+490,Ginger,66.0,2.1,0.3,15.3,others,East Africa
+461,Honey,304.0,0.3,0.0,82.4,beverage,East Africa
+491,Ice sherbet,77.4,0.0,0.0,19.9,beverage,East Africa
+462,"Orange drink, concentrated",158.0,0.5,1.1,41.0,beverage,East Africa
+463,"Salt, iodized ",0.0,0.0,0.0,0.0,others,East Africa
+464,"Salt,,non-iodized",0.0,0.0,0.0,0.0,others,East Africa
+474,Soy sauce,60.0,10.5,0.1,5.6,others,East Africa
+475,"Soybean milk, dried",380.0,40.5,24.0,9.5,beverage,East Africa
+465,Sugar,387.0,0.0,0.0,99.9,others,East Africa
+466,Sugarcane,26.0,0.0,0.0,6.8,others,East Africa
+467,Sugarcane juice,56.0,0.0,0.0,14.6,others,East Africa
+468,Tea leaves,1.0,0.0,0.0,0.2,others,East Africa
+469,Termite,369.0,19.7,31.2,1.0,insect,East Africa
+489,Tomato juice,26.0,0.8,0.1,5.7,beverage,East Africa
+470,Tomato ketchup,101.0,1.0,0.3,25.3,others,East Africa
+478,Tomato paste ,63.0,0.0,0.0,0.9,others,East Africa
+480,"Vinegar, wine",19.0,0.0,0.0,0.3,others,East Africa
+1006,"Coffee with milk, without sugar",11.5,1.3,1.6,0.2,others,East Africa
+1004,"Coffee without milk, with sugar, ",35.4,0.0,0.0,9.1,others,East Africa
+1005,Coffee with milk and sugar ,31.5,1.3,1.6,3.1,others,East Africa
+1008,Groundnut cluster,616.6,17.3,30.7,76.0,others,East Africa
+1007,Halwa,511.7,1.7,30.7,59.9,beverage,East Africa
+1003,"Tea with milk, without sugar",11.0,1.3,1.6,0.2,beverage,East Africa
+1001,"Tea without milk, with sugar ",35.4,0.0,0.0,9.1,beverage,East Africa
+1002,Tea with milk and sugar,31.0,1.3,1.6,3.0,beverage,East Africa
+205,"Beef liver, raw",135.0,20.4,3.6,3.9,meat,East Africa
+204,"Beef, boneless",267.0,16.9,21.6,0.0,meat,East Africa
+201,"Beef, liver, cooked",191.0,29.1,5.3,5.1,meat,East Africa
+202,"Beef, medium fat, cooked",323.0,24.9,24.0,0.0,meat,East Africa
+203,"Beef, tripe",83.0,14.5,2.4,0.0,meat,East Africa
+206,Chicken liver,167.0,24.5,6.5,0.9,chicken,East Africa
+208,"Chicken, raw",200.0,18.8,13.2,0.0,chicken,East Africa
+306,Egg yolk,278.0,19.2,20.7,2.3,egg,East Africa
+307,"Egg, chicken",155.0,12.6,10.6,1.1,egg,East Africa
+308,"Fish, dried, cod",368.0,79.8,3.2,0.0,fish,East Africa
+309,"Fish, dried, fresh water",335.0,58.6,9.4,0.0,fish,East Africa
+220,"Fish, fresh",98.0,18.1,2.4,0.0,fish,East Africa
+310,"Fish, high fat",103.0,10.6,6.8,0.0,fish,East Africa
+311,"Fish, raw",112.0,21.4,2.3,0.0,fish,East Africa
+312,"Fish, sardines",112.0,21.4,2.3,0.0,fish,East Africa
+313,"Fish, small, dried, fresh water",335.0,58.6,9.4,0.0,fish,East Africa
+314,"Fish, small, fresh, fresh water",84.0,14.8,2.3,0.0,fish,East Africa
+319,"Fish, smoked, dried-AP",177.0,38.5,1.5,0.0,fish,East Africa
+320,"Fish, smoked, dried-EP",306.0,66.4,2.5,0.0,fish,East Africa
+315,Goat meat,269.0,24.9,18.0,0.0,meat,East Africa
+316,"Mutton, meat",269.0,24.9,18.0,0.0,meat,East Africa
+317,"Pork, medium fat, cooked",537.0,19.6,50.2,0.0,meat,East Africa
+318,Sausage,369.0,19.7,31.2,1.0,meat,East Africa
+552,Beef relish with coconut milk,143.0,10.2,10.2,2.0,meat,East Africa
+578,Beef relish without oil,168.6,12.6,11.9,2.2,meat,East Africa
+551,Beef  relish with oil,210.7,12.4,17.0,"1,9",meat,East Africa
+577,"Beef, fried",813.2,25.1,80.0,2.2,meat,East Africa
+576,"Beef, ground, relish",247.8,12.8,21.1,1.9,meat,East Africa
+574,"Chicken, boiled or roasted",285.0,26.9,18.9,0.0,chicken,East Africa
+554,Chicken relish without oil,202.3,18.5,12.8,2.1,chicken,East Africa
+573,Chicken relish with coconut milk,137.2,6.1,11.8,2.3,chicken,East Africa
+556,Chicken relish with oil,188.9,6.2,13.3,13.3,chicken,East Africa
+207,"Chicken, fried",314.9,18.8,26.5,0.0,chicken,East Africa
+571,Egg boiled,155.0,12.6,10.6,1.1,egg,East Africa
+561,"Egg, fried",245.2,11.8,21.6,1.0,egg,East Africa
+565,"Fish, fresh, stew ",85.0,5.4,6.6,1.4,fish,East Africa
+566,Fish relish without oil,76.5,8.2,4.5,2.4,fish,East Africa
+567,Fish relish with coconut milk,138.4,11.7,9.3,2.5,fish,East Africa
+564,Fish relish with oil,253.6,21.2,17.9,2.2,fish,East Africa
+569,"Fish, fried",230.1,17.8,17.8,0.0,fish,East Africa
+563,"Fish, fried, relish",183.5,6.5,17.5,1.3,fish,East Africa
+579,Liver relish,103.5,13.7,69.4,2.8,meat,East Africa
+580,"Liver, fried ",175.0,26.5,4.7,5.2,meat,East Africa
+570,Meat samosa    ,280.0,11.6,11.8,30.5,meat,East Africa
+572,"Meat, barbecued",343.0,24.0,26.7,0.0,meat,East Africa
+562,"Omelet, spanish ",274.7,8.0,26.6,1.7,egg,East Africa
+575,"Omelet, spanish with potato",185.5,5.3,14.2,9.7,egg,East Africa
+560,Small dried fish relish with coconut milk,258.4,12.0,14.6,9.4,fish,East Africa
+558,Small dried fish  relish with okra,98.7,7.8,6.8,1.9,fish,East Africa
+557,Small dried fish with tomatoes and oil,100.1,7.7,6.9,2.2,fish,East Africa
+559,"Small dried fish, fried",449.9,58.6,13.5,0.0,fish,East Africa
+261,"Cheese, chedder",403.0,24.9,33.1,1.3,milk,East Africa
+258,"Cheese, cream",349.0,7.6,34.9,2.7,milk,East Africa
+259,"Cheese, mozarella",300.0,22.2,22.3,2.2,milk,East Africa
+251,Ice cream,126.0,4.9,2.5,21.8,milk,East Africa
+252,"Infant formula, Lactogen",464.0,21.6,19.0,51.6,milk,East Africa
+253,"Milk, condensed, sweetened",320.0,7.8,8.7,54.5,milk,East Africa
+257,"Milk, condensed, evaported, without vitamin A",134.0,6.8,7.6,10.0,milk,East Africa
+260,"Milk powder, non-fat, without vitamin A",362.0,36.2,0.7,52.0,milk,East Africa
+254,"Milk powder, full-cream",496.0,26.3,26.7,38.4,milk,East Africa
+255,"Milk whole, 3.25% milk fat",60.0,3.2,3.3,4.5,milk,East Africa
+256,"Yogurt, plain, whole milk",61.0,3.5,3.3,4.7,milk,East Africa
+853,Beef broth without oil,44.0,3.9,2.7,0.8,broth,East Africa
+854,Beef broth with oil,88.0,3.9,7.7,0.8,broth,East Africa
+855,Cabbage broth without oil,29.0,1.5,0.3,6.3,broth,East Africa
+856,Cabbage broth with oil,50.0,0.2,5.1,1.3,broth,East Africa
+859,Cassava leaf broth without oil,8.0,0.6,0.0,1.6,broth,East Africa
+858,Cassava leaf broth with cocount milk,21.0,0.5,1.4,1.9,broth,East Africa
+860,Cassava leaf broth with oil,48.0,0.5,5.0,1.0,broth,East Africa
+862,Chicken broth without oil,91.0,4.2,7.9,0.8,broth,East Africa
+861,Chicken broth with oil,46.0,4.2,2.9,0.8,broth,East Africa
+865,Cow pea broth without oil,40.0,2.3,0.2,7.9,broth,East Africa
+863,Cow pea broth with cocount milk,102.0,2.6,6.8,8.8,broth,East Africa
+864,Cow pea broth with oil,87.0,2.0,6.4,5.8,broth,East Africa
+881,Cow pea leaf broth without oil,8.0,0.6,0.0,1.6,broth,East Africa
+866,Cow pea leaf broth with cocount milk,15.0,0.7,0.3,2.8,broth,East Africa
+867,Cow pea leaf broth with oil,42.0,0.5,4.1,1.5,broth,East Africa
+869,Fish broth without oil,12.0,1.7,0.2,0.9,broth,East Africa
+884,Fish broth with cocount milk,25.0,2.3,1.5,0.7,broth,East Africa
+868,Fish broth with oil,55.0,1.7,5.2,0.9,broth,East Africa
+870,Green pea broth without oil,17.0,1.1,0.0,3.1,broth,East Africa
+880,Green pea broth with cocount milk,32.9,0.9,2.0,3.1,broth,East Africa
+871,Green pea broth with oil,61.0,1.1,5.0,3.1,broth,East Africa
+882,Ground beef relish broth,35.4,1.8,3.0,0.3,broth,East Africa
+873,Kidney bean broth without oil,31.0,2.0,0.1,0.0,broth,East Africa
+872,Kidney bean broth with cocount milk,101.0,2.6,6.8,8.7,broth,East Africa
+874,Kidney bean broth with oil,48.0,2.0,2.1,5.9,broth,East Africa
+883,Liver relish broth,12.9,1.7,8.6,0.4,broth,East Africa
+878,Pumpkin leaf broth without oil,3.0,0.2,0.0,0.7,broth,East Africa
+877,Pumpkin leaf broth with oil,46.0,0.2,5.0,0.7,broth,East Africa
+879,Small dried fish broth with oil,78.0,5.9,5.9,0.0,broth,East Africa
+851,Spinach broth without oil,6.0,0.4,0.1,1.3,broth,East Africa
+852,Spinach broth with oil,25.0,0.4,5.1,1.3,broth,East Africa
+179,Almonds,578.0,21.2,50.6,19.7,legumes,East Africa
+151,"Bambara groundnut, fresh",141.0,12.4,6.4,11.1,legumes,East Africa
+154,"Bean, kidney, green, cooked",166.0,11.4,0.7,29.9,legumes,East Africa
+155,"Bean, mung, dry",116.0,7.7,0.5,20.8,legumes,East Africa
+156,"Bean, mung, raw",306.0,20.3,1.3,54.9,legumes,East Africa
+153,"Beans, kidney, mature, boiled without salt",127.0,8.7,0.5,22.8,legumes,East Africa
+170,"Beans, kidney, mature seeds, raw",333.0,23.6,0.8,60.0,legumes,East Africa
+157,Cashewnut,589.0,20.0,52.2,20.4,legumes,East Africa
+158,Chickpea,164.0,8.9,2.6,27.4,legumes,East Africa
+159,Chickpea flour (besan),387.0,22.4,6.7,57.8,legumes,East Africa
+162,"Cowpea, gree, uncooked",116.0,7.7,0.5,20.8,legumes,East Africa
+163,"Cowpea, uncooked",336.0,23.5,1.3,60.0,legumes,East Africa
+173,Hyancinth beans (dried),306.0,20.3,1.3,54.9,legumes,East Africa
+174,"Hyacinth-beans, immature, raw",46.0,2.1,0.2,9.2,legumes,East Africa
+176,"Hyacinth-beans, immature, boiled without salt",50.0,3.0,0.3,9.2,legumes,East Africa
+177,"Lentil, cooked",116.0,9.0,0.4,20.1,legumes,East Africa
+180,"Lentil, whole",311.0,24.1,1.1,53.9,legumes,East Africa
+175,Palm  seed,203.0,0.6,20.2,6.7,legumes,East Africa
+164,Groundnuts,567.0,25.8,49.2,16.1,legumes,East Africa
+178,"Peanut butter, smooth ",520.0,25.9,34.0,35.7,legumes,East Africa
+165,"Pigeon peas, cooked",121.0,6.7,0.4,19.7,legumes,East Africa
+166,"Pigeon peas, green",148.0,9.5,0.4,27.5,legumes,East Africa
+171,"Pigeon peas, raw",343.0,21.7,1.5,62.8,legumes,East Africa
+172,Pumpkin seed,435.0,19.5,40.6,7.0,nuts and seeds,East Africa
+167,Sesame seed,573.0,17.7,49.7,23.5,nuts and seeds,East Africa
+168,"Soybean, yellow",415.0,36.5,20.0,30.3,legumes,East Africa
+169,Sunflower seed,588.0,26.4,54.8,9.4,nuts and seeds,East Africa
+663,Bambra nut relish with coconut milk,0.7,1,0.2,130.1,legumes,East Africa
+32,Bhajia (chickpea flour fritters),1.3,2.6,3.1,628.0,legumes,East Africa
+664,Chick pea relish with coconut milk,0.5,0.5,0.6,181.8,legumes,East Africa
+653,Cow pea (dry) relish without oil,0.3,0.1,0.05,358.0,legumes,East Africa
+654,Cow pea (dry) relish  with oil,0.3,0.3,2.00,264.3,legumes,East Africa
+651,Cow pea (fresh) relish without oil ,0.0,0.1,0.8,208.8,legumes,East Africa
+652,Cow pea relish with coconut milk,0.1,0.2,2.3,335.3,legumes,East Africa
+657,Kidney bean relish without oil,0.1,0.2,0.7,352.0,legumes,East Africa
+656,Kidney bean relish with oil,0.4,0.3,0.3,385.6,legumes,East Africa
+655,Kidney bean relish with coconut milk,0.2,0.2,0.8,184.9,legumes,East Africa
+662,Mung bean (dry) relsih with cocount milk,0.2,0.1,0.5,119.4,legumes,East Africa
+658,"Mung bean (dry, boiled)",0.0,0.1,0.6,108.7,legumes,East Africa
+659,"Pigeon pea (fresh, cooked) ",0.4,0.3,0.0,318.4,legumes,East Africa
+660,Pigeon pea relish with coconut milk,0.3,0.2,0.3,211.3,legumes,East Africa
+661,Pigeon pea relish with oil,0.5,0.5,1.3,721,legumes,East Africa
+129,"Apples, raw, with skin",52.0,0.2,0.2,13.8,fruits,East Africa
+101,"Avocado, raw, all common variety",160.0,2.0,14.7,8.5,fruits,East Africa
+102,"Banana, ripe",89.0,1.1,0.3,22.8,fruits,East Africa
+103,"Baobab, pulp",305.0,4.2,1.3,77.8,fruits,East Africa
+365,"Breadfruit, raw",103.0,1.1,0.2,27.1,fruits,East Africa
+131,"Custard-apple (bullock's heart), raw",101.0,1.7,0.6,25.2,fruits,East Africa
+133,"Date, red, dried",240.0,2.6,0.4,63.3,fruits,East Africa
+134,"Date, yellow",84.0,0.3,0.6,21.7,fruits,East Africa
+130,Durian,147.0,1.5,5.3,27.1,fruits,East Africa
+104,Grape,55.0,0.2,0.4,14.2,fruits,East Africa
+135,Grapefruit,33.0,0.7,0.1,8.4,fruits,East Africa
+105,"Grapes, pale green",59.0,0.2,0.4,15.3,fruits,East Africa
+106,"Guavas, common, raw",68.0,2.6,1.0,14.3,fruits,East Africa
+107,"Jackfruit, raw",94.0,1.5,0.3,24.0,fruits,East Africa
+109,"Lemon, raw, without peel",29.0,1.1,0.3,9.3,fruits,East Africa
+110,"Limes, raw",30.0,0.7,0.2,10.5,fruits,East Africa
+111,Mango juice,54.0,0.2,0.1,14.1,fruits,East Africa
+112,"Mango, ripe, fresh-EP",65.0,0.5,0.3,17.0,fruits,East Africa
+113,"Mango, unripe",65.0,0.5,0.3,17.0,fruits,East Africa
+108,"Orange juice, concentrated, unsweetened",42.0,0.6,0.1,9.9,fruits,East Africa
+114,"Orange, raw - AP",47.0,0.9,0.1,11.8,fruits,East Africa
+115,"Papaya, ripe",39.0,0.6,0.1,9.8,fruits,East Africa
+116,"Papaya, unripe",39.0,0.6,0.1,9.8,fruits,East Africa
+117,"Passion, fruit",43.0,0.7,0.1,11.1,fruits,East Africa
+127,Peach,39.0,0.6,0.1,10.0,fruits,East Africa
+118,"Pears, raw",58.0,0.4,0.1,15.5,fruits,East Africa
+120,Pineapple juice,49.0,0.4,0.4,12.4,fruits,East Africa
+119,"Pineapple, raw, all variety",48.0,0.5,0.1,12.6,fruits,East Africa
+121,"Plums, raw",46.0,0.7,0.3,11.4,fruits,East Africa
+128,Raspberry,52.0,0.7,0.4,12.8,fruits,East Africa
+132,"Soursop, raw",66.0,1.0,0.3,16.8,fruits,East Africa
+122,Tamarind,270.0,2.9,0.5,71.2,fruits,East Africa
+123,"Tamarind, fruit, fresh",59.0,0.2,0.4,15.3,fruits,East Africa
+124,"Tangerines, raw",53.0,0.8,0.3,13.3,fruits,East Africa
+125,"Watermelon, raw",30.0,0.6,0.2,7.6,fruits,East Africa
+603,Apple juice,53.0,0.1,0.0,13.3,beverage,East Africa
+604,Avocado juice,104.5,0.6,5.0,15.9,beverage,East Africa
+601,Grape juice,69.9,0.1,0.1,18.1,beverage,East Africa
+610,Mixed fruit jam,261.0,0.4,0.0,69.3,fruits,East Africa
+602,Mixed fruit juice,45.0,0.7,2.2,6.6,beverage,East Africa
+607,Papaya juice,58.3,0.4,0.1,14.9,beverage,East Africa
+126,Passion juice,110.1,0.3,0.0,28.4,beverage,East Africa
+606,Water melon juice,111.8,1.3,0.9,16.2,beverage,East Africa
+603,Apple juice,0.0,0.0,0.0,55.0,beverage,East Africa
+604,Avocado juice,3.1,0.6,13.1,0.0,beverage,East Africa
+601,Grape Juice,0.0,0.0,13.9,19.7,beverage,East Africa
+610,Mixed fruit jam,0.0,0.0,64.1,0.0,fruits,East Africa
+602,Mixed Fruit Juice,1.4,0.3,1.8,0.0,beverage,East Africa
+607,Papaya Juice,0.0,0,9.3,0,beverage,East Africa
+126,Passion Juice,0.0,0.0,25.5,0.0,beverage,East Africa
+606,Watermelon juice,0.2,0.0,18.1,0.0,beverage,East Africa
+401,"Amaranth, leaves, raw",23.0,8.5,0.5,8.5,vegetables,East Africa
+424,"Bean, cluster",42.0,2.7,0.1,7.8,vegetables,East Africa
+425,"Bean, french ",35.0,1.9,0.3,7.9,vegetables,East Africa
+431,"Cabbage, chinese, raw",15.0,2.3,0.2,2.1,vegetables,East Africa
+402,"Cabbage, cooked",14.0,0.6,0.3,2.8,vegetables,East Africa
+403,"Cabbage, raw, green, white",25.0,1.3,0.1,5.8,vegetables,East Africa
+430,"Carrot, juice",45.0,1.1,0.2,10.5,vegetables,East Africa
+404,"Carrots, raw",41.0,0.9,0.2,9.6,vegetables,East Africa
+409,Cassava leaf,37.0,3.7,0.2,7.3,vegetables,East Africa
+405,"Cauliflower, cooked without salt",12.0,0.7,0.1,2.6,vegetables,East Africa
+406,"Cauliflower, raw",25.0,2.0,0.1,5.3,vegetables,East Africa
+427,"Chili, green",21.0,0.9,0.1,5.1,vegetables,East Africa
+410,Cowpea leaf,37.0,9.3,0.8,7.3,vegetables,East Africa
+407,"Cucumber, with peel, raw",15.0,0.7,0.1,3.6,vegetables,East Africa
+408,"Egg plant, raw",24.0,1.0,0.2,5.7,vegetables,East Africa
+411,"Green medium, leaf",15.0,2.3,0.2,2.1,vegetables,East Africa
+429,Green pepper (capsicum),19.0,0.0,0.0,0.3,vegetables,East Africa
+426,"Hare lettuce, (mchunga)",10.7,1.0,0.3,1.0,vegetables,East Africa
+414,Lettuce,13.0,1.0,0.2,2.1,vegetables,East Africa
+415,Mushroom,27.0,2.2,0.5,5.1,vegetables,East Africa
+416,"Okra, raw",31.0,2.0,0.1,7.0,vegetables,East Africa
+417,"Onion, raw",40.0,1.3,0.2,9.2,vegetables,East Africa
+418,"Pea, green, fresh",84.0,5.4,0.2,15.6,vegetables,East Africa
+433,"Pepper dried or fresh, hot",27.0,1.0,0.3,5.8,vegetables,East Africa
+412,"Pumpkin leaf, raw",19.0,7.0,0.7,9.0,vegetables,East Africa
+419,"Pumpkin, cooked",20.0,0.5,0.3,4.4,vegetables,East Africa
+432,"Salad, green",36.0,3.5,0.9,7.1,vegetables,East Africa
+420,"Spinach, cooked",23.0,3.0,0.3,3.8,vegetables,East Africa
+428,Sweet potato leaf,35.0,4.8,0.3,6.4,vegetables,East Africa
+434,"Swiss chard, raw",19.0,1.8,0.2,3.7,vegetables,East Africa
+413,"Taro leaf, raw",42.0,5.0,0.7,6.7,vegetables,East Africa
+421,"Tomato, bitter (African egg plant)",22.0,1.0,0.4,4.5,vegetables,East Africa
+422,"Tomato, green",21.0,0.9,0.3,4.6,vegetables,East Africa
+423,"Tomato, ripe",21.0,0.9,0.3,4.6,vegetables,East Africa
+755,Cabbage relish with Oil,34.1,0.7,2.1,3.5,vegetables,East Africa
+754,"Cabbage, onion salad",27.8,1.2,0.3,6.2,vegetables,East Africa
+756,Cassava leaf relish with groundnuts,113.1,6.4,6.8,9.9,vegetables,East Africa
+757,Cassava leaf relish with coconut milk,70.9,2.8,4.7,6.7,vegetables,East Africa
+759,Cow pea leaf relish with coconut milk ,80.3,2.5,6.0,6.4,vegetables,East Africa
+779,Cow pea leaf relish with groundnuts,79.3,4.8,4.2,8.3,vegetables,East Africa
+784,Egg plant relish ,77.3,1.2,4.7,7.9,vegetables,East Africa
+763,"Green leaf, medium, relish with coconut milk",107.7,2.8,9.2,5.8,vegetables,East Africa
+762,"Green leaf, medium relish with groundnuts",15.0,1.0,0.6,2.0,vegetables,East Africa
+760,"Green leaf, medium, relish without oil",5.3,0.8,7.0,0.7,vegetables,East Africa
+761,"Green leaf, medium, relish with oil",86.1,1.0,14.5,1.0,vegetables,East Africa
+766,Green peas relish without oil,63.5,3.9,0.2,12.0,vegetables,East Africa
+767,Green peas relish with oil,82.5,3.8,2.6,11.8,vegetables,East Africa
+778,Green peas relish with oil and coconut milk,125.6,3.6,"7,8",11.9,vegetables,East Africa
+782,Green peas relish with coconut milk,120.2,3.7,6.6,12.7,vegetables,East Africa
+786,Hare lettuce (mchunga),169.6,1.0,17.4,4.5,vegetables,East Africa
+783,Okra relish without oil,16.7,0.9,0.2,3.7,vegetables,East Africa
+775,Okra relish with oil,74.3,0.8,6.2,4.7,vegetables,East Africa
+765,Okra with coconut milk,51.0,1.2,3.2,5.7,vegetables,East Africa
+781,"Okra, fried",106.2,1.0,10.2,4.5,vegetables,East Africa
+780,Sweet potato leaf relish with coconut milk,166.1,3.7,13.7,10.6,vegetables,East Africa
+777,Potato leaf relish with milk ,67.7,6.5,2.6,6.9,vegetables,East Africa
+764,Potato leaf relish with oil ,131.0,3.4,11.0,7.4,vegetables,East Africa
+772,Potato samosa ,194.0,3.0,9.2,24.4,vegetables,East Africa
+769,Pumpkin leaf relish without oil,16.8,0.8,0.2,3.7,vegetables,East Africa
+768,Pumpkin leaf relish with oil,63.8,0.7,5.7,3.5,vegetables,East Africa
+770,Spinach relish with groundnut and oil,149.0,1.7,15.2,3.7,vegetables,East Africa
+752,Spinach relish without oil,43.5,3.3,0.5,8.8,vegetables,East Africa
+753,Spinach relish with oil,108.0,2.7,9.0,6.1,vegetables,East Africa
+771,Spinach relish with sesame seeds,61.8,3.2,3.8,5.5,vegetables,East Africa
+785,Tomato relish,34.0,1.1,0.3,5.2,vegetables,East Africa
+01_044,"Bread, maize flour, yellow, with milk and egg",247.0,7.6,11.3,28.2,cereals,West  africa
+01_045,"Bread/rolls, white",264.0,9.1,2.7,49.6,cereals,West  africa
+01_046,"Bread, wheat, white",249.0,8.4,1.8,48.4,cereals,West  Africa
+01_047,"Bread, wheat, white for toasting",253.0,8.0,2.7,47.5,cereals,West  Africa
+01_048,"Bread, wheat, wholemeal",234.0,8.9,2.3,41.5,cereals,West  Africa
+01_002,"Fonio, black, whole grain, raw",353.0,8.9,3.0,69.4,cereals,West  Africa
+01_049,"Fonio, black, whole grain, boiled* (without salt)",147.0,3.7,1.3,28.9,cereals,West  Africa
+01_050,"Fonio, husked grains, raw (bran removed)",347.0,6.9,1.2,76.1,cereals,West  Africa
+01_051,"Fonio, husked grains, boiled* (without salt)",145.0,2.9,0.5,31.7,cereals,West  Africa
+01_001,"Fonio, white, whole grain, raw",348.0,7.0,3.1,69.3,cereals,West  Africa
+01_003,"Fonio, white, whole grain, boiled* (without salt)",145.0,2.9,1.3,28.9,cereals,West  Africa
+01_052,"Macaroni, dried",359.0,12.5,1.5,72.0,cereals,West  Africa
+01_053,"Macaroni, boiled* (without salt)",156.0,5.4,0.7,31.3,cereals,West  Africa
+01_006,"Maize, yellow, whole kernel, dried, raw",353.0,9.0,4.5,64.3,cereals,West  Africa
+01_007,"Maize, yellow, whole kernel, boiled* (without salt)",136.0,3.5,1.7,24.7,cereals,West  Africa
+01_054,"Maize, yellow, flour of whole-grain",353.0,9.3,4.4,64.3,cereals,West  Africa
+01_055,"Maize, yellow, grit, degermed",350.0,7.6,0.7,76.6,cereals,West  Africa
+01_056,"Maize, yellow, soft porridge* (without salt)",48.0,1.0,0.1,10.5,cereals,West  Africa
+01_075,"Maize, yellow, stiff porridge* (without salt)",130.0,2.8,0.3,28.4,cereals,West  Africa
+01_004,"Maize, white, whole kernel, dried, raw",349.0,9.2,4.1,63.9,cereals,West  Africa
+01_005,"Maize, white, whole kernel, boiled* (without salt)",134.0,3.5,1.6,24.6,cereals,West  Africa
+01_057,"Maize, white, flour of whole grain",351.0,9.7,4.0,64.5,cereals,West  Africa
+01_058,"Maize, white, flour refined",354.0,7.6,2.9,71.6,cereals,West  Africa
+01_059,"Maize, white, flour degermed ",361.0,7.1,1.5,78.6,cereals,West  Africa
+01_060,"Maize, white, grit, degermed",356.0,8.8,0.6,77.1,cereals,West  Africa
+01_061,"Maize, white, soft porridge* (without salt)",49.0,1.2,0.1,10.6,cereals,West  Africa
+01_076,"Maize, white, stiff porridge* (without salt)",132.0,3.3,0.2,28.5,cereals,West  Africa
+01_008,"Maize, Gougba variety, whole kernel, dried, raw (Benin) n=1",344.0,8.7,2.5,63.5,cereals,West  Africa
+01_009,"Maize, Gbaévè variety, whole kernel, dried, raw (Benin) n=1",344.0,8.1,3.0,64.0,cereals,West  Africa
+01_010,"Maize, DMR-ESR-W variety, whole kernel, dried, raw (Benin) n=1",343.0,8.8,3.9,63.3,cereals,West  Africa
+01_011,"Maize, POZA - RICA 7843 - SR variety, whole kernel, dried, raw (Benin) n=1",343.0,9.0,2.6,62.9,cereals,West  Africa
+01_012,"Maize, TZPB-SR variety, whole kernel, dried, raw (Benin) n=1",340.0,8.8,4.5,62.4,cereals,West  Africa
+01_013,"Maize, Gnonli variety, whole kernel, dried, raw (Benin) n=1",341.0,7.6,2.4,64.0,cereals,West  Africa
+01_014,"Maize, combined varieties, whole kernel, dried, raw (Benin)",343.0,8.5,3.2,63.3,cereals,West  Africa
+01_062,"Maize, combined varieties, whole kernel, boiled* (without salt)",132.0,3.3,1.5,24.4,cereals,West  Africa
+01_015,"Millet, whole grain, raw",348.0,10.9,4.1,62.6,cereals,West  Africa
+01_016,"Millet, whole grain, boiled*(without salt)",145.0,3.9,1.7,26.1,cereals,West  Africa
+01_017,"Pearl millet, whole grain, raw (with bran)",364.0,8.8,5.8,64.8,cereals,West  Africa
+01_033,"Pearl millet, whole grain, boiled* (without salt)",152.0,3.7,2.4,27.0,cereals,West  Africa
+01_063,"Pearl millet, flour (without bran)",355.0,7.4,3.2,72.1,cereals,West  Africa
+01_018,"Pearl millet, variety ikmv 8201, whole grain, raw (Burkina Faso) n=1",381.0,10.3,7.4,63.8,cereals,West  Africa
+01_019,"Pearl millet, variety ikmp 1, whole grain, raw (Burkina Faso) n=1",372.0,9.5,6.9,63.8,cereals,West  Africa
+01_020,"Pearl millet, variety ikmp 2, whole grain, raw (Burkina Faso) n=1",373.0,9.0,7.1,63.7,cereals,West  Africa
+01_021,"Pearl millet, variety ikmp 3, whole grain, raw (Burkina Faso) n=1",389.0,14.5,9.0,56.9,cereals,West  Africa
+01_022,"Pearl millet, variety ikmp 4, whole grain, raw (Burkina Faso) n=1",383.0,13.4,9.0,57.2,cereals,West  Africa
+01_023,"Pearl millet, variety ikmp 5, whole grain, raw (Burkina Faso) n=1",396.0,14.2,10.2,55.5,cereals,West  Africa
+01_024,"Pearl millet, variety ikmp 6, whole grain, raw (Burkina Faso) n=1",376.0,16.0,6.9,58.4,cereals,West  Africa
+01_025,"Pearl millet, variety ikmp 7, whole grain, raw (Burkina Faso) n=1",383.0,11.7,6.8,64.3,cereals,West  Africa
+01_026,"Pearl millet, variety ikmp 8, whole grain, raw (Burkina Faso) n=1",387.0,8.4,7.2,67.9,cereals,West  Africa
+01_027,"Pearl millet, variety ikmp 9, whole grain, raw (Burkina Faso) n=1",389.0,10.6,8.4,62.6,cereals,West  Africa
+01_028,"Pearl millet, variety ikmp 10, whole grain, raw (Burkina Faso) n=1",372.0,8.7,7.8,61.8,cereals,West  Africa
+01_029,"Pearl millet, variety ikmp 11, whole grain, raw (Burkina Faso) n=1",375.0,8.1,7.7,63.3,cereals,West  Africa
+01_030,"Pearl millet, variety ikmp 12, whole grain, raw (Burkina Faso) n=1",385.0,10.4,7.4,64.2,cereals,West  Africa
+01_031,"Pearl millet, variety ikmp 13, whole grain, raw (Burkina Faso) n=1",386.0,10.2,7.6,64.8,cereals,West  Africa
+01_032,"Pearl millet, combined varieties, whole grain, raw (Burkina Faso)",382.0,11.1,7.8,62.0,cereals,West  Africa
+01_064,"Pearl millet, combined varieties, whole grain, boiled* (without salt)",159.0,4.6,3.3,25.8,cereals,West  Africa
+01_034,"Rice, brown, raw",352.0,7.8,2.2,73.8,cereals,West  Africa
+01_035,"Rice, brown, boiled* (without salt)",352.0,3.1,0.9,29.5,cereals,West  Africa
+01_065,"Rice, red native, hulled, raw",359.0,7.4,2.2,77.3,cereals,West  Africa
+01_066,"Rice, red native, hulled, boiled* (without salt)",144.0,3.0,0.9,30.9,cereals,West  Africa
+01_067,"Rice, red native,  milled, raw",354.0,6.3,0.3,81.4,cereals,West  Africa
+01_068,"Rice, red native, milled, boiled* (without salt)",142.0,2.5,0.1,32.6,cereals,West  Africa
+01_036,"Rice, white, polished, raw",353.0,6.1,0.5,80.6,cereals,West  Africa
+01_069,"Rice, white, polished, boiled* (without salt)",136.0,2.4,0.2,31.0,cereals,West  Africa
+01_037,"Rice, white, raw",349.0,6.9,0.6,78.3,cereals,West  Africa
+01_038,"Rice, white, boiled* (without salt)",134.0,2.6,0.2,30.1,cereals,West  Africa
+01_039,"Sorghum, whole grain, raw ",344.0,10.5,3.3,63.1,cereals,West  Africa
+01_042,"Sorghum, whole grain, boiled* (without salt)",143.0,4.4,1.4,26.3,cereals,West  Africa
+01_041,"Sorghum, whole grain, red, raw",348.0,10.5,3.5,63.6,cereals,West  Africa
+01_070,"Sorghum, whole grain, red, boiled* (without salt)",145.0,4.4,1.5,26.5,cereals,West  Africa
+01_040,"Sorghum, whole grain, white, raw",354.0,9.3,3.9,65.5,cereals,West  Africa
+01_071,"Sorghum, whole grain, white, boiled* (without salt)",148.0,3.9,1.6,27.3,cereals,West  Africa
+01_072,"Sorghum, flour, degermed",347.0,10.4,1.7,70.4,cereals,West  Africa
+01_073,"Wheat, bran",282.0,15.9,4.8,23.2,cereals,West  Africa
+01_043,"Wheat flour, white",351.0,10.4,1.5,72.5,cereals,West  Africa
+01_074,"Wheat, whole grains, raw",326.0,12.4,2.2,58.7,cereals,West  Africa
+02_001,"Cassava, tuber, raw",153.0,1.2,0.3,35.6,tubers,West  Africa
+02_003,"Cassava, tuber, boiled* (without salt)",161.0,1.2,0.3,37.4,tubers,West  Africa
+02_002,"Cassava, tuber, dried",347.0,2.1,0.6,81.4,tubers,West  Africa
+02_021,"Cassava sweet, tuber, dried",348.0,1.3,0.5,82.5,tubers,West  Africa
+02_004,Cassava flour,335.0,1.9,0.5,78.8,tubers,West  Africa
+02_005,"Cocoyam, tuber, raw ",129.0,2.4,0.2,27.4,tubers,West  Africa
+02_006,"Cocoyam, tuber, boiled* (without salt)",136.0,2.5,0.2,28.9,tubers,West  Africa
+02_009,"Potato, raw",80.0,1.9,0.1,16.9,tubers,West  Africa
+02_010,"Potato, boiled* (without salt)",80.0,1.9,0.1,16.9,tubers,West  Africa
+02_022,"Sweet potato, pale yellow, raw",115.0,1.5,0.2,25.3,tubers,West  Africa
+02_023,"Sweet potato, pale yellow, boiled* (without salt)",115.0,1.5,0.2,25.3,tubers,West  Africa
+02_013,"Sweet potato, yellow, raw",116.0,1.5,0.2,25.5,tubers,West  Africa
+02_014,"Sweet potato, yellow, boiled* (without salt)",116.0,1.5,0.2,25.5,tubers,West  Africa
+02_011,"Sweet potato, deep yellow, raw",112.0,1.5,0.3,24.5,tubers,West  Africa
+02_012,"Sweet potato, deep yellow, boiled* (without salt)",112.0,1.5,0.3,24.5,tubers,West  Africa
+02_015,"Taro, tuber, raw",92.0,1.7,0.1,19.0,tubers,West  Africa
+02_016,"Taro, tuber, boiled* (without salt)",97.0,1.8,0.1,20.0,tubers,West  Africa
+02_024,"Tiger nut, tuber, raw",304.0,3.5,15.5,34.3,tubers,West  Africa
+02_025,"Tiger nut, tuber, boiled* (without salt)",320.0,3.7,16.3,36.1,tubers,West  Africa
+02_026,"Tiger nut, tuber dried",468.0,4.9,26.3,47.8,tubers,West  Africa
+02_017,"Water yam, tuber, raw",125.0,2.4,0.1,26.5,tubers,West  Africa
+02_018,"Water yam, tuber, boiled* (without salt)",132.0,2.5,0.1,27.9,tubers,West  Africa
+02_019,"Yam tuber, raw",128.0,1.9,0.2,27.5,tubers,West  Africa
+02_020,"Yam tuber, boiled* (without salt)",134.0,2.0,0.2,28.9,tubers,West  Africa
+02_027,"Yam  tuber, Isu akoko, raw (Nigeria) n=1",141.0,2.0,0.2,30.2,tubers,West  Africa
+02_028,"Yam tuber, Isu oko,raw (Nigeria) n=1",115.0,1.6,0.1,24.9,tubers,West  Africa
+02_029,"Yam,  tuber, Amara, raw (Nigeria) n=1",147.0,1.9,0.2,31.7,tubers,West  Africa
+02_030,"Yam, tuber, Chika, kundu, raw (Nigeria) n=1",128.0,1.6,0.1,27.8,tubers,West  Africa
+02_031,"Yam, tuber, Isu Abuja, raw (Nigeria) n=1",108.0,1.6,0.1,23.2,tubers,West  Africa
+02_032,"Yam, tuber, Pepa, raw (Nigeria) n=1",139.0,2.0,0.2,29.9,tubers,West  Africa
+02_033,"Yam, tuber, Giwa, raw (Nigeria) n=1",135.0,1.9,0.2,29.0,tubers,West  Africa
+02_034,"Yam tuber, combined cultivars, raw (Nigeria)",131.0,1.8,0.1,28.1,tubers,West  Africa
+02_035,"Yam tuber, combined cultivars, boiled (Nigeria)* (without salt)",137.0,1.9,0.2,29.6,tubers,West  Africa
+02_036,"Yam tuber, flour",312.0,3.4,0.4,67.9,tubers,West  Africa
+03_009,"African locust bean, seeds, dried",445.0,32.3,19.5,33.0,legumes,West  Africa
+03_010,"African yam bean, dried, raw",311.0,18.9,1.5,47.1,legumes,West  Africa
+03_011,"African yam bean, boiled* (without salt)",115.0,7.0,0.6,17.4,legumes,West  Africa
+03_001,"Bambara groundnut, dried, raw ",376.0,20.1,5.9,58.9,legumes,West  Africa
+03_012,"Bambara groundnut, boiled* (without salt)",139.0,7.4,2.2,21.8,legumes,West  Africa
+03_013,"Bambara groundnut, black-white-eye, dried, raw (Ghana) n=1",363.0,24.5,4.3,54.7,legumes,West  Africa
+03_014,"Bambara groundnut, brown white-eye, dried, raw (Ghana) n=1",368.0,20.6,5.8,56.6,legumes,West  Africa
+03_015,"Bambara groundnut, Cream black-eye, dried, raw (Ghana) n=1",375.0,17.6,6.1,60.6,legumes,West  Africa
+03_016,"Bambara groundnut, Cream pink-eye, dried, raw (Ghana) n=1",367.0,23.2,4.7,56.0,legumes,West  Africa
+03_017,"Bambara groundnut, maroon white-eye, dried, raw (Ghana) n=1",372.0,18.1,6.3,58.7,legumes,West  Africa
+03_018,"Bambara groundnut, combined varieties, dried, raw (Ghana)",369.0,20.8,5.5,57.3,legumes,West  Africa
+03_019,"Bambara groundnut, combined varieties, boiled* (Ghana)(without salt)",137.0,7.7,2.0,21.2,legumes,West  Africa
+03_002,"Bambara groundnut, red, dried, raw",377.0,18.4,6.0,60.7,legumes,West  Africa
+03_020,"Bambara groundnut, red, boiled*(without salt)",140.0,6.8,2.2,22.5,legumes,West  Africa
+03_003,"Bambara groundnuts, white, raw",381.0,20.0,6.5,58.5,legumes,West  Africa
+03_021,"Bambara groundnuts, white, boiled* (without salt)",141.0,7.4,2.4,21.8,legumes,West  Africa
+03_022,"Beans, white, dried",335.0,22.1,1.5,53.2,legumes,West  Africa
+03_023,"Beans, white, boiled* (without salt)",124.0,8.2,0.5,19.7,legumes,West  Africa
+03_024,"Broad beans, dried, raw",300.0,26.1,1.8,31.7,legumes,West  Africa
+03_025,"Broad beans,  boiled* (without salt)",120.0,10.4,0.7,12.7,legumes,West  Africa
+03_004,"Cowpea, dried, raw",316.0,21.2,1.3,47.2,legumes,West  Africa
+03_007,"Cowpea, boiled* (without salt)",117.0,7.9,0.5,17.5,legumes,West  Africa
+03_005,"Cowpea, black, dried, raw",301.0,21.1,1.6,40.0,legumes,West  Africa
+03_026,"Cowpea, black, boiled* (without salt)",111.0,7.8,0.6,14.8,legumes,West  Africa
+03_027,"Cowpea, brown, dried, raw",318.0,21.2,1.6,47.3,legumes,West  Africa
+03_028,"Cowpea, brown, boiled* (without salt)",118.0,7.9,0.6,17.5,legumes,West  Africa
+03_006,"Cowpea, white, dried, raw",319.0,19.2,1.5,52.0,legumes,West  Africa
+03_029,"Cowpea, white, boiled* (without salt)",118.0,7.1,0.6,19.3,legumes,West  Africa
+03_030,"Lentils, dried, raw",297.0,25.4,1.8,29.4,legumes,West  Africa
+03_031,"Lentils, boiled* (without salt)",109.0,9.3,0.7,10.8,legumes,West  Africa
+03_032,"Pigeon pea, dried, raw",301.0,18.4,1.5,43.2,legumes,West  Africa
+03_033,"Pigeon pea, boiled* (without salt)",111.0,6.8,0.6,16.0,legumes,West  Africa
+03_008,"Soya bean, dried, raw",410.0,32.0,17.0,27.6,legumes,West  Africa
+03_034,"Soya bean, boiled* (without salt)",178.0,13.9,7.4,12.0,legumes,West  Africa
+03_035,"Soybean, Salintuya-1, dried, raw (Ghana) n=1",412.0,35.5,16.1,26.6,legumes,West  Africa
+03_036,"Soybean, Anidaso, dried, raw (Ghana) n=1",411.0,35.9,15.8,26.5,legumes,West  Africa
+03_037,"Soybean, Quarshie,dried, raw (Ghana) n=1",408.0,35.4,13.1,32.5,legumes,West  Africa
+03_038,"Soybean, Jenguma, dried, raw (Ghana) n=1",423.0,31.9,18.6,27.5,legumes,West  Africa
+03_039,"Soya bean, combined varieties, dried, raw (Ghana)",413.0,34.7,15.9,28.3,legumes,West  Africa
+03_040,"Soya bean, combined varieties, boiled* (Ghana)(without salt)",180.0,15.1,6.9,12.3,legumes,West  Africa
+04_023,"Amaranth leaves, raw",39.0,3.8,0.3,4.6,vegetables,West  Africa
+04_024,"Amaranth leaves, boiled* (without salt)",41.0,4.6,0.3,4.8,vegetables,West  Africa
+04_001,"Baobab, leaves,  raw",70.0,3.5,0.5,9.2,vegetables,West  Africa
+04_025,"Baobab, leaves, boiled* (without salt)",74.0,3.7,0.6,9.7,vegetables,West  Africa
+04_002,"Baobab leaves, dried",272.0,13.7,2.1,35.2,vegetables,West  Africa
+04_003,"Beans, green raw",40.0,3.1,0.2,5.0,vegetables,West  Africa
+04_026,"Beans, green, boiled* (without salt)",44.0,3.4,0.3,5.5,vegetables,West  Africa
+04_005,"Cabbage, raw",28.0,1.6,0.1,3.8,vegetables,West  Africa
+04_027,"Cabbage, boiled* (without salt)",28.0,1.6,0.1,3.9,vegetables,West  Africa
+04_006,"Carrot, raw",35.0,1.0,0.3,5.7,vegetables,West  Africa
+04_007,"Carrot, boiled* (without salt)",38.0,1.0,0.3,6.1,vegetables,West  Africa
+04_008,"Cassava, leaves, raw",97.0,7.5,0.9,12.9,vegetables,West  Africa
+04_028,"Cassava, leaves, boiled* (without salt)",102.0,7.9,0.9,13.6,vegetables,West  Africa
+04_009,"Cocoyam, leaves, raw",35.0,3.2,0.7,3.1,vegetables,West  Africa
+04_029,"Cocoyam, leaves, boiled* (without salt)",36.0,3.3,0.8,3.2,vegetables,West  Africa
+04_010,"Cowpea, leaves, raw",42.0,4.6,0.3,3.3,vegetables,West  Africa
+04_030,"Cowpea, leaves, boiled* (without salt)",44.0,4.8,0.3,3.5,vegetables,West  Africa
+04_031,"Cowpea leaves, dried",282.0,24.4,1.9,29.8,vegetables,West  Africa
+04_032,"Cucumber, raw",15.0,0.7,0.1,2.5,vegetables,West  Africa
+04_011,"Drumstick  leaves, raw",86.0,8.3,1.2,9.6,vegetables,West  Africa
+04_033,"Drumstick leaves, boiled* (without salt)",91.0,8.8,1.2,10.1,vegetables,West  Africa
+04_012,"Eggplant, raw",30.0,1.1,0.2,4.6,vegetables,West  Africa
+04_034,"Eggplant, boiled* (without salt)",32.0,1.2,0.2,5.0,vegetables,West  Africa
+04_013,"Eggplant leaves, raw",45.0,4.4,0.7,4.2,vegetables,West  Africa
+04_035,"Eggplant leaves, boiled* (without salt)",47.0,4.6,0.8,4.4,vegetables,West  Africa
+04_036,"False sesame, leaves, raw",68.0,5.3,0.8,9.1,vegetables,West  Africa
+04_037,"False sesame, leaves, boiled* (without salt)",72.0,5.6,0.8,9.6,vegetables,West  Africa
+04_014,"False sesame, leaves, dried",300.0,17.7,3.4,45.7,vegetables,West  Africa
+04_015,"Garlic, raw",135.0,6.8,0.4,25.0,vegetables,West  Africa
+04_038,"Jute (bush-okra) leaves, raw",59.0,3.9,0.3,9.1,vegetables,West  Africa
+04_039,"Jute (bush-okra) leaves, boiled* (without salt)",62.0,4.2,0.3,9.5,vegetables,West  Africa
+04_040,"Lettuce, raw",18.0,1.0,0.2,2.3,vegetables,West  Africa
+04_004,"Okra leaves, raw",40.0,2.7,0.3,4.3,vegetables,West  Africa
+04_041,"Okra leaves, boiled* (without salt)",43.0,2.8,0.3,4.6,vegetables,West  Africa
+04_017,"Okra fruit, raw",33.0,1.7,0.2,4.4,vegetables,West  Africa
+04_042,"Okra fruit, boiled* (without salt)",37.0,1.9,0.3,5.0,vegetables,West  Africa
+04_018,"Onion, raw",37.0,1.1,0.1,6.9,vegetables,West  Africa
+04_043,"Onion, boiled* (without salt)",45.0,1.4,0.1,8.4,vegetables,West  Africa
+04_044,"Onions, dried",354.0,9.6,1.1,71.1,vegetables,West  Africa
+04_045,"Parsley, fresh",47.0,3.5,0.4,5.7,vegetables,West  Africa
+04_046,"Peppers, chilli, raw",45.0,1.9,0.3,7.6,vegetables,West  Africa
+04_047,"Pepper, sweet, red, raw",33.0,1.3,0.3,5.2,vegetables,West  Africa
+04_048,"Pepper, sweet, red, boiled* (without salt)",38.0,1.5,0.4,6.0,vegetables,West  Africa
+04_049,"Pepper, sweet, green, raw",26.0,0.9,0.2,4.1,vegetables,West  Africa
+04_050,"Pepper, sweet, green, boiled* (without salt)",30.0,1.0,0.3,4.7,vegetables,West  Africa
+04_051,"Pumpkin, squash, raw",29.0,1.0,0.1,5.6,vegetables,West  Africa
+04_052,"Pumpkin, squash, boiled* (without salt)",31.0,1.1,0.1,6.1,vegetables,West  Africa
+04_053,"Pumpkin leaves, raw",27.0,3.7,0.3,1.3,vegetables,West  Africa
+04_054,"Pumpkin leaves, boiled* (without salt)",29.0,3.9,0.3,1.4,vegetables,West  Africa
+04_055,"Pumpkin leaves, dried",253.0,34.5,2.3,14.5,vegetables,West  Africa
+04_016,"Roselle leaves, raw",40.0,2.8,0.2,4.1,vegetables,West  Africa
+04_056,"Roselle leaves, boiled* (without salt)",42.0,3.0,0.3,4.3,vegetables,West  Africa
+04_057,"Spinach, raw",28.0,2.8,0.6,1.7,vegetables,West  Africa
+04_058,"Spinach, boiled* (without salt)",29.0,2.9,0.6,1.8,vegetables,West  Africa
+04_059,"Sweet potato, leaves, raw",51.0,4.4,0.2,6.7,vegetables,West  Africa
+04_060,"Sweet potato leaves, boiled* (without salt)",54.0,4.6,0.2,7.0,vegetables,West  Africa
+04_019,"Tamarind, leaves, raw",99.0,4.0,2.1,13.9,vegetables,West  Africa
+04_061,"Tamarind, leaves, boiled* (without salt)",104.0,4.2,2.2,14.6,vegetables,West  Africa
+04_062,"Tamarind, leaves, dried",372.0,14.0,8.0,53.3,vegetables,West  Africa
+04_020,"Taro, leaves, raw",46.0,4.7,0.7,3.3,vegetables,West  Africa
+04_063,"Taro, leaves, boiled* (without salt)",48.0,4.9,0.7,3.5,vegetables,West  Africa
+04_021,"Tomato, red, ripe, raw",22.0,1.0,0.2,3.3,vegetables,West  Africa
+04_064,"Tomato, red, ripe, boiled* (without salt)",28.0,1.3,0.2,4.2,vegetables,West  Africa
+04_065,"Tomatoes, canned, packed in juice",20.0,1.0,0.2,3.0,vegetables,West  Africa
+04_066,"Tomato paste, concentrated",89.0,4.3,0.5,14.8,vegetables,West  Africa
+04_067,"Tomato, powder",321.0,12.9,0.4,58.2,vegetables,West  Africa
+04_068,"Turnip, raw ",28.0,0.9,0.2,4.4,vegetables,West  Africa
+04_069,"Turnip, boiled* (without salt)",31.0,1.1,0.2,4.9,vegetables,West  Africa
+04_022,"Vernonia, leaves, raw",55.0,4.4,0.6,5.5,vegetables,West  Africa
+04_070,"Vernonia, leaves, boiled* (without salt)",58.0,4.6,0.6,5.8,vegetables,West  Africa
+05_023,"African fan palm, fruit, pulp, raw",44.0,0.8,0.1,8.9,fruits,West  Africa
+05_001,"African locust bean, fruit, pulp, raw",303.0,3.3,0.9,64.0,fruits,West  Africa
+05_024,"African locust bean, flour from fruit, pulp",333.0,4.6,1.3,69.0,fruits,West  Africa
+05_025,"Akee, pulp, raw",204.0,6.8,18.2,2.7,fruits,West  Africa
+05_026,"Apple, with skin, raw",53.0,0.3,0.2,11.4,fruits,West  Africa
+05_027,"Apple, without skin, raw",51.0,0.3,0.1,11.5,fruits,West  Africa
+05_002,"Avocado, pulp, raw",154.0,1.7,14.7,1.4,fruits,West  Africa
+05_003,"Banana, white flesh, raw",99.0,1.2,0.2,22.1,fruits,West  Africa
+05_028,"Banana, yellow flesh, raw",106.0,1.4,0.2,23.6,fruits,West  Africa
+05_004,"Baobab, fruit/Monkey bread, pulp, raw",302.0,2.4,0.6,68.2,fruits,West  Africa
+05_005,"Breadfruit, raw",107.0,1.5,0.3,23.9,fruits,West  Africa
+05_006,"Cashew apple, pulp, raw",56.0,1.0,0.7,10.7,fruits,West  Africa
+05_029,"Clementine, raw",47.0,0.9,0.1,9.9,fruits,West  Africa
+05_007,"Dattock, pulp, raw",125.0,1.9,0.4,27.3,fruits,West  Africa
+05_008,"Dattock, dried pulp, raw",322.0,3.4,1.0,71.2,fruits,West  Africa
+05_030,"Dates, raw",149.0,1.5,0.1,34.2,fruits,West  Africa
+05_031,"Dates, dried",307.0,2.3,0.3,70.1,fruits,West  Africa
+05_032,"Fig, raw ",70.0,1.1,0.3,14.5,fruits,West  Africa
+05_033,"Fig, dried ",276.0,3.4,1.1,58.4,fruits,West  Africa
+05_034,"Fruit cocktail, canned in syrup",72.0,0.4,0.1,16.4,fruits,West  Africa
+05_035,"Grapefruit, pulp, raw",33.0,0.7,0.1,6.8,fruits,West  Africa
+05_010,"Guava, fruit, raw",57.0,1.0,0.4,9.5,fruits,West  Africa
+05_011,"Gumvine, raw",75.0,0.7,0.2,17.1,fruits,West  Africa
+05_012,"Jujube, raw",91.0,1.5,0.3,20.0,fruits,West  Africa
+05_013,"Landolphia, pulp, raw",63.0,0.8,0.1,14.5,fruits,West  Africa
+05_014,"Lemon, raw",36.0,0.4,0.5,6.3,fruits,West  Africa
+05_036,"Mango, deep orange flesh",76.0,0.4,0.2,17.3,fruits,West  Africa
+05_015,"Mango, orange flesh,  raw",64.0,0.6,0.2,13.9,fruits,West  Africa
+05_037,"Mango, pale flesh, raw",52.0,0.5,0.2,11.1,fruits,West  Africa
+05_038,"Melon, honeydew, raw",29.0,0.6,0.1,6.0,fruits,West  Africa
+05_039,"Melon, cantaloup, raw",33.0,0.7,0.2,6.7,fruits,West  Africa
+05_016,"Orange, raw",45.0,0.7,0.3,8.9,fruits,West  Africa
+05_040,"Palm nuts, pulp, raw",527.0,1.8,50.7,14.1,fruits,West  Africa
+05_017,"Papaya, fruit, ripe, raw",36.0,0.5,0.1,7.3,fruits,West  Africa
+05_018,"Pineapple, pulp, raw",54.0,0.4,0.2,12.0,fruits,West  Africa
+05_041,"Pomegranate, raw",78.0,1.4,0.6,14.8,fruits,West  Africa
+05_042,"Plantain, ripe, raw",140.0,1.2,0.3,32.0,fruits,West  Africa
+05_043,"Plantain, ripe, boiled* (without salt)",133.0,1.1,0.3,30.5,fruits,West  Africa
+05_044,"Shea fruit pulp, raw",98.0,1.5,0.9,19.1,fruits,West  Africa
+05_019,"Soapberry, fruit, raw",110.0,1.6,Tr,25.5,fruits,West  Africa
+05_045,"Sweet apple, fruit, raw",91.0,1.4,0.2,20.2,fruits,West  Africa
+05_020,"Tamarind, immature fruit, raw",60.0,2.2,0.2,8.1,fruits,West  Africa
+05_021,"Tamarind, fruit, ripe, raw",249.0,4.2,0.6,47.6,fruits,West  Africa
+05_022,"Watermelon, fruit, raw",29.0,0.5,0.2,6.2,fruits,West  Africa
+06_001,"Cashew nut, raw",585.0,17.7,44.4,27.0,nuts and seeds,West  Africa
+06_002,"Coconut, mature kernel, fresh, raw",389.0,3.6,36.9,6.2,nuts and seeds,West  Africa
+06_004,"Coconut, immature kernel, fresh, raw",162.0,1.6,13.5,6.7,nuts and seeds,West  Africa
+06_005,"Coconut, kernel, dried, raw",606.0,5.9,56.4,10.2,nuts and seeds,West  Africa
+06_006,Coconut milk ,219.0,2.1,22.1,1.7,nuts and seeds,West  Africa
+06_007,Coconut water,20.0,0.4,0.3,3.5,nuts and seeds,West  Africa
+06_018,"Colanut, raw",161.0,2.9,0.4,35.5,nuts and seeds,West  Africa
+06_019,"Colanut, dried, raw",342.0,5.8,1.5,74.3,nuts and seeds,West  Africa
+06_008,"Dikanut, kernel, dried, raw",704.0,7.9,66.9,16.4,nuts and seeds,West  Africa
+06_010,"Groundnut, shelled, dried, raw",578.0,22.4,45.9,14.6,nuts and seeds,West  Africa
+06_020,"Groundnut, Sinkarzie, shelled, dried,  raw (Ghana); n=1",585.0,20.6,48.8,11.7,nuts and seeds,West  Africa
+06_021,"Groundnut, F-mix, shelled, dried,  raw (Ghana); n=1",575.0,22.3,47.6,10.4,nuts and seeds,West  Africa
+06_022,"Groundnut, JL 24, shelled, dried, raw (Ghana); n=1",531.0,25.2,38.1,17.6,nuts and seeds,West  Africa
+06_023,"Groundnut, Chinese, shelled, dried, raw (Ghana); n=1",561.0,20.5,41.1,22.9,nuts and seeds,West  Africa
+06_024,"Groundnut, Manipintar, shelled, dried, raw (Ghana); n=1",577.0,23.3,46.7,11.6,nuts and seeds,West  Africa
+06_025,"Groundnut, combined varieties, shelled, dried, raw (Ghana)",566.0,22.4,44.5,14.8,nuts and seeds,West  Africa
+06_011,"Groundnut, rose, shelled, dried, raw (Benin)",567.0,20.4,43.2,20.3,nuts and seeds,West  Africa
+06_012,"Groundnut, red, shelled, dried, raw (Benin)",577.0,21.7,45.1,16.5,nuts and seeds,West  Africa
+06_026,Groundnut paste,594.0,25.0,47.2,16.5,nuts and seeds,West  Africa
+06_027,"Groundnut flour, with fat",586.0,26.6,46.4,10.6,nuts and seeds,West  Africa
+06_028,"Groundnut flour, defatted",407.0,42.5,9.9,35.3,nuts and seeds,West  Africa
+06_013,"Melon seeds, slightly salted, raw",593.0,27.5,47.9,11.3,nuts and seeds,West  Africa
+06_029,"Palm nut kernel, shelled, raw",609.0,6.1,55.3,19.6,nuts and seeds,West  Africa
+06_030,"Roselle, red, seed, dried ",419.0,16.8,17.8,42.5,nuts and seeds,West  Africa
+06_015,"Sesame seeds, whole, dried, raw",577.0,18.2,48.9,10.0,nuts and seeds,West  Africa
+06_016,"Shea nut, seed kernel, dried, raw",586.0,6.8,46.4,32.5,nuts and seeds,West  Africa
+07_008,"Ant flying, dried",599.0,38.8,46.9,5.5,meat,West  Africa
+07_009,"Beef, meat, lean, boneless, raw",126.0,21.7,4.3,0.0,meat,West  Africa
+07_010,"Beef, meat, lean, boiled *(without salt)",209.0,36.2,7.2,0.0,meat,West  Africa
+07_011,"Beef, meat, lean, grilled *(without salt and fat)",174.0,30.1,6.0,0.0,meat,West  Africa
+07_002,"Beef, meat, 15-20  % fat, boneless, raw",235.0,18.4,18.0,0.0,meat,West  Africa
+07_012,"Beef, meat, 15-20  % fat, boiled* (without salt)",314.0,30.6,21.3,0.0,meat,West  Africa
+07_013,"Beef, meat, 15-20  % fat, grilled* (without salt and fat)",282.0,25.5,19.9,0.0,meat,West  Africa
+07_014,"Beef, meat, approx. 30 % fat, boneless, raw",321.0,16.4,28.4,0.0,meat,West  Africa
+07_015,"Beef, meat, approx. 30 % fat, boiled* (without salt)",457.0,27.3,38.7,0.0,meat,West  Africa
+07_016,"Beef, meat, approx. 30 % fat, grilled* (without salt and fat)",401.0,22.8,34.4,0.0,meat,West  Africa
+07_017,"Beef, meat, lean, cured, dried",178.0,31.1,1.9,9.1,meat,West  Africa
+07_001,"Beef liver, raw",132.0,19.4,4.4,3.9,meat,West  Africa
+07_018,"Beef liver, boiled* (without salt)",201.0,29.4,6.6,5.9,meat,West  Africa
+07_019,"Beef, kidney, raw",99.0,17.4,3.1,0.3,meat,West  Africa
+07_020,"Beef, kidney, stewed *(without salt)",156.0,27.6,4.9,0.5,meat,West  Africa
+07_021,"Beef, tripe, raw",81.0,12.1,3.7,0.0,meat,West  Africa
+07_022,"Beef, tripe, boiled* (without salt)",115.0,17.0,5.2,0.0,meat,West  Africa
+07_023,"Beef,  ground, 10 % fat, raw",170.0,20.1,10.0,0.0,meat,West  Africa
+07_024,"Beef, ground stewed* (without salt)",212.0,27.8,11.2,0.0,meat,West  Africa
+07_025,"Beef, meat, cured, corned, canned",243.0,27.1,14.9,0.0,meat,West  Africa
+07_026,"Bamboo caterpillar, deep fried",644.0,25.5,55.3,[11.0],meat,West  Africa
+07_027,"Game meat, dried",330.0,66.7,7.0,0.0,meat,West  Africa
+07_003,"Chicken, dark meat, flesh, raw",134.0,20.4,5.9,0.0,meat,West  Africa
+07_028,"Chicken, dark meat, flesh, boiled* (without salt)",158.0,26.8,5.6,0.0,meat,West  Africa
+07_029,"Chicken, dark meat, flesh, grilled* (without salt and fat)",155.0,26.1,5.6,0.0,meat,West  Africa
+07_030,"Chicken, dark meat, flesh and skin, raw",232.0,16.7,18.3,0.0,meat,West  Africa
+07_031,"Chicken, dark meat, flesh and skin, boiled* (without salt)",268.0,22.0,20.0,0.0,meat,West  Africa
+07_032,"Chicken, dark meat, flesh and skin, grilled* (without salt and fat)",264.0,21.4,19.8,0.0,meat,West  Africa
+07_033,"Chicken, light meat, flesh, raw",107.0,23.6,1.4,0.0,meat,West  Africa
+07_034,"Chicken, light meat, flesh, boiled* (without salt)",140.0,31.1,1.8,0.0,meat,West  Africa
+07_035,"Chicken, light meat, flesh, grilled* (without salt and fat)",137.0,30.3,1.8,0.0,meat,West  Africa
+07_036,"Chicken, light meat, flesh and skin, raw",181.0,19.5,11.4,0.0,meat,West  Africa
+07_037,"Chicken, light meat, flesh and skin, boiled* (without salt)",218.0,25.7,12.8,0.0,meat,West  Africa
+07_038,"Chicken, light meat, flesh and skin, grilled* (without salt and fat)",214.0,25.0,12.7,0.0,meat,West  Africa
+07_039,"Chicken giblets, raw",132.0,17.5,6.3,1.3,meat,West  Africa
+07_040,"Chicken, giblets, braised* (without salt)",163.0,25.3,6.0,1.9,meat,West  Africa
+07_041,"Chicken, liver, raw",117.0,19.0,4.0,1.3,meat,West  Africa
+07_042,"Chicken liver, braised* (without salt)",169.0,27.5,5.8,1.9,meat,West  Africa
+07_043,"Mole cricket, blanched",130.0,15.4,6.3,1.5,meat,West  Africa
+07_044,"Crocodile, raw",121.0,19.4,4.8,0.0,meat,West  Africa
+07_045,"Crocodile, boiled* (without salt)",208.0,33.4,8.3,0.0,meat,West  Africa
+07_046,"Goat, meat, raw",165.0,17.5,10.6,0.0,meat,West  Africa
+07_047,"Goat, meat, boiled* (without salt)",216.0,26.1,12.3,0.0,meat,West  Africa
+07_048,"Goat, meat, grilled* (without salt and fat)",221.0,25.4,12.2,0.0,meat,West  Africa
+07_004,"Lamb/mutton, meat, moderately fat, raw",257.0,16.5,21.2,0.0,meat,West  Africa
+07_049,"Lamb/mutton, meat, moderately fat, boiled* (without salt)",325.0,24.6,25.2,0.0,meat,West  Africa
+07_050,"Lamb/mutton, meat, moderately fat, grilled* (without salt and salt)",324.0,23.9,24.9,0.0,meat,West  Africa
+07_051,"Lamb, brain, raw",119.0,10.4,8.6,0.0,meat,West  Africa
+07_052,"Lamb, brain, braised* (without salt)",133.0,13.0,9.0,0.0,meat,West  Africa
+07_053,"Lamb, liver, raw",131.0,20.2,4.5,2.5,meat,West  Africa
+07_054,"Lamb, liver, boiled* (without salt)",199.0,30.6,6.8,3.8,meat,West  Africa
+07_055,"Locust, raw",97.0,14.0,3.3,0.9,meat,West  Africa
+07_056,"Mopanie worm, canned",97.0,14.1,3.6,0.7,meat,West  Africa
+07_006,"Pork, meat, approx. 20 % fat, boneless, raw",265.0,16.8,22.0,0.0,meat,West  Africa
+07_057,"Pork, meat, approx. 20 % fat, boiled* (without salt)",346.0,25.9,26.9,0.0,meat,West  Africa
+07_058,"Pork, meat, approx. 20 % fat, grilled* (without salt and fat)",329.0,24.0,25.9,0.0,meat,West  Africa
+07_005,"Pork, meat, approx. 40 % fat, boneless, raw",398.0,12.3,38.8,0.0,meat,West  Africa
+07_059,"Pork, meat, approx. 40 % fat, boiled* (without salt)",550.0,18.9,52.7,0.0,meat,West  Africa
+07_060,"Pork, meat, approx. 40 % fat, grilled* (without salt and fat)",519.0,17.6,49.9,0.0,meat,West  Africa
+07_007,"Rabbit, flesh only, raw",127.0,21.6,4.8,0.0,meat,West  Africa
+07_061,"Rabbit, meat, stewed* (without salt)",185.0,31.4,6.6,0.0,meat,West  Africa
+07_062,"Rabbit, meat, grilled* (without salt and fat)",185.0,31.4,6.6,0.0,meat,West  Africa
+07_063,"Sausage, wiener (beef, pork, chicken) canned",227.0,10.5,19.4,2.6,meat,West  Africa
+08_001,"Egg, chicken, raw",139.0,12.6,9.5,0.7,egg,West  Africa
+08_002,"Egg, chicken, boiled* (without salt)",139.0,12.6,9.5,0.7,egg,West  Africa
+08_003,"Egg, chicken, fried",191.0,13.6,14.8,0.8,egg,West  Africa
+08_004,Omelette,150.0,10.6,11.7,0.6,egg,West  Africa
+09_007,"African carp, raw",68.0,15.7,0.6,0.0,fish,West  Africa
+09_008,"African carp, steamed* (without salt)",80.0,18.5,0.7,0.0,fish,West  Africa
+09_009,"African carp, grilled* (without salt and fat)",99.0,22.8,0.9,0.0,fish,West  Africa
+09_001,"Anchovy, fillet, raw",109.0,19.1,3.7,0.0,fish,West  Africa
+09_010,"Anchovy, fillet, steamed* (without salt)",129.0,22.4,4.3,0.0,fish,West  Africa
+09_011,"Anchovy, fillet, grilled* (without salt and fat)",159.0,27.6,5.4,0.0,fish,West  Africa
+09_012,"Anchovy, canned in oil (drained solids)",203.0,28.9,9.7,0.0,fish,West  Africa
+09_002,"Barracuda, raw",83.0,19.0,0.7,0.0,fish,West  Africa
+09_013,"Barracuda, steamed* (without salt)",97.0,22.4,0.9,0.0,fish,West  Africa
+09_014,"Barracuda, grilled* (without salt and fat)",120.0,27.5,1.1,0.0,fish,West  Africa
+09_015,"Bayad, raw",79.0,17.1,1.2,0.0,fish,West  Africa
+09_016,"Bayad, steamed* (without salt)",93.0,20.1,1.4,0.0,fish,West  Africa
+09_017,"Bayad, grilled* (without salt and fat)",115.0,24.8,1.7,0.0,fish,West  Africa
+09_018,"Catfish, raw",117.0,16.3,5.7,0.0,fish,West  Africa
+09_019,"Catfish, steamed* (without salt)",126.0,19.2,5.5,0.0,fish,West  Africa
+09_020,"Catfish, grilled* (without salt and fat)",141.0,23.6,5.1,0.0,fish,West  Africa
+09_021,"Carp, raw",119.0,17.2,5.6,0.0,fish,West  Africa
+09_022,"Carp, steamed* (without salt)",129.0,20.2,5.4,0.0,fish,West  Africa
+09_023,"Carp, grilled* (without salt and fat)",144.0,24.9,5.0,0.0,fish,West  Africa
+09_003,"Mackerel, raw",124.0,19.7,5.0,0.0,fish,West  Africa
+09_024,"Mackerel,  boiled* (without salt)",188.0,29.8,7.6,0.0,fish,West  Africa
+09_025,"Mackerel, grilled* (without salt and fat)",180.0,28.5,7.3,0.0,fish,West  Africa
+09_026,"Mormyrids, raw",83.0,17.8,1.3,0.0,fish,West  Africa
+09_027,"Mormyrids, steamed* (without salt)",97.0,21.0,1.5,0.0,fish,West  Africa
+09_028,"Mormyrids, grilled* (without salt and fat)",120.0,25.8,1.8,0.0,fish,West  Africa
+09_029,"Mudfish, raw",95.0,17.0,3.0,0.0,fish,West  Africa
+09_030,"Mudfish, steamed*(without salt)",112.0,20.0,3.6,0.0,fish,West  Africa
+09_031,"Mudfish, grilled*(without salt and fat)",138.0,24.6,4.4,0.0,fish,West  Africa
+09_032,"Perch, Nile, raw",98.0,19.9,2.0,0.0,fish,West  Africa
+09_033,"Perch, Nile, steamed* (without salt)",115.0,23.4,2.4,0.0,fish,West  Africa
+09_034,"Perch, Nile, grilled* (without salt and fat)",142.0,28.8,2.9,0.0,fish,West  Africa
+09_004,"Sardine, raw",103.0,19.4,2.9,0.0,fish,West  Africa
+09_035,"Sardine, steamed* (without salt)",122.0,22.8,3.4,0.0,fish,West  Africa
+09_036,"Sardine, grilled* (without salt and fat)",150.0,28.0,4.2,0.0,fish,West  Africa
+09_037,"Sardines in oil, canned (drained solids with bone)",220.0,24.7,13.5,0.0,fish,West  Africa
+09_038,"Shiny-nose, raw",85.0,19.8,0.7,0.0,fish,West  Africa
+09_039,"Shiny-nose, steamed* (without salt)",100.0,23.3,0.8,0.0,fish,West  Africa
+09_040,"Shiny-nose, grilled* (without salt and fat)",124.0,28.7,1.0,0.0,fish,West  Africa
+09_041,"Tilapia, raw",99.0,18.8,2.7,0.0,fish,West  Africa
+09_042,"Tilapia, steamed*(without salt)",117.0,22.1,3.2,0.0,fish,West  Africa
+09_043,"Tilapia, grilled* (without salt and fat)",144.0,27.2,3.9,0.0,fish,West  Africa
+09_005,"Tuna, raw",139.0,23.3,5.1,0.0,fish,West  Africa
+09_044,"Tuna, boiled* (without salt)",158.0,29.2,4.6,0.0,fish,West  Africa
+09_045,"Tuna, grilled* (without salt and fat)",174.0,33.8,4.6,0.0,fish,West  Africa
+09_006,"White grouper, raw",87.0,19.4,1.0,0.0,fish,West  Africa
+09_046,"White grouper, steamed* (without salt)",102.0,22.8,1.2,0.0,fish,West  Africa
+09_047,"White grouper, grilled* (without salt and fat)",126.0,28.1,1.5,0.0,fish,West  Africa
+10_006,Cheddar,396.0,24.7,32.3,1.7,milk and products,West  Africa
+10_007,"Cheese, goat, hard type",447.0,30.5,35.6,1.2,milk and products,West  Africa
+10_008,"Cheese, Gouda",367.0,24.8,29.5,0.7,milk and products,West  Africa
+10_009,"Cream, whipping, 38 % fat",360.0,2.1,38.0,2.3,milk and products,West  Africa
+10_010,"Cream, 13 % fat",151.0,2.9,13.5,4.5,milk and products,West  Africa
+10_011,"Infant formula, powder, for 3 months",519.0,11.9,27.7,55.6,milk and products,West  Africa
+10_012,"Infant formula, powder, for 6 months",472.0,17.6,19.7,56.1,milk and products,West  Africa
+10_001,"Milk, cow, whole, 3.5 % fat (includes pasteurised, sterilised and UHT)",65.0,3.4,3.7,4.4,milk and products,West  Africa
+10_013,"Milk, cow, partly skimmed, 1.5 % fat",48.0,3.5,1.6,4.8,milk and products,West  Africa
+10_014,"Milk, cow,  skimmed, 0.5 % fat",37.0,3.5,0.5,4.7,milk and products,West  Africa
+10_015,"Milk, cow, canned, condensed, sweetened",328.0,7.9,8.7,54.4,milk and products,West  Africa
+10_016,"Milk, cow, canned, evaporated",135.0,6.8,7.6,10.0,milk and products,West  Africa
+10_002,"Milk, cow, powder, whole",495.0,25.9,26.6,37.9,milk and products,West  Africa
+10_017,"Milk, cow powder, skimmed",359.0,36.2,0.8,52.0,milk and products,West  Africa
+10_018,"Milk, camel, raw (average of different breeds)",58.0,3.1,3.0,4.7,milk and products,West  Africa
+10_003,"Milk, goat, raw",76.0,3.4,4.5,5.5,milk and products,West  Africa
+10_004,"Milk, human, mature, raw",70.0,1.2,3.7,8.1,milk and products,West  Africa
+10_019,"Milk, human, colostrum, raw",58.0,2.0,2.6,6.6,milk and products,West  Africa
+10_020,Vacherin cheese,319.0,17.3,27.8,0.0,milk and products,West  Africa
+10_005,"Yoghurt, whole milk, plain",73.0,3.8,3.4,6.8,milk and products,West  Africa
+10_021,"Yoghurt, whole milk, with fruits",89.0,3.3,3.2,11.4,milk and products,West  Africa
+11_001,"Butter, from cow's milk (without salt)",720.0,0.8,79.6,0.2,fat and oils,West  Africa
+11_002,Coconut oil,900.0,0.0,100.0,0.0,fat and oils,West  Africa
+11_005,Cottonseed oil,900.0,0.0,100.0,0.0,fat and oils,West  Africa
+11_003,Groundnut oil,900.0,0.0,100.0,0.0,fat and oils,West  Africa
+11_006,"Margarine, fortified",730.0,0.2,80.7,0.7,fat and oils,West  Africa
+11_004,"Palm oil, red",900.0,0.0,100.0,0.0,fat and oils,West  Africa
+11_007,"Palm oil, refined",900.0,0.0,100.0,0.0,fat and oils,West  Africa
+11_008,Shea butter,900.0,0.0,100.0,0.0,fat and oils,West  Africa
+11_009,Soya oil,900.0,0.0,100.0,0.0,fat and oils,West  Africa
+11_010,Vegetable oil,900.0,0.0,100.0,0.0,fat and oils,West  Africa
+12_001,Beer european (4.4 % alcohol),35.0,0.3,0.0,2.0,beverages,West  Africa
+12_002,"Beer, maize  (est. 3 % alcohol)",33.0,0.6,Tr,3.3,beverages,West  Africa
+12_003,"Beer, millet (est. 3 % alcohol)",43.0,0.7,Tr,5.7,beverages,West  Africa
+12_004,"Beer, sorghum (est. 3% alcohol)",31.0,0.5,Tr,2.7,beverages,West  Africa
+12_005,"Coffee, instant, powder",354.0,15.4,0.4,72.4,beverages,West  Africa
+12_009,"Coffee, liquid",2.0,0.1,0.0,0.5,beverages,West  Africa
+12_010,"Juice, lemon, unsweetened",34.0,0.4,0.1,7.8,beverages,West  Africa
+12_011,"Juice, orange, unsweetened",44.0,0.7,0.2,9.8,beverages,West  Africa
+12_012,"Juice, apple, canned or bottled",48.0,0.1,0.1,11.7,beverages,West  Africa
+12_013,"Juice, grapefruit, canned, unsweetened",34.0,0.3,0.1,7.9,beverages,West  Africa
+12_014,"Nectar, Mango, canned",53.0,0.1,0.1,12.8,beverages,West  Africa
+12_015,Ovaltine beverage with whole milk (without sugar; fortified),89.0,3.7,3.3,11.1,beverages,West  Africa
+12_016,Ovaltine beverage with partly skimmed milk (without sugar; fortified),79.0,3.8,2.1,11.0,beverages,West  Africa
+12_017,Ovaltine beverage with skimmed milk (without sugar; fortified),64.0,3.8,0.4,11.2,beverages,West  Africa
+12_018,"Ovaltine powder, fortified",386.0,9.0,2.7,80.2,beverages,West  Africa
+12_006,Palm wine (est. 3.8 % alcohol),34.0,0.4,Tr,2.5,beverages,West  Africa
+12_007,"Sap, palm, fresh (0.3 % alcohol)",47.0,0.3,0.0,10.8,beverages,West  Africa
+12_008,"Tea, infusion",0.0,0.1,0.0,0.0,beverages,West  Africa
+12_019,"Water, tap",0.0,0.0,0.0,0.0,beverages,West  Africa
+13_004,Anis seed,384.0,17.6,15.9,35.4,Other,West  Africa
+13_005,"Bay leaf, dried",353.0,7.6,8.4,48.7,Other,West  Africa
+13_006,"Chilli pepper, dried",321.0,14.2,12.6,23.1,Other,West  Africa
+13_007,"Cinnamon, ground",243.0,4.0,1.2,27.5,Other,West  Africa
+13_008,"Cube, beef, dry",170.0,17.3,4.0,16.1,Other,West  Africa
+13_009,"Cumin, seed",428.0,17.8,22.3,33.7,Other,West  Africa
+13_010,"Ginger, root, raw",82.0,1.8,0.8,15.7,Other,West  Africa
+13_011,"Ginger, roots, dried",344.0,7.7,2.9,67.4,Other,West  Africa
+13_001,Honey,326.0,0.4,0.0,81.0,Other,West  Africa
+13_012,"Mustard, powder",518.0,26.1,36.2,15.9,Other,West  Africa
+13_013,"Mustard, prepared, yellow",86.0,4.4,4.0,2.0,Other,West  Africa
+13_014,"Pepper, black",301.0,10.7,3.3,44.3,Other,West  Africa
+13_015,Salt,0.0,0.0,0.0,0.0,Other,West  Africa
+13_016,"Spices, mix, ground",348.0,6.1,8.7,50.5,Other,West  Africa
+13_002,Sugar,400.0,0.0,0.0,100.0,Other,West  Africa
+13_003,Vinegar,5.0,0.4,0.0,0.4,Other,West  Africa
+13_017,"Yeast, dried",315.0,35.6,1.5,29.9,Other,West  Africa
+13_018,"Yeast extract, Marmite",152.0,27.8,0.0,8.8,Other,West  Africa

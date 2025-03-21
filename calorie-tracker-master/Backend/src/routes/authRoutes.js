@@ -37,6 +37,8 @@ const router = express.Router();
  *                 minLength: 8
  *               name:
  *                 type: string
+ *               first_name:
+ *                 type: string
  *     responses:
  *       201:
  *         description: User registered successfully
@@ -116,6 +118,8 @@ router.get('/profile', authMiddleware.authenticate, getProfile);
  *             type: object
  *             properties:
  *               name:
+ *                 type: string
+ *               first_name:
  *                 type: string
  *               height:
  *                 type: number

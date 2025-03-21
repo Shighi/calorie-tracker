@@ -30,6 +30,9 @@ const Locale = sequelize.define('Locale', {
 }, {
   tableName: 'locales',
   timestamps: true,
+  underscored: true, // This tells Sequelize to use snake_case for timestamps
+  createdAt: 'created_at',
+  updatedAt: 'updated_at',
   indexes: [
     {
       unique: true,

@@ -7,10 +7,10 @@ import { ApiError } from '../utils/apiResponse.js';
 class LocaleService {
   async getAllLocales(options = {}) {
     const { page = 1, limit = 50, search } = options;
-    
+
     // Generate cache key based on options
     const cacheKey = `locales:all:${search || 'all'}:page${page}:limit${limit}`;
-    
+
     // Try to get from cache first
     const cachedResult = await cacheService.get(cacheKey);
     if (cachedResult) {
@@ -29,7 +29,7 @@ class LocaleService {
     try {
       const result = await Locale.findAndCountAll({
         where: whereClause,
-        attributes: ['location_id', 'country', 'region', 'language_code', 'currency_code'],
+        attributes: ['locale_id', 'country', 'region', 'language_code', 'currency_code'],
         order: [['country', 'ASC'], ['region', 'ASC']],
         limit,
         offset: (page - 1) * limit
@@ -41,7 +41,7 @@ class LocaleService {
         page,
         totalPages: Math.ceil(result.count / limit)
       };
-      
+
       // Cache the result for 1 hour
       await cacheService.set(cacheKey, localesResult, 3600);
 
@@ -54,7 +54,7 @@ class LocaleService {
   async getLocaleById(localeId) {
     // Generate cache key
     const cacheKey = `locale:${localeId}`;
-    
+
     // Try to get from cache first
     const cachedLocale = await cacheService.get(cacheKey);
     if (cachedLocale) {
@@ -63,13 +63,13 @@ class LocaleService {
 
     try {
       const locale = await Locale.findByPk(localeId, {
-        attributes: ['location_id', 'country', 'region', 'language_code', 'currency_code']
+        attributes: ['locale_id', 'country', 'region', 'language_code', 'currency_code']
       });
 
       if (!locale) {
         throw new ApiError('Locale not found', 404);
       }
-      
+
       // Cache the result for 1 day
       await cacheService.set(cacheKey, locale, 86400);
 
@@ -84,17 +84,17 @@ class LocaleService {
 
   async getFoodsByLocale(localeId, options = {}) {
     const { page = 1, limit = 50, category, search } = options;
-    
+
     // Generate cache key based on localeId and options
     const cacheKey = `locale:${localeId}:foods:${category || 'all'}:${search || 'all'}:page${page}:limit${limit}`;
-    
+
     // Try to get from cache first
     const cachedResult = await cacheService.get(cacheKey);
     if (cachedResult) {
       return cachedResult;
     }
 
-    const whereClause = { location_id: localeId };
+    const whereClause = { locale_id: localeId };
 
     if (category) {
       whereClause.category = category;
@@ -123,7 +123,7 @@ class LocaleService {
         page,
         totalPages: Math.ceil(result.count / limit)
       };
-      
+
       // Cache the result for 1 hour
       await cacheService.set(cacheKey, foodsResult, 3600);
 
@@ -147,10 +147,10 @@ class LocaleService {
       }
 
       const newLocale = await Locale.create(localeData);
-      
+
       // Invalidate locales list cache
       await cacheService.deleteByPattern('locales:all:*');
-      
+
       return newLocale;
     } catch (error) {
       if (error instanceof ApiError) {
@@ -163,18 +163,18 @@ class LocaleService {
   async updateLocale(localeId, localeData) {
     try {
       const [updatedCount] = await Locale.update(localeData, {
-        where: { location_id: localeId }
+        where: { locale_id: localeId }
       });
 
       if (updatedCount === 0) {
         throw new ApiError('Locale not found', 404);
       }
-      
+
       // Invalidate caches
       await cacheService.delete(`locale:${localeId}`);
       await cacheService.deleteByPattern(`locale:${localeId}:*`);
       await cacheService.deleteByPattern('locales:all:*');
-      
+
       return this.getLocaleById(localeId);
     } catch (error) {
       if (error instanceof ApiError) {
@@ -187,18 +187,18 @@ class LocaleService {
   async deleteLocale(localeId) {
     try {
       const result = await Locale.destroy({
-        where: { location_id: localeId }
+        where: { locale_id: localeId }
       });
 
       if (result === 0) {
         throw new ApiError('Locale not found', 404);
       }
-      
+
       // Invalidate caches
       await cacheService.delete(`locale:${localeId}`);
       await cacheService.deleteByPattern(`locale:${localeId}:*`);
       await cacheService.deleteByPattern('locales:all:*');
-      
+
       return true;
     } catch (error) {
       if (error instanceof ApiError) {
@@ -211,7 +211,7 @@ class LocaleService {
   async getLocaleFoodCategories(localeId) {
     // Generate cache key
     const cacheKey = `locale:${localeId}:categories`;
-    
+
     // Try to get from cache first
     const cachedCategories = await cacheService.get(cacheKey);
     if (cachedCategories) {
@@ -220,13 +220,13 @@ class LocaleService {
 
     try {
       const categories = await Food.findAll({
-        where: { location_id: localeId },
+        where: { locale_id: localeId },
         attributes: [[fn('DISTINCT', col('category')), 'category']],
         raw: true
       });
 
       const categoriesList = categories.map(cat => cat.category).filter(Boolean);
-      
+
       // Cache the result for 6 hours
       await cacheService.set(cacheKey, categoriesList, 21600);
 

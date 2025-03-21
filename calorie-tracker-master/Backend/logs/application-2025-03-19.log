@@ -1,0 +1,49 @@
+{"level":"info","message":"Database connection established successfully","timestamp":"2025-03-19 09:39:34"}
+{"level":"info","message":"Redis connection established successfully","timestamp":"2025-03-19 09:39:34"}
+{"level":"info","message":"Server running on port 3000","timestamp":"2025-03-19 09:39:34"}
+{"level":"info","message":"API documentation available at http://localhost:3000/api-docs","timestamp":"2025-03-19 09:39:34"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-03-19 09:53:41"}
+{"level":"info","message":"User login successful: Daisy","timestamp":"2025-03-19 09:53:41"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-03-19 09:58:52"}
+{"level":"info","message":"User login successful: Daisy","timestamp":"2025-03-19 09:58:52"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-03-19 09:59:05"}
+{"level":"info","message":"User login successful: Daisy","timestamp":"2025-03-19 09:59:05"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-03-19 10:37:17"}
+{"level":"info","message":"User login successful: Daisy","timestamp":"2025-03-19 10:37:17"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-03-19 10:37:18"}
+{"level":"info","message":"User login successful: Daisy","timestamp":"2025-03-19 10:37:19"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-03-19 10:37:20"}
+{"level":"info","message":"User login successful: Daisy","timestamp":"2025-03-19 10:37:20"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-03-19 10:37:21"}
+{"level":"info","message":"User login successful: Daisy","timestamp":"2025-03-19 10:37:21"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-03-19 10:51:01"}
+{"level":"info","message":"User login successful: Daisy","timestamp":"2025-03-19 10:51:02"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-03-19 10:54:23"}
+{"level":"info","message":"User login successful: Daisy","timestamp":"2025-03-19 10:54:23"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-03-19 10:54:26"}
+{"level":"info","message":"User login successful: Daisy","timestamp":"2025-03-19 10:54:26"}
+{"level":"info","message":"Database connection established successfully","timestamp":"2025-03-19 16:43:21"}
+{"level":"info","message":"Redis connection established successfully","timestamp":"2025-03-19 16:43:21"}
+{"level":"info","message":"Server running on port 3000","timestamp":"2025-03-19 16:43:21"}
+{"level":"info","message":"API documentation available at http://localhost:3000/api-docs","timestamp":"2025-03-19 16:43:21"}
+{"level":"info","message":"GET /api/auth/profile","timestamp":"2025-03-19 16:58:14"}
+{"level":"info","message":"GET /api/auth/profile","timestamp":"2025-03-19 16:58:22"}
+{"level":"info","message":"GET /api/auth/profile","timestamp":"2025-03-19 16:58:22"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-03-19 16:58:24"}
+{"level":"info","message":"User login successful: Daisy","timestamp":"2025-03-19 16:58:25"}
+{"level":"info","message":"GET /api/auth/profile","timestamp":"2025-03-19 16:58:25"}
+{"level":"info","message":"GET /api/nutrition/daily?date=2025-03-19","timestamp":"2025-03-19 16:58:25"}
+{"level":"info","message":"GET /api/nutrition/daily?date=2025-03-19","timestamp":"2025-03-19 16:58:25"}
+{"level":"info","message":"GET /api/auth/profile","timestamp":"2025-03-19 17:06:40"}
+{"level":"info","message":"GET /api/auth/profile","timestamp":"2025-03-19 17:06:40"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-03-19 17:06:43"}
+{"level":"info","message":"User login successful: Daisy","timestamp":"2025-03-19 17:06:43"}
+{"level":"info","message":"GET /api/auth/profile","timestamp":"2025-03-19 17:06:43"}
+{"level":"info","message":"GET /api/nutrition/daily?date=2025-03-19","timestamp":"2025-03-19 17:06:43"}
+{"level":"info","message":"GET /api/nutrition/daily?date=2025-03-19","timestamp":"2025-03-19 17:06:43"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-03-19 17:20:23"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-03-19 17:31:38"}
+{"level":"info","message":"User login successful: Daisy","timestamp":"2025-03-19 17:31:38"}
+{"level":"info","message":"POST /api/auth/logout","timestamp":"2025-03-19 17:32:12"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-03-19 17:32:18"}
+{"level":"info","message":"User login successful: Daisy","timestamp":"2025-03-19 17:32:19"}

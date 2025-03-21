@@ -1,128 +1,166 @@
-// src/contexts/AuthContext.jsx
 import { createContext, useContext, useState, useEffect } from 'react';
 import axios from 'axios';
 
+// Create the context
 const AuthContext = createContext();
 
+// API Base URL configuration
+const API_BASE_URL = 'http://localhost:3000/api';
+
+// Create a provider component
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
+  const [token, setToken] = useState(localStorage.getItem('token')); // Track token in state
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  // Check if the user is logged in whenever token changes
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      fetchUserProfile(token);
-    } else {
-      setLoading(false);
-    }
-  }, []);
-
-  const fetchUserProfile = async (token) => {
-    try {
-      const response = await axios.get('/api/auth/profile', {
-        headers: {
-          'Authorization': `Bearer ${token}`
+    const checkAuthStatus = async () => {
+      if (token) {
+        try {
+          // Get user profile
+          const response = await axios.get(`${API_BASE_URL}/auth/profile`, {
+            headers: {
+              'Authorization': `Bearer ${token}`
+            }
+          });
+          
+          if (response.data.data) {
+            setUser(response.data.data);
+          } else {
+            // Token is invalid or expired
+            localStorage.removeItem('token');
+            setToken(null);
+            setUser(null);
+          }
+        } catch (err) {
+          console.error('Auth verification failed:', err);
+          localStorage.removeItem('token');
+          setToken(null);
+          setUser(null);
         }
-      });
+      } else {
+        // No token found
+        setUser(null);
+      }
       
-      if (response.data && response.data.data) {
-        setUser(response.data.data);
-      }
-    } catch (err) {
-      console.error('Error fetching user profile:', err);
-      setError('Failed to load user profile');
-      // If the token is invalid, clear it
-      if (err.response && err.response.status === 401) {
-        localStorage.removeItem('token');
-      }
-    } finally {
       setLoading(false);
-    }
+    };
+    
+    checkAuthStatus();
+  }, [token]); // Re-run when token changes
+
+  // Clear error message
+  const clearError = () => {
+    setError(null);
   };
 
+  // Login function
   const login = async (emailOrUsername, password) => {
+    setError(null);
     try {
-      setLoading(true);
-      const response = await axios.post('/api/auth/login', { emailOrUsername, password });
+      const response = await axios.post(`${API_BASE_URL}/auth/login`, { emailOrUsername, password });
       
-      if (response.data && response.data.data && response.data.data.token) {
-        localStorage.setItem('token', response.data.data.token);
-        await fetchUserProfile(response.data.data.token);
+      if (response.data.data.token) {
+        const newToken = response.data.data.token;
+        localStorage.setItem('token', newToken);
+        setToken(newToken); // Update token state
+        setUser(response.data.data.user);
         return true;
       }
-      return false;
     } catch (err) {
-      console.error('Login error:', err);
       setError(err.response?.data?.message || 'Login failed');
       return false;
-    } finally {
-      setLoading(false);
     }
   };
 
+  // Register function
   const register = async (userData) => {
+    setError(null);
     try {
-      setLoading(true);
-      const response = await axios.post('/api/auth/register', userData);
+      const response = await axios.post(`${API_BASE_URL}/auth/register`, userData);
       
-      if (response.data && response.data.data && response.data.data.token) {
-        localStorage.setItem('token', response.data.data.token);
-        await fetchUserProfile(response.data.data.token);
+      if (response.data.data && response.data.data.token) {
+        // If the register endpoint returns a token directly
+        const newToken = response.data.data.token;
+        localStorage.setItem('token', newToken);
+        setToken(newToken);
+        setUser(response.data.data.user);
         return true;
+      } else {
+        // If we need to login after registration
+        return await login(userData.email, userData.password);
       }
-      return false;
     } catch (err) {
-      console.error('Registration error:', err);
       setError(err.response?.data?.message || 'Registration failed');
       return false;
-    } finally {
-      setLoading(false);
     }
   };
 
-  const logout = () => {
-    localStorage.removeItem('token');
-    setUser(null);
+  // Logout function
+  const logout = async () => {
+    try {
+      if (token) {
+        await axios.post(`${API_BASE_URL}/auth/logout`, {}, {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
+      }
+    } catch (err) {
+      console.error('Logout error:', err);
+    } finally {
+      localStorage.removeItem('token');
+      setToken(null); // Clear token state
+      setUser(null);
+    }
   };
 
-  const updateProfile = async (profileData) => {
+  // Update user profile
+  const updateProfile = async (userData) => {
+    setError(null);
     try {
-      setLoading(true);
-      const token = localStorage.getItem('token');
-      const response = await axios.put('/api/auth/profile', profileData, {
+      const response = await axios.put(`${API_BASE_URL}/auth/profile`, userData, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
       });
       
-      if (response.data && response.data.data) {
+      if (response.data.data) {
         setUser(response.data.data);
         return true;
       }
-      return false;
     } catch (err) {
-      console.error('Profile update error:', err);
+      // Check if token expired during profile update
+      if (err.response && err.response.status === 401) {
+        // Token expired, log out the user
+        await logout();
+      }
       setError(err.response?.data?.message || 'Profile update failed');
       return false;
-    } finally {
-      setLoading(false);
     }
   };
 
   const value = {
     user,
+    token, // Include token in the context value
     loading,
     error,
     login,
     register,
     logout,
-    updateProfile
+    updateProfile,
+    clearError // Include the clearError function
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
 
+// Create a custom hook to use the auth context
 export function useAuth() {
   return useContext(AuthContext);
 }
+
+// Export the context itself in case it's needed
+export default AuthContext;

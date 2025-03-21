@@ -6,14 +6,20 @@ class FoodController {
     try {
       const userId = req.user.id;
       const foodData = req.body;
+      
+      // Validate required fields
+      if (!foodData.name) {
+        return errorResponse(res, 'Food name is required', null, 400);
+      }
+      
       const food = await FoodService.createFood(foodData, userId);
       return successResponse(res, 'Food created successfully', food, 201);
     } catch (error) {
-      return errorResponse(res, 'Error creating food', error, 500);
+      console.error('Error creating food:', error);
+      return errorResponse(res, 'Error creating food', error.message, 500);
     }
   }
 
-  // This method is referenced in routes as getFoods but implemented as getUserFoods
   async getFoods(req, res) {
     try {
       const userId = req.user ? req.user.id : null;
@@ -28,9 +34,16 @@ class FoodController {
         order
       });
 
-      return successResponse(res, 'Foods retrieved successfully', foods);
+      // Ensure data is properly structured for frontend
+      return successResponse(res, 'Foods retrieved successfully', { 
+        foods: foods.items || foods, 
+        total: foods.total || foods.length,
+        page: parseInt(page, 10),
+        limit: parseInt(limit, 10)
+      });
     } catch (error) {
-      return errorResponse(res, 'Error retrieving foods', error, 500);
+      console.error('Error retrieving foods:', error);
+      return errorResponse(res, 'Error retrieving foods', error.message, 500);
     }
   }
 
@@ -39,6 +52,10 @@ class FoodController {
       const userId = req.user ? req.user.id : null;
       const { id } = req.params;
 
+      if (!id) {
+        return errorResponse(res, 'Food ID is required', null, 400);
+      }
+
       const food = await FoodService.getFoodById(id, userId);
       if (!food) {
         return errorResponse(res, 'Food not found', null, 404);
@@ -46,16 +63,20 @@ class FoodController {
 
       return successResponse(res, 'Food retrieved successfully', food);
     } catch (error) {
-      return errorResponse(res, 'Error retrieving food', error, 500);
+      console.error('Error retrieving food:', error);
+      return errorResponse(res, 'Error retrieving food', error.message, 500);
     }
   }
 
-  // Added these methods to match the routes
   async getFoodsByCategory(req, res) {
     try {
       const userId = req.user ? req.user.id : null;
       const { category } = req.params;
       const { page = 1, limit = 20, sort = 'name', order = 'ASC' } = req.query;
+
+      if (!category) {
+        return errorResponse(res, 'Category is required', null, 400);
+      }
 
       const foods = await FoodService.getUserFoods(userId, {
         page: parseInt(page, 10),
@@ -65,28 +86,45 @@ class FoodController {
         order
       });
 
-      return successResponse(res, 'Foods by category retrieved successfully', foods);
+      return successResponse(res, 'Foods by category retrieved successfully', { 
+        foods: foods.items || foods, 
+        total: foods.total || foods.length,
+        page: parseInt(page, 10),
+        limit: parseInt(limit, 10),
+        category
+      });
     } catch (error) {
-      return errorResponse(res, 'Error retrieving foods by category', error, 500);
+      console.error('Error retrieving foods by category:', error);
+      return errorResponse(res, 'Error retrieving foods by category', error.message, 500);
     }
   }
 
   async getFoodsByLocale(req, res) {
     try {
-      const { localeId } = req.params;
+      const { locale_id } = req.params;
       const { page = 1, limit = 20, sort = 'name', order = 'ASC' } = req.query;
 
-      // This would need to be implemented in your FoodService
-      const foods = await FoodService.getFoodsByLocale(localeId, {
+      if (!locale_id) {
+        return errorResponse(res, 'Locale ID is required', null, 400);
+      }
+
+      const foods = await FoodService.getFoodsByLocale(locale_id, {
         page: parseInt(page, 10),
         limit: parseInt(limit, 10),
         sort,
         order
       });
 
-      return successResponse(res, 'Foods by locale retrieved successfully', foods);
+      return successResponse(res, 'Foods by locale retrieved successfully', { 
+        foods: foods.items || foods, 
+        total: foods.total || foods.length,
+        page: parseInt(page, 10),
+        limit: parseInt(limit, 10),
+        locale_id
+      });
     } catch (error) {
-      return errorResponse(res, 'Error retrieving foods by locale', error, 500);
+      console.error('Error retrieving foods by locale:', error);
+      return errorResponse(res, 'Error retrieving foods by locale', error.message, 500);
     }
   }
 
@@ -96,6 +134,10 @@ class FoodController {
       const { id } = req.params;
       const foodData = req.body;
 
+      if (!id) {
+        return errorResponse(res, 'Food ID is required', null, 400);
+      }
+
       const updatedFood = await FoodService.updateFood(id, userId, foodData);
       if (!updatedFood) {
         return errorResponse(res, 'Food not found', null, 404);
@@ -103,7 +145,8 @@ class FoodController {
 
       return successResponse(res, 'Food updated successfully', updatedFood);
     } catch (error) {
-      return errorResponse(res, 'Error updating food', error, 400);
+      console.error('Error updating food:', error);
+      return errorResponse(res, 'Error updating food', error.message, 400);
     }
   }
 
@@ -112,6 +155,10 @@ class FoodController {
       const userId = req.user.id;
       const { id } = req.params;
 
+      if (!id) {
+        return errorResponse(res, 'Food ID is required', null, 400);
+      }
+
       const deleted = await FoodService.deleteFood(id, userId);
       if (!deleted) {
         return errorResponse(res, 'Food not found', null, 404);
@@ -119,7 +166,8 @@ class FoodController {
 
       return successResponse(res, 'Food deleted successfully', null, 204);
     } catch (error) {
-      return errorResponse(res, 'Error deleting food', error, 400);
+      console.error('Error deleting food:', error);
+      return errorResponse(res, 'Error deleting food', error.message, 400);
     }
   }
 }

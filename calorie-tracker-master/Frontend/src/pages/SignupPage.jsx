@@ -1,4 +1,3 @@
-// src/pages/SignupPage.jsx
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
@@ -6,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import { Button } from '../components/ui/button';
 
 export default function SignupPage() {
-  const { signup, error: authError, clearError } = useAuth();
+  const { register: registerUser, error: authError, clearError } = useAuth();
   const navigate = useNavigate();
 
   // React Hook Form setup
@@ -25,12 +24,15 @@ export default function SignupPage() {
       clearError?.();
       setLoading(true);
       
-      const additionalData = {
+      const userData = {
+        email: data.email,
+        password: data.password,
+        username: data.username,
         last_name: data.lastName || null,
-        daily_calorie_target: data.dailyCalorieTarget || null
+        daily_calorie_goal: data.dailyCalorieTarget || null
       };
       
-      const success = await signup(data.email, data.password, data.username, additionalData);
+      const success = await registerUser(userData);
       
       if (success) {
         navigate('/dashboard');

@@ -3,12 +3,13 @@ import Food from './Food.js';
 import Nutrient from './Nutrient.js';
 import Locale from './Locale.js';
 import { User, UserProfile } from './User.js';
-import Meal, { MealFood } from './Meal.js';
+import { Meal, MealFood } from './Meal.js';
 
 // Set up associations that couldn't be defined in the models
 // to avoid circular dependencies
 Nutrient.belongsTo(Food, { 
   foreignKey: 'food_id',
+  targetKey: 'id',  // This points to the new primary key name in Food model
   as: 'food'
 });
 

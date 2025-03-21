@@ -31,6 +31,10 @@ User.init({
     type: DataTypes.STRING,
     allowNull: false
   },
+  first_name: {
+    type: DataTypes.STRING,
+    allowNull: true
+  },
   last_name: {
     type: DataTypes.STRING,
     allowNull: true
@@ -64,7 +68,5 @@ User.init({
     }
   }
 });
-
-// The UserProfile model definition needs to be reviewed as well, but we'll focus on fixing the User model first
 
 export { User };

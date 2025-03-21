@@ -11,22 +11,30 @@ const Meal = sequelize.define('Meal', {
     autoIncrement: true
   },
   user_id: {
-    type: DataTypes.UUID,
+    type: DataTypes.INTEGER,
     allowNull: false,
     references: {
       model: User,
       key: 'id'
     }
   },
+  name: {
+    type: DataTypes.STRING,
+    allowNull: true
+  },
   meal_type: {
-    type: DataTypes.ENUM('breakfast', 'lunch', 'dinner', 'snack'),
-    allowNull: false
+    type: DataTypes.TEXT,
+    allowNull: true
   },
   meal_date: {
     type: DataTypes.DATEONLY,
     allowNull: false
   },
-  calories: {
+  meal_time: {
+    type: DataTypes.TIME,
+    allowNull: true
+  },
+  total_calories: {
     type: DataTypes.FLOAT,
     allowNull: true
   },
@@ -37,6 +45,9 @@ const Meal = sequelize.define('Meal', {
 }, {
   tableName: 'meals',
   timestamps: true,
+  underscored: true, // Use snake_case for timestamps
+  createdAt: 'created_at',
+  updatedAt: 'updated_at',
   indexes: [
     {
       fields: ['user_id', 'meal_date']
@@ -63,17 +74,32 @@ const MealFood = sequelize.define('MealFood', {
     allowNull: false,
     references: {
       model: Food,
-      key: 'food_id'
+      key: 'id'
     }
   },
   serving_qty: {
     type: DataTypes.FLOAT,
     allowNull: false,
     defaultValue: 1
+  },
+  serving_size: {
+    type: DataTypes.FLOAT,
+    allowNull: true
+  },
+  serving_unit: {
+    type: DataTypes.STRING,
+    allowNull: true
+  },
+  calories: {
+    type: DataTypes.FLOAT,
+    allowNull: true
   }
 }, {
   tableName: 'meal_foods',
   timestamps: true,
+  underscored: true, // Use snake_case for timestamps
+  createdAt: 'created_at',
+  updatedAt: 'updated_at',
   indexes: [
     {
       fields: ['meal_id', 'food_id']

@@ -4,8 +4,9 @@ import { successResponse, errorResponse } from '../utils/apiResponse.js';
 class MealController {
   async createMeal(req, res) {
     try {
-      const userId = req.user.id; // Updated from user_id to id
-      const mealData = req.body;
+      const userId = req.user.id; // Using user ID correctly
+      const { name, meal_time, total_calories } = req.body; // Include new fields (name, meal_time, total_calories)
+      const mealData = { name, meal_time, total_calories }; // Ensure data contains total_calories
       const meal = await MealService.createMeal(userId, mealData);
       return successResponse(res, 'Meal logged successfully', meal, 201);
     } catch (error) {
@@ -15,7 +16,7 @@ class MealController {
 
   async getUserMeals(req, res) {
     try {
-      const userId = req.user.id; // Updated from user_id to id
+      const userId = req.user.id; // Using user ID correctly
       const { page = 1, limit = 10, startDate, endDate, mealType } = req.query;
 
       const meals = await MealService.getUserMeals(userId, {
@@ -34,7 +35,7 @@ class MealController {
 
   async getMealById(req, res) {
     try {
-      const userId = req.user.id; // Updated from user_id to id
+      const userId = req.user.id; // Using user ID correctly
       const { id } = req.params;
 
       const meal = await MealService.getMealById(id, userId);
@@ -50,9 +51,10 @@ class MealController {
 
   async updateMeal(req, res) {
     try {
-      const userId = req.user.id; // Updated from user_id to id
+      const userId = req.user.id; // Using user ID correctly
       const { id } = req.params;
-      const mealData = req.body;
+      const { name, meal_time, total_calories } = req.body; // Include new fields (name, meal_time, total_calories)
+      const mealData = { name, meal_time, total_calories }; // Ensure data contains total_calories
 
       const updatedMeal = await MealService.updateMeal(id, userId, mealData);
       if (!updatedMeal) {
@@ -67,7 +69,7 @@ class MealController {
 
   async deleteMeal(req, res) {
     try {
-      const userId = req.user.id; // Updated from user_id to id
+      const userId = req.user.id; // Using user ID correctly
       const { id } = req.params;
 
       const deleted = await MealService.deleteMeal(id, userId);
@@ -117,7 +119,8 @@ class MealController {
   async createMealTemplate(req, res) {
     try {
       const userId = req.user.id;
-      const templateData = req.body;
+      const { name, meal_time, total_calories } = req.body; // Include new fields
+      const templateData = { name, meal_time, total_calories }; // Ensure template contains total_calories
 
       const template = await MealService.createMealTemplate(userId, templateData);
       return successResponse(res, 'Meal template created successfully', template, 201);
@@ -130,7 +133,8 @@ class MealController {
     try {
       const userId = req.user.id;
       const { id } = req.params;
-      const templateData = req.body;
+      const { name, meal_time, total_calories } = req.body; // Include new fields
+      const templateData = { name, meal_time, total_calories }; // Ensure template contains total_calories
 
       const updatedTemplate = await MealService.updateMealTemplate(id, userId, templateData);
       if (!updatedTemplate) {

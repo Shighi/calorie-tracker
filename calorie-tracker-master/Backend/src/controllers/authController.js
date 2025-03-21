@@ -18,13 +18,13 @@ export async function register(req, res, next) {
     }
     
     // Extract all required fields from request body
-    const { email, password, username, last_name, daily_calorie_target } = req.body;
+    const { email, password, username, first_name, last_name, daily_calorie_target } = req.body;
     
     // Log the registration attempt with all fields
     logger.info(`Registration attempt: email=${email}, username=${username}`);
     
     // Pass all fields to the service
-    const result = await authService.registerUser(email, password, username, last_name, daily_calorie_target);
+    const result = await authService.registerUser(email, password, username, first_name, last_name, daily_calorie_target);
     
     logger.info(`User registered: ${email}`);
     return apiResponse.successResponse(res, 'User registered successfully', result, 201);

@@ -26,6 +26,9 @@ const Nutrient = sequelize.define('Nutrient', {
 }, {
   tableName: 'nutrients',
   timestamps: true,
+  underscored: true, // Use snake_case for timestamps
+  createdAt: 'created_at',
+  updatedAt: 'updated_at',
   indexes: [
     {
       fields: ['food_id', 'nutrient_name']

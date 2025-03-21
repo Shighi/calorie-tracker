@@ -41,7 +41,9 @@ class MealService {
         user_id: userId,
         meal_type: mealData.meal_type,
         meal_date: mealData.log_date || new Date(),
-        calories: totalNutrition.total_calories,
+        total_calories: totalNutrition.total_calories, // Changed from calories
+        name: mealData.name || null, // New field
+        meal_time: mealData.meal_time || null, // New field
         notes: mealData.notes
       }, { transaction });
 
@@ -50,7 +52,9 @@ class MealService {
         await MealFood.create({
           meal_id: meal.meal_id,
           food_id: food.food_id,
-          serving_qty: food.serving_size
+          serving_qty: food.serving_size,
+          serving_unit: food.serving_unit || 'g', // New field
+          calories: food.calories // Store the calculated calories
         }, { transaction });
       }
 
@@ -66,98 +70,6 @@ class MealService {
     } catch (error) {
       await transaction.rollback();
       throw new Error(`Error creating meal: ${error.message}`);
-    }
-  }
-
-  async getUserMeals(userId, options = {}) {
-    const { page = 1, limit = 20, startDate, endDate, mealType } = options;
-    
-    // Generate cache key based on query parameters
-    const cacheKey = `meals:user:${userId}:page${page}:limit${limit}:start${startDate || ''}:end${endDate || ''}:type${mealType || ''}`;
-    
-    // Try to get from cache first
-    const cachedResult = await cacheService.get(cacheKey);
-    if (cachedResult) {
-      return cachedResult;
-    }
-
-    const whereClause = { user_id: userId };
-
-    if (startDate && endDate) {
-      whereClause.meal_date = {
-        [Op.between]: [startDate, endDate]
-      };
-    }
-
-    if (mealType) {
-      whereClause.meal_type = mealType;
-    }
-
-    try {
-      const result = await Meal.findAndCountAll({
-        where: whereClause,
-        include: [{
-          model: Food,
-          as: 'Foods',
-          through: {
-            model: MealFood,
-            attributes: ['serving_qty']
-          }
-        }],
-        order: [['meal_date', 'DESC']],
-        limit,
-        offset: (page - 1) * limit
-      });
-
-      const response = {
-        meals: result.rows,
-        totalCount: result.count,
-        page,
-        totalPages: Math.ceil(result.count / limit)
-      };
-      
-      // Cache the result
-      await cacheService.set(cacheKey, response);
-      
-      return response;
-    } catch (error) {
-      throw new Error(`Error fetching meals: ${error.message}`);
-    }
-  }
-
-  async getMealById(mealId, userId) {
-    // Generate cache key
-    const cacheKey = `meal:${mealId}:user:${userId}`;
-    
-    // Try to get from cache first
-    const cachedMeal = await cacheService.get(cacheKey);
-    if (cachedMeal) {
-      return cachedMeal;
-    }
-    
-    try {
-      const meal = await Meal.findOne({
-        where: { meal_id: mealId, user_id: userId },
-        include: [{
-          model: Food,
-          as: 'Foods',
-          through: {
-            model: MealFood,
-            attributes: ['serving_qty']
-          }
-        }]
-      });
-      
-      if (!meal) {
-        throw new Error('Meal not found');
-      }
-      
-      // Cache the result
-      await cacheService.set(cacheKey, meal);
-      
-      return meal;
-    } catch (error) {
-      throw new Error(`Error fetching meal: ${error.message}`);
     }
   }
 
@@ -205,7 +117,9 @@ class MealService {
         await meal.update({
           meal_type: mealData.meal_type || meal.meal_type,
           meal_date: mealData.log_date || meal.meal_date,
-          calories: totalNutrition.total_calories,
+          total_calories: totalNutrition.total_calories, // Changed from calories
+          name: mealData.name !== undefined ? mealData.name : meal.name,
+          meal_time: mealData.meal_time !== undefined ? mealData.meal_time : meal.meal_time,
           notes: mealData.notes !== undefined ? mealData.notes : meal.notes
         }, { transaction });
 
@@ -220,7 +134,9 @@ class MealService {
           await MealFood.create({
             meal_id: mealId,
             food_id: food.food_id,
-            serving_qty: food.serving_size
+            serving_qty: food.serving_size,
+            serving_unit: food.serving_unit || 'g', // New field
+            calories: food.calories // Store the calculated calories
           }, { transaction });
         }
       } else {
@@ -250,91 +166,6 @@ class MealService {
     } catch (error) {
       await transaction.rollback();
       throw new Error(`Error updating meal: ${error.message}`);
-    }
-  }
-
-  async deleteMeal(mealId, userId) {
-    const transaction = await sequelize.transaction();
-
-    try {
-      // Get meal details for cache invalidation
-      const meal = await Meal.findOne({
-        where: { meal_id: mealId, user_id: userId }
-      });
-      
-      if (!meal) {
-        throw new Error('Meal not found');
-      }
-      
-      const mealDate = new Date(meal.meal_date).toISOString().split('T')[0];
-      
-      // First delete the associated meal_foods records
-      await MealFood.destroy({
-        where: { meal_id: mealId },
-        transaction
-      });
-
-      // Then delete the meal itself
-      const result = await Meal.destroy({
-        where: {
-          meal_id: mealId,
-          user_id: userId
-        },
-        transaction
-      });
-
-      if (result === 0) {
-        await transaction.rollback();
-        throw new Error('Meal not found');
-      }
-
-      await transaction.commit();
-      
-      // Invalidate caches
-      await cacheService.delete(`meal:${mealId}:user:${userId}`);
-      await cacheService.deleteByPattern(`meals:user:${userId}:*`);
-      await cacheService.delete(`nutrition:daily:${userId}:${mealDate}`);
-      
-      return true;
-    } catch (error) {
-      await transaction.rollback();
-      throw new Error(`Error deleting meal: ${error.message}`);
-    }
-  }
-  
-  async getUserMealsByDate(userId, date) {
-    // Generate cache key
-    const cacheKey = `meals:user:${userId}:date:${date}`;
-    
-    // Try to get from cache first
-    const cachedResult = await cacheService.get(cacheKey);
-    if (cachedResult) {
-      return cachedResult;
-    }
-    
-    try {
-      const meals = await Meal.findAll({
-        where: {
-          user_id: userId,
-          meal_date: date
-        },
-        include: [{
-          model: Food,
-          as: 'Foods',
-          through: {
-            model: MealFood,
-            attributes: ['serving_qty']
-          }
-        }],
-        order: [['meal_type', 'ASC']]
-      });
-      
-      // Cache the result
-      await cacheService.set(cacheKey, meals);
-      
-      return meals;
-    } catch (error) {
-      throw new Error(`Error fetching meals by date: ${error.message}`);
     }
   }
 }

@@ -28,7 +28,7 @@ class NutritionService {
       });
 
       const dailyNutrition = dailyMeals.reduce((acc, meal) => ({
-        total_calories: acc.total_calories + (meal.calories || 0)
+        total_calories: acc.total_calories + (meal.total_calories || 0) // Updated to total_calories
       }), {
         total_calories: 0
       });
@@ -72,7 +72,7 @@ class NutritionService {
         },
         attributes: [
           [fn('date', col('meal_date')), 'date'],
-          [fn('sum', col('calories')), 'total_calories']
+          [fn('sum', col('total_calories')), 'total_calories'] // Updated to total_calories
         ],
         group: [fn('date', col('meal_date'))],
         order: [[col('date'), 'ASC']]

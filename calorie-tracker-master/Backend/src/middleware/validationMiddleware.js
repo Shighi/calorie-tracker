@@ -38,6 +38,10 @@ export const registerValidation = [
     .notEmpty().withMessage('Username is required')
     .trim()
     .isLength({ min: 3, max: 50 }).withMessage('Username must be between 3 and 50 characters'),
+  body('first_name')
+    .optional()
+    .trim()
+    .isLength({ max: 50 }).withMessage('First name must not exceed 50 characters'),
   body('last_name')
     .optional()
     .trim()
@@ -51,7 +55,7 @@ export const registerValidation = [
  * Validation rules for user login
  */
 export const loginValidation = [
-  body('emailOrUsername')  // Changed from 'email' to 'emailOrUsername'
+  body('emailOrUsername')
     .notEmpty().withMessage('Email or username is required')
     .trim(),
   body('password')
@@ -70,6 +74,10 @@ export const profileUpdateValidation = [
     .optional()
     .isEmail().withMessage('Enter a valid email address')
     .normalizeEmail(),
+  body('first_name')
+    .optional()
+    .trim()
+    .isLength({ max: 50 }).withMessage('First name must not exceed 50 characters'),
   body('last_name')
     .optional()
     .trim()
@@ -97,6 +105,14 @@ export const foodValidation = [
     .notEmpty().withMessage('Food name is required')
     .trim()
     .isLength({ min: 2, max: 100 }).withMessage('Food name must be between 2 and 100 characters'),
+  body('description')
+    .optional()
+    .trim()
+    .isLength({ max: 500 }).withMessage('Description must not exceed 500 characters'),
+  body('external_id')
+    .optional()
+    .trim()
+    .isLength({ max: 100 }).withMessage('External ID must not exceed 100 characters'),
   body('category')
     .notEmpty().withMessage('Food category is required')
     .trim(),
@@ -155,6 +171,13 @@ export const mealValidation = [
     .optional()
     .trim()
     .isLength({ max: 100 }).withMessage('Meal name must not exceed 100 characters'),
+  body('meal_time')
+    .optional()
+    .isISO8601().withMessage('Invalid meal time format')
+    .toDate(),
+  body('total_calories')
+    .optional()
+    .isFloat({ min: 0 }).withMessage('Total calories must be non-negative'),
   body('foods')
     .isArray({ min: 1 }).withMessage('At least one food item is required'),
   body('foods.*.foodId')
@@ -162,7 +185,17 @@ export const mealValidation = [
     .isUUID().withMessage('Invalid Food ID format'),
   body('foods.*.quantity')
     .notEmpty().withMessage('Food quantity is required')
-    .isFloat({ min: 0.01 }).withMessage('Food quantity must be positive')
+    .isFloat({ min: 0.01 }).withMessage('Food quantity must be positive'),
+  body('foods.*.serving_size')
+    .optional()
+    .isFloat({ min: 0.01 }).withMessage('Serving size must be positive'),
+  body('foods.*.serving_unit')
+    .optional()
+    .trim()
+    .isLength({ max: 50 }).withMessage('Serving unit must not exceed 50 characters'),
+  body('foods.*.calories')
+    .optional()
+    .isFloat({ min: 0 }).withMessage('Calories must be non-negative')
 ];
 
 /**
@@ -183,7 +216,17 @@ export const mealTemplateValidation = [
     .isUUID().withMessage('Invalid Food ID format'),
   body('foods.*.quantity')
     .notEmpty().withMessage('Food quantity is required')
-    .isFloat({ min: 0.01 }).withMessage('Food quantity must be positive')
+    .isFloat({ min: 0.01 }).withMessage('Food quantity must be positive'),
+  body('foods.*.serving_size')
+    .optional()
+    .isFloat({ min: 0.01 }).withMessage('Serving size must be positive'),
+  body('foods.*.serving_unit')
+    .optional()
+    .trim()
+    .isLength({ max: 50 }).withMessage('Serving unit must not exceed 50 characters'),
+  body('foods.*.calories')
+    .optional()
+    .isFloat({ min: 0 }).withMessage('Calories must be non-negative')
 ];
 
 /**
@@ -201,6 +244,13 @@ export const mealUpdateValidation = [
     .optional()
     .trim()
     .isLength({ max: 100 }).withMessage('Meal name must not exceed 100 characters'),
+  body('meal_time')
+    .optional()
+    .isISO8601().withMessage('Invalid meal time format')
+    .toDate(),
+  body('total_calories')
+    .optional()
+    .isFloat({ min: 0 }).withMessage('Total calories must be non-negative'),
   body('foods')
     .optional()
     .isArray({ min: 1 }).withMessage('At least one food item is required'),
@@ -209,7 +259,17 @@ export const mealUpdateValidation = [
     .isUUID().withMessage('Invalid Food ID format'),
   body('foods.*.quantity')
     .optional()
-    .isFloat({ min: 0.01 }).withMessage('Food quantity must be positive')
+    .isFloat({ min: 0.01 }).withMessage('Food quantity must be positive'),
+  body('foods.*.serving_size')
+    .optional()
+    .isFloat({ min: 0.01 }).withMessage('Serving size must be positive'),
+  body('foods.*.serving_unit')
+    .optional()
+    .trim()
+    .isLength({ max: 50 }).withMessage('Serving unit must not exceed 50 characters'),
+  body('foods.*.calories')
+    .optional()
+    .isFloat({ min: 0 }).withMessage('Calories must be non-negative')
 ];
 
 /**
