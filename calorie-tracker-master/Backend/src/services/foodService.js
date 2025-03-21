@@ -1,6 +1,7 @@
 import { Op } from 'sequelize';
 import Food from '../models/Food.js';
 import cacheService from './cacheService.js';
+import sequelize from '../config/database.js'; // Adjust this import path to match your project structure
 
 class FoodService {
   async createFood(foodData, userId) {
@@ -30,6 +31,7 @@ class FoodService {
 
       // Invalidate cache
       await cacheService.deleteByPattern(`foods:user:${userId}:*`);
+      await cacheService.deleteByPattern(`food:categories:*`);
 
       return food;
     } catch (error) {
@@ -94,19 +96,66 @@ class FoodService {
     }
   }
 
-  async getFoodById(foodId, userId) {
+  async getCategories(userId) {
     // Generate cache key
-    const cacheKey = `food:${foodId}:user:${userId || 'public'}`;
-
+    const cacheKey = `food:categories:user:${userId || 'public'}`;
+    
     // Try to get from cache
-    const cachedFood = await cacheService.get(cacheKey);
-    if (cachedFood) {
-      return cachedFood;
+    const cachedCategories = await cacheService.get(cacheKey);
+    if (cachedCategories) {
+      return cachedCategories;
     }
-
+    
     try {
+      const whereClause = {};
+      
+      if (userId) {
+        whereClause[Op.or] = [
+          { user_id: userId },
+          { is_public: true }
+        ];
+      } else {
+        whereClause.is_public = true;
+      }
+      
+      // Get distinct categories
+      const categories = await Food.findAll({
+        attributes: [[sequelize.fn('DISTINCT', sequelize.col('category')), 'category']],
+        where: whereClause,
+        raw: true
+      });
+      
+      const result = categories
+        .map(item => item.category)
+        .filter(category => category); // Filter out null/empty categories
+      
+      // Cache the result
+      await cacheService.set(cacheKey, result);
+      
+      return result;
+    } catch (error) {
+      throw new Error(`Error fetching categories: ${error.message}`);
+    }
+  }
+
+  async getFoodById(foodId, userId) {
+    try {
+      // Validate foodId is a number
+      if (isNaN(parseInt(foodId, 10))) {
+        throw new Error('Invalid food ID format');
+      }
+
+      // Generate cache key
+      const cacheKey = `food:${foodId}:user:${userId || 'public'}`;
+
+      // Try to get from cache
+      const cachedFood = await cacheService.get(cacheKey);
+      if (cachedFood) {
+        return cachedFood;
+      }
+
       const whereClause = {
-        id: foodId // Changed from food_id to id
+        id: parseInt(foodId, 10) // Ensure it's treated as an integer
       };
 
       if (userId) {
@@ -178,7 +227,7 @@ class FoodService {
     try {
       const food = await Food.findOne({
         where: { 
-          id: foodId, // Changed from food_id to id
+          id: foodId, 
           user_id: userId 
         }
       });
@@ -192,6 +241,7 @@ class FoodService {
       // Invalidate cache
       await cacheService.delete(`food:${foodId}:user:${userId}`);
       await cacheService.deleteByPattern(`foods:user:${userId}:*`);
+      await cacheService.deleteByPattern(`food:categories:*`);
 
       return food;
     } catch (error) {
@@ -203,7 +253,7 @@ class FoodService {
     try {
       const result = await Food.destroy({
         where: {
-          id: foodId, // Changed from food_id to id
+          id: foodId,
           user_id: userId
         }
       });
@@ -215,6 +265,7 @@ class FoodService {
       // Invalidate cache
       await cacheService.delete(`food:${foodId}:user:${userId}`);
       await cacheService.deleteByPattern(`foods:user:${userId}:*`);
+      await cacheService.deleteByPattern(`food:categories:*`);
 
       return true;
     } catch (error) {

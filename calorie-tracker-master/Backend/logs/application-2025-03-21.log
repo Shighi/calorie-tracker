@@ -1,0 +1,40 @@
+{"level":"info","message":"Database connection established successfully","timestamp":"2025-03-21 16:20:11"}
+{"level":"info","message":"Redis connection established successfully","timestamp":"2025-03-21 16:20:11"}
+{"level":"info","message":"Server running on port 3000","timestamp":"2025-03-21 16:20:11"}
+{"level":"info","message":"API documentation available at http://localhost:3000/api-docs","timestamp":"2025-03-21 16:20:11"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-03-21 16:20:17"}
+{"level":"info","message":"User login successful: Daisy","timestamp":"2025-03-21 16:20:17"}
+{"level":"info","message":"GET /api/auth/profile","timestamp":"2025-03-21 16:20:17"}
+{"level":"info","message":"POST /api/auth/logout","timestamp":"2025-03-21 16:20:28"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-03-21 16:20:41"}
+{"level":"info","message":"User login successful: Daisy","timestamp":"2025-03-21 16:20:41"}
+{"level":"info","message":"GET /api/auth/profile","timestamp":"2025-03-21 16:20:41"}
+{"level":"info","message":"GET /api/foods/categories","timestamp":"2025-03-21 16:24:03"}
+{"level":"info","message":"GET /api/foods?page=1&limit=20&sort=name&order=ASC","timestamp":"2025-03-21 16:24:03"}
+{"level":"info","message":"GET /api/foods/categories","timestamp":"2025-03-21 16:24:03"}
+{"level":"info","message":"GET /api/foods?page=1&limit=20&sort=name&order=ASC","timestamp":"2025-03-21 16:24:03"}
+{"level":"info","message":"GET /api/foods?page=1&limit=20&sort=name&order=ASC&query=m","timestamp":"2025-03-21 16:24:21"}
+{"level":"info","message":"GET /api/foods?page=1&limit=20&sort=name&order=ASC&query=ma","timestamp":"2025-03-21 16:24:22"}
+{"level":"info","message":"GET /api/foods?page=1&limit=20&sort=name&order=ASC&query=maize","timestamp":"2025-03-21 16:24:24"}
+{"level":"info","message":"GET /api/foods?page=1&limit=20&sort=name&order=ASC&query=maiz","timestamp":"2025-03-21 16:24:27"}
+{"level":"info","message":"GET /api/foods?page=1&limit=20&sort=name&order=ASC","timestamp":"2025-03-21 16:24:28"}
+{"level":"info","message":"GET /api/auth/profile","timestamp":"2025-03-21 16:29:54"}
+{"level":"info","message":"GET /api/auth/profile","timestamp":"2025-03-21 16:29:54"}
+{"level":"info","message":"GET /api/foods/categories","timestamp":"2025-03-21 16:29:54"}
+{"level":"info","message":"GET /api/foods?page=1&limit=20&sort=name&order=ASC","timestamp":"2025-03-21 16:29:54"}
+{"level":"info","message":"GET /api/foods?page=1&limit=20&sort=name&order=ASC","timestamp":"2025-03-21 16:29:54"}
+{"level":"info","message":"GET /api/foods/categories","timestamp":"2025-03-21 16:29:54"}
+{"level":"info","message":"GET /api/foods?page=1&limit=20&sort=name&order=ASC","timestamp":"2025-03-21 16:29:54"}
+{"level":"info","message":"GET /api/foods/categories","timestamp":"2025-03-21 16:29:54"}
+{"level":"info","message":"GET /api/foods?page=1&limit=20&sort=name&order=ASC","timestamp":"2025-03-21 16:29:54"}
+{"level":"info","message":"GET /api/foods/categories","timestamp":"2025-03-21 16:29:54"}
+{"level":"info","message":"Database connection established successfully","timestamp":"2025-03-21 16:33:11"}
+{"level":"info","message":"Redis connection established successfully","timestamp":"2025-03-21 16:33:11"}
+{"level":"info","message":"Server running on port 3000","timestamp":"2025-03-21 16:33:11"}
+{"level":"info","message":"API documentation available at http://localhost:3000/api-docs","timestamp":"2025-03-21 16:33:11"}
+{"level":"info","message":"GET /api/auth/profile","timestamp":"2025-03-21 16:33:30"}
+{"level":"info","message":"GET /api/auth/profile","timestamp":"2025-03-21 16:33:30"}
+{"level":"info","message":"GET /api/foods/categories","timestamp":"2025-03-21 16:33:32"}
+{"level":"info","message":"GET /api/foods?page=1&limit=20&sort=name&order=ASC","timestamp":"2025-03-21 16:33:32"}
+{"level":"info","message":"GET /api/foods?page=1&limit=20&sort=name&order=ASC","timestamp":"2025-03-21 16:33:32"}
+{"level":"info","message":"GET /api/foods/categories","timestamp":"2025-03-21 16:33:32"}

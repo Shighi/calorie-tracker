@@ -41,6 +41,20 @@ router.get('/search', foodFilterValidation, foodController.getFoods);
 
 /**
  * @swagger
+ * /api/foods/categories:
+ *   get:
+ *     summary: Get all food categories
+ *     tags: [Foods]
+ *     responses:
+ *       200:
+ *         description: List of all food categories
+ *       500:
+ *         description: Server error
+ */
+router.get('/categories', foodController.getCategories);
+
+/**
+ * @swagger
  * /api/foods/category/{category}:
  *   get:
  *     summary: Get foods by category

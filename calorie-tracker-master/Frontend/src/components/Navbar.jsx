@@ -49,7 +49,7 @@ export default function Navbar() {
               {user ? (
                 <button
                   onClick={handleLogout}
-                  className="px-3 py-2 rounded-md text-sm font-medium hover:bg-green-600"
+                  className="px-3 py-2 rounded-md text-sm font-medium bg-green-600 hover:bg-green-700"
                 >
                   Logout
                 </button>
@@ -96,7 +96,7 @@ export default function Navbar() {
               <Link to="/profile" className="block px-3 py-2 rounded-md text-base font-medium hover:bg-green-600">Profile</Link>
               <button
                 onClick={handleLogout}
-                className="block w-full text-left px-3 py-2 rounded-md text-base font-medium hover:bg-green-600"
+                className="block w-full text-left px-3 py-2 rounded-md text-base font-medium bg-green-600 hover:bg-green-700"
               >
                 Logout
               </button>

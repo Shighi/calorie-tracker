@@ -36,14 +36,27 @@ class FoodController {
 
       // Ensure data is properly structured for frontend
       return successResponse(res, 'Foods retrieved successfully', { 
-        foods: foods.items || foods, 
-        total: foods.total || foods.length,
+        foods: foods.foods || foods, 
+        totalCount: foods.totalCount || foods.length,
         page: parseInt(page, 10),
+        totalPages: foods.totalPages || Math.ceil(foods.length / parseInt(limit, 10)),
         limit: parseInt(limit, 10)
       });
     } catch (error) {
       console.error('Error retrieving foods:', error);
       return errorResponse(res, 'Error retrieving foods', error.message, 500);
+    }
+  }
+
+  async getCategories(req, res) {
+    try {
+      const userId = req.user ? req.user.id : null;
+      
+      const categories = await FoodService.getCategories(userId);
+      return successResponse(res, 'Categories retrieved successfully', categories);
+    } catch (error) {
+      console.error('Error retrieving categories:', error);
+      return errorResponse(res, 'Error retrieving categories', error.message, 500);
     }
   }
 
@@ -54,6 +67,11 @@ class FoodController {
 
       if (!id) {
         return errorResponse(res, 'Food ID is required', null, 400);
+      }
+
+      // Validate id is a number
+      if (isNaN(parseInt(id, 10))) {
+        return errorResponse(res, 'Invalid Food ID format', null, 400);
       }
 
       const food = await FoodService.getFoodById(id, userId);
@@ -87,9 +105,10 @@ class FoodController {
       });
 
       return successResponse(res, 'Foods by category retrieved successfully', { 
-        foods: foods.items || foods, 
-        total: foods.total || foods.length,
+        foods: foods.foods || foods, 
+        totalCount: foods.totalCount || foods.length,
         page: parseInt(page, 10),
+        totalPages: foods.totalPages || Math.ceil(foods.length / parseInt(limit, 10)),
         limit: parseInt(limit, 10),
         category
       });
@@ -101,14 +120,14 @@ class FoodController {
 
   async getFoodsByLocale(req, res) {
     try {
-      const { locale_id } = req.params;
+      const { localeId } = req.params;
       const { page = 1, limit = 20, sort = 'name', order = 'ASC' } = req.query;
 
-      if (!locale_id) {
+      if (!localeId) {
         return errorResponse(res, 'Locale ID is required', null, 400);
       }
 
-      const foods = await FoodService.getFoodsByLocale(locale_id, {
+      const foods = await FoodService.getFoodsByLocale(localeId, {
         page: parseInt(page, 10),
         limit: parseInt(limit, 10),
         sort,
@@ -116,11 +135,12 @@ class FoodController {
       });
 
       return successResponse(res, 'Foods by locale retrieved successfully', { 
-        foods: foods.items || foods, 
-        total: foods.total || foods.length,
+        foods: foods.foods || foods, 
+        totalCount: foods.totalCount || foods.length,
         page: parseInt(page, 10),
+        totalPages: foods.totalPages || Math.ceil(foods.length / parseInt(limit, 10)),
         limit: parseInt(limit, 10),
-        locale_id
+        localeId
       });
     } catch (error) {
       console.error('Error retrieving foods by locale:', error);
