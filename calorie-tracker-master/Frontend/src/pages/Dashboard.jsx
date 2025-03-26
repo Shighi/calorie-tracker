@@ -11,6 +11,18 @@ import {
   Legend
 } from 'chart.js';
 import { useAuth } from '../contexts/AuthContext';
+import axios from 'axios';
+
+// Register Chart.js components
+ChartJS.register(
+  ArcElement,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 // Helper function to calculate nutritional info from meals
 const calculateNutritionFromMeals = (meals) => {
@@ -21,14 +33,12 @@ const calculateNutritionFromMeals = (meals) => {
     fat: 0
   };
 
+  if (!meals) return nutritionSummary;
+
   Object.values(meals).forEach(mealType => {
     mealType.forEach(food => {
-      // Assuming food object has nutritional information
-      // If not available, you might need to adjust this logic
       const servingFactor = food.quantity / 100;
       nutritionSummary.calories += food.calories * servingFactor;
-      
-      // If protein, carbs, fat are not available, you'll need to fetch or estimate
       nutritionSummary.protein += food.proteins ? food.proteins * servingFactor : 0;
       nutritionSummary.carbs += food.carbs ? food.carbs * servingFactor : 0;
       nutritionSummary.fat += food.fats ? food.fats * servingFactor : 0;
@@ -40,6 +50,8 @@ const calculateNutritionFromMeals = (meals) => {
 
 // Helper function to get weekly calorie data
 const getWeeklyCalorieData = (meals, daysToShow = 7) => {
+  if (!meals) return [];
+
   const today = new Date();
   const weekData = [];
 
@@ -75,8 +87,36 @@ export default function Dashboard() {
   const [meals, setMeals] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [calorieGoal, setCalorieGoal] = useState(2000);
 
-  // Fetch meals similar to MealTracker's fetchMeals logic
+  // Fetch user profile to get up-to-date calorie goal
+  useEffect(() => {
+    const fetchUserProfile = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        if (!token) {
+          throw new Error('No authentication token');
+        }
+
+        const response = await axios.get('http://localhost:3000/api/auth/profile', {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
+
+        // Update calorie goal from user profile
+        if (response.data.data.daily_calorie_target) {
+          setCalorieGoal(response.data.data.daily_calorie_target);
+        }
+      } catch (err) {
+        console.error('Error fetching profile:', err);
+      }
+    };
+
+    fetchUserProfile();
+  }, []);
+
+  // Fetch meals data
   useEffect(() => {
     const fetchMeals = async () => {
       const token = localStorage.getItem('token');
@@ -87,7 +127,7 @@ export default function Dashboard() {
       }
 
       try {
-        const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '/api';
+        const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api';
         const endDate = new Date();
         const startDate = new Date();
         startDate.setDate(endDate.getDate() - 6); // Last 7 days
@@ -97,20 +137,13 @@ export default function Dashboard() {
           endDate: endDate.toISOString().split('T')[0]
         });
 
-        const response = await fetch(`${API_BASE_URL}/meals?${queryParams}`, {
+        const response = await axios.get(`${API_BASE_URL}/meals?${queryParams}`, {
           headers: {
             'Authorization': `Bearer ${token}`,
             'Accept': 'application/json'
           }
         });
 
-        if (!response.ok) {
-          throw new Error('Failed to fetch meals');
-        }
-
-        const data = await response.json();
-        
-        // Transform response similar to MealTracker's parseApiResponse
         const transformedMeals = {
           breakfast: [],
           lunch: [],
@@ -118,7 +151,7 @@ export default function Dashboard() {
           snack: []
         };
 
-        (data.data?.meals || data.data || []).forEach(meal => {
+        (response.data.data?.meals || response.data.data || []).forEach(meal => {
           const mealType = (meal.type || 'lunch').toLowerCase();
           const validMealType = ['breakfast', 'lunch', 'dinner', 'snack'].includes(mealType) 
             ? mealType 
@@ -152,7 +185,7 @@ export default function Dashboard() {
     fetchMeals();
   }, []);
 
-  // If loading or no meals, show loading or error state
+  // Loading State
   if (isLoading) {
     return (
       <div className="min-h-screen bg-secondary flex flex-col pt-16">
@@ -169,6 +202,7 @@ export default function Dashboard() {
     );
   }
 
+  // Error State
   if (error) {
     return (
       <div className="min-h-screen bg-secondary flex flex-col pt-16">
@@ -207,7 +241,10 @@ export default function Dashboard() {
   };
 
   const barData = {
-    labels: weeklyNutritionData.map(day => day.date),
+    labels: weeklyNutritionData.map(day => {
+      const date = new Date(day.date);
+      return date.toLocaleDateString('en-US', { weekday: 'short' });
+    }),
     datasets: [
       {
         label: 'Calories Consumed',
@@ -218,7 +255,6 @@ export default function Dashboard() {
   };
 
   // Calculate calorie progress
-  const calorieGoal = user?.daily_calorie_goal || 2000;
   const currentCalories = dailyNutritionData.calories;
   const caloriePercentage = Math.min(Math.round((currentCalories / calorieGoal) * 100), 100);
 
@@ -256,7 +292,18 @@ export default function Dashboard() {
           <div className="bg-white p-6 rounded-lg shadow">
             <h2 className="text-xl font-semibold mb-4">Daily Nutrients</h2>
             <div className="h-64">
-              <Pie data={pieData} options={{ responsive: true, maintainAspectRatio: false }} />
+              <Pie 
+                data={pieData} 
+                options={{ 
+                  responsive: true, 
+                  maintainAspectRatio: false,
+                  plugins: {
+                    legend: {
+                      position: 'bottom'
+                    }
+                  }
+                }} 
+              />
             </div>
             <div className="mt-4 grid grid-cols-3 gap-2 text-center">
               <div className="bg-green-100 p-2 rounded">
@@ -278,7 +325,27 @@ export default function Dashboard() {
           <div className="bg-white p-6 rounded-lg shadow">
             <h2 className="text-xl font-semibold mb-4">Weekly Calories</h2>
             <div className="h-64">
-              <Bar data={barData} options={{ responsive: true, maintainAspectRatio: false }} />
+              <Bar 
+                data={barData} 
+                options={{ 
+                  responsive: true, 
+                  maintainAspectRatio: false,
+                  plugins: {
+                    legend: {
+                      display: false
+                    }
+                  },
+                  scales: {
+                    y: {
+                      beginAtZero: true,
+                      title: {
+                        display: true,
+                        text: 'Calories'
+                      }
+                    }
+                  }
+                }} 
+              />
             </div>
           </div>
         </div>

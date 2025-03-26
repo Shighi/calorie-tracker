@@ -116,13 +116,29 @@ export default function MealTracker() {
     }
   };
 
-  // Handle Logout
+  // Handle Logout with Complete Reset
   const handleLogout = () => {
+    // Clear all user-specific data
     localStorage.removeItem('token');
+    
+    // Reset all state to initial values
     setFoods(INITIAL_FOODS_STATE);
-    setDate(new Date().toISOString().split('T')[0]);
+    setManualFoodName('');
+    setQuantity('');
+    setCalories('');
+    setCaloriesPer100g('');
+    setIsLoading(false);
     setError(null);
-    // Additional logout logic 
+    setDate(new Date().toISOString().split('T')[0]);
+    setIsAddingFood(false);
+    setIsSaving(false);
+    setSelectedMealType(MEAL_TYPES[1].value);
+    setSearchQuery('');
+    setSearchResults([]);
+    setIsSearching(false);
+    setShowSearchResults(false);
+    setSelectedFood(null);
+    setSelectedFoodObject(null);
   };
 
   // Updated parseApiResponse
@@ -482,7 +498,7 @@ export default function MealTracker() {
     return () => clearTimeout(timer);
   }, [searchQuery]);
 
-  // Render method remains the same (the full render method from the previous example)
+  // Render 
   return (
     <div className="min-h-screen bg-secondary flex flex-col">
       <div className="max-w-7xl mx-auto px-4 py-6 flex-grow">
