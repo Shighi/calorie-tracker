@@ -1,7 +1,7 @@
 // models/Meal.js
 import { DataTypes } from 'sequelize';
 import sequelize from '../config/database.js';
-import { User } from './User.js';
+import User from './User.js';
 import Food from './Food.js';
 
 const Meal = sequelize.define('Meal', {
@@ -113,13 +113,15 @@ User.hasMany(Meal, { foreignKey: 'user_id' });
 Meal.belongsToMany(Food, { 
   through: MealFood,
   foreignKey: 'meal_id',
-  otherKey: 'food_id'
+  otherKey: 'food_id',
+  as: 'foods'  // This alias must match what you use in your queries
 });
 
 Food.belongsToMany(Meal, { 
   through: MealFood,
   foreignKey: 'food_id',
   otherKey: 'meal_id'
+  // You can add an alias here as well if needed
 });
 
 export { Meal, MealFood };

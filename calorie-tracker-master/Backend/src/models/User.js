@@ -1,10 +1,17 @@
 import { DataTypes, Model } from 'sequelize';
 import bcrypt from 'bcrypt';
-import sequelize from '../config/database.js';  
+import sequelize from '../config/database.js';
 
 class User extends Model {
   async comparePassword(password) {
     return bcrypt.compare(password, this.password);
+  }
+
+  static associate(models) {
+    this.hasOne(models.UserProfile, {
+      foreignKey: 'user_id',
+      as: 'profile'
+    });
   }
 }
 
@@ -52,7 +59,7 @@ User.init({
   modelName: 'User',
   tableName: 'users',
   timestamps: true,
-  underscored: true,  // Important: This tells Sequelize to use snake_case for column names
+  underscored: true,
   hooks: {
     beforeCreate: async (user) => {
       if (user.password) {
@@ -69,4 +76,4 @@ User.init({
   }
 });
 
-export { User };
+export default User;

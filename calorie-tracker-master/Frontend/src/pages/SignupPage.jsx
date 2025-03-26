@@ -9,14 +9,20 @@ export default function SignupPage() {
   const navigate = useNavigate();
 
   // React Hook Form setup
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { register, handleSubmit, formState: { errors }, watch } = useForm();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
+  // Watch password fields to compare
+  const password = watch('password');
+  const confirmPassword = watch('confirmPassword');
+
   // Handle form submission
   const onSubmit = async (data) => {
-    if (data.password !== data.confirmPassword) {
-      return setError('Passwords do not match');
+    // Check password match
+    if (password !== confirmPassword) {
+      setError('Passwords do not match');
+      return;
     }
 
     try {
@@ -29,7 +35,7 @@ export default function SignupPage() {
         password: data.password,
         username: data.username,
         last_name: data.lastName || null,
-        daily_calorie_goal: data.dailyCalorieTarget || null
+        daily_calorie_goal: data.dailyCalorieTarget ? parseInt(data.dailyCalorieTarget) : null
       };
       
       const success = await registerUser(userData);
@@ -37,7 +43,7 @@ export default function SignupPage() {
       if (success) {
         navigate('/dashboard');
       } else {
-        setError('Registration failed. Please try again.');
+        setError(authError || 'Registration failed. Please try again.');
       }
     } catch (err) {
       setError('Failed to create an account. Please try again.');
@@ -196,7 +202,11 @@ export default function SignupPage() {
                     autoComplete="new-password"
                     required
                     className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
-                    {...register('confirmPassword', { required: 'Confirm Password is required' })}
+                    {...register('confirmPassword', { 
+                      required: 'Confirm Password is required',
+                      validate: (value) => 
+                        value === password || 'Passwords do not match'
+                    })}
                   />
                   {errors.confirmPassword && <p className="text-sm text-red-600">{errors.confirmPassword.message}</p>}
                 </div>

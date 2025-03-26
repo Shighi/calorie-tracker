@@ -19,4 +19,7 @@ router.get('/weekly', NutritionController.getWeeklyNutrition);
 // Monthly nutrition endpoint
 router.get('/monthly', NutritionController.getMonthlyNutrition);
 
+// Get nutrients for a specific food
+router.get('/food/:foodId/nutrients', NutritionController.getNutrientsByFoodId);
+
 export default router;

@@ -11,126 +11,148 @@ import {
   Legend
 } from 'chart.js';
 import { useAuth } from '../contexts/AuthContext';
-import useNutritionData from '../hooks/useNutritionData';
 
-ChartJS.register(
-  ArcElement,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend
-);
+// Helper function to calculate nutritional info from meals
+const calculateNutritionFromMeals = (meals) => {
+  const nutritionSummary = {
+    calories: 0,
+    protein: 0,
+    carbs: 0,
+    fat: 0
+  };
+
+  Object.values(meals).forEach(mealType => {
+    mealType.forEach(food => {
+      // Assuming food object has nutritional information
+      // If not available, you might need to adjust this logic
+      const servingFactor = food.quantity / 100;
+      nutritionSummary.calories += food.calories * servingFactor;
+      
+      // If protein, carbs, fat are not available, you'll need to fetch or estimate
+      nutritionSummary.protein += food.proteins ? food.proteins * servingFactor : 0;
+      nutritionSummary.carbs += food.carbs ? food.carbs * servingFactor : 0;
+      nutritionSummary.fat += food.fats ? food.fats * servingFactor : 0;
+    });
+  });
+
+  return nutritionSummary;
+};
+
+// Helper function to get weekly calorie data
+const getWeeklyCalorieData = (meals, daysToShow = 7) => {
+  const today = new Date();
+  const weekData = [];
+
+  for (let i = daysToShow - 1; i >= 0; i--) {
+    const date = new Date(today);
+    date.setDate(today.getDate() - i);
+    const dateString = date.toISOString().split('T')[0];
+
+    // Filter meals for this specific date
+    const dailyMeals = Object.values(meals).reduce((acc, mealType) => {
+      const filteredMeals = mealType.filter(food => 
+        food.log_date === dateString
+      );
+      return [...acc, ...filteredMeals];
+    }, []);
+
+    const dailyCalories = dailyMeals.reduce((total, food) => {
+      const servingFactor = food.quantity / 100;
+      return total + (food.calories * servingFactor);
+    }, 0);
+
+    weekData.push({
+      date: dateString,
+      calories: Math.round(dailyCalories)
+    });
+  }
+
+  return weekData;
+};
 
 export default function Dashboard() {
   const { user } = useAuth();
-  const { weeklyData, dailyNutritionData, isLoading, error } = useNutritionData();
-  const [nutrientData, setNutrientData] = useState({
-    protein: 0,
-    carbs: 0,
-    fat: 0,
-    calories: 0,
-  });
-  const [showMealForm, setShowMealForm] = useState(false);
-  const [showGoalForm, setShowGoalForm] = useState(false);
-  const [meal, setMeal] = useState({
-    name: '',
-    protein: 0,
-    carbs: 0,
-    fats: 0,
-    calories: 0,
-    meal_type: 'breakfast',
-  });
-  const [goals, setGoals] = useState({
-    daily_calorie_goal: user?.daily_calorie_goal || 2000,
-    protein_goal: user?.protein_goal || 50,
-    carbs_goal: user?.carbs_goal || 250,
-    fats_goal: user?.fats_goal || 70,
-  });
+  const [meals, setMeals] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
+  // Fetch meals similar to MealTracker's fetchMeals logic
   useEffect(() => {
-    if (dailyNutritionData) {
-      setNutrientData({
-        protein: dailyNutritionData.protein || 0,
-        carbs: dailyNutritionData.carbs || 0,
-        fat: dailyNutritionData.fats || 0,
-        calories: dailyNutritionData.calories || 0,
-      });
-    }
-  }, [dailyNutritionData]);
+    const fetchMeals = async () => {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        setError('No authentication token');
+        setIsLoading(false);
+        return;
+      }
 
-  const pieData = {
-    labels: ['Protein', 'Carbohydrates', 'Fats'],
-    datasets: [
-      {
-        data: [nutrientData.protein, nutrientData.carbs, nutrientData.fat],
-        backgroundColor: ['#4CAF50', '#81C784', '#A5D6A7'],
-      },
-    ],
-  };
+      try {
+        const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '/api';
+        const endDate = new Date();
+        const startDate = new Date();
+        startDate.setDate(endDate.getDate() - 6); // Last 7 days
 
-  const barData = {
-    labels: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-    datasets: [
-      {
-        label: 'Calories Consumed',
-        data: weeklyData,
-        backgroundColor: '#4CAF50',
-      },
-    ],
-  };
+        const queryParams = new URLSearchParams({
+          startDate: startDate.toISOString().split('T')[0],
+          endDate: endDate.toISOString().split('T')[0]
+        });
 
-  const handleMealChange = (e) => {
-    const { name, value } = e.target;
-    setMeal({
-      ...meal,
-      [name]: name === 'name' || name === 'meal_type' ? value : Number(value),
-    });
-  };
+        const response = await fetch(`${API_BASE_URL}/meals?${queryParams}`, {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Accept': 'application/json'
+          }
+        });
 
-  const handleGoalChange = (e) => {
-    const { name, value } = e.target;
-    setGoals({
-      ...goals,
-      [name]: Number(value),
-    });
-  };
+        if (!response.ok) {
+          throw new Error('Failed to fetch meals');
+        }
 
-  const handleMealSubmit = (e) => {
-    e.preventDefault();
-    // Here you would typically send this data to your API
-    console.log('Meal logged:', meal);
-    
-    // For demonstration, let's update the nutrient data directly
-    setNutrientData({
-      protein: nutrientData.protein + meal.protein,
-      carbs: nutrientData.carbs + meal.carbs,
-      fat: nutrientData.fat + meal.fats,
-      calories: nutrientData.calories + meal.calories,
-    });
-    
-    // Reset form and close
-    setMeal({
-      name: '',
-      protein: 0,
-      carbs: 0,
-      fats: 0,
-      calories: 0,
-      meal_type: 'breakfast',
-    });
-    setShowMealForm(false);
-  };
+        const data = await response.json();
+        
+        // Transform response similar to MealTracker's parseApiResponse
+        const transformedMeals = {
+          breakfast: [],
+          lunch: [],
+          dinner: [],
+          snack: []
+        };
 
-  const handleGoalSubmit = (e) => {
-    e.preventDefault();
-    // Here you would typically send this data to your API
-    console.log('Goals updated:', goals);
-    
-    // Close the form
-    setShowGoalForm(false);
-  };
+        (data.data?.meals || data.data || []).forEach(meal => {
+          const mealType = (meal.type || 'lunch').toLowerCase();
+          const validMealType = ['breakfast', 'lunch', 'dinner', 'snack'].includes(mealType) 
+            ? mealType 
+            : 'lunch';
 
+          const foodItems = meal.foods || meal.food_items || [];
+          foodItems.forEach(food => {
+            const foodItem = {
+              name: food.name || 'Unknown Food',
+              calories: Number(food.calories || 0),
+              quantity: Number(food.serving_qty || 100),
+              log_date: meal.log_date,
+              proteins: food.proteins || 0,
+              carbs: food.carbs || 0,
+              fats: food.fats || 0
+            };
+
+            transformedMeals[validMealType].push(foodItem);
+          });
+        });
+
+        setMeals(transformedMeals);
+        setIsLoading(false);
+      } catch (err) {
+        console.error('Error fetching meals:', err);
+        setError(err.message);
+        setIsLoading(false);
+      }
+    };
+
+    fetchMeals();
+  }, []);
+
+  // If loading or no meals, show loading or error state
   if (isLoading) {
     return (
       <div className="min-h-screen bg-secondary flex flex-col pt-16">
@@ -165,12 +187,43 @@ export default function Dashboard() {
     );
   }
 
-  const calorieGoal = goals.daily_calorie_goal || dailyNutritionData?.daily_calorie_goal || 2000;
-  const currentCalories = nutrientData.calories;
+  // Calculate nutrition data
+  const dailyNutritionData = calculateNutritionFromMeals(meals);
+  const weeklyNutritionData = getWeeklyCalorieData(meals);
+
+  // Prepare chart data
+  const pieData = {
+    labels: ['Protein', 'Carbohydrates', 'Fats'],
+    datasets: [
+      {
+        data: [
+          dailyNutritionData.protein, 
+          dailyNutritionData.carbs, 
+          dailyNutritionData.fat
+        ],
+        backgroundColor: ['#4CAF50', '#81C784', '#A5D6A7'],
+      },
+    ],
+  };
+
+  const barData = {
+    labels: weeklyNutritionData.map(day => day.date),
+    datasets: [
+      {
+        label: 'Calories Consumed',
+        data: weeklyNutritionData.map(day => day.calories),
+        backgroundColor: '#4CAF50',
+      },
+    ],
+  };
+
+  // Calculate calorie progress
+  const calorieGoal = user?.daily_calorie_goal || 2000;
+  const currentCalories = dailyNutritionData.calories;
   const caloriePercentage = Math.min(Math.round((currentCalories / calorieGoal) * 100), 100);
 
   return (
-    <div className="min-h-screen bg-secondary flex flex-col pt-16"> {/* Added pt-16 for navbar space */}
+    <div className="min-h-screen bg-secondary flex flex-col pt-16">
       <div className="max-w-7xl mx-auto px-4 py-6 flex-1 w-full">
         <h1 className="text-3xl font-poppins font-bold mb-6">
           Welcome, {user?.username || 'User'}
@@ -178,11 +231,11 @@ export default function Dashboard() {
 
         {/* Profile Overview */}
         <div className="bg-white p-6 rounded-lg shadow mb-6">
-          <h2 className="text-xl font-semibold mb-4">Profile Overview</h2>
+          <h2 className="text-xl font-semibold mb-4">Daily Nutrition Overview</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <p className="text-gray-700">Daily Calorie Goal: {calorieGoal} kcal</p>
-              <p className="text-gray-700">Current Calories: {currentCalories} kcal</p>
+              <p className="text-gray-700">Current Calories: {Math.round(currentCalories)} kcal</p>
               <p className="text-gray-700">
                 Progress: {caloriePercentage}% of daily goal
               </p>
@@ -208,15 +261,15 @@ export default function Dashboard() {
             <div className="mt-4 grid grid-cols-3 gap-2 text-center">
               <div className="bg-green-100 p-2 rounded">
                 <p className="font-semibold">Protein</p>
-                <p>{nutrientData.protein}g</p>
+                <p>{Math.round(dailyNutritionData.protein)}g</p>
               </div>
               <div className="bg-green-100 p-2 rounded">
                 <p className="font-semibold">Carbs</p>
-                <p>{nutrientData.carbs}g</p>
+                <p>{Math.round(dailyNutritionData.carbs)}g</p>
               </div>
               <div className="bg-green-100 p-2 rounded">
                 <p className="font-semibold">Fats</p>
-                <p>{nutrientData.fat}g</p>
+                <p>{Math.round(dailyNutritionData.fat)}g</p>
               </div>
             </div>
           </div>
@@ -228,230 +281,8 @@ export default function Dashboard() {
               <Bar data={barData} options={{ responsive: true, maintainAspectRatio: false }} />
             </div>
           </div>
-
-          {/* Quick Actions */}
-          <div className="bg-white p-6 rounded-lg shadow">
-            <h2 className="text-xl font-semibold mb-4">Quick Actions</h2>
-            <button 
-              className="w-full bg-primary text-white py-2 px-4 rounded mb-4 hover:bg-green-600"
-              onClick={() => setShowMealForm(true)}
-            >
-              Log Meal
-            </button>
-            <button 
-              className="w-full bg-primary text-white py-2 px-4 rounded hover:bg-green-600"
-              onClick={() => setShowGoalForm(true)}
-            >
-              Set Goals
-            </button>
-          </div>
         </div>
       </div>
-
-      {/* Modal for Meal Logging */}
-      {showMealForm && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full">
-            <h2 className="text-xl font-semibold mb-4">Log a Meal</h2>
-            <form onSubmit={handleMealSubmit}>
-              <div className="mb-4">
-                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
-                  Meal Name
-                </label>
-                <input
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  id="name"
-                  name="name"
-                  type="text"
-                  placeholder="e.g., Oatmeal with Berries"
-                  value={meal.name}
-                  onChange={handleMealChange}
-                  required
-                />
-              </div>
-              <div className="mb-4">
-                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="meal_type">
-                  Meal Type
-                </label>
-                <select
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  id="meal_type"
-                  name="meal_type"
-                  value={meal.meal_type}
-                  onChange={handleMealChange}
-                >
-                  <option value="breakfast">Breakfast</option>
-                  <option value="lunch">Lunch</option>
-                  <option value="dinner">Dinner</option>
-                  <option value="snack">Snack</option>
-                </select>
-              </div>
-              <div className="mb-4">
-                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="protein">
-                  Protein (g)
-                </label>
-                <input
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  id="protein"
-                  name="protein"
-                  type="number"
-                  min="0"
-                  value={meal.protein}
-                  onChange={handleMealChange}
-                  required
-                />
-              </div>
-              <div className="mb-4">
-                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="carbs">
-                  Carbohydrates (g)
-                </label>
-                <input
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  id="carbs"
-                  name="carbs"
-                  type="number"
-                  min="0"
-                  value={meal.carbs}
-                  onChange={handleMealChange}
-                  required
-                />
-              </div>
-              <div className="mb-4">
-                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="fats">
-                  Fats (g)
-                </label>
-                <input
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  id="fats"
-                  name="fats"
-                  type="number"
-                  min="0"
-                  value={meal.fats}
-                  onChange={handleMealChange}
-                  required
-                />
-              </div>
-              <div className="mb-6">
-                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="calories">
-                  Calories (kcal)
-                </label>
-                <input
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  id="calories"
-                  name="calories"
-                  type="number"
-                  min="0"
-                  value={meal.calories}
-                  onChange={handleMealChange}
-                  required
-                />
-              </div>
-              <div className="flex items-center justify-between">
-                <button
-                  className="bg-primary text-white py-2 px-4 rounded hover:bg-green-600 focus:outline-none focus:shadow-outline"
-                  type="submit"
-                >
-                  Log Meal
-                </button>
-                <button
-                  className="bg-gray-300 text-gray-800 py-2 px-4 rounded hover:bg-gray-400 focus:outline-none focus:shadow-outline"
-                  type="button"
-                  onClick={() => setShowMealForm(false)}
-                >
-                  Cancel
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
-
-      {/* Modal for Setting Goals */}
-      {showGoalForm && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full">
-            <h2 className="text-xl font-semibold mb-4">Set Nutrition Goals</h2>
-            <form onSubmit={handleGoalSubmit}>
-              <div className="mb-4">
-                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="daily_calorie_goal">
-                  Daily Calorie Goal (kcal)
-                </label>
-                <input
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  id="daily_calorie_goal"
-                  name="daily_calorie_goal"
-                  type="number"
-                  min="1000"
-                  max="5000"
-                  value={goals.daily_calorie_goal}
-                  onChange={handleGoalChange}
-                  required
-                />
-              </div>
-              <div className="mb-4">
-                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="protein_goal">
-                  Protein Goal (g)
-                </label>
-                <input
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  id="protein_goal"
-                  name="protein_goal"
-                  type="number"
-                  min="0"
-                  value={goals.protein_goal}
-                  onChange={handleGoalChange}
-                  required
-                />
-              </div>
-              <div className="mb-4">
-                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="carbs_goal">
-                  Carbohydrates Goal (g)
-                </label>
-                <input
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  id="carbs_goal"
-                  name="carbs_goal"
-                  type="number"
-                  min="0"
-                  value={goals.carbs_goal}
-                  onChange={handleGoalChange}
-                  required
-                />
-              </div>
-              <div className="mb-6">
-                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="fats_goal">
-                  Fats Goal (g)
-                </label>
-                <input
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  id="fats_goal"
-                  name="fats_goal"
-                  type="number"
-                  min="0"
-                  value={goals.fats_goal}
-                  onChange={handleGoalChange}
-                  required
-                />
-              </div>
-              <div className="flex items-center justify-between">
-                <button
-                  className="bg-primary text-white py-2 px-4 rounded hover:bg-green-600 focus:outline-none focus:shadow-outline"
-                  type="submit"
-                >
-                  Save Goals
-                </button>
-                <button
-                  className="bg-gray-300 text-gray-800 py-2 px-4 rounded hover:bg-gray-400 focus:outline-none focus:shadow-outline"
-                  type="button"
-                  onClick={() => setShowGoalForm(false)}
-                >
-                  Cancel
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
 
       {/* Footer Section */}
       <div className="bg-gray-800 text-white py-8 mt-auto w-full">

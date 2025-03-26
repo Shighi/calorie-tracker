@@ -6,17 +6,34 @@
 import express from 'express';
 import mealController from '../controllers/mealController.js';
 import authMiddleware from '../middleware/authMiddleware.js';
-import validate, { validateMealCreation, validateMealUpdate, validateMealTemplate } from '../middleware/validationMiddleware.js';
+import { 
+  validateMealCreation, 
+  validateMealUpdate, 
+  validateMealTemplate 
+} from '../middleware/validationMiddleware.js';
 
 const { authenticate } = authMiddleware;
 const router = express.Router();
 
 /**
  * @swagger
- * /api/meals:
+ * tags:
+ *   - name: Meals
+ *     description: Meal management endpoints
+ *   - name: Meal Templates
+ *     description: Meal template management endpoints
+ */
+
+// All routes require authentication
+router.use(authenticate);
+
+// ======= MEAL TEMPLATE ROUTES =======
+/**
+ * @swagger
+ * /api/meals/templates:
  *   get:
- *     summary: Get user's meal logs with pagination
- *     tags: [Meals]
+ *     summary: Retrieve meal templates
+ *     tags: [Meal Templates]
  *     security:
  *       - bearerAuth: []
  *     parameters:
@@ -24,56 +41,29 @@ const router = express.Router();
  *         name: page
  *         schema:
  *           type: integer
- *         description: Page number
+ *           default: 1
+ *         description: Page number for pagination
  *       - in: query
  *         name: limit
  *         schema:
  *           type: integer
- *         description: Items per page
- *       - in: query
- *         name: date
- *         schema:
- *           type: string
- *           format: date
- *         description: Filter by date
+ *           default: 10
+ *         description: Number of templates per page
  *     responses:
  *       200:
- *         description: List of user meals
+ *         description: Successfully retrieved meal templates
  *       401:
  *         description: Unauthorized
  *       500:
  *         description: Server error
  */
-// All routes require authentication
-router.use(authenticate);
-
-// Get user's meal logs with pagination
-router.get('/', mealController.getUserMeals);
-
-/**
- * @swagger
- * /api/meals/templates:
- *   get:
- *     summary: Get user's meal templates
- *     tags: [Meal Templates]
- *     security:
- *       - bearerAuth: []
- *     responses:
- *       200:
- *         description: List of meal templates
- *       401:
- *         description: Unauthorized
- *       500:
- *         description: Server error
- */
-// Routes for meal templates - these must come before the /:id routes
 router.get('/templates', mealController.getMealTemplates);
 
 /**
  * @swagger
  * /api/meals/templates:
  *   post:
- *     summary: Create meal template
+ *     summary: Create a new meal template
  *     tags: [Meal Templates]
  *     security:
  *       - bearerAuth: []
@@ -83,49 +73,32 @@ router.get('/templates', mealController.getMealTemplates);
  *         application/json:
  *           schema:
  *             type: object
- *             required:
- *               - name
- *               - meal_time
  *             properties:
  *               name:
  *                 type: string
- *               meal_time:
+ *               meal_type:
  *                 type: string
- *                 enum: [breakfast, lunch, dinner, snack]
  *               foods:
  *                 type: array
  *                 items:
  *                   type: object
- *                   properties:
- *                     food_id:
- *                       type: integer
- *                     serving_size:
- *                       type: number
- *                     serving_unit:
- *                       type: string
- *                     calories:
- *                       type: number
  *     responses:
  *       201:
- *         description: Template created successfully
+ *         description: Meal template created successfully
  *       400:
- *         description: Validation error
+ *         description: Invalid input
  *       401:
  *         description: Unauthorized
  *       500:
  *         description: Server error
  */
-router.post(
-  '/templates',
-  validateMealTemplate,
-  mealController.createMealTemplate
-);
+router.post('/templates', validateMealTemplate, mealController.createMealTemplate);
 
 /**
  * @swagger
  * /api/meals/templates/{id}:
  *   get:
- *     summary: Get meal template by ID
+ *     summary: Retrieve a specific meal template by ID
  *     tags: [Meal Templates]
  *     security:
  *       - bearerAuth: []
@@ -135,13 +108,14 @@ router.post(
  *         required: true
  *         schema:
  *           type: integer
+ *         description: Meal template ID
  *     responses:
  *       200:
- *         description: Template details
+ *         description: Successfully retrieved meal template
  *       401:
  *         description: Unauthorized
  *       404:
- *         description: Template not found
+ *         description: Meal template not found
  *       500:
  *         description: Server error
  */
@@ -151,7 +125,7 @@ router.get('/templates/:id', mealController.getMealTemplateById);
  * @swagger
  * /api/meals/templates/{id}:
  *   put:
- *     summary: Update meal template
+ *     summary: Update an existing meal template
  *     tags: [Meal Templates]
  *     security:
  *       - bearerAuth: []
@@ -161,6 +135,7 @@ router.get('/templates/:id', mealController.getMealTemplateById);
  *         required: true
  *         schema:
  *           type: integer
+ *         description: Meal template ID
  *     requestBody:
  *       required: true
  *       content:
@@ -170,45 +145,31 @@ router.get('/templates/:id', mealController.getMealTemplateById);
  *             properties:
  *               name:
  *                 type: string
- *               meal_time:
+ *               meal_type:
  *                 type: string
- *                 enum: [breakfast, lunch, dinner, snack]
  *               foods:
  *                 type: array
  *                 items:
  *                   type: object
- *                   properties:
- *                     food_id:
- *                       type: integer
- *                     serving_size:
- *                       type: number
- *                     serving_unit:
- *                       type: string
- *                     calories:
- *                       type: number
  *     responses:
  *       200:
- *         description: Template updated successfully
+ *         description: Meal template updated successfully
  *       400:
- *         description: Validation error
+ *         description: Invalid input
  *       401:
  *         description: Unauthorized
  *       404:
- *         description: Template not found
+ *         description: Meal template not found
  *       500:
  *         description: Server error
  */
-router.put(
-  '/templates/:id',
-  validateMealTemplate,
-  mealController.updateMealTemplate
-);
+router.put('/templates/:id', validateMealTemplate, mealController.updateMealTemplate);
 
 /**
  * @swagger
  * /api/meals/templates/{id}:
  *   delete:
- *     summary: Delete meal template
+ *     summary: Delete a meal template
  *     tags: [Meal Templates]
  *     security:
  *       - bearerAuth: []
@@ -218,13 +179,14 @@ router.put(
  *         required: true
  *         schema:
  *           type: integer
+ *         description: Meal template ID
  *     responses:
- *       200:
- *         description: Template deleted successfully
+ *       204:
+ *         description: Meal template deleted successfully
  *       401:
  *         description: Unauthorized
  *       404:
- *         description: Template not found
+ *         description: Meal template not found
  *       500:
  *         description: Server error
  */
@@ -232,36 +194,98 @@ router.delete('/templates/:id', mealController.deleteMealTemplate);
 
 /**
  * @swagger
- * /api/meals/{id}:
- *   get:
- *     summary: Get meal by ID
- *     tags: [Meals]
+ * /api/meals/fromTemplate/{templateId}:
+ *   post:
+ *     summary: Create a meal from a template
+ *     tags: [Meal Templates]
  *     security:
  *       - bearerAuth: []
  *     parameters:
  *       - in: path
- *         name: id
+ *         name: templateId
  *         required: true
  *         schema:
  *           type: integer
+ *         description: Meal template ID
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               meal_date:
+ *                 type: string
+ *                 format: date
+ *               meal_time:
+ *                 type: string
+ *               notes:
+ *                 type: string
  *     responses:
- *       200:
- *         description: Meal details
+ *       201:
+ *         description: Meal created from template successfully
  *       401:
  *         description: Unauthorized
  *       404:
- *         description: Meal not found
+ *         description: Meal template not found
  *       500:
  *         description: Server error
  */
-// Get specific meal details
-router.get('/:id', mealController.getMealById);
+router.post('/fromTemplate/:templateId', mealController.createMealFromTemplate);
+
+// ======= MEAL ROUTES =======
+/**
+ * @swagger
+ * /api/meals:
+ *   get:
+ *     summary: Retrieve user's meals
+ *     tags: [Meals]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: query
+ *         name: page
+ *         schema:
+ *           type: integer
+ *           default: 1
+ *         description: Page number for pagination
+ *       - in: query
+ *         name: limit
+ *         schema:
+ *           type: integer
+ *           default: 10
+ *         description: Number of meals per page
+ *       - in: query
+ *         name: startDate
+ *         schema:
+ *           type: string
+ *           format: date
+ *         description: Start date for meal filter
+ *       - in: query
+ *         name: endDate
+ *         schema:
+ *           type: string
+ *           format: date
+ *         description: End date for meal filter
+ *       - in: query
+ *         name: mealType
+ *         schema:
+ *           type: string
+ *         description: Filter by meal type
+ *     responses:
+ *       200:
+ *         description: Successfully retrieved meals
+ *       401:
+ *         description: Unauthorized
+ *       500:
+ *         description: Server error
+ */
+router.get('/', mealController.getUserMeals);
 
 /**
  * @swagger
  * /api/meals:
  *   post:
- *     summary: Create new meal log
+ *     summary: Create a new meal
  *     tags: [Meals]
  *     security:
  *       - bearerAuth: []
@@ -271,56 +295,35 @@ router.get('/:id', mealController.getMealById);
  *         application/json:
  *           schema:
  *             type: object
- *             required:
- *               - name
- *               - meal_time
- *               - date
  *             properties:
  *               name:
  *                 type: string
- *               meal_time:
+ *               meal_type:
  *                 type: string
- *                 enum: [breakfast, lunch, dinner, snack]
- *               date:
+ *               meal_date:
  *                 type: string
  *                 format: date
- *               total_calories:
- *                 type: number
  *               foods:
  *                 type: array
  *                 items:
  *                   type: object
- *                   properties:
- *                     food_id:
- *                       type: integer
- *                     serving_size:
- *                       type: number
- *                     serving_unit:
- *                       type: string
- *                     calories:
- *                       type: number
  *     responses:
  *       201:
- *         description: Meal created successfully
+ *         description: Meal logged successfully
  *       400:
- *         description: Validation error
+ *         description: Invalid input
  *       401:
  *         description: Unauthorized
  *       500:
  *         description: Server error
  */
-// Create new meal log
-router.post(
-  '/',
-  validateMealCreation,
-  mealController.createMeal
-);
+router.post('/', validateMealCreation, mealController.createMeal);
 
 /**
  * @swagger
  * /api/meals/{id}:
- *   put:
- *     summary: Update meal log
+ *   get:
+ *     summary: Retrieve a specific meal by ID
  *     tags: [Meals]
  *     security:
  *       - bearerAuth: []
@@ -330,41 +333,10 @@ router.post(
  *         required: true
  *         schema:
  *           type: integer
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               name:
- *                 type: string
- *               meal_time:
- *                 type: string
- *                 enum: [breakfast, lunch, dinner, snack]
- *               date:
- *                 type: string
- *                 format: date
- *               total_calories:
- *                 type: number
- *               foods:
- *                 type: array
- *                 items:
- *                   type: object
- *                   properties:
- *                     food_id:
- *                       type: integer
- *                     serving_size:
- *                       type: number
- *                     serving_unit:
- *                       type: string
- *                     calories:
- *                       type: number
+ *         description: Meal ID
  *     responses:
  *       200:
- *         description: Meal updated successfully
- *       400:
- *         description: Validation error
+ *         description: Successfully retrieved meal
  *       401:
  *         description: Unauthorized
  *       404:
@@ -372,18 +344,13 @@ router.post(
  *       500:
  *         description: Server error
  */
-// Update meal log
-router.put(
-  '/:id',
-  validateMealUpdate,
-  mealController.updateMeal
-);
+router.get('/:id', mealController.getMealById);
 
 /**
  * @swagger
  * /api/meals/{id}:
- *   delete:
- *     summary: Delete meal log
+ *   put:
+ *     summary: Update an existing meal
  *     tags: [Meals]
  *     security:
  *       - bearerAuth: []
@@ -393,8 +360,56 @@ router.put(
  *         required: true
  *         schema:
  *           type: integer
+ *         description: Meal ID
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *               meal_type:
+ *                 type: string
+ *               meal_date:
+ *                 type: string
+ *                 format: date
+ *               foods:
+ *                 type: array
+ *                 items:
+ *                   type: object
  *     responses:
  *       200:
+ *         description: Meal updated successfully
+ *       400:
+ *         description: Invalid input
+ *       401:
+ *         description: Unauthorized
+ *       404:
+ *         description: Meal not found
+ *       500:
+ *         description: Server error
+ */
+router.put('/:id', validateMealUpdate, mealController.updateMeal);
+
+/**
+ * @swagger
+ * /api/meals/{id}:
+ *   delete:
+ *     summary: Delete a meal
+ *     tags: [Meals]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: Meal ID
+ *     responses:
+ *       204:
  *         description: Meal deleted successfully
  *       401:
  *         description: Unauthorized
@@ -403,7 +418,39 @@ router.put(
  *       500:
  *         description: Server error
  */
-// Delete meal log
 router.delete('/:id', mealController.deleteMeal);
+
+/**
+ * @swagger
+ * /api/meals/{mealId}/foods/{foodId}:
+ *   delete:
+ *     summary: Remove a specific food from a meal
+ *     tags: [Meals]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: mealId
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: Meal ID
+ *       - in: path
+ *         name: foodId
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: Food ID to remove
+ *     responses:
+ *       204:
+ *         description: Food removed from meal successfully
+ *       401:
+ *         description: Unauthorized
+ *       404:
+ *         description: Food not found in meal
+ *       500:
+ *         description: Server error
+ */
+router.delete('/:mealId/foods/:foodId', mealController.removeFoodFromMeal);
 
 export default router;

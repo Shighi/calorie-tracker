@@ -98,6 +98,51 @@ export const profileUpdateValidation = [
 ];
 
 /**
+ * Validation rules for user profile creation/update
+ */
+export const userProfileValidation = [
+  body('daily_calorie_goal')
+    .optional()
+    .isInt({ min: 500, max: 10000 })
+    .withMessage('Daily calorie goal must be between 500 and 10,000'),
+  
+  body('height')
+    .optional()
+    .isFloat({ min: 50, max: 250 })
+    .withMessage('Height must be between 50 and 250 cm'),
+  
+  body('weight')
+    .optional()
+    .isFloat({ min: 20, max: 500 })
+    .withMessage('Weight must be between 20 and 500 kg'),
+  
+  body('activity_level')
+    .optional()
+    .isIn(['sedentary', 'lightly_active', 'moderately_active', 'very_active', 'extra_active'])
+    .withMessage('Invalid activity level'),
+  
+  body('gender')
+    .optional()
+    .isIn(['male', 'female', 'other'])
+    .withMessage('Invalid gender'),
+  
+  body('age')
+    .optional()
+    .isInt({ min: 1, max: 120 })
+    .withMessage('Age must be between 1 and 120'),
+  
+  body('target_weight')
+    .optional()
+    .isFloat({ min: 20, max: 500 })
+    .withMessage('Target weight must be between 20 and 500 kg'),
+  
+  body('target_type')
+    .optional()
+    .isIn(['lose_weight', 'maintain_weight', 'gain_weight'])
+    .withMessage('Invalid target type')
+];
+
+/**
  * Validation rules for food creation
  */
 export const foodValidation = [
@@ -160,12 +205,14 @@ export const foodFilterValidation = [
  * Validation rules for meal creation
  */
 export const mealValidation = [
-  body('date')
-    .notEmpty().withMessage('Meal date is required')
+  body(['date', 'meal_date', 'log_date'])
+    .optional()
     .isISO8601().withMessage('Invalid date format')
     .toDate(),
   body('type')
-    .notEmpty().withMessage('Meal type is required')
+    .isIn(['breakfast', 'lunch', 'dinner', 'snack']).withMessage('Invalid meal type'),
+  body('meal_type')
+    .optional()
     .isIn(['breakfast', 'lunch', 'dinner', 'snack']).withMessage('Invalid meal type'),
   body('name')
     .optional()
@@ -178,14 +225,104 @@ export const mealValidation = [
   body('total_calories')
     .optional()
     .isFloat({ min: 0 }).withMessage('Total calories must be non-negative'),
+  body('notes')
+    .optional()
+    .trim()
+    .isLength({ max: 500 }).withMessage('Notes must not exceed 500 characters'),
   body('foods')
     .isArray({ min: 1 }).withMessage('At least one food item is required'),
   body('foods.*.foodId')
-    .notEmpty().withMessage('Food ID is required')
-    .isUUID().withMessage('Invalid Food ID format'),
+    .optional()
+    .custom(value => {
+      // Accept UUID or numeric ID
+      return typeof value === 'string' && 
+        (value.match(/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i) || 
+        /^\d+$/.test(value)) || 
+        typeof value === 'number';
+    }).withMessage('Invalid Food ID format - must be a UUID or numeric ID'),
+  body('foods.*.food_id')
+    .optional()
+    .custom(value => {
+      // Accept UUID or numeric ID
+      return typeof value === 'string' && 
+        (value.match(/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i) || 
+        /^\d+$/.test(value)) || 
+        typeof value === 'number';
+    }).withMessage('Invalid Food ID format - must be a UUID or numeric ID'),
   body('foods.*.quantity')
-    .notEmpty().withMessage('Food quantity is required')
+    .optional()
     .isFloat({ min: 0.01 }).withMessage('Food quantity must be positive'),
+  body('foods.*.serving_qty')
+    .optional()
+    .isFloat({ min: 0.01 }).withMessage('Serving quantity must be positive'),
+  body('foods.*.serving_size')
+    .optional()
+    .isFloat({ min: 0.01 }).withMessage('Serving size must be positive'),
+  body('foods.*.serving_unit')
+    .optional()
+    .trim()
+    .isLength({ max: 50 }).withMessage('Serving unit must not exceed 50 characters'),
+  body('foods.*.calories')
+    .optional()
+    .isFloat({ min: 0 }).withMessage('Calories must be non-negative')
+];
+
+/**
+ * Validation rules for meal update
+ */
+export const mealUpdateValidation = [
+  body(['date', 'meal_date', 'log_date'])
+    .optional()
+    .isISO8601().withMessage('Invalid date format')
+    .toDate(),
+  body('type')
+    .optional()
+    .isIn(['breakfast', 'lunch', 'dinner', 'snack']).withMessage('Invalid meal type'),
+  body('meal_type')
+    .optional()
+    .isIn(['breakfast', 'lunch', 'dinner', 'snack']).withMessage('Invalid meal type'),
+  body('name')
+    .optional()
+    .trim()
+    .isLength({ max: 100 }).withMessage('Meal name must not exceed 100 characters'),
+  body('meal_time')
+    .optional()
+    .isISO8601().withMessage('Invalid meal time format')
+    .toDate(),
+  body('notes')
+    .optional()
+    .trim()
+    .isLength({ max: 500 }).withMessage('Notes must not exceed 500 characters'),
+  body('total_calories')
+    .optional()
+    .isFloat({ min: 0 }).withMessage('Total calories must be non-negative'),
+  body('foods')
+    .optional()
+    .isArray().withMessage('Foods must be an array'),
+  body('foods.*.foodId')
+    .optional()
+    .custom(value => {
+      // Accept UUID or numeric ID
+      return typeof value === 'string' && 
+        (value.match(/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i) || 
+        /^\d+$/.test(value)) || 
+        typeof value === 'number';
+    }).withMessage('Invalid Food ID format - must be a UUID or numeric ID'),
+  body('foods.*.food_id')
+    .optional()
+    .custom(value => {
+      // Accept UUID or numeric ID
+      return typeof value === 'string' && 
+        (value.match(/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i) || 
+        /^\d+$/.test(value)) || 
+        typeof value === 'number';
+    }).withMessage('Invalid Food ID format - must be a UUID or numeric ID'),
+  body('foods.*.quantity')
+    .optional()
+    .isFloat({ min: 0.01 }).withMessage('Food quantity must be positive'),
+  body('foods.*.serving_qty')
+    .optional()
+    .isFloat({ min: 0.01 }).withMessage('Serving quantity must be positive'),
   body('foods.*.serving_size')
     .optional()
     .isFloat({ min: 0.01 }).withMessage('Serving size must be positive'),
@@ -207,16 +344,45 @@ export const mealTemplateValidation = [
     .trim()
     .isLength({ min: 2, max: 100 }).withMessage('Template name must be between 2 and 100 characters'),
   body('type')
-    .notEmpty().withMessage('Meal type is required')
+    .optional()
     .isIn(['breakfast', 'lunch', 'dinner', 'snack']).withMessage('Invalid meal type'),
+  body('meal_type')
+    .optional()
+    .isIn(['breakfast', 'lunch', 'dinner', 'snack']).withMessage('Invalid meal type'),
+  body('meal_time')
+    .optional()
+    .isISO8601().withMessage('Invalid meal time format')
+    .toDate(),
+  body('notes')
+    .optional()
+    .trim()
+    .isLength({ max: 500 }).withMessage('Notes must not exceed 500 characters'),
   body('foods')
     .isArray({ min: 1 }).withMessage('At least one food item is required'),
   body('foods.*.foodId')
-    .notEmpty().withMessage('Food ID is required')
-    .isUUID().withMessage('Invalid Food ID format'),
+    .optional()
+    .custom(value => {
+      // Accept UUID or numeric ID
+      return typeof value === 'string' && 
+        (value.match(/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i) || 
+        /^\d+$/.test(value)) || 
+        typeof value === 'number';
+    }).withMessage('Invalid Food ID format - must be a UUID or numeric ID'),
+  body('foods.*.food_id')
+    .optional()
+    .custom(value => {
+      // Accept UUID or numeric ID
+      return typeof value === 'string' && 
+        (value.match(/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i) || 
+        /^\d+$/.test(value)) || 
+        typeof value === 'number';
+    }).withMessage('Invalid Food ID format - must be a UUID or numeric ID'),
   body('foods.*.quantity')
-    .notEmpty().withMessage('Food quantity is required')
+    .optional()
     .isFloat({ min: 0.01 }).withMessage('Food quantity must be positive'),
+  body('foods.*.serving_qty')
+    .optional()
+    .isFloat({ min: 0.01 }).withMessage('Serving quantity must be positive'),
   body('foods.*.serving_size')
     .optional()
     .isFloat({ min: 0.01 }).withMessage('Serving size must be positive'),
@@ -230,46 +396,94 @@ export const mealTemplateValidation = [
 ];
 
 /**
- * Validation rules for meal update
+ * Validation rules for removing a meal from template
  */
-export const mealUpdateValidation = [
-  body('date')
+export const removeFoodFromMealValidation = [
+  param('mealId')
+    .notEmpty().withMessage('Meal ID is required')
+    .custom(value => {
+      // Accept UUID or numeric ID
+      return typeof value === 'string' && 
+        (value.match(/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i) || 
+        /^\d+$/.test(value)) || 
+        typeof value === 'number';
+    }).withMessage('Invalid Meal ID format - must be a UUID or numeric ID'),
+  param('foodId')
+    .notEmpty().withMessage('Food ID is required')
+    .custom(value => {
+      // Accept UUID or numeric ID
+      return typeof value === 'string' && 
+        (value.match(/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i) || 
+        /^\d+$/.test(value)) || 
+        typeof value === 'number';
+    }).withMessage('Invalid Food ID format - must be a UUID or numeric ID')
+];
+
+/**
+ * Validation rules for creating a meal from template
+ */
+export const createFromTemplateValidation = [
+  body('meal_date')
     .optional()
     .isISO8601().withMessage('Invalid date format')
     .toDate(),
-  body('type')
+  body('log_date')
     .optional()
-    .isIn(['breakfast', 'lunch', 'dinner', 'snack']).withMessage('Invalid meal type'),
-  body('name')
-    .optional()
-    .trim()
-    .isLength({ max: 100 }).withMessage('Meal name must not exceed 100 characters'),
+    .isISO8601().withMessage('Invalid date format')
+    .toDate(),
   body('meal_time')
     .optional()
     .isISO8601().withMessage('Invalid meal time format')
     .toDate(),
-  body('total_calories')
-    .optional()
-    .isFloat({ min: 0 }).withMessage('Total calories must be non-negative'),
-  body('foods')
-    .optional()
-    .isArray({ min: 1 }).withMessage('At least one food item is required'),
-  body('foods.*.foodId')
-    .optional()
-    .isUUID().withMessage('Invalid Food ID format'),
-  body('foods.*.quantity')
-    .optional()
-    .isFloat({ min: 0.01 }).withMessage('Food quantity must be positive'),
-  body('foods.*.serving_size')
-    .optional()
-    .isFloat({ min: 0.01 }).withMessage('Serving size must be positive'),
-  body('foods.*.serving_unit')
+  body('notes')
     .optional()
     .trim()
-    .isLength({ max: 50 }).withMessage('Serving unit must not exceed 50 characters'),
-  body('foods.*.calories')
-    .optional()
-    .isFloat({ min: 0 }).withMessage('Calories must be non-negative')
+    .isLength({ max: 500 }).withMessage('Notes must not exceed 500 characters'),
+  param('templateId')
+    .notEmpty().withMessage('Template ID is required')
+    .isUUID().withMessage('Invalid Template ID format')
+];
+
+/**
+ * Validation rules for daily nutrition information
+ */
+export const dailyNutritionValidation = [
+  query('date')
+    .notEmpty().withMessage('Date parameter is required')
+    .isISO8601().withMessage('Invalid date format')
+    .toDate()
+];
+
+/**
+ * Validation rules for weekly nutrition information
+ */
+export const weeklyNutritionValidation = [
+  query('startDate')
+    .notEmpty().withMessage('Start date is required')
+    .isISO8601().withMessage('Invalid start date format')
+    .toDate(),
+  query('endDate')
+    .notEmpty().withMessage('End date is required')
+    .isISO8601().withMessage('Invalid end date format')
+    .toDate(),
+  query('endDate').custom((value, { req }) => {
+    if (new Date(value) < new Date(req.query.startDate)) {
+      throw new Error('End date must be greater than or equal to start date');
+    }
+    return true;
+  })
+];
+
+/**
+ * Validation rules for monthly nutrition information
+ */
+export const monthlyNutritionValidation = [
+  query('month')
+    .notEmpty().withMessage('Month parameter is required')
+    .isInt({ min: 1, max: 12 }).withMessage('Month must be between 1 and 12'),
+  query('year')
+    .notEmpty().withMessage('Year parameter is required')
+    .isInt({ min: 2000, max: 2100 }).withMessage('Year must be between 2000 and 2100')
 ];
 
 /**
@@ -290,6 +504,21 @@ export const nutritionReportValidation = [
     }
     return true;
   })
+];
+
+/**
+ * Validation rules for getting nutrients by food ID
+ */
+export const nutrientsByFoodIdValidation = [
+  param('foodId')
+    .notEmpty().withMessage('Food ID is required')
+    .custom(value => {
+      // Accept UUID or numeric ID
+      return typeof value === 'string' && 
+        (value.match(/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i) || 
+        /^\d+$/.test(value)) || 
+        typeof value === 'number';
+    }).withMessage('Invalid Food ID format - must be a UUID or numeric ID')
 ];
 
 /**
@@ -342,30 +571,19 @@ export const updateLocaleValidation = [
     .isBoolean().withMessage('isDefault must be a boolean value')
 ];
 
-/**
- * Helper function to validate meal creation
- */
+// Helper validation functions
 export const validateMealCreation = [...mealValidation, checkValidation];
-
-/**
- * Helper function to validate meal update
- */
 export const validateMealUpdate = [...mealUpdateValidation, checkValidation];
-
-/**
- * Helper function to validate meal template
- */
 export const validateMealTemplate = [...mealTemplateValidation, checkValidation];
-
-/**
- * Helper function to validate locale creation
- */
+export const validateMealFromTemplate = [...createFromTemplateValidation, checkValidation];
+export const validateDailyNutrition = [...dailyNutritionValidation, checkValidation];
+export const validateWeeklyNutrition = [...weeklyNutritionValidation, checkValidation];
+export const validateMonthlyNutrition = [...monthlyNutritionValidation, checkValidation];
+export const validateNutrientsByFoodId = [...nutrientsByFoodIdValidation, checkValidation];
 export const validateLocaleCreation = [...createLocaleValidation, checkValidation];
-
-/**
- * Helper function to validate locale update
- */
 export const validateLocaleUpdate = [...updateLocaleValidation, checkValidation];
+export const validateRemoveFoodFromMeal = [...removeFoodFromMealValidation, checkValidation];
+
 
 /**
  * Validation selector function
@@ -377,6 +595,8 @@ const validate = (validationType) => {
       return [...registerValidation, checkValidation];
     case 'login':
       return [...loginValidation, checkValidation];
+    case 'userProfile':
+      return [...userProfileValidation, checkValidation];
     case 'profileUpdate':
       return [...profileUpdateValidation, checkValidation];
     case 'createFood':
@@ -389,16 +609,27 @@ const validate = (validationType) => {
       return validateMealUpdate;
     case 'createMealTemplate':
       return validateMealTemplate;
+    case 'createMealFromTemplate':
+      return validateMealFromTemplate;
+    case 'dailyNutrition':
+      return validateDailyNutrition;
+    case 'weeklyNutrition':
+      return validateWeeklyNutrition;
+    case 'monthlyNutrition':
+      return validateMonthlyNutrition;
+    case 'nutrientsByFoodId':
+      return validateNutrientsByFoodId;
     case 'nutritionReport':
       return [...nutritionReportValidation, checkValidation];
     case 'createLocale':
       return validateLocaleCreation;
     case 'updateLocale':
       return validateLocaleUpdate;
+    case 'removeFoodFromMeal':
+      return validateRemoveFoodFromMeal;
     default:
       return [checkValidation];
   }
 };
 
-// Export the validate function as the default export
 export default validate;

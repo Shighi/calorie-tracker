@@ -4,7 +4,7 @@
  */
 
 import jwt from 'jsonwebtoken';
-import { User } from '../models/User.js';
+import User from '../models/User.js';
 import { errorResponse } from '../utils/apiResponse.js';
 import logger from '../utils/logger.js';
 import dotenv from 'dotenv';

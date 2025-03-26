@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import { User } from '../models/User.js';
+import User from '../models/User.js';
 import config from '../config/env.js';
 import { ApiError } from '../utils/apiResponse.js';
 import cacheService from './cacheService.js';

@@ -1,0 +1,435 @@
+{"level":"info","message":"Database connection established successfully","timestamp":"2025-03-25 13:16:14"}
+{"level":"info","message":"Redis connection established successfully","timestamp":"2025-03-25 13:16:14"}
+{"level":"info","message":"Server running on port 3000","timestamp":"2025-03-25 13:16:14"}
+{"level":"info","message":"API documentation available at http://localhost:3000/api-docs","timestamp":"2025-03-25 13:16:14"}
+{"level":"info","message":"GET /api/auth/profile","timestamp":"2025-03-25 13:16:43"}
+{"level":"info","message":"GET /api/auth/profile","timestamp":"2025-03-25 13:16:43"}
+{"level":"info","message":"Database connection established successfully","timestamp":"2025-03-25 15:03:36"}
+{"level":"info","message":"Redis connection established successfully","timestamp":"2025-03-25 15:03:36"}
+{"level":"info","message":"Server running on port 3000","timestamp":"2025-03-25 15:03:36"}
+{"level":"info","message":"API documentation available at http://localhost:3000/api-docs","timestamp":"2025-03-25 15:03:36"}
+{"level":"info","message":"[2025-03-25T12:10:54.003Z] GET /api/foods/categories","timestamp":"2025-03-25 15:10:54"}
+{"level":"info","message":"[2025-03-25T12:10:54.019Z] GET /api/foods?page=1&limit=20&sort=name&order=ASC","timestamp":"2025-03-25 15:10:54"}
+{"level":"info","message":"Response time: 116ms for GET /api/foods/categories","timestamp":"2025-03-25 15:10:54"}
+{"level":"info","message":"Response time: 104ms for GET /api/foods?page=1&limit=20&sort=name&order=ASC","timestamp":"2025-03-25 15:10:54"}
+{"level":"info","message":"[2025-03-25T12:10:54.126Z] GET /api/foods/categories","timestamp":"2025-03-25 15:10:54"}
+{"level":"info","message":"[2025-03-25T12:10:54.129Z] GET /api/foods?page=1&limit=20&sort=name&order=ASC","timestamp":"2025-03-25 15:10:54"}
+{"level":"info","message":"Response time: 7ms for GET /api/foods/categories","timestamp":"2025-03-25 15:10:54"}
+{"level":"info","message":"Response time: 7ms for GET /api/foods?page=1&limit=20&sort=name&order=ASC","timestamp":"2025-03-25 15:10:54"}
+{"level":"info","message":"Database connection established successfully","timestamp":"2025-03-25 15:23:17"}
+{"level":"info","message":"Redis connection established successfully","timestamp":"2025-03-25 15:23:17"}
+{"level":"info","message":"Server running on port 3000","timestamp":"2025-03-25 15:23:17"}
+{"level":"info","message":"API documentation available at http://localhost:3000/api-docs","timestamp":"2025-03-25 15:23:17"}
+{"level":"info","message":"[2025-03-25T12:23:24.940Z] POST /api/auth/login","timestamp":"2025-03-25 15:23:24"}
+{"level":"info","message":"User login successful: Daisy","timestamp":"2025-03-25 15:23:25"}
+{"level":"info","message":"Response time: 101ms for POST /api/auth/login","timestamp":"2025-03-25 15:23:25"}
+{"level":"info","message":"[2025-03-25T12:23:25.098Z] GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 15:23:25"}
+{"level":"info","message":"[2025-03-25T12:23:25.107Z] GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 15:23:25"}
+{"level":"info","message":"[2025-03-25T12:23:25.118Z] GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 15:23:25"}
+{"level":"info","message":"[2025-03-25T12:23:25.122Z] GET /api/auth/profile","timestamp":"2025-03-25 15:23:25"}
+{"level":"info","message":"[2025-03-25T12:23:25.128Z] GET /api/foods","timestamp":"2025-03-25 15:23:25"}
+{"level":"info","message":"Response time: 43ms for GET /api/foods","timestamp":"2025-03-25 15:23:25"}
+{"level":"info","message":"[2025-03-25T12:23:25.175Z] GET /api/foods","timestamp":"2025-03-25 15:23:25"}
+{"level":"info","message":"Response time: 6ms for GET /api/foods","timestamp":"2025-03-25 15:23:25"}
+{"level":"info","message":"Response time: 96ms for GET /api/auth/profile","timestamp":"2025-03-25 15:23:25"}
+{"level":"info","message":"Response time: 121ms for GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 15:23:25"}
+{"level":"info","message":"Response time: 109ms for GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 15:23:25"}
+{"level":"info","message":"Response time: 103ms for GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 15:23:25"}
+{"level":"info","message":"[2025-03-25T12:23:25.224Z] GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 15:23:25"}
+{"level":"info","message":"[2025-03-25T12:23:25.235Z] GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 15:23:25"}
+{"level":"info","message":"[2025-03-25T12:23:25.239Z] GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 15:23:25"}
+{"level":"info","message":"[2025-03-25T12:23:25.241Z] GET /api/foods","timestamp":"2025-03-25 15:23:25"}
+{"level":"info","message":"Response time: 13ms for GET /api/foods","timestamp":"2025-03-25 15:23:25"}
+{"level":"info","message":"Response time: 33ms for GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 15:23:25"}
+{"level":"info","message":"Response time: 22ms for GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 15:23:25"}
+{"level":"info","message":"Response time: 26ms for GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 15:23:25"}
+{"level":"info","message":"[2025-03-25T12:23:25.268Z] GET /api/foods","timestamp":"2025-03-25 15:23:25"}
+{"level":"info","message":"[2025-03-25T12:23:25.271Z] GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 15:23:25"}
+{"level":"info","message":"[2025-03-25T12:23:25.274Z] GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 15:23:25"}
+{"level":"info","message":"[2025-03-25T12:23:25.282Z] GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 15:23:25"}
+{"level":"info","message":"Response time: 18ms for GET /api/foods","timestamp":"2025-03-25 15:23:25"}
+{"level":"info","message":"Response time: 30ms for GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 15:23:25"}
+{"level":"info","message":"Response time: 27ms for GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 15:23:25"}
+{"level":"info","message":"Response time: 21ms for GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 15:23:25"}
+{"level":"info","message":"[2025-03-25T12:23:25.308Z] GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 15:23:25"}
+{"level":"info","message":"[2025-03-25T12:23:25.315Z] GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 15:23:25"}
+{"level":"info","message":"[2025-03-25T12:23:25.318Z] GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 15:23:25"}
+{"level":"info","message":"Response time: 16ms for GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 15:23:25"}
+{"level":"info","message":"Response time: 16ms for GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 15:23:25"}
+{"level":"info","message":"Response time: 16ms for GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 15:23:25"}
+{"level":"info","message":"[2025-03-25T12:23:46.116Z] GET /api/meals?startDate=2025-03-25&endDate=2025-03-25","timestamp":"2025-03-25 15:23:46"}
+{"level":"info","message":"Response time: 122ms for GET /api/meals?startDate=2025-03-25&endDate=2025-03-25","timestamp":"2025-03-25 15:23:46"}
+{"level":"info","message":"[2025-03-25T12:23:46.242Z] GET /api/meals?startDate=2025-03-25&endDate=2025-03-25","timestamp":"2025-03-25 15:23:46"}
+{"level":"info","message":"Response time: 7ms for GET /api/meals?startDate=2025-03-25&endDate=2025-03-25","timestamp":"2025-03-25 15:23:46"}
+{"level":"info","message":"[2025-03-25T12:23:52.082Z] GET /api/foods?query=mai","timestamp":"2025-03-25 15:23:52"}
+{"level":"info","message":"Response time: 30ms for GET /api/foods?query=mai","timestamp":"2025-03-25 15:23:52"}
+{"level":"info","message":"[2025-03-25T12:24:13.158Z] GET /api/foods?query=beans","timestamp":"2025-03-25 15:24:13"}
+{"level":"info","message":"Response time: 82ms for GET /api/foods?query=beans","timestamp":"2025-03-25 15:24:13"}
+{"level":"info","message":"[2025-03-25T12:24:24.058Z] GET /api/foods?query=y","timestamp":"2025-03-25 15:24:24"}
+{"level":"info","message":"Response time: 79ms for GET /api/foods?query=y","timestamp":"2025-03-25 15:24:24"}
+{"level":"info","message":"[2025-03-25T12:24:24.565Z] GET /api/foods?query=yo","timestamp":"2025-03-25 15:24:24"}
+{"level":"info","message":"Response time: 15ms for GET /api/foods?query=yo","timestamp":"2025-03-25 15:24:24"}
+{"level":"info","message":"[2025-03-25T12:24:35.928Z] GET /api/foods?query=pi","timestamp":"2025-03-25 15:24:35"}
+{"level":"info","message":"Response time: 92ms for GET /api/foods?query=pi","timestamp":"2025-03-25 15:24:36"}
+{"level":"info","message":"[2025-03-25T12:24:36.398Z] GET /api/foods?query=pill","timestamp":"2025-03-25 15:24:36"}
+{"level":"info","message":"Response time: 13ms for GET /api/foods?query=pill","timestamp":"2025-03-25 15:24:36"}
+{"level":"info","message":"[2025-03-25T12:24:48.844Z] GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 15:24:48"}
+{"level":"info","message":"[2025-03-25T12:24:48.849Z] GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 15:24:48"}
+{"level":"info","message":"[2025-03-25T12:24:48.855Z] GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 15:24:48"}
+{"level":"info","message":"[2025-03-25T12:24:48.861Z] GET /api/foods","timestamp":"2025-03-25 15:24:48"}
+{"level":"info","message":"Response time: 4ms for GET /api/foods","timestamp":"2025-03-25 15:24:48"}
+{"level":"info","message":"[2025-03-25T12:24:48.867Z] GET /api/foods","timestamp":"2025-03-25 15:24:48"}
+{"level":"info","message":"Response time: 10ms for GET /api/foods","timestamp":"2025-03-25 15:24:48"}
+{"level":"info","message":"Response time: 102ms for GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 15:24:48"}
+{"level":"info","message":"Response time: 92ms for GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 15:24:48"}
+{"level":"info","message":"[2025-03-25T12:24:48.951Z] GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 15:24:48"}
+{"level":"info","message":"[2025-03-25T12:24:48.957Z] GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 15:24:48"}
+{"level":"info","message":"Response time: 110ms for GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 15:24:48"}
+{"level":"info","message":"[2025-03-25T12:24:48.964Z] GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 15:24:48"}
+{"level":"info","message":"Response time: 16ms for GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 15:24:48"}
+{"level":"info","message":"Response time: 14ms for GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 15:24:48"}
+{"level":"info","message":"Response time: 9ms for GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 15:24:48"}
+{"level":"info","message":"[2025-03-25T12:25:00.628Z] GET /api/auth/profile","timestamp":"2025-03-25 15:25:00"}
+{"level":"info","message":"Response time: 63ms for GET /api/auth/profile","timestamp":"2025-03-25 15:25:00"}
+{"level":"info","message":"[2025-03-25T12:25:00.693Z] GET /api/auth/profile","timestamp":"2025-03-25 15:25:00"}
+{"level":"info","message":"Response time: 4ms for GET /api/auth/profile","timestamp":"2025-03-25 15:25:00"}
+{"level":"info","message":"[2025-03-25T12:29:26.508Z] GET /api/profile","timestamp":"2025-03-25 15:29:26"}
+{"level":"info","message":"Response time: 2ms for GET /api/profile","timestamp":"2025-03-25 15:29:26"}
+{"level":"info","message":"[2025-03-25T12:34:34.033Z] GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 15:34:34"}
+{"level":"info","message":"[2025-03-25T12:34:34.038Z] GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 15:34:34"}
+{"level":"info","message":"[2025-03-25T12:34:34.042Z] GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 15:34:34"}
+{"level":"info","message":"[2025-03-25T12:34:34.049Z] GET /api/foods","timestamp":"2025-03-25 15:34:34"}
+{"level":"info","message":"Response time: 3ms for GET /api/foods","timestamp":"2025-03-25 15:34:34"}
+{"level":"info","message":"[2025-03-25T12:34:34.057Z] GET /api/foods","timestamp":"2025-03-25 15:34:34"}
+{"level":"info","message":"Response time: 7ms for GET /api/foods","timestamp":"2025-03-25 15:34:34"}
+{"level":"info","message":"Response time: 91ms for GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 15:34:34"}
+{"level":"info","message":"Response time: 87ms for GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 15:34:34"}
+{"level":"info","message":"Response time: 86ms for GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 15:34:34"}
+{"level":"info","message":"[2025-03-25T12:34:34.132Z] GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 15:34:34"}
+{"level":"info","message":"[2025-03-25T12:34:34.136Z] GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 15:34:34"}
+{"level":"info","message":"[2025-03-25T12:34:34.139Z] GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 15:34:34"}
+{"level":"info","message":"Response time: 13ms for GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 15:34:34"}
+{"level":"info","message":"Response time: 12ms for GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 15:34:34"}
+{"level":"info","message":"Response time: 11ms for GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 15:34:34"}
+{"level":"info","message":"[2025-03-25T12:35:20.802Z] GET /api/auth/profile","timestamp":"2025-03-25 15:35:20"}
+{"level":"info","message":"Response time: 81ms for GET /api/auth/profile","timestamp":"2025-03-25 15:35:20"}
+{"level":"info","message":"[2025-03-25T12:35:20.886Z] GET /api/auth/profile","timestamp":"2025-03-25 15:35:20"}
+{"level":"info","message":"Response time: 7ms for GET /api/auth/profile","timestamp":"2025-03-25 15:35:20"}
+{"level":"info","message":"[2025-03-25T12:35:20.914Z] GET /api/auth/profile","timestamp":"2025-03-25 15:35:20"}
+{"level":"info","message":"Response time: 5ms for GET /api/auth/profile","timestamp":"2025-03-25 15:35:20"}
+{"level":"info","message":"[2025-03-25T12:35:20.923Z] GET /api/auth/profile","timestamp":"2025-03-25 15:35:20"}
+{"level":"info","message":"Response time: 7ms for GET /api/auth/profile","timestamp":"2025-03-25 15:35:20"}
+{"level":"info","message":"[2025-03-25T12:35:20.939Z] GET /api/auth/profile","timestamp":"2025-03-25 15:35:20"}
+{"level":"info","message":"Response time: 8ms for GET /api/auth/profile","timestamp":"2025-03-25 15:35:20"}
+{"level":"info","message":"[2025-03-25T12:35:20.951Z] GET /api/auth/profile","timestamp":"2025-03-25 15:35:20"}
+{"level":"info","message":"Response time: 7ms for GET /api/auth/profile","timestamp":"2025-03-25 15:35:20"}
+{"level":"info","message":"[2025-03-25T12:44:09.983Z] GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 15:44:09"}
+{"level":"info","message":"Response time: 80ms for GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 15:44:10"}
+{"level":"info","message":"[2025-03-25T12:44:10.067Z] GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 15:44:10"}
+{"level":"info","message":"[2025-03-25T12:44:10.076Z] GET /api/nutrition/weekly?startDate=2025-03-18&endDate=2025-03-25","timestamp":"2025-03-25 15:44:10"}
+{"level":"info","message":"Response time: 12ms for GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 15:44:10"}
+{"level":"info","message":"Response time: 23ms for GET /api/nutrition/weekly?startDate=2025-03-18&endDate=2025-03-25","timestamp":"2025-03-25 15:44:10"}
+{"level":"info","message":"[2025-03-25T12:44:10.104Z] GET /api/nutrition/weekly?startDate=2025-03-18&endDate=2025-03-25","timestamp":"2025-03-25 15:44:10"}
+{"level":"info","message":"Response time: 4ms for GET /api/nutrition/weekly?startDate=2025-03-18&endDate=2025-03-25","timestamp":"2025-03-25 15:44:10"}
+{"level":"info","message":"[2025-03-25T12:44:15.344Z] GET /api/auth/profile","timestamp":"2025-03-25 15:44:15"}
+{"level":"info","message":"Response time: 9ms for GET /api/auth/profile","timestamp":"2025-03-25 15:44:15"}
+{"level":"info","message":"[2025-03-25T12:44:15.359Z] GET /api/auth/profile","timestamp":"2025-03-25 15:44:15"}
+{"level":"info","message":"Response time: 16ms for GET /api/auth/profile","timestamp":"2025-03-25 15:44:15"}
+{"level":"info","message":"[2025-03-25T12:44:15.385Z] GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 15:44:15"}
+{"level":"info","message":"Response time: 7ms for GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 15:44:15"}
+{"level":"info","message":"[2025-03-25T12:44:15.398Z] GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 15:44:15"}
+{"level":"info","message":"[2025-03-25T12:44:15.430Z] GET /api/nutrition/weekly?startDate=2025-03-18&endDate=2025-03-25","timestamp":"2025-03-25 15:44:15"}
+{"level":"info","message":"Response time: 30ms for GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 15:44:15"}
+{"level":"info","message":"[2025-03-25T12:44:15.446Z] GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 15:44:15"}
+{"level":"info","message":"Response time: 25ms for GET /api/nutrition/weekly?startDate=2025-03-18&endDate=2025-03-25","timestamp":"2025-03-25 15:44:15"}
+{"level":"info","message":"[2025-03-25T12:44:15.471Z] GET /api/nutrition/weekly?startDate=2025-03-18&endDate=2025-03-25","timestamp":"2025-03-25 15:44:15"}
+{"level":"info","message":"Response time: 31ms for GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 15:44:15"}
+{"level":"info","message":"[2025-03-25T12:44:15.483Z] GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 15:44:15"}
+{"level":"info","message":"Response time: 17ms for GET /api/nutrition/weekly?startDate=2025-03-18&endDate=2025-03-25","timestamp":"2025-03-25 15:44:15"}
+{"level":"info","message":"[2025-03-25T12:44:15.496Z] GET /api/nutrition/weekly?startDate=2025-03-18&endDate=2025-03-25","timestamp":"2025-03-25 15:44:15"}
+{"level":"info","message":"Response time: 18ms for GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 15:44:15"}
+{"level":"info","message":"Response time: 30ms for GET /api/nutrition/weekly?startDate=2025-03-18&endDate=2025-03-25","timestamp":"2025-03-25 15:44:15"}
+{"level":"info","message":"[2025-03-25T12:44:15.530Z] GET /api/nutrition/weekly?startDate=2025-03-18&endDate=2025-03-25","timestamp":"2025-03-25 15:44:15"}
+{"level":"info","message":"Response time: 7ms for GET /api/nutrition/weekly?startDate=2025-03-18&endDate=2025-03-25","timestamp":"2025-03-25 15:44:15"}
+{"level":"info","message":"[2025-03-25T12:44:31.556Z] GET /api/auth/profile","timestamp":"2025-03-25 15:44:31"}
+{"level":"info","message":"Response time: 74ms for GET /api/auth/profile","timestamp":"2025-03-25 15:44:31"}
+{"level":"info","message":"[2025-03-25T12:44:31.636Z] GET /api/auth/profile","timestamp":"2025-03-25 15:44:31"}
+{"level":"info","message":"Response time: 5ms for GET /api/auth/profile","timestamp":"2025-03-25 15:44:31"}
+{"level":"info","message":"[2025-03-25T12:44:31.671Z] GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 15:44:31"}
+{"level":"info","message":"[2025-03-25T12:44:31.675Z] GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 15:44:31"}
+{"level":"info","message":"[2025-03-25T12:44:31.678Z] GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 15:44:31"}
+{"level":"info","message":"[2025-03-25T12:44:31.684Z] GET /api/foods","timestamp":"2025-03-25 15:44:31"}
+{"level":"info","message":"Response time: 8ms for GET /api/foods","timestamp":"2025-03-25 15:44:31"}
+{"level":"info","message":"Response time: 23ms for GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 15:44:31"}
+{"level":"info","message":"Response time: 21ms for GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 15:44:31"}
+{"level":"info","message":"Response time: 19ms for GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 15:44:31"}
+{"level":"info","message":"[2025-03-25T12:44:31.699Z] GET /api/foods","timestamp":"2025-03-25 15:44:31"}
+{"level":"info","message":"[2025-03-25T12:44:31.703Z] GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 15:44:31"}
+{"level":"info","message":"[2025-03-25T12:44:31.709Z] GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 15:44:31"}
+{"level":"info","message":"[2025-03-25T12:44:31.714Z] GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 15:44:31"}
+{"level":"info","message":"Response time: 20ms for GET /api/foods","timestamp":"2025-03-25 15:44:31"}
+{"level":"info","message":"Response time: 25ms for GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 15:44:31"}
+{"level":"info","message":"Response time: 26ms for GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 15:44:31"}
+{"level":"info","message":"Response time: 22ms for GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 15:44:31"}
+{"level":"info","message":"[2025-03-25T12:44:31.739Z] GET /api/foods","timestamp":"2025-03-25 15:44:31"}
+{"level":"info","message":"[2025-03-25T12:44:31.743Z] GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 15:44:31"}
+{"level":"info","message":"[2025-03-25T12:44:31.747Z] GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 15:44:31"}
+{"level":"info","message":"[2025-03-25T12:44:31.752Z] GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 15:44:31"}
+{"level":"info","message":"Response time: 18ms for GET /api/foods","timestamp":"2025-03-25 15:44:31"}
+{"level":"info","message":"[2025-03-25T12:44:31.770Z] GET /api/foods","timestamp":"2025-03-25 15:44:31"}
+{"level":"info","message":"Response time: 37ms for GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 15:44:31"}
+{"level":"info","message":"Response time: 33ms for GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 15:44:31"}
+{"level":"info","message":"Response time: 33ms for GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 15:44:31"}
+{"level":"info","message":"Response time: 17ms for GET /api/foods","timestamp":"2025-03-25 15:44:31"}
+{"level":"info","message":"[2025-03-25T12:44:31.795Z] GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 15:44:31"}
+{"level":"info","message":"[2025-03-25T12:44:31.807Z] GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 15:44:31"}
+{"level":"info","message":"[2025-03-25T12:44:31.812Z] GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 15:44:31"}
+{"level":"info","message":"Response time: 36ms for GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 15:44:31"}
+{"level":"info","message":"Response time: 26ms for GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 15:44:31"}
+{"level":"info","message":"Response time: 23ms for GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 15:44:31"}
+{"level":"info","message":"[2025-03-25T12:45:46.554Z] GET /api/auth/profile","timestamp":"2025-03-25 15:45:46"}
+{"level":"info","message":"Response time: 75ms for GET /api/auth/profile","timestamp":"2025-03-25 15:45:46"}
+{"level":"info","message":"[2025-03-25T12:45:46.633Z] GET /api/auth/profile","timestamp":"2025-03-25 15:45:46"}
+{"level":"info","message":"Response time: 5ms for GET /api/auth/profile","timestamp":"2025-03-25 15:45:46"}
+{"level":"info","message":"[2025-03-25T12:45:46.669Z] GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 15:45:46"}
+{"level":"info","message":"[2025-03-25T12:45:46.674Z] GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 15:45:46"}
+{"level":"info","message":"[2025-03-25T12:45:46.680Z] GET /api/foods","timestamp":"2025-03-25 15:45:46"}
+{"level":"info","message":"[2025-03-25T12:45:46.682Z] GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 15:45:46"}
+{"level":"info","message":"Response time: 15ms for GET /api/foods","timestamp":"2025-03-25 15:45:46"}
+{"level":"info","message":"Response time: 26ms for GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 15:45:46"}
+{"level":"info","message":"Response time: 22ms for GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 15:45:46"}
+{"level":"info","message":"Response time: 16ms for GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 15:45:46"}
+{"level":"info","message":"[2025-03-25T12:45:46.701Z] GET /api/foods","timestamp":"2025-03-25 15:45:46"}
+{"level":"info","message":"[2025-03-25T12:45:46.705Z] GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 15:45:46"}
+{"level":"info","message":"[2025-03-25T12:45:46.711Z] GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 15:45:46"}
+{"level":"info","message":"[2025-03-25T12:45:46.716Z] GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 15:45:46"}
+{"level":"info","message":"Response time: 21ms for GET /api/foods","timestamp":"2025-03-25 15:45:46"}
+{"level":"info","message":"Response time: 25ms for GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 15:45:46"}
+{"level":"info","message":"Response time: 23ms for GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 15:45:46"}
+{"level":"info","message":"Response time: 20ms for GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 15:45:46"}
+{"level":"info","message":"[2025-03-25T12:45:46.739Z] GET /api/foods","timestamp":"2025-03-25 15:45:46"}
+{"level":"info","message":"[2025-03-25T12:45:46.747Z] GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 15:45:46"}
+{"level":"info","message":"[2025-03-25T12:45:46.753Z] GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 15:45:46"}
+{"level":"info","message":"[2025-03-25T12:45:46.759Z] GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 15:45:46"}
+{"level":"info","message":"Response time: 23ms for GET /api/foods","timestamp":"2025-03-25 15:45:46"}
+{"level":"info","message":"[2025-03-25T12:45:46.769Z] GET /api/foods","timestamp":"2025-03-25 15:45:46"}
+{"level":"info","message":"Response time: 23ms for GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 15:45:46"}
+{"level":"info","message":"Response time: 17ms for GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 15:45:46"}
+{"level":"info","message":"Response time: 13ms for GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 15:45:46"}
+{"level":"info","message":"Response time: 6ms for GET /api/foods","timestamp":"2025-03-25 15:45:46"}
+{"level":"info","message":"[2025-03-25T12:45:46.781Z] GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 15:45:46"}
+{"level":"info","message":"[2025-03-25T12:45:46.785Z] GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 15:45:46"}
+{"level":"info","message":"[2025-03-25T12:45:46.789Z] GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 15:45:46"}
+{"level":"info","message":"Response time: 16ms for GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 15:45:46"}
+{"level":"info","message":"Response time: 13ms for GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 15:45:46"}
+{"level":"info","message":"Response time: 11ms for GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 15:45:46"}
+{"level":"info","message":"[2025-03-25T12:46:01.394Z] GET /api/auth/profile","timestamp":"2025-03-25 15:46:01"}
+{"level":"info","message":"Response time: 106ms for GET /api/auth/profile","timestamp":"2025-03-25 15:46:01"}
+{"level":"info","message":"[2025-03-25T12:46:01.504Z] GET /api/auth/profile","timestamp":"2025-03-25 15:46:01"}
+{"level":"info","message":"Response time: 6ms for GET /api/auth/profile","timestamp":"2025-03-25 15:46:01"}
+{"level":"info","message":"[2025-03-25T12:46:01.519Z] GET /api/auth/profile","timestamp":"2025-03-25 15:46:01"}
+{"level":"info","message":"Response time: 7ms for GET /api/auth/profile","timestamp":"2025-03-25 15:46:01"}
+{"level":"info","message":"[2025-03-25T12:46:01.533Z] GET /api/auth/profile","timestamp":"2025-03-25 15:46:01"}
+{"level":"info","message":"Response time: 7ms for GET /api/auth/profile","timestamp":"2025-03-25 15:46:01"}
+{"level":"info","message":"[2025-03-25T12:46:01.544Z] GET /api/auth/profile","timestamp":"2025-03-25 15:46:01"}
+{"level":"info","message":"Response time: 5ms for GET /api/auth/profile","timestamp":"2025-03-25 15:46:01"}
+{"level":"info","message":"[2025-03-25T12:46:01.552Z] GET /api/auth/profile","timestamp":"2025-03-25 15:46:01"}
+{"level":"info","message":"Response time: 8ms for GET /api/auth/profile","timestamp":"2025-03-25 15:46:01"}
+{"level":"info","message":"[2025-03-25T12:49:37.914Z] GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 15:49:37"}
+{"level":"info","message":"[2025-03-25T12:49:37.919Z] GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 15:49:37"}
+{"level":"info","message":"[2025-03-25T12:49:37.921Z] GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 15:49:37"}
+{"level":"info","message":"[2025-03-25T12:49:37.925Z] GET /api/foods","timestamp":"2025-03-25 15:49:37"}
+{"level":"info","message":"Response time: 5ms for GET /api/foods","timestamp":"2025-03-25 15:49:37"}
+{"level":"info","message":"[2025-03-25T12:49:37.934Z] GET /api/foods","timestamp":"2025-03-25 15:49:37"}
+{"level":"info","message":"Response time: 3ms for GET /api/foods","timestamp":"2025-03-25 15:49:37"}
+{"level":"info","message":"Response time: 86ms for GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 15:49:38"}
+{"level":"info","message":"Response time: 83ms for GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 15:49:38"}
+{"level":"info","message":"Response time: 82ms for GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 15:49:38"}
+{"level":"info","message":"[2025-03-25T12:49:38.005Z] GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 15:49:38"}
+{"level":"info","message":"[2025-03-25T12:49:38.011Z] GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 15:49:38"}
+{"level":"info","message":"[2025-03-25T12:49:38.015Z] GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 15:49:38"}
+{"level":"info","message":"Response time: 17ms for GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 15:49:38"}
+{"level":"info","message":"Response time: 12ms for GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 15:49:38"}
+{"level":"info","message":"Response time: 10ms for GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 15:49:38"}
+{"level":"info","message":"[2025-03-25T12:49:44.457Z] PUT /api/users/2","timestamp":"2025-03-25 15:49:44"}
+{"level":"info","message":"Response time: 0ms for PUT /api/users/2","timestamp":"2025-03-25 15:49:44"}
+{"level":"info","message":"[2025-03-25T12:57:40.532Z] GET /api/auth/profile","timestamp":"2025-03-25 15:57:40"}
+{"level":"info","message":"Response time: 70ms for GET /api/auth/profile","timestamp":"2025-03-25 15:57:40"}
+{"level":"info","message":"[2025-03-25T12:57:40.604Z] GET /api/auth/profile","timestamp":"2025-03-25 15:57:40"}
+{"level":"info","message":"Response time: 3ms for GET /api/auth/profile","timestamp":"2025-03-25 15:57:40"}
+{"level":"info","message":"[2025-03-25T12:57:40.624Z] GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 15:57:40"}
+{"level":"info","message":"[2025-03-25T12:57:40.629Z] GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 15:57:40"}
+{"level":"info","message":"[2025-03-25T12:57:40.636Z] GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 15:57:40"}
+{"level":"info","message":"[2025-03-25T12:57:40.640Z] GET /api/foods","timestamp":"2025-03-25 15:57:40"}
+{"level":"info","message":"Response time: 6ms for GET /api/foods","timestamp":"2025-03-25 15:57:40"}
+{"level":"info","message":"Response time: 23ms for GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 15:57:40"}
+{"level":"info","message":"Response time: 21ms for GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 15:57:40"}
+{"level":"info","message":"Response time: 18ms for GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 15:57:40"}
+{"level":"info","message":"[2025-03-25T12:57:40.660Z] GET /api/foods","timestamp":"2025-03-25 15:57:40"}
+{"level":"info","message":"[2025-03-25T12:57:40.663Z] GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 15:57:40"}
+{"level":"info","message":"[2025-03-25T12:57:40.670Z] GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 15:57:40"}
+{"level":"info","message":"[2025-03-25T12:57:40.676Z] GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 15:57:40"}
+{"level":"info","message":"Response time: 21ms for GET /api/foods","timestamp":"2025-03-25 15:57:40"}
+{"level":"info","message":"[2025-03-25T12:57:40.689Z] GET /api/foods","timestamp":"2025-03-25 15:57:40"}
+{"level":"info","message":"Response time: 33ms for GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 15:57:40"}
+{"level":"info","message":"Response time: 31ms for GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 15:57:40"}
+{"level":"info","message":"Response time: 27ms for GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 15:57:40"}
+{"level":"info","message":"Response time: 16ms for GET /api/foods","timestamp":"2025-03-25 15:57:40"}
+{"level":"info","message":"[2025-03-25T12:57:40.709Z] GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 15:57:40"}
+{"level":"info","message":"[2025-03-25T12:57:40.716Z] GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 15:57:40"}
+{"level":"info","message":"[2025-03-25T12:57:40.721Z] GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 15:57:40"}
+{"level":"info","message":"[2025-03-25T12:57:40.727Z] GET /api/foods","timestamp":"2025-03-25 15:57:40"}
+{"level":"info","message":"Response time: 7ms for GET /api/foods","timestamp":"2025-03-25 15:57:40"}
+{"level":"info","message":"Response time: 24ms for GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 15:57:40"}
+{"level":"info","message":"Response time: 17ms for GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 15:57:40"}
+{"level":"info","message":"Response time: 15ms for GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 15:57:40"}
+{"level":"info","message":"[2025-03-25T12:57:40.741Z] GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 15:57:40"}
+{"level":"info","message":"[2025-03-25T12:57:40.746Z] GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 15:57:40"}
+{"level":"info","message":"[2025-03-25T12:57:40.750Z] GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 15:57:40"}
+{"level":"info","message":"Response time: 18ms for GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 15:57:40"}
+{"level":"info","message":"Response time: 14ms for GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 15:57:40"}
+{"level":"info","message":"Response time: 13ms for GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 15:57:40"}
+{"level":"info","message":"[2025-03-25T13:04:00.189Z] GET /api/auth/profile","timestamp":"2025-03-25 16:04:00"}
+{"level":"info","message":"Response time: 89ms for GET /api/auth/profile","timestamp":"2025-03-25 16:04:00"}
+{"level":"info","message":"[2025-03-25T13:04:00.305Z] GET /api/auth/profile","timestamp":"2025-03-25 16:04:00"}
+{"level":"info","message":"[2025-03-25T13:04:00.364Z] GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 16:04:00"}
+{"level":"info","message":"Response time: 20ms for GET /api/auth/profile","timestamp":"2025-03-25 16:04:00"}
+{"level":"info","message":"[2025-03-25T13:04:00.376Z] GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 16:04:00"}
+{"level":"info","message":"[2025-03-25T13:04:00.389Z] GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 16:04:00"}
+{"level":"info","message":"[2025-03-25T13:04:00.398Z] GET /api/foods","timestamp":"2025-03-25 16:04:00"}
+{"level":"info","message":"Response time: 7ms for GET /api/foods","timestamp":"2025-03-25 16:04:00"}
+{"level":"info","message":"Response time: 46ms for GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 16:04:00"}
+{"level":"info","message":"Response time: 35ms for GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 16:04:00"}
+{"level":"info","message":"[2025-03-25T13:04:00.421Z] GET /api/foods","timestamp":"2025-03-25 16:04:00"}
+{"level":"info","message":"[2025-03-25T13:04:00.433Z] GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 16:04:00"}
+{"level":"info","message":"[2025-03-25T13:04:00.443Z] GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 16:04:00"}
+{"level":"info","message":"Response time: 60ms for GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 16:04:00"}
+{"level":"info","message":"Response time: 30ms for GET /api/foods","timestamp":"2025-03-25 16:04:00"}
+{"level":"info","message":"[2025-03-25T13:04:00.468Z] GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 16:04:00"}
+{"level":"info","message":"[2025-03-25T13:04:00.476Z] GET /api/foods","timestamp":"2025-03-25 16:04:00"}
+{"level":"info","message":"Response time: 50ms for GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 16:04:00"}
+{"level":"info","message":"Response time: 47ms for GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 16:04:00"}
+{"level":"info","message":"Response time: 14ms for GET /api/foods","timestamp":"2025-03-25 16:04:00"}
+{"level":"info","message":"[2025-03-25T13:04:00.501Z] GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 16:04:00"}
+{"level":"info","message":"[2025-03-25T13:04:00.510Z] GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 16:04:00"}
+{"level":"info","message":"[2025-03-25T13:04:00.518Z] GET /api/foods","timestamp":"2025-03-25 16:04:00"}
+{"level":"info","message":"Response time: 55ms for GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 16:04:00"}
+{"level":"info","message":"Response time: 10ms for GET /api/foods","timestamp":"2025-03-25 16:04:00"}
+{"level":"info","message":"Response time: 40ms for GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 16:04:00"}
+{"level":"info","message":"Response time: 30ms for GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 16:04:00"}
+{"level":"info","message":"[2025-03-25T13:04:00.547Z] GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 16:04:00"}
+{"level":"info","message":"[2025-03-25T13:04:00.554Z] GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 16:04:00"}
+{"level":"info","message":"[2025-03-25T13:04:00.559Z] GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 16:04:00"}
+{"level":"info","message":"Response time: 23ms for GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 16:04:00"}
+{"level":"info","message":"Response time: 18ms for GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 16:04:00"}
+{"level":"info","message":"Response time: 16ms for GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 16:04:00"}
+{"level":"info","message":"[2025-03-25T13:04:00.579Z] GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 16:04:00"}
+{"level":"info","message":"Response time: 8ms for GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 16:04:00"}
+{"level":"info","message":"[2025-03-25T13:04:21.156Z] GET /api/auth/profile","timestamp":"2025-03-25 16:04:21"}
+{"level":"info","message":"Response time: 219ms for GET /api/auth/profile","timestamp":"2025-03-25 16:04:21"}
+{"level":"info","message":"[2025-03-25T13:04:21.381Z] GET /api/auth/profile","timestamp":"2025-03-25 16:04:21"}
+{"level":"info","message":"Response time: 20ms for GET /api/auth/profile","timestamp":"2025-03-25 16:04:21"}
+{"level":"info","message":"[2025-03-25T13:04:21.420Z] GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 16:04:21"}
+{"level":"info","message":"[2025-03-25T13:04:21.424Z] GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 16:04:21"}
+{"level":"info","message":"[2025-03-25T13:04:21.428Z] GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 16:04:21"}
+{"level":"info","message":"[2025-03-25T13:04:21.436Z] GET /api/foods","timestamp":"2025-03-25 16:04:21"}
+{"level":"info","message":"Response time: 7ms for GET /api/foods","timestamp":"2025-03-25 16:04:21"}
+{"level":"info","message":"Response time: 35ms for GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 16:04:21"}
+{"level":"info","message":"Response time: 32ms for GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 16:04:21"}
+{"level":"info","message":"Response time: 32ms for GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 16:04:21"}
+{"level":"info","message":"[2025-03-25T13:04:21.464Z] GET /api/foods","timestamp":"2025-03-25 16:04:21"}
+{"level":"info","message":"[2025-03-25T13:04:21.475Z] GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 16:04:21"}
+{"level":"info","message":"[2025-03-25T13:04:21.486Z] GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 16:04:21"}
+{"level":"info","message":"[2025-03-25T13:04:21.495Z] GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 16:04:21"}
+{"level":"info","message":"Response time: 35ms for GET /api/foods","timestamp":"2025-03-25 16:04:21"}
+{"level":"info","message":"[2025-03-25T13:04:21.512Z] GET /api/foods","timestamp":"2025-03-25 16:04:21"}
+{"level":"info","message":"Response time: 70ms for GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 16:04:21"}
+{"level":"info","message":"Response time: 73ms for GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 16:04:21"}
+{"level":"info","message":"Response time: 30ms for GET /api/foods","timestamp":"2025-03-25 16:04:21"}
+{"level":"info","message":"[2025-03-25T13:04:21.575Z] GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 16:04:21"}
+{"level":"info","message":"[2025-03-25T13:04:21.580Z] GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 16:04:21"}
+{"level":"info","message":"[2025-03-25T13:04:21.587Z] GET /api/foods","timestamp":"2025-03-25 16:04:21"}
+{"level":"info","message":"Response time: 96ms for GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 16:04:21"}
+{"level":"info","message":"Response time: 9ms for GET /api/foods","timestamp":"2025-03-25 16:04:21"}
+{"level":"info","message":"Response time: 24ms for GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 16:04:21"}
+{"level":"info","message":"[2025-03-25T13:04:21.605Z] GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 16:04:21"}
+{"level":"info","message":"[2025-03-25T13:04:21.611Z] GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 16:04:21"}
+{"level":"info","message":"Response time: 34ms for GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 16:04:21"}
+{"level":"info","message":"[2025-03-25T13:04:21.622Z] GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 16:04:21"}
+{"level":"info","message":"Response time: 20ms for GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 16:04:21"}
+{"level":"info","message":"Response time: 15ms for GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 16:04:21"}
+{"level":"info","message":"[2025-03-25T13:04:21.631Z] GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 16:04:21"}
+{"level":"info","message":"Response time: 14ms for GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 16:04:21"}
+{"level":"info","message":"Response time: 12ms for GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 16:04:21"}
+{"level":"info","message":"[2025-03-25T13:09:39.540Z] GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 16:09:39"}
+{"level":"info","message":"[2025-03-25T13:09:39.549Z] GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 16:09:39"}
+{"level":"info","message":"[2025-03-25T13:09:39.554Z] GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 16:09:39"}
+{"level":"info","message":"Response time: 96ms for GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 16:09:39"}
+{"level":"info","message":"Response time: 87ms for GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 16:09:39"}
+{"level":"info","message":"Response time: 85ms for GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 16:09:39"}
+{"level":"info","message":"[2025-03-25T13:09:39.642Z] GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 16:09:39"}
+{"level":"info","message":"[2025-03-25T13:09:39.647Z] GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 16:09:39"}
+{"level":"info","message":"[2025-03-25T13:09:39.652Z] GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 16:09:39"}
+{"level":"info","message":"Response time: 18ms for GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 16:09:39"}
+{"level":"info","message":"Response time: 10ms for GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 16:09:39"}
+{"level":"info","message":"Response time: 21ms for GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 16:09:39"}
+{"level":"info","message":"[2025-03-25T13:09:59.975Z] GET /api/auth/profile","timestamp":"2025-03-25 16:09:59"}
+{"level":"info","message":"Response time: 212ms for GET /api/auth/profile","timestamp":"2025-03-25 16:10:00"}
+{"level":"info","message":"[2025-03-25T13:10:00.201Z] GET /api/auth/profile","timestamp":"2025-03-25 16:10:00"}
+{"level":"info","message":"Response time: 17ms for GET /api/auth/profile","timestamp":"2025-03-25 16:10:00"}
+{"level":"info","message":"[2025-03-25T13:10:00.253Z] GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 16:10:00"}
+{"level":"info","message":"[2025-03-25T13:10:00.266Z] GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 16:10:00"}
+{"level":"info","message":"[2025-03-25T13:10:00.278Z] GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 16:10:00"}
+{"level":"info","message":"Response time: 41ms for GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 16:10:00"}
+{"level":"info","message":"Response time: 91ms for GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 16:10:00"}
+{"level":"info","message":"Response time: 82ms for GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 16:10:00"}
+{"level":"info","message":"[2025-03-25T13:10:00.378Z] GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 16:10:00"}
+{"level":"info","message":"[2025-03-25T13:10:00.388Z] GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 16:10:00"}
+{"level":"info","message":"[2025-03-25T13:10:00.410Z] GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 16:10:00"}
+{"level":"info","message":"Response time: 111ms for GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 16:10:00"}
+{"level":"info","message":"Response time: 120ms for GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 16:10:00"}
+{"level":"info","message":"Response time: 101ms for GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 16:10:00"}
+{"level":"info","message":"[2025-03-25T13:10:00.536Z] GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 16:10:00"}
+{"level":"info","message":"[2025-03-25T13:10:00.547Z] GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 16:10:00"}
+{"level":"info","message":"[2025-03-25T13:10:00.559Z] GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 16:10:00"}
+{"level":"info","message":"Response time: 35ms for GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 16:10:00"}
+{"level":"info","message":"Response time: 51ms for GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 16:10:00"}
+{"level":"info","message":"[2025-03-25T13:10:00.620Z] GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 16:10:00"}
+{"level":"info","message":"[2025-03-25T13:10:00.631Z] GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 16:10:00"}
+{"level":"info","message":"Response time: 76ms for GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 16:10:00"}
+{"level":"info","message":"[2025-03-25T13:10:00.664Z] GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 16:10:00"}
+{"level":"info","message":"Response time: 53ms for GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 16:10:00"}
+{"level":"info","message":"Response time: 46ms for GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 16:10:00"}
+{"level":"info","message":"Response time: 25ms for GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 16:10:00"}
+{"level":"info","message":"[2025-03-25T13:10:07.151Z] GET /api/meals?startDate=2025-03-25&endDate=2025-03-25","timestamp":"2025-03-25 16:10:07"}
+{"level":"info","message":"Response time: 11ms for GET /api/meals?startDate=2025-03-25&endDate=2025-03-25","timestamp":"2025-03-25 16:10:07"}
+{"level":"info","message":"[2025-03-25T13:10:07.166Z] GET /api/meals?startDate=2025-03-25&endDate=2025-03-25","timestamp":"2025-03-25 16:10:07"}
+{"level":"info","message":"Response time: 6ms for GET /api/meals?startDate=2025-03-25&endDate=2025-03-25","timestamp":"2025-03-25 16:10:07"}
+{"level":"info","message":"[2025-03-25T13:10:19.043Z] GET /api/foods?query=ma","timestamp":"2025-03-25 16:10:19"}
+{"level":"info","message":"Response time: 80ms for GET /api/foods?query=ma","timestamp":"2025-03-25 16:10:19"}
+{"level":"info","message":"[2025-03-25T13:10:24.275Z] GET /api/foods?query=b","timestamp":"2025-03-25 16:10:24"}
+{"level":"info","message":"Response time: 13ms for GET /api/foods?query=b","timestamp":"2025-03-25 16:10:24"}
+{"level":"info","message":"[2025-03-25T13:10:24.950Z] GET /api/foods?query=bean","timestamp":"2025-03-25 16:10:24"}
+{"level":"info","message":"Response time: 16ms for GET /api/foods?query=bean","timestamp":"2025-03-25 16:10:24"}
+{"level":"info","message":"[2025-03-25T13:10:35.891Z] GET /api/foods?query=pil","timestamp":"2025-03-25 16:10:35"}
+{"level":"info","message":"Response time: 74ms for GET /api/foods?query=pil","timestamp":"2025-03-25 16:10:35"}
+{"level":"info","message":"[2025-03-25T13:10:44.251Z] GET /api/foods?query=y","timestamp":"2025-03-25 16:10:44"}
+{"level":"info","message":"Response time: 4ms for GET /api/foods?query=y","timestamp":"2025-03-25 16:10:44"}
+{"level":"info","message":"[2025-03-25T13:10:44.621Z] GET /api/foods?query=yo","timestamp":"2025-03-25 16:10:44"}
+{"level":"info","message":"Response time: 3ms for GET /api/foods?query=yo","timestamp":"2025-03-25 16:10:44"}
+{"level":"info","message":"[2025-03-25T13:10:57.888Z] GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 16:10:57"}
+{"level":"info","message":"[2025-03-25T13:10:57.893Z] GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 16:10:57"}
+{"level":"info","message":"[2025-03-25T13:10:57.898Z] GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 16:10:57"}
+{"level":"info","message":"Response time: 98ms for GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 16:10:57"}
+{"level":"info","message":"Response time: 89ms for GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 16:10:57"}
+{"level":"info","message":"Response time: 96ms for GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 16:10:57"}
+{"level":"info","message":"[2025-03-25T13:10:57.991Z] GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 16:10:57"}
+{"level":"info","message":"[2025-03-25T13:10:57.995Z] GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 16:10:57"}
+{"level":"info","message":"[2025-03-25T13:10:57.999Z] GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 16:10:57"}
+{"level":"info","message":"Response time: 11ms for GET /api/nutrition/monthly?month=3&year=2025","timestamp":"2025-03-25 16:10:58"}
+{"level":"info","message":"Response time: 16ms for GET /api/nutrition/daily?date=2025-03-25","timestamp":"2025-03-25 16:10:58"}
+{"level":"info","message":"Response time: 10ms for GET /api/nutrition/weekly?startDate=2025-03-23&endDate=2025-03-29","timestamp":"2025-03-25 16:10:58"}
+{"level":"info","message":"[2025-03-25T13:11:01.975Z] GET /api/meals?startDate=2025-03-25&endDate=2025-03-25","timestamp":"2025-03-25 16:11:01"}
+{"level":"info","message":"Response time: 6ms for GET /api/meals?startDate=2025-03-25&endDate=2025-03-25","timestamp":"2025-03-25 16:11:01"}
+{"level":"info","message":"[2025-03-25T13:11:01.984Z] GET /api/meals?startDate=2025-03-25&endDate=2025-03-25","timestamp":"2025-03-25 16:11:01"}
+{"level":"info","message":"Response time: 5ms for GET /api/meals?startDate=2025-03-25&endDate=2025-03-25","timestamp":"2025-03-25 16:11:01"}

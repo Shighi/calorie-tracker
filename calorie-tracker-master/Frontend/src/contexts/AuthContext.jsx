@@ -5,31 +5,45 @@ import axios from 'axios';
 const AuthContext = createContext();
 
 // API Base URL configuration
-const API_BASE_URL = 'http://localhost:3000/api';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api';
 
-// Create a provider component
+// Create a centralized axios instance with default configuration
+const api = axios.create({
+  baseURL: API_BASE_URL,
+  withCredentials: true,
+  headers: {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json'
+  }
+});
+
+// Interceptor for handling token
+api.interceptors.request.use(
+  config => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      config.headers['Authorization'] = `Bearer ${token}`;
+    }
+    return config;
+  },
+  error => Promise.reject(error)
+);
+
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
-  const [token, setToken] = useState(localStorage.getItem('token')); // Track token in state
+  const [token, setToken] = useState(localStorage.getItem('token'));
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Check if the user is logged in whenever token changes
   useEffect(() => {
     const checkAuthStatus = async () => {
       if (token) {
         try {
-          // Get user profile
-          const response = await axios.get(`${API_BASE_URL}/auth/profile`, {
-            headers: {
-              'Authorization': `Bearer ${token}`
-            }
-          });
+          const response = await api.get('/auth/profile');
           
           if (response.data.data) {
             setUser(response.data.data);
           } else {
-            // Token is invalid or expired
             localStorage.removeItem('token');
             setToken(null);
             setUser(null);
@@ -41,7 +55,6 @@ export function AuthProvider({ children }) {
           setUser(null);
         }
       } else {
-        // No token found
         setUser(null);
       }
       
@@ -49,23 +62,21 @@ export function AuthProvider({ children }) {
     };
     
     checkAuthStatus();
-  }, [token]); // Re-run when token changes
+  }, [token]);
 
-  // Clear error message
   const clearError = () => {
     setError(null);
   };
 
-  // Login function
   const login = async (emailOrUsername, password) => {
     setError(null);
     try {
-      const response = await axios.post(`${API_BASE_URL}/auth/login`, { emailOrUsername, password });
+      const response = await api.post('/auth/login', { emailOrUsername, password });
       
       if (response.data.data.token) {
         const newToken = response.data.data.token;
         localStorage.setItem('token', newToken);
-        setToken(newToken); // Update token state
+        setToken(newToken);
         setUser(response.data.data.user);
         return true;
       }
@@ -75,21 +86,18 @@ export function AuthProvider({ children }) {
     }
   };
 
-  // Register function
   const register = async (userData) => {
     setError(null);
     try {
-      const response = await axios.post(`${API_BASE_URL}/auth/register`, userData);
+      const response = await api.post('/auth/register', userData);
       
       if (response.data.data && response.data.data.token) {
-        // If the register endpoint returns a token directly
         const newToken = response.data.data.token;
         localStorage.setItem('token', newToken);
         setToken(newToken);
         setUser(response.data.data.user);
         return true;
       } else {
-        // If we need to login after registration
         return await login(userData.email, userData.password);
       }
     } catch (err) {
@@ -98,43 +106,31 @@ export function AuthProvider({ children }) {
     }
   };
 
-  // Logout function
   const logout = async () => {
     try {
       if (token) {
-        await axios.post(`${API_BASE_URL}/auth/logout`, {}, {
-          headers: {
-            'Authorization': `Bearer ${token}`
-          }
-        });
+        await api.post('/auth/logout');
       }
     } catch (err) {
       console.error('Logout error:', err);
     } finally {
       localStorage.removeItem('token');
-      setToken(null); // Clear token state
+      setToken(null);
       setUser(null);
     }
   };
 
-  // Update user profile
   const updateProfile = async (userData) => {
     setError(null);
     try {
-      const response = await axios.put(`${API_BASE_URL}/auth/profile`, userData, {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      });
+      const response = await api.put('/auth/profile', userData);
       
       if (response.data.data) {
         setUser(response.data.data);
         return true;
       }
     } catch (err) {
-      // Check if token expired during profile update
       if (err.response && err.response.status === 401) {
-        // Token expired, log out the user
         await logout();
       }
       setError(err.response?.data?.message || 'Profile update failed');
@@ -144,23 +140,21 @@ export function AuthProvider({ children }) {
 
   const value = {
     user,
-    token, // Include token in the context value
+    token,
     loading,
     error,
     login,
     register,
     logout,
     updateProfile,
-    clearError // Include the clearError function
+    clearError
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
 
-// Create a custom hook to use the auth context
 export function useAuth() {
   return useContext(AuthContext);
 }
 
-// Export the context itself in case it's needed
 export default AuthContext;
