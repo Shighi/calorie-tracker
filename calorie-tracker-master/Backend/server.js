@@ -50,8 +50,10 @@ const corsOptions = {
       return;
     }
 
-    // In production, only allow specific origins
-    if (!origin || allowedOrigins.includes(origin)) {
+    // In production, check against allowed origins
+    if (!origin || allowedOrigins.some(allowedOrigin => 
+      origin.startsWith(allowedOrigin.replace(/\/+$/, ''))
+    )) {
       callback(null, true);
     } else {
       callback(new Error('Not allowed by CORS'));
@@ -74,8 +76,14 @@ const corsOptions = {
 // Apply CORS before routes
 app.use(cors(corsOptions));
 
-// Add this middleware to handle OPTIONS requests explicitly
+// Explicit OPTIONS handler for all routes
 app.options('*', cors(corsOptions));
+
+// Add a middleware to log origins (helpful for debugging)
+app.use((req, res, next) => {
+  logger.info(`Incoming request from origin: ${req.get('origin')}`);
+  next();
+});
 
 // Middleware Configuration
 app.use(helmet());
