@@ -11,7 +11,6 @@ import {
   Legend
 } from 'chart.js';
 import { useAuth } from '../contexts/AuthContext';
-import axios from 'axios';
 
 // Register Chart.js components
 ChartJS.register(
@@ -24,7 +23,9 @@ ChartJS.register(
   Legend
 );
 
-// Helper function to calculate nutritional info from meals
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '/api';
+
+// Comprehensive nutrition calculation function
 const calculateNutritionFromMeals = (meals) => {
   const nutritionSummary = {
     calories: 0,
@@ -36,19 +37,27 @@ const calculateNutritionFromMeals = (meals) => {
   if (!meals) return nutritionSummary;
 
   Object.values(meals).forEach(mealType => {
+    if (!mealType) return;
+    
     mealType.forEach(food => {
+      // Calculate calories and nutrients based on quantity
       const servingFactor = food.quantity / 100;
       nutritionSummary.calories += food.calories * servingFactor;
-      nutritionSummary.protein += food.proteins ? food.proteins * servingFactor : 0;
-      nutritionSummary.carbs += food.carbs ? food.carbs * servingFactor : 0;
-      nutritionSummary.fat += food.fats ? food.fats * servingFactor : 0;
+      nutritionSummary.protein += food.proteins * servingFactor;
+      nutritionSummary.carbs += food.carbs * servingFactor;
+      nutritionSummary.fat += food.fats * servingFactor;
     });
   });
 
-  return nutritionSummary;
+  return {
+    calories: Math.round(nutritionSummary.calories),
+    protein: Math.round(nutritionSummary.protein),
+    carbs: Math.round(nutritionSummary.carbs),
+    fat: Math.round(nutritionSummary.fat)
+  };
 };
 
-// Helper function to get weekly calorie data
+// Enhanced weekly calorie data retrieval
 const getWeeklyCalorieData = (meals, daysToShow = 7) => {
   if (!meals) return [];
 
@@ -60,17 +69,25 @@ const getWeeklyCalorieData = (meals, daysToShow = 7) => {
     date.setDate(today.getDate() - i);
     const dateString = date.toISOString().split('T')[0];
 
-    // Filter meals for this specific date
-    const dailyMeals = Object.values(meals).reduce((acc, mealType) => {
-      const filteredMeals = mealType.filter(food => 
+    // Comprehensive meal calculation for a specific date
+    const dailyMeals = {
+      breakfast: [],
+      lunch: [],
+      dinner: [],
+      snack: []
+    };
+
+    Object.entries(meals).forEach(([mealType, mealItems]) => {
+      dailyMeals[mealType] = (mealItems || []).filter(food => 
         food.log_date === dateString
       );
-      return [...acc, ...filteredMeals];
-    }, []);
+    });
 
-    const dailyCalories = dailyMeals.reduce((total, food) => {
-      const servingFactor = food.quantity / 100;
-      return total + (food.calories * servingFactor);
+    const dailyCalories = Object.values(dailyMeals).reduce((total, mealType) => {
+      return total + mealType.reduce((typeTotal, food) => {
+        const servingFactor = food.quantity / 100;
+        return typeTotal + (food.calories * servingFactor);
+      }, 0);
     }, 0);
 
     weekData.push({
@@ -88,8 +105,9 @@ export default function Dashboard() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [calorieGoal, setCalorieGoal] = useState(2000);
+  const [date, setDate] = useState(new Date().toISOString().split('T')[0]);
 
-  // Fetch user profile to get up-to-date calorie goal
+  // Fetch user profile to get calorie goal
   useEffect(() => {
     const fetchUserProfile = async () => {
       try {
@@ -98,15 +116,22 @@ export default function Dashboard() {
           throw new Error('No authentication token');
         }
 
-        const response = await axios.get('http://localhost:3000/api/auth/profile', {
+        const response = await fetch(`${API_BASE_URL}/auth/profile`, {
           headers: {
-            Authorization: `Bearer ${token}`
+            'Authorization': `Bearer ${token}`,
+            'Accept': 'application/json'
           }
         });
 
+        if (!response.ok) {
+          throw new Error('Failed to fetch profile');
+        }
+
+        const profileData = await response.json();
+        
         // Update calorie goal from user profile
-        if (response.data.data.daily_calorie_target) {
-          setCalorieGoal(response.data.data.daily_calorie_target);
+        if (profileData.data?.daily_calorie_target) {
+          setCalorieGoal(profileData.data.daily_calorie_target);
         }
       } catch (err) {
         console.error('Error fetching profile:', err);
@@ -127,9 +152,8 @@ export default function Dashboard() {
       }
 
       try {
-        const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api';
-        const endDate = new Date();
-        const startDate = new Date();
+        const endDate = new Date(date);
+        const startDate = new Date(date);
         startDate.setDate(endDate.getDate() - 6); // Last 7 days
 
         const queryParams = new URLSearchParams({
@@ -137,13 +161,18 @@ export default function Dashboard() {
           endDate: endDate.toISOString().split('T')[0]
         });
 
-        const response = await axios.get(`${API_BASE_URL}/meals?${queryParams}`, {
+        const response = await fetch(`${API_BASE_URL}/meals?${queryParams}`, {
           headers: {
             'Authorization': `Bearer ${token}`,
             'Accept': 'application/json'
           }
         });
 
+        if (!response.ok) {
+          throw new Error('Failed to fetch meals');
+        }
+
+        const data = await response.json();
         const transformedMeals = {
           breakfast: [],
           lunch: [],
@@ -151,7 +180,9 @@ export default function Dashboard() {
           snack: []
         };
 
-        (response.data.data?.meals || response.data.data || []).forEach(meal => {
+        const mealsData = data.data?.meals || data.data || [];
+
+        mealsData.forEach(meal => {
           const mealType = (meal.type || 'lunch').toLowerCase();
           const validMealType = ['breakfast', 'lunch', 'dinner', 'snack'].includes(mealType) 
             ? mealType 
@@ -163,10 +194,10 @@ export default function Dashboard() {
               name: food.name || 'Unknown Food',
               calories: Number(food.calories || 0),
               quantity: Number(food.serving_qty || 100),
-              log_date: meal.log_date,
-              proteins: food.proteins || 0,
-              carbs: food.carbs || 0,
-              fats: food.fats || 0
+              log_date: meal.log_date || date,
+              proteins: Number(food.proteins || 0),
+              carbs: Number(food.carbs || 0),
+              fats: Number(food.fats || 0)
             };
 
             transformedMeals[validMealType].push(foodItem);
@@ -183,7 +214,7 @@ export default function Dashboard() {
     };
 
     fetchMeals();
-  }, []);
+  }, [date]);
 
   // Loading State
   if (isLoading) {
@@ -220,6 +251,11 @@ export default function Dashboard() {
       </div>
     );
   }
+
+  // Date Change Handler
+  const handleDateChange = (newDate) => {
+    setDate(newDate);
+  };
 
   // Calculate nutrition data
   const dailyNutritionData = calculateNutritionFromMeals(meals);
@@ -265,13 +301,23 @@ export default function Dashboard() {
           Welcome, {user?.username || 'User'}
         </h1>
 
+        {/* Date Selection */}
+        <div className="mb-6">
+          <input
+            type="date"
+            value={date}
+            onChange={(e) => handleDateChange(e.target.value)}
+            className="w-full md:w-64 p-2 border rounded"
+          />
+        </div>
+
         {/* Profile Overview */}
         <div className="bg-white p-6 rounded-lg shadow mb-6">
           <h2 className="text-xl font-semibold mb-4">Daily Nutrition Overview</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <p className="text-gray-700">Daily Calorie Goal: {calorieGoal} kcal</p>
-              <p className="text-gray-700">Current Calories: {Math.round(currentCalories)} kcal</p>
+              <p className="text-gray-700">Current Calories: {currentCalories} kcal</p>
               <p className="text-gray-700">
                 Progress: {caloriePercentage}% of daily goal
               </p>
@@ -308,15 +354,15 @@ export default function Dashboard() {
             <div className="mt-4 grid grid-cols-3 gap-2 text-center">
               <div className="bg-green-100 p-2 rounded">
                 <p className="font-semibold">Protein</p>
-                <p>{Math.round(dailyNutritionData.protein)}g</p>
+                <p>{dailyNutritionData.protein}g</p>
               </div>
               <div className="bg-green-100 p-2 rounded">
                 <p className="font-semibold">Carbs</p>
-                <p>{Math.round(dailyNutritionData.carbs)}g</p>
+                <p>{dailyNutritionData.carbs}g</p>
               </div>
               <div className="bg-green-100 p-2 rounded">
                 <p className="font-semibold">Fats</p>
-                <p>{Math.round(dailyNutritionData.fat)}g</p>
+                <p>{dailyNutritionData.fat}g</p>
               </div>
             </div>
           </div>

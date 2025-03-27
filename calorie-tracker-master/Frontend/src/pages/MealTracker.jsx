@@ -59,7 +59,13 @@ export default function MealTracker() {
   const [manualFoodName, setManualFoodName] = useState('');
   const [quantity, setQuantity] = useState('');
   const [calories, setCalories] = useState('');
+  const [proteins, setProteins] = useState('');
+  const [carbs, setCarbs] = useState('');
+  const [fats, setFats] = useState('');
   const [caloriesPer100g, setCaloriesPer100g] = useState('');
+  const [proteinsPer100g, setProteinsPer100g] = useState('');
+  const [carbsPer100g, setCarbsPer100g] = useState('');
+  const [fatsPer100g, setFatsPer100g] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [date, setDate] = useState(new Date().toISOString().split('T')[0]);
@@ -118,7 +124,6 @@ export default function MealTracker() {
 
   // Handle Logout with Complete Reset
   const handleLogout = () => {
-    // Clear all user-specific data
     localStorage.removeItem('token');
     
     // Reset all state to initial values
@@ -126,7 +131,13 @@ export default function MealTracker() {
     setManualFoodName('');
     setQuantity('');
     setCalories('');
+    setProteins('');
+    setCarbs('');
+    setFats('');
     setCaloriesPer100g('');
+    setProteinsPer100g('');
+    setCarbsPer100g('');
+    setFatsPer100g('');
     setIsLoading(false);
     setError(null);
     setDate(new Date().toISOString().split('T')[0]);
@@ -146,13 +157,11 @@ export default function MealTracker() {
     const transformedMeals = { ...INITIAL_FOODS_STATE };
     
     try {
-      // Safely extract meals data
       const mealsData = response?.data?.meals || 
                         response?.data || 
                         response || 
                         [];
       
-      // Ensure mealsData is an array
       if (!Array.isArray(mealsData)) {
         console.warn('Received invalid meals data format:', mealsData);
         return transformedMeals;
@@ -161,16 +170,13 @@ export default function MealTracker() {
       mealsData.forEach((meal) => {
         if (!meal) return;
         
-        // Normalize meal type
         const mealType = (meal.meal_type || meal.type || 'lunch').toLowerCase();
         
-        // Map meal type to lowercase keys in transformedMeals
         const validMealType = 
           ['breakfast', 'lunch', 'dinner', 'snack'].includes(mealType) 
             ? mealType 
             : 'lunch';
         
-        // Safely extract food items
         const foodItems = meal.foods || meal.food_items || [];
         
         foodItems.forEach((food) => {
@@ -180,17 +186,18 @@ export default function MealTracker() {
             food_id: food.food_id || food.id,
             name: food.name || 'Unknown Food',
             calories: Number(food.MealFood?.calories || food.calories || 0),
+            proteins: Number(food.MealFood?.proteins || food.proteins || 0),
+            carbs: Number(food.MealFood?.carbs || food.carbs || 0),
+            fats: Number(food.MealFood?.fats || food.fats || 0),
             quantity: Number(food.MealFood?.serving_qty || food.serving_qty || 100),
             mealType: validMealType,
-            serverSaved: true  // Add flag to distinguish server-saved items
+            serverSaved: true
           };
           
-          // Ensure the array exists and push the food item
           if (!transformedMeals[validMealType]) {
             transformedMeals[validMealType] = [];
           }
           
-          // Prevent duplicate entries by checking if item already exists
           const isDuplicate = transformedMeals[validMealType].some(
             item => item.food_id === foodItem.food_id && 
                     item.calories === foodItem.calories && 
@@ -222,7 +229,10 @@ export default function MealTracker() {
         name: item.name,
         serving_qty: item.quantity,
         serving_unit: 'g', 
-        calories: item.calories || 0
+        calories: item.calories || 0,
+        proteins: item.proteins || 0,
+        carbs: item.carbs || 0,
+        fats: item.fats || 0
       }));
 
       const mealPayload = {
@@ -318,12 +328,18 @@ export default function MealTracker() {
     }
   };
 
-  // Remaining functions (unchanged)
+  // Remaining functions
   const resetFoodForm = () => {
     setManualFoodName('');
     setQuantity('');
     setCalories('');
+    setProteins('');
+    setCarbs('');
+    setFats('');
     setCaloriesPer100g('');
+    setProteinsPer100g('');
+    setCarbsPer100g('');
+    setFatsPer100g('');
     setSelectedFood(null);
     setSelectedFoodObject(null);
     setSearchQuery('');
@@ -349,6 +365,9 @@ export default function MealTracker() {
         name: manualFoodName,
         food_id: selectedFood,
         calories: parseFloat(calories),
+        proteins: parseFloat(proteins || 0),
+        carbs: parseFloat(carbs || 0),
+        fats: parseFloat(fats || 0),
         quantity: parseFloat(quantity),
         mealType: selectedMealType,
         serverSaved: false
@@ -389,6 +408,25 @@ export default function MealTracker() {
     }, 0).toFixed(1);
   };
 
+  const calculateTotalNutrients = () => {
+    const nutrients = Object.values(foods).reduce((totals, mealFoods) => {
+      return mealFoods.reduce((sum, item) => {
+        const multiplier = item.quantity / 100;
+        return {
+          proteins: sum.proteins + (item.proteins * multiplier),
+          carbs: sum.carbs + (item.carbs * multiplier),
+          fats: sum.fats + (item.fats * multiplier)
+        };
+      }, totals);
+    }, { proteins: 0, carbs: 0, fats: 0 });
+
+    return {
+      proteins: nutrients.proteins.toFixed(1),
+      carbs: nutrients.carbs.toFixed(1),
+      fats: nutrients.fats.toFixed(1)
+    };
+  };
+
   const searchFoods = async (query) => {
     if (!query.trim()) return;
     
@@ -418,8 +456,14 @@ export default function MealTracker() {
   const handleSelectFood = (food) => {
     setManualFoodName(food.name);
     setCaloriesPer100g(food.calories.toString());
+    setProteinsPer100g((food.proteins || 0).toString());
+    setCarbsPer100g((food.carbs || 0).toString());
+    setFatsPer100g((food.fats || 0).toString());
     setQuantity('100');
     setCalories(food.calories.toString());
+    setProteins((food.proteins || 0).toString());
+    setCarbs((food.carbs || 0).toString());
+    setFats((food.fats || 0).toString());
     setShowSearchResults(false);
     setSearchQuery('');
     
@@ -433,7 +477,14 @@ export default function MealTracker() {
     
     if (caloriesPer100g && newQuantity) {
       const calculatedCalories = (parseFloat(caloriesPer100g) * parseFloat(newQuantity) / 100).toFixed(1);
+      const calculatedProteins = (parseFloat(proteinsPer100g) * parseFloat(newQuantity) / 100).toFixed(1);
+      const calculatedCarbs = (parseFloat(carbsPer100g) * parseFloat(newQuantity) / 100).toFixed(1);
+      const calculatedFats = (parseFloat(fatsPer100g) * parseFloat(newQuantity) / 100).toFixed(1);
+      
       setCalories(calculatedCalories);
+      setProteins(calculatedProteins);
+      setCarbs(calculatedCarbs);
+      setFats(calculatedFats);
     }
   };
 
@@ -497,6 +548,9 @@ export default function MealTracker() {
 
     return () => clearTimeout(timer);
   }, [searchQuery]);
+
+  // Nutrient Totals
+  const totalNutrients = calculateTotalNutrients();
 
   // Render 
   return (
@@ -599,12 +653,38 @@ export default function MealTracker() {
             </div>
           </div>
 
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+            <Input
+              type="number"
+              placeholder="Proteins (g)"
+              value={proteins}
+              onChange={(e) => setProteins(e.target.value)}
+              className="bg-gray-50 border-gray-300"
+            />
+            <Input
+              type="number"
+              placeholder="Carbs (g)"
+              value={carbs}
+              onChange={(e) => setCarbs(e.target.value)}
+              className="bg-gray-50 border-gray-300"
+            />
+            <Input
+              type="number"
+              placeholder="Fats (g)"
+              value={fats}
+              onChange={(e) => setFats(e.target.value)}
+              className="bg-gray-50 border-gray-300"
+            />
+          </div>
+
           {selectedFoodObject && (
             <Card className="p-3 mb-4 border-blue-200 bg-blue-50">
               <div className="flex justify-between items-center">
                 <div>
                   <p className="font-medium">{manualFoodName}</p>
-                  <p className="text-sm text-gray-600">{caloriesPer100g} calories per 100g</p>
+                  <p className="text-sm text-gray-600">
+                    {caloriesPer100g} kcal, {proteinsPer100g}g P, {carbsPer100g}g C, {fatsPer100g}g F per 100g
+                  </p>
                 </div>
                 <Button 
                   variant="ghost" 
@@ -629,9 +709,22 @@ export default function MealTracker() {
         </div>
 
         <div className="mb-6 bg-gray-100 p-4 rounded-lg shadow">
-          <p className="text-lg font-semibold">
-            Total Calories: {calculateTotalCalories()} kcal
-          </p>
+          <div className="flex justify-between items-center">
+            <p className="text-lg font-semibold">
+              Total Calories: {calculateTotalCalories()} kcal
+            </p>
+            <div className="flex space-x-4">
+              <p className="text-sm">
+                Proteins: {totalNutrients.proteins}g
+              </p>
+              <p className="text-sm">
+                Carbs: {totalNutrients.carbs}g
+              </p>
+              <p className="text-sm">
+                Fats: {totalNutrients.fats}g
+              </p>
+            </div>
+          </div>
           {isLoading && (
             <div className="flex items-center mt-2 text-sm text-gray-500">
               <Loader2 className="animate-spin w-4 h-4 mr-2" />

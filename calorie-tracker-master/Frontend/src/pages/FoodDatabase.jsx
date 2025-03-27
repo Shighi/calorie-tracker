@@ -6,7 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import axios from 'axios';
 
-// Enhanced FoodCard component with flexible property handling
+// Enhanced FoodCard component with locale display
 const FoodCard = ({ food }) => {
   // Ensure all necessary properties exist
   const displayData = {
@@ -16,7 +16,7 @@ const FoodCard = ({ food }) => {
     proteins: food.proteins || food.protein || 0,
     carbs: food.carbs || 0,
     fats: food.fats || food.fat || 0,
-    locale: food.locale || null,
+    locale: food.locale || food.region || null,
     serving_size: food.serving_size || null,
     serving_unit: food.serving_unit || null
   };
@@ -29,14 +29,19 @@ const FoodCard = ({ food }) => {
           <Badge variant="secondary">{displayData.category}</Badge>
           {displayData.locale && (
             <Badge variant="outline">
-              {displayData.locale.name || displayData.locale.country || displayData.locale.code || 'Unknown Location'}
-              {displayData.locale.region ? `, ${displayData.locale.region}` : ''}
+              {displayData.locale.name || displayData.locale.country || displayData.locale.region || displayData.locale}
             </Badge>
           )}
         </div>
       </CardHeader>
       <CardContent>
         <div className="space-y-2">
+          <div className="flex justify-between items-center">
+            <span className="text-sm text-gray-600">Location</span>
+            <span className="font-medium">
+              {displayData.locale?.name || displayData.locale?.country || displayData.locale || 'Not Specified'}
+            </span>
+          </div>
           <div className="flex justify-between items-center">
             <span className="text-sm text-gray-600">Calories</span>
             <span className="font-medium">{displayData.calories}</span>
@@ -312,9 +317,11 @@ const AddFoodModal = ({ isOpen, onClose, onSave }) => {
 
 export default function FoodDatabase() {
   const [searchQuery, setSearchQuery] = useState('');
+  const [selectedLocale, setSelectedLocale] = useState('All');
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [foods, setFoods] = useState([]);
   const [categories, setCategories] = useState(['All']);
+  const [locales, setLocales] = useState(['All', 'East Africa', 'West Africa']);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState('');
   const [page, setPage] = useState(1);
@@ -382,7 +389,13 @@ export default function FoodDatabase() {
         // Add category filter if it's not "All"
         if (selectedCategory !== 'All') {
           // Use category-specific endpoint if available
-          endpoint = `${API_BASE_URL}/foods/category/${encodeURIComponent(selectedCategory)}`;
+          params.category = selectedCategory;
+        }
+
+        // Add locale filter if it's not "All"
+        if (selectedLocale !== 'All') {
+          // Use locale-specific endpoint
+          params.locale = selectedLocale;
         }
         
         const response = await axios.get(endpoint, { params });
@@ -449,7 +462,7 @@ export default function FoodDatabase() {
     };
 
     fetchFoodData();
-  }, [debouncedSearchQuery, selectedCategory, page, limit, API_BASE_URL]);
+  }, [debouncedSearchQuery, selectedCategory, selectedLocale, page, limit, API_BASE_URL]);
 
   const handleAddFood = () => {
     setIsModalOpen(true);
@@ -462,6 +475,11 @@ export default function FoodDatabase() {
     // Update categories if needed
     if (newFood.category && !categories.includes(newFood.category)) {
       setCategories([...categories, newFood.category]);
+    }
+
+    // Update locales if needed
+    if (newFood.locale && !locales.includes(newFood.locale)) {
+      setLocales([...locales, newFood.locale]);
     }
   };
 
@@ -543,22 +561,43 @@ export default function FoodDatabase() {
             </div>
           )}
 
-          {/* Category Filters */}
-          <div className="flex items-center gap-2 overflow-x-auto pb-2">
-            <Filter className="w-4 h-4 text-gray-500" />
-            {categories.map(category => (
-              <Badge
-                key={category}
-                variant={selectedCategory === category ? "default" : "outline"}
-                className="cursor-pointer"
-                onClick={() => {
-                  setSelectedCategory(category);
-                  setPage(1);
-                }}
-              >
-                {category}
-              </Badge>
-            ))}
+          {/* Category and Locale Filters */}
+          <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex items-center gap-2 overflow-x-auto pb-2">
+              <Filter className="w-4 h-4 text-gray-500" />
+              <span className="text-sm font-medium">Categories:</span>
+              {categories.map(category => (
+                <Badge
+                  key={category}
+                  variant={selectedCategory === category ? "default" : "outline"}
+                  className="cursor-pointer"
+                  onClick={() => {
+                    setSelectedCategory(category);
+                    setPage(1);
+                  }}
+                >
+                  {category}
+                </Badge>
+              ))}
+            </div>
+            
+            <div className="flex items-center gap-2 overflow-x-auto pb-2">
+              <Filter className="w-4 h-4 text-gray-500" />
+              <span className="text-sm font-medium">Regions:</span>
+              {locales.map(locale => (
+                <Badge
+                  key={locale}
+                  variant={selectedLocale === locale ? "default" : "outline"}
+                  className="cursor-pointer"
+                  onClick={() => {
+                    setSelectedLocale(locale);
+                    setPage(1);
+                  }}
+                >
+                  {locale}
+                </Badge>
+              ))}
+            </div>
           </div>
 
           {/* Loading State */}
@@ -590,7 +629,7 @@ export default function FoodDatabase() {
                   ) : error ? (
                     <p className="text-xl">Error loading foods</p>
                   ) : (
-                    <p className="text-xl">No foods found in this category</p>
+                    <p className="text-xl">No foods found in this category/region</p>
                   )}
                 </div>
               )}
