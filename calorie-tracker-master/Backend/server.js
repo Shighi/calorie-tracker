@@ -44,8 +44,13 @@ const allowedOrigins = (process.env.CORS_ORIGINS || '').split(',').map(origin =>
 // CORS Configuration
 const corsOptions = {
   origin: function(origin, callback) {
-    // Allow requests with no origin (like mobile apps or curl requests)
-    // or origin in the allowed list
+    // Allow all origins in development
+    if (process.env.NODE_ENV === 'development') {
+      callback(null, true);
+      return;
+    }
+
+    // In production, only allow specific origins
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
@@ -60,12 +65,17 @@ const corsOptions = {
     'Accept', 
     'Origin'
   ],
+  exposedHeaders: ['Authorization'], // Explicitly expose Authorization header
   credentials: true,
-  optionsSuccessStatus: 200
+  optionsSuccessStatus: 200,
+  preflightContinue: false
 };
 
 // Apply CORS before routes
 app.use(cors(corsOptions));
+
+// Add this middleware to handle OPTIONS requests explicitly
+app.options('*', cors(corsOptions));
 
 // Middleware Configuration
 app.use(helmet());

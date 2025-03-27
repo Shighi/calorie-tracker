@@ -2,12 +2,16 @@ import axios from 'axios';
 
 // Create axios instance with base URL from environment variables
 const API_BASE_URL = import.meta.env.PROD 
-  ? import.meta.env.VITE_PRODUCTION_API_URL 
-  : import.meta.env.VITE_API_BASE_URL;
+  ? import.meta.env.VITE_PRODUCTION_API_URL.replace('/api', '') 
+  : import.meta.env.VITE_API_BASE_URL.replace('/api', '');
 
 const api = axios.create({
-  baseURL: API_BASE_URL,
-  withCredentials: true
+  baseURL: `${API_BASE_URL}/api`,
+  withCredentials: true,
+  headers: {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json'
+  }
 });
 
 // Add request interceptor to include auth token from localStorage
