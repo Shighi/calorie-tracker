@@ -9,7 +9,7 @@ import FoodDatabase from './pages/FoodDatabase';
 import Profile from './pages/Profile';
 import Login from './pages/LoginPage';
 import Signup from './pages/SignupPage';
-import LandingPage from './pages/LandingPage';
+import LandingPage from './pages/landingPage';
 import About from './pages/Aboutus';
 import Contact from './pages/Contactus';
 
