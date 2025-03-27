@@ -1,11 +1,13 @@
 import axios from 'axios';
 
 // Create axios instance with base URL from environment variables
+const API_BASE_URL = import.meta.env.PROD 
+  ? import.meta.env.VITE_PRODUCTION_API_URL 
+  : import.meta.env.VITE_API_BASE_URL;
+
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api',
-  headers: {
-    'Content-Type': 'application/json',
-  },
+  baseURL: API_BASE_URL,
+  withCredentials: true
 });
 
 // Add request interceptor to include auth token from localStorage

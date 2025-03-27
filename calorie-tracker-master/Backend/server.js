@@ -38,16 +38,14 @@ import app from './src/app.js';
 
 const PORT = process.env.PORT || 3000;
 
+// Parse CORS origins from environment variable
+const allowedOrigins = (process.env.CORS_ORIGINS || '').split(',').map(origin => origin.trim());
+
 // CORS Configuration
 const corsOptions = {
   origin: function(origin, callback) {
-    const allowedOrigins = [
-      'http://localhost:5173', 
-      'http://localhost:3000', 
-      'http://127.0.0.1:5173'
-    ];
-    
     // Allow requests with no origin (like mobile apps or curl requests)
+    // or origin in the allowed list
     if (!origin || allowedOrigins.indexOf(origin) !== -1) {
       callback(null, true);
     } else {
@@ -65,6 +63,9 @@ const corsOptions = {
   credentials: true,
   optionsSuccessStatus: 200
 };
+
+// Apply CORS before routes
+app.use(cors(corsOptions));
 
 // Middleware Configuration
 app.use(helmet());
@@ -125,9 +126,6 @@ const startServer = async () => {
     // Check Redis connection
     await redis.ping();
     logger.info('Redis connection established successfully');
-    
-    // Create Express app with CORS
-    app.use(cors(corsOptions));
     
     // Start server
     const server = app.listen(PORT, () => {
