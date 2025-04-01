@@ -39,7 +39,14 @@ import app from './src/app.js';
 const PORT = process.env.PORT || 3000;
 
 // Parse CORS origins from environment variable
-const allowedOrigins = (process.env.CORS_ORIGINS || '').split(',').map(origin => origin.trim());
+const allowedOrigins = [
+  'http://localhost:5173', 
+  'http://localhost:3000', 
+  'http://127.0.0.1:5173',
+  'https://calorie-tracker-shighis-projects.vercel.app',
+  'https://calorie-tracker-two-xi.vercel.app',
+  'https://calorie-tracker-ki40pg75c-shighis-projects.vercel.app'
+];
 
 // CORS Configuration
 const corsOptions = {
@@ -52,7 +59,7 @@ const corsOptions = {
 
     // In production, check against allowed origins
     if (!origin || allowedOrigins.some(allowedOrigin => 
-      origin.startsWith(allowedOrigin.replace(/\/+$/, ''))
+      origin.startsWith(allowedOrigin)
     )) {
       callback(null, true);
     } else {
@@ -81,7 +88,7 @@ app.options('*', cors(corsOptions));
 
 // Add a middleware to log origins (helpful for debugging)
 app.use((req, res, next) => {
-  logger.info(`Incoming request from origin: ${req.get('origin')}`);
+  logger.info(`Incoming request from origin: ${req.get('origin') || 'unknown'}`);
   next();
 });
 

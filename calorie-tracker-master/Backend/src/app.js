@@ -43,8 +43,16 @@ const swaggerDefinition = {
       description: 'Development server'
     },
     {
-      url: 'https://api.calorietracker.com/v1',
-      description: 'Production server'
+      url: 'https://calorie-tracker-shighis-projects.vercel.app/api',
+      description: 'Production Server 1'
+    },
+    {
+      url: 'https://calorie-tracker-two-xi.vercel.app/api',
+      description: 'Production Server 2'
+    },
+    {
+      url: 'https://calorie-tracker-ki40pg75c-shighis-projects.vercel.app/api',
+      description: 'Production Server 3'
     }
   ],
   components: {
@@ -80,11 +88,16 @@ const corsOptions = {
     const allowedOrigins = [
       'http://localhost:5173', 
       'http://localhost:3000', 
-      'http://127.0.0.1:5173'
+      'http://127.0.0.1:5173',
+      'https://calorie-tracker-shighis-projects.vercel.app',
+      'https://calorie-tracker-two-xi.vercel.app',
+      'https://calorie-tracker-ki40pg75c-shighis-projects.vercel.app'
     ];
     
     // Allow requests with no origin (like mobile apps or curl requests)
-    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+    if (!origin || allowedOrigins.some(allowedOrigin => 
+      origin.startsWith(allowedOrigin)
+    )) {
       callback(null, true);
     } else {
       callback(new Error('Not allowed by CORS'));

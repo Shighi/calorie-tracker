@@ -381,3 +381,588 @@
 {"endDate":"2025-03-27","level":"info","limit":10,"message":"Fetching meals for user","page":1,"startDate":"2025-03-21","timestamp":"2025-03-27 08:14:49","userId":3}
 {"level":"info","message":"Retrieved undefined meals for user","timestamp":"2025-03-27 08:14:49","userId":3}
 {"level":"info","message":"Response time: 9ms for GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 08:14:49"}
+{"level":"info","message":"Users table synchronized successfully","timestamp":"2025-03-27 09:43:15"}
+{"level":"info","message":"User Profiles table synchronized successfully","timestamp":"2025-03-27 09:43:16"}
+{"level":"info","message":"Additional database models synchronized successfully","timestamp":"2025-03-27 09:43:16"}
+{"level":"info","message":"Database connection established successfully","timestamp":"2025-03-27 09:43:16"}
+{"level":"info","message":"Redis connection established successfully","timestamp":"2025-03-27 09:43:16"}
+{"level":"info","message":"Server running on port 3000","timestamp":"2025-03-27 09:43:16"}
+{"level":"info","message":"API documentation available at http://localhost:3000/api-docs","timestamp":"2025-03-27 09:43:16"}
+{"level":"info","message":"[2025-03-27T06:43:56.192Z] POST /api/auth/logout","timestamp":"2025-03-27 09:43:56"}
+{"level":"info","message":"Response time: 6ms for POST /api/auth/logout","timestamp":"2025-03-27 09:43:56"}
+{"level":"info","message":"[2025-03-27T06:43:59.072Z] POST /api/auth/login","timestamp":"2025-03-27 09:43:59"}
+{"level":"info","message":"User login successful: Jay","timestamp":"2025-03-27 09:43:59"}
+{"level":"info","message":"Response time: 145ms for POST /api/auth/login","timestamp":"2025-03-27 09:43:59"}
+{"level":"info","message":"[2025-03-27T06:43:59.238Z] GET /api/auth/profile","timestamp":"2025-03-27 09:43:59"}
+{"level":"info","message":"[2025-03-27T06:43:59.248Z] GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 09:43:59"}
+{"endDate":"2025-03-27","level":"info","limit":10,"message":"Fetching meals for user","page":1,"startDate":"2025-03-21","timestamp":"2025-03-27 09:43:59","userId":3}
+{"level":"info","message":"Response time: 17ms for GET /api/auth/profile","timestamp":"2025-03-27 09:43:59"}
+{"level":"info","message":"Retrieved undefined meals for user","timestamp":"2025-03-27 09:43:59","userId":3}
+{"level":"info","message":"Response time: 11ms for GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 09:43:59"}
+{"level":"info","message":"[2025-03-27T06:43:59.266Z] GET /api/auth/profile","timestamp":"2025-03-27 09:43:59"}
+{"level":"info","message":"[2025-03-27T06:43:59.271Z] GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 09:43:59"}
+{"endDate":"2025-03-27","level":"info","limit":10,"message":"Fetching meals for user","page":1,"startDate":"2025-03-21","timestamp":"2025-03-27 09:43:59","userId":3}
+{"level":"info","message":"Response time: 18ms for GET /api/auth/profile","timestamp":"2025-03-27 09:43:59"}
+{"level":"info","message":"Retrieved undefined meals for user","timestamp":"2025-03-27 09:43:59","userId":3}
+{"level":"info","message":"Response time: 17ms for GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 09:43:59"}
+{"level":"info","message":"[2025-03-27T06:43:59.291Z] GET /api/auth/profile","timestamp":"2025-03-27 09:43:59"}
+{"level":"info","message":"Response time: 9ms for GET /api/auth/profile","timestamp":"2025-03-27 09:43:59"}
+{"level":"info","message":"[2025-03-27T06:43:59.353Z] GET /api/auth/profile","timestamp":"2025-03-27 09:43:59"}
+{"level":"info","message":"[2025-03-27T06:43:59.363Z] GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 09:43:59"}
+{"level":"info","message":"Response time: 29ms for GET /api/auth/profile","timestamp":"2025-03-27 09:43:59"}
+{"level":"info","message":"[2025-03-27T06:43:59.386Z] GET /api/auth/profile","timestamp":"2025-03-27 09:43:59"}
+{"endDate":"2025-03-27","level":"info","limit":10,"message":"Fetching meals for user","page":1,"startDate":"2025-03-21","timestamp":"2025-03-27 09:43:59","userId":3}
+{"level":"info","message":"Retrieved undefined meals for user","timestamp":"2025-03-27 09:43:59","userId":3}
+{"level":"info","message":"Response time: 28ms for GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 09:43:59"}
+{"level":"info","message":"Response time: 10ms for GET /api/auth/profile","timestamp":"2025-03-27 09:43:59"}
+{"level":"info","message":"[2025-03-27T06:43:59.399Z] GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 09:43:59"}
+{"endDate":"2025-03-27","level":"info","limit":10,"message":"Fetching meals for user","page":1,"startDate":"2025-03-21","timestamp":"2025-03-27 09:43:59","userId":3}
+{"level":"info","message":"Retrieved undefined meals for user","timestamp":"2025-03-27 09:43:59","userId":3}
+{"level":"info","message":"Response time: 21ms for GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 09:43:59"}
+{"level":"error","message":"Error: Not allowed by CORS","method":"OPTIONS","path":"/api/auth/register","stack":"Error: Not allowed by CORS\n    at origin (file:///C:/Users/User/Desktop/calorie-tracker/calorie-tracker-master/Backend/src/app.js:90:16)\n    at C:\\Users\\User\\Desktop\\calorie-tracker\\calorie-tracker-master\\Backend\\node_modules\\cors\\lib\\index.js:219:13\n    at optionsCallback (C:\\Users\\User\\Desktop\\calorie-tracker\\calorie-tracker-master\\Backend\\node_modules\\cors\\lib\\index.js:199:9)\n    at corsMiddleware (C:\\Users\\User\\Desktop\\calorie-tracker\\calorie-tracker-master\\Backend\\node_modules\\cors\\lib\\index.js:204:7)\n    at Layer.handle [as handle_request] (C:\\Users\\User\\Desktop\\calorie-tracker\\calorie-tracker-master\\Backend\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at trim_prefix (C:\\Users\\User\\Desktop\\calorie-tracker\\calorie-tracker-master\\Backend\\node_modules\\express\\lib\\router\\index.js:328:13)\n    at C:\\Users\\User\\Desktop\\calorie-tracker\\calorie-tracker-master\\Backend\\node_modules\\express\\lib\\router\\index.js:286:9\n    at Function.process_params (C:\\Users\\User\\Desktop\\calorie-tracker\\calorie-tracker-master\\Backend\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (C:\\Users\\User\\Desktop\\calorie-tracker\\calorie-tracker-master\\Backend\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at internalNext (file:///C:/Users/User/Desktop/calorie-tracker/calorie-tracker-master/Backend/node_modules/helmet/index.mjs:533:6)","timestamp":"2025-03-27 09:45:22"}
+{"level":"info","message":"[2025-03-27T06:49:58.641Z] GET /api/auth/profile","timestamp":"2025-03-27 09:49:58"}
+{"level":"info","message":"Response time: 87ms for GET /api/auth/profile","timestamp":"2025-03-27 09:49:58"}
+{"level":"info","message":"[2025-03-27T06:49:58.731Z] GET /api/auth/profile","timestamp":"2025-03-27 09:49:58"}
+{"level":"info","message":"Response time: 9ms for GET /api/auth/profile","timestamp":"2025-03-27 09:49:58"}
+{"level":"info","message":"[2025-03-27T06:49:58.751Z] GET /api/auth/profile","timestamp":"2025-03-27 09:49:58"}
+{"level":"info","message":"[2025-03-27T06:49:58.762Z] GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 09:49:58"}
+{"level":"info","message":"Response time: 14ms for GET /api/auth/profile","timestamp":"2025-03-27 09:49:58"}
+{"endDate":"2025-03-27","level":"info","limit":10,"message":"Fetching meals for user","page":1,"startDate":"2025-03-21","timestamp":"2025-03-27 09:49:58","userId":3}
+{"level":"info","message":"[2025-03-27T06:49:58.772Z] GET /api/auth/profile","timestamp":"2025-03-27 09:49:58"}
+{"level":"info","message":"Retrieved undefined meals for user","timestamp":"2025-03-27 09:49:58","userId":3}
+{"level":"info","message":"Response time: 14ms for GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 09:49:58"}
+{"level":"info","message":"[2025-03-27T06:49:58.780Z] GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 09:49:58"}
+{"level":"info","message":"Response time: 11ms for GET /api/auth/profile","timestamp":"2025-03-27 09:49:58"}
+{"endDate":"2025-03-27","level":"info","limit":10,"message":"Fetching meals for user","page":1,"startDate":"2025-03-21","timestamp":"2025-03-27 09:49:58","userId":3}
+{"level":"info","message":"[2025-03-27T06:49:58.788Z] GET /api/auth/profile","timestamp":"2025-03-27 09:49:58"}
+{"level":"info","message":"Retrieved undefined meals for user","timestamp":"2025-03-27 09:49:58","userId":3}
+{"level":"info","message":"Response time: 12ms for GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 09:49:58"}
+{"level":"info","message":"[2025-03-27T06:49:58.794Z] GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 09:49:58"}
+{"level":"info","message":"Response time: 9ms for GET /api/auth/profile","timestamp":"2025-03-27 09:49:58"}
+{"endDate":"2025-03-27","level":"info","limit":10,"message":"Fetching meals for user","page":1,"startDate":"2025-03-21","timestamp":"2025-03-27 09:49:58","userId":3}
+{"level":"info","message":"[2025-03-27T06:49:58.804Z] GET /api/auth/profile","timestamp":"2025-03-27 09:49:58"}
+{"level":"info","message":"Retrieved undefined meals for user","timestamp":"2025-03-27 09:49:58","userId":3}
+{"level":"info","message":"Response time: 16ms for GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 09:49:58"}
+{"level":"info","message":"[2025-03-27T06:49:58.813Z] GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 09:49:58"}
+{"level":"info","message":"Response time: 16ms for GET /api/auth/profile","timestamp":"2025-03-27 09:49:58"}
+{"endDate":"2025-03-27","level":"info","limit":10,"message":"Fetching meals for user","page":1,"startDate":"2025-03-21","timestamp":"2025-03-27 09:49:58","userId":3}
+{"level":"info","message":"Retrieved undefined meals for user","timestamp":"2025-03-27 09:49:58","userId":3}
+{"level":"info","message":"Response time: 17ms for GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 09:49:58"}
+{"level":"info","message":"[2025-03-27T06:50:58.989Z] GET /api/auth/profile","timestamp":"2025-03-27 09:50:58"}
+{"level":"info","message":"Response time: 161ms for GET /api/auth/profile","timestamp":"2025-03-27 09:50:59"}
+{"level":"info","message":"[2025-03-27T06:50:59.160Z] GET /api/auth/profile","timestamp":"2025-03-27 09:50:59"}
+{"level":"info","message":"Response time: 8ms for GET /api/auth/profile","timestamp":"2025-03-27 09:50:59"}
+{"level":"info","message":"[2025-03-27T06:50:59.187Z] GET /api/auth/profile","timestamp":"2025-03-27 09:50:59"}
+{"level":"info","message":"Response time: 8ms for GET /api/auth/profile","timestamp":"2025-03-27 09:50:59"}
+{"level":"info","message":"[2025-03-27T06:50:59.203Z] GET /api/auth/profile","timestamp":"2025-03-27 09:50:59"}
+{"level":"info","message":"[2025-03-27T06:50:59.209Z] GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 09:50:59"}
+{"level":"info","message":"Response time: 14ms for GET /api/auth/profile","timestamp":"2025-03-27 09:50:59"}
+{"endDate":"2025-03-27","level":"info","limit":10,"message":"Fetching meals for user","page":1,"startDate":"2025-03-21","timestamp":"2025-03-27 09:50:59","userId":3}
+{"level":"info","message":"Retrieved undefined meals for user","timestamp":"2025-03-27 09:50:59","userId":3}
+{"level":"info","message":"Response time: 13ms for GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 09:50:59"}
+{"level":"info","message":"[2025-03-27T06:50:59.229Z] GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 09:50:59"}
+{"endDate":"2025-03-27","level":"info","limit":10,"message":"Fetching meals for user","page":1,"startDate":"2025-03-21","timestamp":"2025-03-27 09:50:59","userId":3}
+{"level":"info","message":"Retrieved undefined meals for user","timestamp":"2025-03-27 09:50:59","userId":3}
+{"level":"info","message":"Response time: 28ms for GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 09:50:59"}
+{"level":"info","message":"[2025-03-27T06:50:59.265Z] GET /api/auth/profile","timestamp":"2025-03-27 09:50:59"}
+{"level":"info","message":"[2025-03-27T06:50:59.270Z] GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 09:50:59"}
+{"endDate":"2025-03-27","level":"info","limit":10,"message":"Fetching meals for user","page":1,"startDate":"2025-03-21","timestamp":"2025-03-27 09:50:59","userId":3}
+{"level":"info","message":"Response time: 14ms for GET /api/auth/profile","timestamp":"2025-03-27 09:50:59"}
+{"level":"info","message":"Retrieved undefined meals for user","timestamp":"2025-03-27 09:50:59","userId":3}
+{"level":"info","message":"Response time: 12ms for GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 09:50:59"}
+{"level":"info","message":"[2025-03-27T06:50:59.286Z] GET /api/auth/profile","timestamp":"2025-03-27 09:50:59"}
+{"level":"info","message":"Response time: 6ms for GET /api/auth/profile","timestamp":"2025-03-27 09:50:59"}
+{"level":"info","message":"[2025-03-27T06:50:59.295Z] GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 09:50:59"}
+{"endDate":"2025-03-27","level":"info","limit":10,"message":"Fetching meals for user","page":1,"startDate":"2025-03-21","timestamp":"2025-03-27 09:50:59","userId":3}
+{"level":"info","message":"Retrieved undefined meals for user","timestamp":"2025-03-27 09:50:59","userId":3}
+{"level":"info","message":"Response time: 11ms for GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 09:50:59"}
+{"level":"error","message":"Error: Not allowed by CORS","method":"OPTIONS","path":"/api/auth/register","stack":"Error: Not allowed by CORS\n    at origin (file:///C:/Users/User/Desktop/calorie-tracker/calorie-tracker-master/Backend/src/app.js:90:16)\n    at C:\\Users\\User\\Desktop\\calorie-tracker\\calorie-tracker-master\\Backend\\node_modules\\cors\\lib\\index.js:219:13\n    at optionsCallback (C:\\Users\\User\\Desktop\\calorie-tracker\\calorie-tracker-master\\Backend\\node_modules\\cors\\lib\\index.js:199:9)\n    at corsMiddleware (C:\\Users\\User\\Desktop\\calorie-tracker\\calorie-tracker-master\\Backend\\node_modules\\cors\\lib\\index.js:204:7)\n    at Layer.handle [as handle_request] (C:\\Users\\User\\Desktop\\calorie-tracker\\calorie-tracker-master\\Backend\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at trim_prefix (C:\\Users\\User\\Desktop\\calorie-tracker\\calorie-tracker-master\\Backend\\node_modules\\express\\lib\\router\\index.js:328:13)\n    at C:\\Users\\User\\Desktop\\calorie-tracker\\calorie-tracker-master\\Backend\\node_modules\\express\\lib\\router\\index.js:286:9\n    at Function.process_params (C:\\Users\\User\\Desktop\\calorie-tracker\\calorie-tracker-master\\Backend\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (C:\\Users\\User\\Desktop\\calorie-tracker\\calorie-tracker-master\\Backend\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at internalNext (file:///C:/Users/User/Desktop/calorie-tracker/calorie-tracker-master/Backend/node_modules/helmet/index.mjs:533:6)","timestamp":"2025-03-27 09:53:22"}
+{"level":"info","message":"[2025-03-27T07:00:33.997Z] POST /api/auth/logout","timestamp":"2025-03-27 10:00:33"}
+{"level":"info","message":"Response time: 3ms for POST /api/auth/logout","timestamp":"2025-03-27 10:00:34"}
+{"level":"info","message":"[2025-03-27T07:08:37.560Z] POST /api/auth/register","timestamp":"2025-03-27 10:08:37"}
+{"level":"info","message":"Registration attempt: email=cruzaica145@gmail.com, username=Aica","timestamp":"2025-03-27 10:08:37"}
+{"level":"info","message":"User registered: cruzaica145@gmail.com","timestamp":"2025-03-27 10:08:37"}
+{"level":"info","message":"Response time: 201ms for POST /api/auth/register","timestamp":"2025-03-27 10:08:37"}
+{"level":"info","message":"[2025-03-27T07:08:37.819Z] POST /api/auth/login","timestamp":"2025-03-27 10:08:37"}
+{"level":"info","message":"User login successful: cruzaica145@gmail.com","timestamp":"2025-03-27 10:08:37"}
+{"level":"info","message":"Response time: 89ms for POST /api/auth/login","timestamp":"2025-03-27 10:08:37"}
+{"level":"info","message":"[2025-03-27T07:08:37.949Z] GET /api/auth/profile","timestamp":"2025-03-27 10:08:37"}
+{"level":"info","message":"[2025-03-27T07:08:37.961Z] GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 10:08:37"}
+{"endDate":"2025-03-27","level":"info","limit":10,"message":"Fetching meals for user","page":1,"startDate":"2025-03-21","timestamp":"2025-03-27 10:08:37","userId":4}
+{"level":"info","message":"Response time: 54ms for GET /api/auth/profile","timestamp":"2025-03-27 10:08:38"}
+{"level":"info","message":"[2025-03-27T07:08:38.021Z] GET /api/auth/profile","timestamp":"2025-03-27 10:08:38"}
+{"level":"info","message":"Response time: 13ms for GET /api/auth/profile","timestamp":"2025-03-27 10:08:38"}
+{"level":"info","message":"Retrieved undefined meals for user","timestamp":"2025-03-27 10:08:38","userId":4}
+{"level":"info","message":"Response time: 75ms for GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 10:08:38"}
+{"level":"info","message":"[2025-03-27T07:08:38.053Z] GET /api/auth/profile","timestamp":"2025-03-27 10:08:38"}
+{"level":"info","message":"Response time: 7ms for GET /api/auth/profile","timestamp":"2025-03-27 10:08:38"}
+{"level":"info","message":"[2025-03-27T07:08:38.071Z] GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 10:08:38"}
+{"endDate":"2025-03-27","level":"info","limit":10,"message":"Fetching meals for user","page":1,"startDate":"2025-03-21","timestamp":"2025-03-27 10:08:38","userId":4}
+{"level":"info","message":"Retrieved undefined meals for user","timestamp":"2025-03-27 10:08:38","userId":4}
+{"level":"info","message":"Response time: 11ms for GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 10:08:38"}
+{"level":"info","message":"[2025-03-27T07:08:38.300Z] GET /api/auth/profile","timestamp":"2025-03-27 10:08:38"}
+{"level":"info","message":"[2025-03-27T07:08:38.305Z] GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 10:08:38"}
+{"level":"info","message":"Response time: 30ms for GET /api/auth/profile","timestamp":"2025-03-27 10:08:38"}
+{"level":"info","message":"[2025-03-27T07:08:38.334Z] GET /api/auth/profile","timestamp":"2025-03-27 10:08:38"}
+{"endDate":"2025-03-27","level":"info","limit":10,"message":"Fetching meals for user","page":1,"startDate":"2025-03-21","timestamp":"2025-03-27 10:08:38","userId":4}
+{"level":"info","message":"Retrieved undefined meals for user","timestamp":"2025-03-27 10:08:38","userId":4}
+{"level":"info","message":"Response time: 36ms for GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 10:08:38"}
+{"level":"info","message":"Response time: 8ms for GET /api/auth/profile","timestamp":"2025-03-27 10:08:38"}
+{"level":"info","message":"[2025-03-27T07:08:38.344Z] GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 10:08:38"}
+{"endDate":"2025-03-27","level":"info","limit":10,"message":"Fetching meals for user","page":1,"startDate":"2025-03-21","timestamp":"2025-03-27 10:08:38","userId":4}
+{"level":"info","message":"Retrieved undefined meals for user","timestamp":"2025-03-27 10:08:38","userId":4}
+{"level":"info","message":"Response time: 9ms for GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 10:08:38"}
+{"level":"info","message":"[2025-03-27T07:08:43.309Z] GET /api/auth/profile","timestamp":"2025-03-27 10:08:43"}
+{"level":"info","message":"Response time: 11ms for GET /api/auth/profile","timestamp":"2025-03-27 10:08:43"}
+{"level":"info","message":"[2025-03-27T07:08:43.323Z] GET /api/auth/profile","timestamp":"2025-03-27 10:08:43"}
+{"level":"info","message":"Response time: 13ms for GET /api/auth/profile","timestamp":"2025-03-27 10:08:43"}
+{"level":"info","message":"[2025-03-27T07:08:48.842Z] PUT /api/auth/profile","timestamp":"2025-03-27 10:08:48"}
+{"level":"info","message":"Profile updated for user: 4","timestamp":"2025-03-27 10:08:48"}
+{"level":"info","message":"Response time: 26ms for PUT /api/auth/profile","timestamp":"2025-03-27 10:08:48"}
+{"level":"info","message":"[2025-03-27T07:08:51.239Z] GET /api/auth/profile","timestamp":"2025-03-27 10:08:51"}
+{"level":"info","message":"Response time: 7ms for GET /api/auth/profile","timestamp":"2025-03-27 10:08:51"}
+{"level":"info","message":"[2025-03-27T07:08:51.248Z] GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 10:08:51"}
+{"level":"info","message":"[2025-03-27T07:08:51.252Z] GET /api/auth/profile","timestamp":"2025-03-27 10:08:51"}
+{"endDate":"2025-03-27","level":"info","limit":10,"message":"Fetching meals for user","page":1,"startDate":"2025-03-21","timestamp":"2025-03-27 10:08:51","userId":4}
+{"level":"info","message":"Retrieved undefined meals for user","timestamp":"2025-03-27 10:08:51","userId":4}
+{"level":"info","message":"Response time: 16ms for GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 10:08:51"}
+{"level":"info","message":"Response time: 12ms for GET /api/auth/profile","timestamp":"2025-03-27 10:08:51"}
+{"level":"info","message":"[2025-03-27T07:08:51.270Z] GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 10:08:51"}
+{"endDate":"2025-03-27","level":"info","limit":10,"message":"Fetching meals for user","page":1,"startDate":"2025-03-21","timestamp":"2025-03-27 10:08:51","userId":4}
+{"level":"info","message":"Retrieved undefined meals for user","timestamp":"2025-03-27 10:08:51","userId":4}
+{"level":"info","message":"Response time: 10ms for GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 10:08:51"}
+{"level":"info","message":"[2025-03-27T07:08:54.493Z] GET /api/foods/categories","timestamp":"2025-03-27 10:08:54"}
+{"level":"info","message":"[2025-03-27T07:08:54.497Z] GET /api/foods?page=1&limit=20&sort=name&order=ASC","timestamp":"2025-03-27 10:08:54"}
+{"level":"info","message":"Response time: 23ms for GET /api/foods/categories","timestamp":"2025-03-27 10:08:54"}
+{"level":"info","message":"[2025-03-27T07:08:54.520Z] GET /api/foods/categories","timestamp":"2025-03-27 10:08:54"}
+{"level":"info","message":"Response time: 2ms for GET /api/foods/categories","timestamp":"2025-03-27 10:08:54"}
+{"level":"info","message":"Response time: 52ms for GET /api/foods?page=1&limit=20&sort=name&order=ASC","timestamp":"2025-03-27 10:08:54"}
+{"level":"info","message":"[2025-03-27T07:08:54.552Z] GET /api/foods?page=1&limit=20&sort=name&order=ASC","timestamp":"2025-03-27 10:08:54"}
+{"level":"info","message":"Response time: 8ms for GET /api/foods?page=1&limit=20&sort=name&order=ASC","timestamp":"2025-03-27 10:08:54"}
+{"level":"info","message":"[2025-03-27T07:08:56.871Z] GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=beverages","timestamp":"2025-03-27 10:08:56"}
+{"level":"info","message":"Response time: 20ms for GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=beverages","timestamp":"2025-03-27 10:08:56"}
+{"level":"info","message":"[2025-03-27T07:08:58.517Z] GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=milk","timestamp":"2025-03-27 10:08:58"}
+{"level":"info","message":"Response time: 13ms for GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=milk","timestamp":"2025-03-27 10:08:58"}
+{"level":"info","message":"[2025-03-27T07:08:59.784Z] GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=Other","timestamp":"2025-03-27 10:08:59"}
+{"level":"info","message":"Response time: 16ms for GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=Other","timestamp":"2025-03-27 10:08:59"}
+{"level":"info","message":"[2025-03-27T07:09:02.527Z] GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=vegetables","timestamp":"2025-03-27 10:09:02"}
+{"level":"info","message":"Response time: 13ms for GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=vegetables","timestamp":"2025-03-27 10:09:02"}
+{"level":"info","message":"[2025-03-27T07:09:03.736Z] GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=nuts+and+seeds","timestamp":"2025-03-27 10:09:03"}
+{"level":"info","message":"Response time: 13ms for GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=nuts+and+seeds","timestamp":"2025-03-27 10:09:03"}
+{"level":"info","message":"[2025-03-27T07:09:05.143Z] GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=fat+and+oils","timestamp":"2025-03-27 10:09:05"}
+{"level":"info","message":"Response time: 12ms for GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=fat+and+oils","timestamp":"2025-03-27 10:09:05"}
+{"level":"info","message":"[2025-03-27T07:09:06.562Z] GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=meat","timestamp":"2025-03-27 10:09:06"}
+{"level":"info","message":"Response time: 15ms for GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=meat","timestamp":"2025-03-27 10:09:06"}
+{"level":"info","message":"[2025-03-27T07:09:08.058Z] GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=insect","timestamp":"2025-03-27 10:09:08"}
+{"level":"info","message":"Response time: 7ms for GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=insect","timestamp":"2025-03-27 10:09:08"}
+{"level":"info","message":"[2025-03-27T07:09:09.634Z] GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=fruits","timestamp":"2025-03-27 10:09:09"}
+{"level":"info","message":"Response time: 15ms for GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=fruits","timestamp":"2025-03-27 10:09:09"}
+{"level":"info","message":"[2025-03-27T07:09:11.425Z] GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=chicken","timestamp":"2025-03-27 10:09:11"}
+{"level":"info","message":"Response time: 12ms for GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=chicken","timestamp":"2025-03-27 10:09:11"}
+{"level":"info","message":"[2025-03-27T07:09:12.665Z] GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=egg","timestamp":"2025-03-27 10:09:12"}
+{"level":"info","message":"Response time: 12ms for GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=egg","timestamp":"2025-03-27 10:09:12"}
+{"level":"info","message":"[2025-03-27T07:09:16.433Z] GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=cereals","timestamp":"2025-03-27 10:09:16"}
+{"level":"info","message":"Response time: 12ms for GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=cereals","timestamp":"2025-03-27 10:09:16"}
+{"level":"info","message":"[2025-03-27T07:09:21.334Z] GET /api/foods?page=2&limit=20&sort=name&order=ASC&category=cereals","timestamp":"2025-03-27 10:09:21"}
+{"level":"info","message":"Response time: 15ms for GET /api/foods?page=2&limit=20&sort=name&order=ASC&category=cereals","timestamp":"2025-03-27 10:09:21"}
+{"level":"info","message":"[2025-03-27T07:09:25.360Z] GET /api/foods?page=3&limit=20&sort=name&order=ASC&category=cereals","timestamp":"2025-03-27 10:09:25"}
+{"level":"info","message":"Response time: 15ms for GET /api/foods?page=3&limit=20&sort=name&order=ASC&category=cereals","timestamp":"2025-03-27 10:09:25"}
+{"level":"info","message":"[2025-03-27T07:09:29.321Z] GET /api/foods?page=4&limit=20&sort=name&order=ASC&category=cereals","timestamp":"2025-03-27 10:09:29"}
+{"level":"info","message":"Response time: 16ms for GET /api/foods?page=4&limit=20&sort=name&order=ASC&category=cereals","timestamp":"2025-03-27 10:09:29"}
+{"level":"info","message":"[2025-03-27T07:09:35.179Z] GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=fish","timestamp":"2025-03-27 10:09:35"}
+{"level":"info","message":"Response time: 11ms for GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=fish","timestamp":"2025-03-27 10:09:35"}
+{"level":"info","message":"[2025-03-27T07:09:36.516Z] GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=broth","timestamp":"2025-03-27 10:09:36"}
+{"level":"info","message":"Response time: 11ms for GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=broth","timestamp":"2025-03-27 10:09:36"}
+{"level":"info","message":"[2025-03-27T07:09:37.810Z] GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=others","timestamp":"2025-03-27 10:09:37"}
+{"level":"info","message":"Response time: 12ms for GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=others","timestamp":"2025-03-27 10:09:37"}
+{"level":"info","message":"[2025-03-27T07:09:40.020Z] GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=others&locale=East+Africa","timestamp":"2025-03-27 10:09:40"}
+{"level":"info","message":"Response time: 6ms for GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=others&locale=East+Africa","timestamp":"2025-03-27 10:09:40"}
+{"level":"info","message":"[2025-03-27T07:09:42.937Z] GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=beverages&locale=East+Africa","timestamp":"2025-03-27 10:09:42"}
+{"level":"info","message":"Response time: 5ms for GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=beverages&locale=East+Africa","timestamp":"2025-03-27 10:09:42"}
+{"level":"info","message":"[2025-03-27T07:09:44.857Z] GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=milk&locale=East+Africa","timestamp":"2025-03-27 10:09:44"}
+{"level":"info","message":"Response time: 5ms for GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=milk&locale=East+Africa","timestamp":"2025-03-27 10:09:44"}
+{"level":"info","message":"[2025-03-27T07:09:46.255Z] GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=Other&locale=East+Africa","timestamp":"2025-03-27 10:09:46"}
+{"level":"info","message":"Response time: 5ms for GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=Other&locale=East+Africa","timestamp":"2025-03-27 10:09:46"}
+{"level":"info","message":"[2025-03-27T07:09:48.064Z] GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=Other&locale=West+Africa","timestamp":"2025-03-27 10:09:48"}
+{"level":"info","message":"Response time: 5ms for GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=Other&locale=West+Africa","timestamp":"2025-03-27 10:09:48"}
+{"level":"info","message":"[2025-03-27T07:09:50.617Z] GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=vegetables&locale=West+Africa","timestamp":"2025-03-27 10:09:50"}
+{"level":"info","message":"Response time: 3ms for GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=vegetables&locale=West+Africa","timestamp":"2025-03-27 10:09:50"}
+{"level":"info","message":"[2025-03-27T07:09:53.161Z] GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=meat&locale=West+Africa","timestamp":"2025-03-27 10:09:53"}
+{"level":"info","message":"Response time: 4ms for GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=meat&locale=West+Africa","timestamp":"2025-03-27 10:09:53"}
+{"level":"info","message":"[2025-03-27T07:09:56.171Z] GET /api/meals?startDate=2025-03-27&endDate=2025-03-27","timestamp":"2025-03-27 10:09:56"}
+{"endDate":"2025-03-27","level":"info","limit":10,"message":"Fetching meals for user","page":1,"startDate":"2025-03-27","timestamp":"2025-03-27 10:09:56","userId":4}
+{"level":"info","message":"Retrieved undefined meals for user","timestamp":"2025-03-27 10:09:56","userId":4}
+{"level":"info","message":"Response time: 177ms for GET /api/meals?startDate=2025-03-27&endDate=2025-03-27","timestamp":"2025-03-27 10:09:56"}
+{"level":"info","message":"[2025-03-27T07:09:56.352Z] GET /api/meals?startDate=2025-03-27&endDate=2025-03-27","timestamp":"2025-03-27 10:09:56"}
+{"endDate":"2025-03-27","level":"info","limit":10,"message":"Fetching meals for user","page":1,"startDate":"2025-03-27","timestamp":"2025-03-27 10:09:56","userId":4}
+{"level":"info","message":"Retrieved undefined meals for user","timestamp":"2025-03-27 10:09:56","userId":4}
+{"level":"info","message":"Response time: 5ms for GET /api/meals?startDate=2025-03-27&endDate=2025-03-27","timestamp":"2025-03-27 10:09:56"}
+{"level":"info","message":"[2025-03-27T07:09:59.219Z] GET /api/foods?query=b","timestamp":"2025-03-27 10:09:59"}
+{"level":"info","message":"Response time: 23ms for GET /api/foods?query=b","timestamp":"2025-03-27 10:09:59"}
+{"level":"info","message":"[2025-03-27T07:10:01.533Z] GET /api/foods?query=beer","timestamp":"2025-03-27 10:10:01"}
+{"level":"info","message":"Response time: 9ms for GET /api/foods?query=beer","timestamp":"2025-03-27 10:10:01"}
+{"level":"info","message":"[2025-03-27T07:10:23.674Z] POST /api/meals","timestamp":"2025-03-27 10:10:23"}
+{"level":"info","mealData":{"foods":[{"calories":70,"carbs":4,"fats":0,"food_id":854,"name":"Beer european (4.4 % alcohol)","proteins":0.6,"serving_qty":200,"serving_unit":"g"}],"log_date":"2025-03-27T00:00:00.000Z","metadata":{"source":"client_app","timestamp":"2025-03-27T07:10:23.668Z"},"type":"breakfast"},"message":"Creating meal for user: 4","timestamp":"2025-03-27 10:10:23"}
+{"level":"info","message":"Meal created successfully for user: 4","timestamp":"2025-03-27 10:10:23"}
+{"level":"info","message":"Response time: 237ms for POST /api/meals","timestamp":"2025-03-27 10:10:23"}
+{"level":"info","message":"[2025-03-27T07:10:28.609Z] GET /api/foods?query=pi","timestamp":"2025-03-27 10:10:28"}
+{"level":"info","message":"Response time: 17ms for GET /api/foods?query=pi","timestamp":"2025-03-27 10:10:28"}
+{"level":"info","message":"[2025-03-27T07:10:29.024Z] GET /api/foods?query=pil","timestamp":"2025-03-27 10:10:29"}
+{"level":"info","message":"Response time: 16ms for GET /api/foods?query=pil","timestamp":"2025-03-27 10:10:29"}
+{"level":"info","message":"[2025-03-27T07:10:46.308Z] POST /api/meals","timestamp":"2025-03-27 10:10:46"}
+{"level":"info","mealData":{"foods":[{"calories":531,"carbs":70.8,"fats":16.8,"food_id":64,"name":"Rice and meat pillau","proteins":21.3,"serving_qty":300,"serving_unit":"g"}],"log_date":"2025-03-27T00:00:00.000Z","metadata":{"source":"client_app","timestamp":"2025-03-27T07:10:46.303Z"},"type":"lunch"},"message":"Creating meal for user: 4","timestamp":"2025-03-27 10:10:46"}
+{"level":"info","message":"Meal created successfully for user: 4","timestamp":"2025-03-27 10:10:46"}
+{"level":"info","message":"Response time: 184ms for POST /api/meals","timestamp":"2025-03-27 10:10:46"}
+{"level":"info","message":"[2025-03-27T07:10:52.920Z] GET /api/foods?query=r","timestamp":"2025-03-27 10:10:52"}
+{"level":"info","message":"Response time: 13ms for GET /api/foods?query=r","timestamp":"2025-03-27 10:10:52"}
+{"level":"info","message":"[2025-03-27T07:10:53.301Z] GET /api/foods?query=ri","timestamp":"2025-03-27 10:10:53"}
+{"level":"info","message":"Response time: 16ms for GET /api/foods?query=ri","timestamp":"2025-03-27 10:10:53"}
+{"level":"info","message":"[2025-03-27T07:10:53.669Z] GET /api/foods?query=ric","timestamp":"2025-03-27 10:10:53"}
+{"level":"info","message":"Response time: 13ms for GET /api/foods?query=ric","timestamp":"2025-03-27 10:10:53"}
+{"level":"info","message":"[2025-03-27T07:10:54.251Z] GET /api/foods?query=rice","timestamp":"2025-03-27 10:10:54"}
+{"level":"info","message":"Response time: 23ms for GET /api/foods?query=rice","timestamp":"2025-03-27 10:10:54"}
+{"level":"info","message":"[2025-03-27T07:11:12.362Z] POST /api/meals","timestamp":"2025-03-27 10:11:12"}
+{"level":"info","mealData":{"foods":[{"calories":657,"carbs":90.5,"fats":28.5,"food_id":65,"name":"Rice and mung dish with coconut milk","proteins":12.5,"serving_qty":250,"serving_unit":"g"}],"log_date":"2025-03-27T00:00:00.000Z","metadata":{"source":"client_app","timestamp":"2025-03-27T07:11:12.354Z"},"type":"dinner"},"message":"Creating meal for user: 4","timestamp":"2025-03-27 10:11:12"}
+{"level":"info","message":"Meal created successfully for user: 4","timestamp":"2025-03-27 10:11:12"}
+{"level":"info","message":"Response time: 193ms for POST /api/meals","timestamp":"2025-03-27 10:11:12"}
+{"level":"info","message":"[2025-03-27T07:11:18.070Z] GET /api/foods?query=bisc","timestamp":"2025-03-27 10:11:18"}
+{"level":"info","message":"Response time: 11ms for GET /api/foods?query=bisc","timestamp":"2025-03-27 10:11:18"}
+{"level":"info","message":"[2025-03-27T07:11:18.633Z] GET /api/foods?query=biscui","timestamp":"2025-03-27 10:11:18"}
+{"level":"info","message":"Response time: 11ms for GET /api/foods?query=biscui","timestamp":"2025-03-27 10:11:18"}
+{"level":"info","message":"[2025-03-27T07:11:22.508Z] POST /api/meals","timestamp":"2025-03-27 10:11:22"}
+{"level":"info","mealData":{"foods":[{"calories":434,"carbs":71.5,"fats":11.8,"food_id":13,"name":"Biscuit","proteins":9.2,"serving_qty":100,"serving_unit":"g"}],"log_date":"2025-03-27T00:00:00.000Z","metadata":{"source":"client_app","timestamp":"2025-03-27T07:11:22.503Z"},"type":"dinner"},"message":"Creating meal for user: 4","timestamp":"2025-03-27 10:11:22"}
+{"level":"info","message":"Meal created successfully for user: 4","timestamp":"2025-03-27 10:11:22"}
+{"level":"info","message":"Response time: 42ms for POST /api/meals","timestamp":"2025-03-27 10:11:22"}
+{"level":"info","message":"[2025-03-27T07:11:33.868Z] GET /api/foods?query=yo","timestamp":"2025-03-27 10:11:33"}
+{"level":"info","message":"Response time: 83ms for GET /api/foods?query=yo","timestamp":"2025-03-27 10:11:33"}
+{"level":"info","message":"[2025-03-27T07:11:35.722Z] GET /api/foods?query=yoh","timestamp":"2025-03-27 10:11:35"}
+{"level":"info","message":"Response time: 16ms for GET /api/foods?query=yoh","timestamp":"2025-03-27 10:11:35"}
+{"level":"info","message":"[2025-03-27T07:11:36.972Z] GET /api/foods?query=y","timestamp":"2025-03-27 10:11:36"}
+{"level":"info","message":"Response time: 11ms for GET /api/foods?query=y","timestamp":"2025-03-27 10:11:36"}
+{"level":"info","message":"[2025-03-27T07:11:37.583Z] GET /api/foods?query=yg","timestamp":"2025-03-27 10:11:37"}
+{"level":"info","message":"Response time: 16ms for GET /api/foods?query=yg","timestamp":"2025-03-27 10:11:37"}
+{"level":"info","message":"[2025-03-27T07:11:39.181Z] GET /api/foods?query=y","timestamp":"2025-03-27 10:11:39"}
+{"level":"info","message":"Response time: 5ms for GET /api/foods?query=y","timestamp":"2025-03-27 10:11:39"}
+{"level":"info","message":"[2025-03-27T07:11:39.579Z] GET /api/foods?query=yo","timestamp":"2025-03-27 10:11:39"}
+{"level":"info","message":"Response time: 5ms for GET /api/foods?query=yo","timestamp":"2025-03-27 10:11:39"}
+{"level":"info","message":"[2025-03-27T07:11:43.810Z] POST /api/meals","timestamp":"2025-03-27 10:11:43"}
+{"level":"info","mealData":{"foods":[{"calories":73,"carbs":6.8,"fats":3.4,"food_id":844,"name":"Yoghurt, whole milk, plain","proteins":3.8,"serving_qty":100,"serving_unit":"g"}],"log_date":"2025-03-27T00:00:00.000Z","metadata":{"source":"client_app","timestamp":"2025-03-27T07:11:43.805Z"},"type":"snack"},"message":"Creating meal for user: 4","timestamp":"2025-03-27 10:11:43"}
+{"level":"info","message":"Meal created successfully for user: 4","timestamp":"2025-03-27 10:11:43"}
+{"level":"info","message":"Response time: 57ms for POST /api/meals","timestamp":"2025-03-27 10:11:43"}
+{"level":"info","message":"[2025-03-27T07:11:47.628Z] GET /api/auth/profile","timestamp":"2025-03-27 10:11:47"}
+{"level":"info","message":"Response time: 7ms for GET /api/auth/profile","timestamp":"2025-03-27 10:11:47"}
+{"level":"info","message":"[2025-03-27T07:11:47.640Z] GET /api/auth/profile","timestamp":"2025-03-27 10:11:47"}
+{"level":"info","message":"[2025-03-27T07:11:47.646Z] GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 10:11:47"}
+{"level":"info","message":"Response time: 11ms for GET /api/auth/profile","timestamp":"2025-03-27 10:11:47"}
+{"endDate":"2025-03-27","level":"info","limit":10,"message":"Fetching meals for user","page":1,"startDate":"2025-03-21","timestamp":"2025-03-27 10:11:47","userId":4}
+{"level":"info","message":"Retrieved undefined meals for user","timestamp":"2025-03-27 10:11:47","userId":4}
+{"level":"info","message":"Response time: 80ms for GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 10:11:47"}
+{"level":"info","message":"[2025-03-27T07:11:47.728Z] GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 10:11:47"}
+{"endDate":"2025-03-27","level":"info","limit":10,"message":"Fetching meals for user","page":1,"startDate":"2025-03-21","timestamp":"2025-03-27 10:11:47","userId":4}
+{"level":"info","message":"Retrieved undefined meals for user","timestamp":"2025-03-27 10:11:47","userId":4}
+{"level":"info","message":"Response time: 9ms for GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 10:11:47"}
+{"level":"info","message":"[2025-03-27T07:11:57.572Z] POST /api/auth/logout","timestamp":"2025-03-27 10:11:57"}
+{"level":"info","message":"Response time: 1ms for POST /api/auth/logout","timestamp":"2025-03-27 10:11:57"}
+{"level":"info","message":"Users table synchronized successfully","timestamp":"2025-03-27 16:03:25"}
+{"level":"info","message":"User Profiles table synchronized successfully","timestamp":"2025-03-27 16:03:25"}
+{"level":"info","message":"Additional database models synchronized successfully","timestamp":"2025-03-27 16:03:25"}
+{"level":"info","message":"Database connection established successfully","timestamp":"2025-03-27 16:03:25"}
+{"level":"info","message":"Redis connection established successfully","timestamp":"2025-03-27 16:03:25"}
+{"level":"info","message":"Server running on port 3000","timestamp":"2025-03-27 16:03:25"}
+{"level":"info","message":"API documentation available at http://localhost:3000/api-docs","timestamp":"2025-03-27 16:03:25"}
+{"level":"info","message":"[2025-03-27T13:06:25.410Z] POST /api/auth/login","timestamp":"2025-03-27 16:06:25"}
+{"level":"info","message":"User login successful: Aica","timestamp":"2025-03-27 16:06:25"}
+{"level":"info","message":"Response time: 245ms for POST /api/auth/login","timestamp":"2025-03-27 16:06:25"}
+{"level":"info","message":"[2025-03-27T13:06:25.682Z] GET /api/auth/profile","timestamp":"2025-03-27 16:06:25"}
+{"level":"info","message":"[2025-03-27T13:06:25.747Z] GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 16:06:25"}
+{"endDate":"2025-03-27","level":"info","limit":10,"message":"Fetching meals for user","page":1,"startDate":"2025-03-21","timestamp":"2025-03-27 16:06:25","userId":4}
+{"level":"info","message":"Response time: 97ms for GET /api/auth/profile","timestamp":"2025-03-27 16:06:25"}
+{"level":"info","message":"[2025-03-27T13:06:25.838Z] GET /api/auth/profile","timestamp":"2025-03-27 16:06:25"}
+{"level":"info","message":"Retrieved undefined meals for user","timestamp":"2025-03-27 16:06:25","userId":4}
+{"level":"info","message":"Response time: 53ms for GET /api/auth/profile","timestamp":"2025-03-27 16:06:25"}
+{"level":"info","message":"Response time: 148ms for GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 16:06:25"}
+{"level":"info","message":"[2025-03-27T13:06:25.899Z] GET /api/auth/profile","timestamp":"2025-03-27 16:06:25"}
+{"level":"info","message":"[2025-03-27T13:06:25.911Z] GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 16:06:25"}
+{"endDate":"2025-03-27","level":"info","limit":10,"message":"Fetching meals for user","page":1,"startDate":"2025-03-21","timestamp":"2025-03-27 16:06:25","userId":4}
+{"level":"info","message":"Retrieved undefined meals for user","timestamp":"2025-03-27 16:06:25","userId":4}
+{"level":"info","message":"Response time: 44ms for GET /api/auth/profile","timestamp":"2025-03-27 16:06:25"}
+{"level":"info","message":"Response time: 37ms for GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 16:06:25"}
+{"level":"info","message":"[2025-03-27T13:06:26.118Z] GET /api/auth/profile","timestamp":"2025-03-27 16:06:26"}
+{"level":"info","message":"[2025-03-27T13:06:26.125Z] GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 16:06:26"}
+{"level":"info","message":"Response time: 40ms for GET /api/auth/profile","timestamp":"2025-03-27 16:06:26"}
+{"level":"info","message":"[2025-03-27T13:06:26.162Z] GET /api/auth/profile","timestamp":"2025-03-27 16:06:26"}
+{"endDate":"2025-03-27","level":"info","limit":10,"message":"Fetching meals for user","page":1,"startDate":"2025-03-21","timestamp":"2025-03-27 16:06:26","userId":4}
+{"level":"info","message":"Retrieved undefined meals for user","timestamp":"2025-03-27 16:06:26","userId":4}
+{"level":"info","message":"Response time: 49ms for GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 16:06:26"}
+{"level":"info","message":"Response time: 15ms for GET /api/auth/profile","timestamp":"2025-03-27 16:06:26"}
+{"level":"info","message":"[2025-03-27T13:06:26.181Z] GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 16:06:26"}
+{"endDate":"2025-03-27","level":"info","limit":10,"message":"Fetching meals for user","page":1,"startDate":"2025-03-21","timestamp":"2025-03-27 16:06:26","userId":4}
+{"level":"info","message":"Retrieved undefined meals for user","timestamp":"2025-03-27 16:06:26","userId":4}
+{"level":"info","message":"Response time: 13ms for GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 16:06:26"}
+{"level":"info","message":"[2025-03-27T13:06:35.032Z] GET /api/meals?startDate=2025-03-27&endDate=2025-03-27","timestamp":"2025-03-27 16:06:35"}
+{"endDate":"2025-03-27","level":"info","limit":10,"message":"Fetching meals for user","page":1,"startDate":"2025-03-27","timestamp":"2025-03-27 16:06:35","userId":4}
+{"level":"info","message":"Retrieved undefined meals for user","timestamp":"2025-03-27 16:06:35","userId":4}
+{"level":"info","message":"Response time: 78ms for GET /api/meals?startDate=2025-03-27&endDate=2025-03-27","timestamp":"2025-03-27 16:06:35"}
+{"level":"info","message":"[2025-03-27T13:06:35.114Z] GET /api/meals?startDate=2025-03-27&endDate=2025-03-27","timestamp":"2025-03-27 16:06:35"}
+{"endDate":"2025-03-27","level":"info","limit":10,"message":"Fetching meals for user","page":1,"startDate":"2025-03-27","timestamp":"2025-03-27 16:06:35","userId":4}
+{"level":"info","message":"Retrieved undefined meals for user","timestamp":"2025-03-27 16:06:35","userId":4}
+{"level":"info","message":"Response time: 11ms for GET /api/meals?startDate=2025-03-27&endDate=2025-03-27","timestamp":"2025-03-27 16:06:35"}
+{"level":"info","message":"[2025-03-27T13:06:36.457Z] GET /api/auth/profile","timestamp":"2025-03-27 16:06:36"}
+{"level":"info","message":"[2025-03-27T13:06:36.464Z] GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 16:06:36"}
+{"endDate":"2025-03-27","level":"info","limit":10,"message":"Fetching meals for user","page":1,"startDate":"2025-03-21","timestamp":"2025-03-27 16:06:36","userId":4}
+{"level":"info","message":"Response time: 18ms for GET /api/auth/profile","timestamp":"2025-03-27 16:06:36"}
+{"level":"info","message":"Retrieved undefined meals for user","timestamp":"2025-03-27 16:06:36","userId":4}
+{"level":"info","message":"Response time: 16ms for GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 16:06:36"}
+{"level":"info","message":"[2025-03-27T13:06:36.492Z] GET /api/auth/profile","timestamp":"2025-03-27 16:06:36"}
+{"level":"info","message":"[2025-03-27T13:06:36.503Z] GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 16:06:36"}
+{"endDate":"2025-03-27","level":"info","limit":10,"message":"Fetching meals for user","page":1,"startDate":"2025-03-21","timestamp":"2025-03-27 16:06:36","userId":4}
+{"level":"info","message":"Response time: 24ms for GET /api/auth/profile","timestamp":"2025-03-27 16:06:36"}
+{"level":"info","message":"Retrieved undefined meals for user","timestamp":"2025-03-27 16:06:36","userId":4}
+{"level":"info","message":"Response time: 21ms for GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 16:06:36"}
+{"level":"info","message":"[2025-03-27T13:06:42.250Z] GET /api/meals?startDate=2025-03-27&endDate=2025-03-27","timestamp":"2025-03-27 16:06:42"}
+{"endDate":"2025-03-27","level":"info","limit":10,"message":"Fetching meals for user","page":1,"startDate":"2025-03-27","timestamp":"2025-03-27 16:06:42","userId":4}
+{"level":"info","message":"Retrieved undefined meals for user","timestamp":"2025-03-27 16:06:42","userId":4}
+{"level":"info","message":"Response time: 11ms for GET /api/meals?startDate=2025-03-27&endDate=2025-03-27","timestamp":"2025-03-27 16:06:42"}
+{"level":"info","message":"[2025-03-27T13:06:42.265Z] GET /api/meals?startDate=2025-03-27&endDate=2025-03-27","timestamp":"2025-03-27 16:06:42"}
+{"endDate":"2025-03-27","level":"info","limit":10,"message":"Fetching meals for user","page":1,"startDate":"2025-03-27","timestamp":"2025-03-27 16:06:42","userId":4}
+{"level":"info","message":"Retrieved undefined meals for user","timestamp":"2025-03-27 16:06:42","userId":4}
+{"level":"info","message":"Response time: 14ms for GET /api/meals?startDate=2025-03-27&endDate=2025-03-27","timestamp":"2025-03-27 16:06:42"}
+{"level":"info","message":"[2025-03-27T13:06:52.560Z] GET /api/auth/profile","timestamp":"2025-03-27 16:06:52"}
+{"level":"info","message":"Response time: 11ms for GET /api/auth/profile","timestamp":"2025-03-27 16:06:52"}
+{"level":"info","message":"[2025-03-27T13:06:52.574Z] GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 16:06:52"}
+{"level":"info","message":"[2025-03-27T13:06:52.578Z] GET /api/auth/profile","timestamp":"2025-03-27 16:06:52"}
+{"endDate":"2025-03-27","level":"info","limit":10,"message":"Fetching meals for user","page":1,"startDate":"2025-03-21","timestamp":"2025-03-27 16:06:52","userId":4}
+{"level":"info","message":"Retrieved undefined meals for user","timestamp":"2025-03-27 16:06:52","userId":4}
+{"level":"info","message":"Response time: 48ms for GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 16:06:52"}
+{"level":"info","message":"Response time: 45ms for GET /api/auth/profile","timestamp":"2025-03-27 16:06:52"}
+{"level":"info","message":"[2025-03-27T13:06:52.653Z] GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 16:06:52"}
+{"endDate":"2025-03-27","level":"info","limit":10,"message":"Fetching meals for user","page":1,"startDate":"2025-03-21","timestamp":"2025-03-27 16:06:52","userId":4}
+{"level":"info","message":"Retrieved undefined meals for user","timestamp":"2025-03-27 16:06:52","userId":4}
+{"level":"info","message":"Response time: 41ms for GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 16:06:52"}
+{"level":"info","message":"[2025-03-27T13:06:56.179Z] GET /api/foods/categories","timestamp":"2025-03-27 16:06:56"}
+{"level":"info","message":"[2025-03-27T13:06:56.183Z] GET /api/foods?page=1&limit=20&sort=name&order=ASC","timestamp":"2025-03-27 16:06:56"}
+{"level":"info","message":"Response time: 60ms for GET /api/foods/categories","timestamp":"2025-03-27 16:06:56"}
+{"level":"info","message":"[2025-03-27T13:06:56.244Z] GET /api/foods/categories","timestamp":"2025-03-27 16:06:56"}
+{"level":"info","message":"Response time: 61ms for GET /api/foods?page=1&limit=20&sort=name&order=ASC","timestamp":"2025-03-27 16:06:56"}
+{"level":"info","message":"Response time: 4ms for GET /api/foods/categories","timestamp":"2025-03-27 16:06:56"}
+{"level":"info","message":"[2025-03-27T13:06:56.258Z] GET /api/foods?page=1&limit=20&sort=name&order=ASC","timestamp":"2025-03-27 16:06:56"}
+{"level":"info","message":"Response time: 8ms for GET /api/foods?page=1&limit=20&sort=name&order=ASC","timestamp":"2025-03-27 16:06:56"}
+{"level":"info","message":"[2025-03-27T13:06:59.761Z] GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=beverages","timestamp":"2025-03-27 16:06:59"}
+{"level":"info","message":"Response time: 31ms for GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=beverages","timestamp":"2025-03-27 16:06:59"}
+{"level":"info","message":"[2025-03-27T13:07:01.143Z] GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=milk","timestamp":"2025-03-27 16:07:01"}
+{"level":"info","message":"Response time: 20ms for GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=milk","timestamp":"2025-03-27 16:07:01"}
+{"level":"info","message":"[2025-03-27T13:07:02.229Z] GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=Other","timestamp":"2025-03-27 16:07:02"}
+{"level":"info","message":"Response time: 34ms for GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=Other","timestamp":"2025-03-27 16:07:02"}
+{"level":"info","message":"[2025-03-27T13:07:03.491Z] GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=vegetables","timestamp":"2025-03-27 16:07:03"}
+{"level":"info","message":"Response time: 30ms for GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=vegetables","timestamp":"2025-03-27 16:07:03"}
+{"level":"info","message":"[2025-03-27T13:07:07.453Z] GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=meat","timestamp":"2025-03-27 16:07:07"}
+{"level":"info","message":"Response time: 18ms for GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=meat","timestamp":"2025-03-27 16:07:07"}
+{"level":"info","message":"[2025-03-27T13:07:10.130Z] GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=meat&locale=East+Africa","timestamp":"2025-03-27 16:07:10"}
+{"level":"info","message":"Response time: 8ms for GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=meat&locale=East+Africa","timestamp":"2025-03-27 16:07:10"}
+{"level":"info","message":"[2025-03-27T13:07:11.897Z] GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=meat&locale=West+Africa","timestamp":"2025-03-27 16:07:11"}
+{"level":"info","message":"Response time: 10ms for GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=meat&locale=West+Africa","timestamp":"2025-03-27 16:07:11"}
+{"level":"info","message":"[2025-03-27T13:07:24.685Z] GET /api/auth/profile","timestamp":"2025-03-27 16:07:24"}
+{"level":"info","message":"Response time: 119ms for GET /api/auth/profile","timestamp":"2025-03-27 16:07:24"}
+{"level":"info","message":"[2025-03-27T13:07:24.807Z] GET /api/auth/profile","timestamp":"2025-03-27 16:07:24"}
+{"level":"info","message":"Response time: 6ms for GET /api/auth/profile","timestamp":"2025-03-27 16:07:24"}
+{"level":"info","message":"[2025-03-27T13:07:33.344Z] GET /api/auth/profile","timestamp":"2025-03-27 16:07:33"}
+{"level":"info","message":"[2025-03-27T13:07:33.349Z] GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 16:07:33"}
+{"endDate":"2025-03-27","level":"info","limit":10,"message":"Fetching meals for user","page":1,"startDate":"2025-03-21","timestamp":"2025-03-27 16:07:33","userId":4}
+{"level":"info","message":"Response time: 17ms for GET /api/auth/profile","timestamp":"2025-03-27 16:07:33"}
+{"level":"info","message":"Retrieved undefined meals for user","timestamp":"2025-03-27 16:07:33","userId":4}
+{"level":"info","message":"Response time: 16ms for GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 16:07:33"}
+{"level":"info","message":"[2025-03-27T13:07:33.370Z] GET /api/auth/profile","timestamp":"2025-03-27 16:07:33"}
+{"level":"info","message":"[2025-03-27T13:07:33.386Z] GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 16:07:33"}
+{"endDate":"2025-03-27","level":"info","limit":10,"message":"Fetching meals for user","page":1,"startDate":"2025-03-21","timestamp":"2025-03-27 16:07:33","userId":4}
+{"level":"info","message":"Retrieved undefined meals for user","timestamp":"2025-03-27 16:07:33","userId":4}
+{"level":"info","message":"Response time: 47ms for GET /api/auth/profile","timestamp":"2025-03-27 16:07:33"}
+{"level":"info","message":"Response time: 50ms for GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 16:07:33"}
+{"level":"error","message":"Error: Not allowed by CORS","method":"OPTIONS","path":"/api/auth/login","stack":"Error: Not allowed by CORS\n    at origin (file:///C:/Users/User/Desktop/calorie-tracker/calorie-tracker-master/Backend/src/app.js:90:16)\n    at C:\\Users\\User\\Desktop\\calorie-tracker\\calorie-tracker-master\\Backend\\node_modules\\cors\\lib\\index.js:219:13\n    at optionsCallback (C:\\Users\\User\\Desktop\\calorie-tracker\\calorie-tracker-master\\Backend\\node_modules\\cors\\lib\\index.js:199:9)\n    at corsMiddleware (C:\\Users\\User\\Desktop\\calorie-tracker\\calorie-tracker-master\\Backend\\node_modules\\cors\\lib\\index.js:204:7)\n    at Layer.handle [as handle_request] (C:\\Users\\User\\Desktop\\calorie-tracker\\calorie-tracker-master\\Backend\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at trim_prefix (C:\\Users\\User\\Desktop\\calorie-tracker\\calorie-tracker-master\\Backend\\node_modules\\express\\lib\\router\\index.js:328:13)\n    at C:\\Users\\User\\Desktop\\calorie-tracker\\calorie-tracker-master\\Backend\\node_modules\\express\\lib\\router\\index.js:286:9\n    at Function.process_params (C:\\Users\\User\\Desktop\\calorie-tracker\\calorie-tracker-master\\Backend\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (C:\\Users\\User\\Desktop\\calorie-tracker\\calorie-tracker-master\\Backend\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at internalNext (file:///C:/Users/User/Desktop/calorie-tracker/calorie-tracker-master/Backend/node_modules/helmet/index.mjs:533:6)","timestamp":"2025-03-27 16:25:07"}
+{"level":"info","message":"[2025-03-27T13:53:42.388Z] GET /api/auth/profile","timestamp":"2025-03-27 16:53:42"}
+{"level":"info","message":"Response time: 128ms for GET /api/auth/profile","timestamp":"2025-03-27 16:53:42"}
+{"level":"info","message":"[2025-03-27T13:53:42.520Z] GET /api/auth/profile","timestamp":"2025-03-27 16:53:42"}
+{"level":"info","message":"Response time: 9ms for GET /api/auth/profile","timestamp":"2025-03-27 16:53:42"}
+{"level":"info","message":"[2025-03-27T13:53:42.554Z] GET /api/auth/profile","timestamp":"2025-03-27 16:53:42"}
+{"level":"info","message":"[2025-03-27T13:53:42.564Z] GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 16:53:42"}
+{"endDate":"2025-03-27","level":"info","limit":10,"message":"Fetching meals for user","page":1,"startDate":"2025-03-21","timestamp":"2025-03-27 16:53:42","userId":4}
+{"level":"info","message":"Response time: 19ms for GET /api/auth/profile","timestamp":"2025-03-27 16:53:42"}
+{"level":"info","message":"Retrieved undefined meals for user","timestamp":"2025-03-27 16:53:42","userId":4}
+{"level":"info","message":"Response time: 14ms for GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 16:53:42"}
+{"level":"info","message":"[2025-03-27T13:53:42.580Z] GET /api/auth/profile","timestamp":"2025-03-27 16:53:42"}
+{"level":"info","message":"[2025-03-27T13:53:42.588Z] GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 16:53:42"}
+{"endDate":"2025-03-27","level":"info","limit":10,"message":"Fetching meals for user","page":1,"startDate":"2025-03-21","timestamp":"2025-03-27 16:53:42","userId":4}
+{"level":"info","message":"Response time: 24ms for GET /api/auth/profile","timestamp":"2025-03-27 16:53:42"}
+{"level":"info","message":"Retrieved undefined meals for user","timestamp":"2025-03-27 16:53:42","userId":4}
+{"level":"info","message":"Response time: 20ms for GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 16:53:42"}
+{"level":"info","message":"[2025-03-27T13:53:42.610Z] GET /api/auth/profile","timestamp":"2025-03-27 16:53:42"}
+{"level":"info","message":"[2025-03-27T13:53:42.616Z] GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 16:53:42"}
+{"endDate":"2025-03-27","level":"info","limit":10,"message":"Fetching meals for user","page":1,"startDate":"2025-03-21","timestamp":"2025-03-27 16:53:42","userId":4}
+{"level":"info","message":"Retrieved undefined meals for user","timestamp":"2025-03-27 16:53:42","userId":4}
+{"level":"info","message":"Response time: 27ms for GET /api/auth/profile","timestamp":"2025-03-27 16:53:42"}
+{"level":"info","message":"Response time: 20ms for GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 16:53:42"}
+{"level":"info","message":"[2025-03-27T13:53:42.640Z] GET /api/auth/profile","timestamp":"2025-03-27 16:53:42"}
+{"level":"info","message":"[2025-03-27T13:53:42.648Z] GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 16:53:42"}
+{"endDate":"2025-03-27","level":"info","limit":10,"message":"Fetching meals for user","page":1,"startDate":"2025-03-21","timestamp":"2025-03-27 16:53:42","userId":4}
+{"level":"info","message":"Response time: 29ms for GET /api/auth/profile","timestamp":"2025-03-27 16:53:42"}
+{"level":"info","message":"Retrieved undefined meals for user","timestamp":"2025-03-27 16:53:42","userId":4}
+{"level":"info","message":"Response time: 28ms for GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 16:53:42"}
+{"level":"info","message":"[2025-03-27T13:54:29.370Z] GET /api/auth/profile","timestamp":"2025-03-27 16:54:29"}
+{"level":"info","message":"Response time: 161ms for GET /api/auth/profile","timestamp":"2025-03-27 16:54:29"}
+{"level":"info","message":"[2025-03-27T13:54:29.535Z] GET /api/auth/profile","timestamp":"2025-03-27 16:54:29"}
+{"level":"info","message":"Response time: 11ms for GET /api/auth/profile","timestamp":"2025-03-27 16:54:29"}
+{"level":"info","message":"[2025-03-27T13:54:29.633Z] GET /api/auth/profile","timestamp":"2025-03-27 16:54:29"}
+{"level":"info","message":"[2025-03-27T13:54:29.641Z] GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 16:54:29"}
+{"endDate":"2025-03-27","level":"info","limit":10,"message":"Fetching meals for user","page":1,"startDate":"2025-03-21","timestamp":"2025-03-27 16:54:29","userId":4}
+{"level":"info","message":"Response time: 19ms for GET /api/auth/profile","timestamp":"2025-03-27 16:54:29"}
+{"level":"info","message":"Retrieved undefined meals for user","timestamp":"2025-03-27 16:54:29","userId":4}
+{"level":"info","message":"Response time: 15ms for GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 16:54:29"}
+{"level":"info","message":"[2025-03-27T13:54:29.659Z] GET /api/auth/profile","timestamp":"2025-03-27 16:54:29"}
+{"level":"info","message":"[2025-03-27T13:54:29.666Z] GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 16:54:29"}
+{"endDate":"2025-03-27","level":"info","limit":10,"message":"Fetching meals for user","page":1,"startDate":"2025-03-21","timestamp":"2025-03-27 16:54:29","userId":4}
+{"level":"info","message":"Response time: 20ms for GET /api/auth/profile","timestamp":"2025-03-27 16:54:29"}
+{"level":"info","message":"Retrieved undefined meals for user","timestamp":"2025-03-27 16:54:29","userId":4}
+{"level":"info","message":"Response time: 21ms for GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 16:54:29"}
+{"level":"info","message":"[2025-03-27T13:54:29.693Z] GET /api/auth/profile","timestamp":"2025-03-27 16:54:29"}
+{"level":"info","message":"[2025-03-27T13:54:29.702Z] GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 16:54:29"}
+{"endDate":"2025-03-27","level":"info","limit":10,"message":"Fetching meals for user","page":1,"startDate":"2025-03-21","timestamp":"2025-03-27 16:54:29","userId":4}
+{"level":"info","message":"Response time: 36ms for GET /api/auth/profile","timestamp":"2025-03-27 16:54:29"}
+{"level":"info","message":"Retrieved undefined meals for user","timestamp":"2025-03-27 16:54:29","userId":4}
+{"level":"info","message":"Response time: 28ms for GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 16:54:29"}
+{"level":"info","message":"[2025-03-27T13:54:29.742Z] GET /api/auth/profile","timestamp":"2025-03-27 16:54:29"}
+{"level":"info","message":"[2025-03-27T13:54:29.751Z] GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 16:54:29"}
+{"endDate":"2025-03-27","level":"info","limit":10,"message":"Fetching meals for user","page":1,"startDate":"2025-03-21","timestamp":"2025-03-27 16:54:29","userId":4}
+{"level":"info","message":"Response time: 27ms for GET /api/auth/profile","timestamp":"2025-03-27 16:54:29"}
+{"level":"info","message":"Retrieved undefined meals for user","timestamp":"2025-03-27 16:54:29","userId":4}
+{"level":"info","message":"Response time: 34ms for GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 16:54:29"}
+{"level":"info","message":"Users table synchronized successfully","timestamp":"2025-03-27 18:03:04"}
+{"level":"info","message":"User Profiles table synchronized successfully","timestamp":"2025-03-27 18:03:04"}
+{"level":"info","message":"Additional database models synchronized successfully","timestamp":"2025-03-27 18:03:05"}
+{"level":"info","message":"Database connection established successfully","timestamp":"2025-03-27 18:03:05"}
+{"level":"info","message":"Redis connection established successfully","timestamp":"2025-03-27 18:03:05"}
+{"level":"info","message":"Server running on port 3000","timestamp":"2025-03-27 18:03:05"}
+{"level":"info","message":"API documentation available at http://localhost:3000/api-docs","timestamp":"2025-03-27 18:03:05"}
+{"level":"info","message":"[2025-03-27T15:03:49.219Z] POST /api/auth/login","timestamp":"2025-03-27 18:03:49"}
+{"level":"info","message":"User login successful: Aica","timestamp":"2025-03-27 18:03:49"}
+{"level":"info","message":"Response time: 253ms for POST /api/auth/login","timestamp":"2025-03-27 18:03:49"}
+{"level":"info","message":"[2025-03-27T15:03:49.526Z] GET /api/auth/profile","timestamp":"2025-03-27 18:03:49"}
+{"level":"info","message":"[2025-03-27T15:03:49.541Z] GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 18:03:49"}
+{"endDate":"2025-03-27","level":"info","limit":10,"message":"Fetching meals for user","page":1,"startDate":"2025-03-21","timestamp":"2025-03-27 18:03:49","userId":4}
+{"level":"info","message":"Response time: 103ms for GET /api/auth/profile","timestamp":"2025-03-27 18:03:49"}
+{"level":"info","message":"[2025-03-27T15:03:49.639Z] GET /api/auth/profile","timestamp":"2025-03-27 18:03:49"}
+{"level":"info","message":"Response time: 44ms for GET /api/auth/profile","timestamp":"2025-03-27 18:03:49"}
+{"level":"info","message":"Retrieved undefined meals for user","timestamp":"2025-03-27 18:03:49","userId":4}
+{"level":"info","message":"Response time: 150ms for GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 18:03:49"}
+{"level":"info","message":"[2025-03-27T15:03:49.704Z] GET /api/auth/profile","timestamp":"2025-03-27 18:03:49"}
+{"level":"info","message":"[2025-03-27T15:03:49.715Z] GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 18:03:49"}
+{"endDate":"2025-03-27","level":"info","limit":10,"message":"Fetching meals for user","page":1,"startDate":"2025-03-21","timestamp":"2025-03-27 18:03:49","userId":4}
+{"level":"info","message":"Response time: 47ms for GET /api/auth/profile","timestamp":"2025-03-27 18:03:49"}
+{"level":"info","message":"Retrieved undefined meals for user","timestamp":"2025-03-27 18:03:49","userId":4}
+{"level":"info","message":"Response time: 50ms for GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 18:03:49"}
+{"level":"info","message":"[2025-03-27T15:03:49.980Z] GET /api/auth/profile","timestamp":"2025-03-27 18:03:49"}
+{"level":"info","message":"[2025-03-27T15:03:49.986Z] GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 18:03:49"}
+{"level":"info","message":"Response time: 41ms for GET /api/auth/profile","timestamp":"2025-03-27 18:03:50"}
+{"level":"info","message":"[2025-03-27T15:03:50.025Z] GET /api/auth/profile","timestamp":"2025-03-27 18:03:50"}
+{"endDate":"2025-03-27","level":"info","limit":10,"message":"Fetching meals for user","page":1,"startDate":"2025-03-21","timestamp":"2025-03-27 18:03:50","userId":4}
+{"level":"info","message":"Retrieved undefined meals for user","timestamp":"2025-03-27 18:03:50","userId":4}
+{"level":"info","message":"Response time: 52ms for GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 18:03:50"}
+{"level":"info","message":"Response time: 17ms for GET /api/auth/profile","timestamp":"2025-03-27 18:03:50"}
+{"level":"info","message":"[2025-03-27T15:03:50.047Z] GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 18:03:50"}
+{"endDate":"2025-03-27","level":"info","limit":10,"message":"Fetching meals for user","page":1,"startDate":"2025-03-21","timestamp":"2025-03-27 18:03:50","userId":4}
+{"level":"info","message":"Retrieved undefined meals for user","timestamp":"2025-03-27 18:03:50","userId":4}
+{"level":"info","message":"Response time: 17ms for GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 18:03:50"}
+{"level":"info","message":"[2025-03-27T15:04:16.261Z] GET /api/meals?startDate=2025-03-27&endDate=2025-03-27","timestamp":"2025-03-27 18:04:16"}
+{"endDate":"2025-03-27","level":"info","limit":10,"message":"Fetching meals for user","page":1,"startDate":"2025-03-27","timestamp":"2025-03-27 18:04:16","userId":4}
+{"level":"info","message":"Retrieved undefined meals for user","timestamp":"2025-03-27 18:04:16","userId":4}
+{"level":"info","message":"Response time: 274ms for GET /api/meals?startDate=2025-03-27&endDate=2025-03-27","timestamp":"2025-03-27 18:04:16"}
+{"level":"info","message":"[2025-03-27T15:04:16.544Z] GET /api/meals?startDate=2025-03-27&endDate=2025-03-27","timestamp":"2025-03-27 18:04:16"}
+{"endDate":"2025-03-27","level":"info","limit":10,"message":"Fetching meals for user","page":1,"startDate":"2025-03-27","timestamp":"2025-03-27 18:04:16","userId":4}
+{"level":"info","message":"Retrieved undefined meals for user","timestamp":"2025-03-27 18:04:16","userId":4}
+{"level":"info","message":"Response time: 17ms for GET /api/meals?startDate=2025-03-27&endDate=2025-03-27","timestamp":"2025-03-27 18:04:16"}
+{"level":"info","message":"[2025-03-27T15:04:29.819Z] GET /api/auth/profile","timestamp":"2025-03-27 18:04:29"}
+{"level":"info","message":"Response time: 165ms for GET /api/auth/profile","timestamp":"2025-03-27 18:04:29"}
+{"level":"info","message":"[2025-03-27T15:04:29.995Z] GET /api/auth/profile","timestamp":"2025-03-27 18:04:29"}
+{"level":"info","message":"Response time: 14ms for GET /api/auth/profile","timestamp":"2025-03-27 18:04:30"}
+{"level":"info","message":"[2025-03-27T15:04:32.361Z] GET /api/foods/categories","timestamp":"2025-03-27 18:04:32"}
+{"level":"info","message":"[2025-03-27T15:04:32.374Z] GET /api/foods?page=1&limit=20&sort=name&order=ASC","timestamp":"2025-03-27 18:04:32"}
+{"level":"info","message":"Response time: 71ms for GET /api/foods/categories","timestamp":"2025-03-27 18:04:32"}
+{"level":"info","message":"[2025-03-27T15:04:32.460Z] GET /api/foods/categories","timestamp":"2025-03-27 18:04:32"}
+{"level":"info","message":"Response time: 5ms for GET /api/foods/categories","timestamp":"2025-03-27 18:04:32"}
+{"level":"info","message":"Response time: 98ms for GET /api/foods?page=1&limit=20&sort=name&order=ASC","timestamp":"2025-03-27 18:04:32"}
+{"level":"info","message":"[2025-03-27T15:04:32.486Z] GET /api/foods?page=1&limit=20&sort=name&order=ASC","timestamp":"2025-03-27 18:04:32"}
+{"level":"info","message":"Response time: 8ms for GET /api/foods?page=1&limit=20&sort=name&order=ASC","timestamp":"2025-03-27 18:04:32"}
+{"level":"info","message":"[2025-03-27T15:04:35.511Z] GET /api/meals?startDate=2025-03-27&endDate=2025-03-27","timestamp":"2025-03-27 18:04:35"}
+{"endDate":"2025-03-27","level":"info","limit":10,"message":"Fetching meals for user","page":1,"startDate":"2025-03-27","timestamp":"2025-03-27 18:04:35","userId":4}
+{"level":"info","message":"Retrieved undefined meals for user","timestamp":"2025-03-27 18:04:35","userId":4}
+{"level":"info","message":"Response time: 69ms for GET /api/meals?startDate=2025-03-27&endDate=2025-03-27","timestamp":"2025-03-27 18:04:35"}
+{"level":"info","message":"[2025-03-27T15:04:35.641Z] GET /api/meals?startDate=2025-03-27&endDate=2025-03-27","timestamp":"2025-03-27 18:04:35"}
+{"endDate":"2025-03-27","level":"info","limit":10,"message":"Fetching meals for user","page":1,"startDate":"2025-03-27","timestamp":"2025-03-27 18:04:35","userId":4}
+{"level":"info","message":"Retrieved undefined meals for user","timestamp":"2025-03-27 18:04:35","userId":4}
+{"level":"info","message":"Response time: 16ms for GET /api/meals?startDate=2025-03-27&endDate=2025-03-27","timestamp":"2025-03-27 18:04:35"}
+{"level":"info","message":"[2025-03-27T15:04:45.307Z] GET /api/auth/profile","timestamp":"2025-03-27 18:04:45"}
+{"level":"info","message":"Response time: 28ms for GET /api/auth/profile","timestamp":"2025-03-27 18:04:45"}
+{"level":"info","message":"[2025-03-27T15:04:45.358Z] GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 18:04:45"}
+{"level":"info","message":"[2025-03-27T15:04:45.370Z] GET /api/auth/profile","timestamp":"2025-03-27 18:04:45"}
+{"endDate":"2025-03-27","level":"info","limit":10,"message":"Fetching meals for user","page":1,"startDate":"2025-03-21","timestamp":"2025-03-27 18:04:45","userId":4}
+{"level":"info","message":"Retrieved undefined meals for user","timestamp":"2025-03-27 18:04:45","userId":4}
+{"level":"info","message":"Response time: 38ms for GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 18:04:45"}
+{"level":"info","message":"Response time: 34ms for GET /api/auth/profile","timestamp":"2025-03-27 18:04:45"}
+{"level":"info","message":"[2025-03-27T15:04:45.413Z] GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 18:04:45"}
+{"endDate":"2025-03-27","level":"info","limit":10,"message":"Fetching meals for user","page":1,"startDate":"2025-03-21","timestamp":"2025-03-27 18:04:45","userId":4}
+{"level":"info","message":"Retrieved undefined meals for user","timestamp":"2025-03-27 18:04:45","userId":4}
+{"level":"info","message":"Response time: 21ms for GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 18:04:45"}
+{"level":"info","message":"[2025-03-27T15:18:01.768Z] GET /api/auth/profile","timestamp":"2025-03-27 18:18:01"}
+{"level":"info","message":"Response time: 141ms for GET /api/auth/profile","timestamp":"2025-03-27 18:18:01"}
+{"level":"info","message":"[2025-03-27T15:18:01.912Z] GET /api/auth/profile","timestamp":"2025-03-27 18:18:01"}
+{"level":"info","message":"Response time: 7ms for GET /api/auth/profile","timestamp":"2025-03-27 18:18:01"}
+{"level":"info","message":"[2025-03-27T15:18:03.289Z] GET /api/auth/profile","timestamp":"2025-03-27 18:18:03"}
+{"level":"info","message":"[2025-03-27T15:18:03.307Z] GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 18:18:03"}
+{"level":"info","message":"Response time: 28ms for GET /api/auth/profile","timestamp":"2025-03-27 18:18:03"}
+{"endDate":"2025-03-27","level":"info","limit":10,"message":"Fetching meals for user","page":1,"startDate":"2025-03-21","timestamp":"2025-03-27 18:18:03","userId":4}
+{"level":"info","message":"[2025-03-27T15:18:03.325Z] GET /api/auth/profile","timestamp":"2025-03-27 18:18:03"}
+{"level":"info","message":"Retrieved undefined meals for user","timestamp":"2025-03-27 18:18:03","userId":4}
+{"level":"info","message":"Response time: 23ms for GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 18:18:03"}
+{"level":"info","message":"[2025-03-27T15:18:03.342Z] GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 18:18:03"}
+{"level":"info","message":"Response time: 31ms for GET /api/auth/profile","timestamp":"2025-03-27 18:18:03"}
+{"endDate":"2025-03-27","level":"info","limit":10,"message":"Fetching meals for user","page":1,"startDate":"2025-03-21","timestamp":"2025-03-27 18:18:03","userId":4}
+{"level":"info","message":"Retrieved undefined meals for user","timestamp":"2025-03-27 18:18:03","userId":4}
+{"level":"info","message":"Response time: 28ms for GET /api/meals?startDate=2025-03-21&endDate=2025-03-27","timestamp":"2025-03-27 18:18:03"}
+{"level":"info","message":"[2025-03-27T15:18:10.379Z] GET /api/foods/categories","timestamp":"2025-03-27 18:18:10"}
+{"level":"info","message":"[2025-03-27T15:18:10.381Z] GET /api/foods?page=1&limit=20&sort=name&order=ASC","timestamp":"2025-03-27 18:18:10"}
+{"level":"info","message":"Response time: 6ms for GET /api/foods/categories","timestamp":"2025-03-27 18:18:10"}
+{"level":"info","message":"Response time: 8ms for GET /api/foods?page=1&limit=20&sort=name&order=ASC","timestamp":"2025-03-27 18:18:10"}
+{"level":"info","message":"[2025-03-27T15:18:10.394Z] GET /api/foods/categories","timestamp":"2025-03-27 18:18:10"}
+{"level":"info","message":"[2025-03-27T15:18:10.397Z] GET /api/foods?page=1&limit=20&sort=name&order=ASC","timestamp":"2025-03-27 18:18:10"}
+{"level":"info","message":"Response time: 7ms for GET /api/foods/categories","timestamp":"2025-03-27 18:18:10"}
+{"level":"info","message":"Response time: 7ms for GET /api/foods?page=1&limit=20&sort=name&order=ASC","timestamp":"2025-03-27 18:18:10"}
+{"level":"info","message":"[2025-03-27T15:18:11.923Z] GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=beverages","timestamp":"2025-03-27 18:18:11"}
+{"level":"info","message":"Response time: 27ms for GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=beverages","timestamp":"2025-03-27 18:18:11"}
+{"level":"info","message":"[2025-03-27T15:18:13.594Z] GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=milk","timestamp":"2025-03-27 18:18:13"}
+{"level":"info","message":"Response time: 16ms for GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=milk","timestamp":"2025-03-27 18:18:13"}
+{"level":"info","message":"[2025-03-27T15:18:14.553Z] GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=vegetables","timestamp":"2025-03-27 18:18:14"}
+{"level":"info","message":"Response time: 23ms for GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=vegetables","timestamp":"2025-03-27 18:18:14"}
+{"level":"info","message":"[2025-03-27T15:18:15.582Z] GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=meat","timestamp":"2025-03-27 18:18:15"}
+{"level":"info","message":"Response time: 12ms for GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=meat","timestamp":"2025-03-27 18:18:15"}
+{"level":"info","message":"[2025-03-27T15:18:16.555Z] GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=nuts+and+seeds","timestamp":"2025-03-27 18:18:16"}
+{"level":"info","message":"Response time: 27ms for GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=nuts+and+seeds","timestamp":"2025-03-27 18:18:16"}
+{"level":"info","message":"[2025-03-27T15:18:18.111Z] GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=nuts+and+seeds&locale=East+Africa","timestamp":"2025-03-27 18:18:18"}
+{"level":"info","message":"Response time: 7ms for GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=nuts+and+seeds&locale=East+Africa","timestamp":"2025-03-27 18:18:18"}
+{"level":"info","message":"[2025-03-27T15:18:20.377Z] GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=nuts+and+seeds&locale=West+Africa","timestamp":"2025-03-27 18:18:20"}
+{"level":"info","message":"Response time: 4ms for GET /api/foods?page=1&limit=20&sort=name&order=ASC&category=nuts+and+seeds&locale=West+Africa","timestamp":"2025-03-27 18:18:20"}
+{"level":"info","message":"[2025-03-27T15:18:27.911Z] GET /api/foods?page=1&limit=20&sort=name&order=ASC&locale=West+Africa","timestamp":"2025-03-27 18:18:27"}
+{"level":"info","message":"Response time: 6ms for GET /api/foods?page=1&limit=20&sort=name&order=ASC&locale=West+Africa","timestamp":"2025-03-27 18:18:27"}
+{"level":"info","message":"[2025-03-27T15:18:32.095Z] GET /api/foods?page=1&limit=20&sort=name&order=ASC&query=beans&locale=West+Africa","timestamp":"2025-03-27 18:18:32"}
+{"level":"info","message":"Response time: 93ms for GET /api/foods?page=1&limit=20&sort=name&order=ASC&query=beans&locale=West+Africa","timestamp":"2025-03-27 18:18:32"}
+{"level":"info","message":"[2025-03-27T15:18:37.816Z] GET /api/meals?startDate=2025-03-27&endDate=2025-03-27","timestamp":"2025-03-27 18:18:37"}
+{"endDate":"2025-03-27","level":"info","limit":10,"message":"Fetching meals for user","page":1,"startDate":"2025-03-27","timestamp":"2025-03-27 18:18:37","userId":4}
+{"level":"info","message":"Retrieved undefined meals for user","timestamp":"2025-03-27 18:18:37","userId":4}
+{"level":"info","message":"Response time: 62ms for GET /api/meals?startDate=2025-03-27&endDate=2025-03-27","timestamp":"2025-03-27 18:18:37"}
+{"level":"info","message":"[2025-03-27T15:18:37.887Z] GET /api/meals?startDate=2025-03-27&endDate=2025-03-27","timestamp":"2025-03-27 18:18:37"}
+{"endDate":"2025-03-27","level":"info","limit":10,"message":"Fetching meals for user","page":1,"startDate":"2025-03-27","timestamp":"2025-03-27 18:18:37","userId":4}
+{"level":"info","message":"Retrieved undefined meals for user","timestamp":"2025-03-27 18:18:37","userId":4}
+{"level":"info","message":"Response time: 12ms for GET /api/meals?startDate=2025-03-27&endDate=2025-03-27","timestamp":"2025-03-27 18:18:37"}
+{"level":"info","message":"[2025-03-27T15:18:43.248Z] GET /api/foods?query=maize","timestamp":"2025-03-27 18:18:43"}
+{"level":"info","message":"Response time: 26ms for GET /api/foods?query=maize","timestamp":"2025-03-27 18:18:43"}
+{"level":"info","message":"[2025-03-27T15:18:57.098Z] POST /api/meals","timestamp":"2025-03-27 18:18:57"}
+{"level":"info","mealData":{"foods":[{"calories":313,"carbs":42.8,"fats":14,"food_id":48,"name":"Maize and kidney bean dish","proteins":7.2,"serving_qty":200,"serving_unit":"g"}],"log_date":"2025-03-27T00:00:00.000Z","metadata":{"source":"client_app","timestamp":"2025-03-27T15:18:57.087Z"},"type":"dinner"},"message":"Creating meal for user: 4","timestamp":"2025-03-27 18:18:57"}
+{"level":"info","message":"Meal created successfully for user: 4","timestamp":"2025-03-27 18:18:57"}
+{"level":"info","message":"Response time: 341ms for POST /api/meals","timestamp":"2025-03-27 18:18:57"}
