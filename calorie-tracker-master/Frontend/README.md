@@ -79,6 +79,7 @@ GitHub Pages (with static export)
    
    
 **Related Projects**
+
 •	Calorie Tracker Backend: The backend API for handling user authentication, meal logging, and food data management. Backend Repository
 
 
