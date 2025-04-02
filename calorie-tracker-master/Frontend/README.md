@@ -47,7 +47,7 @@ The Calorie Tracker Frontend is a user-friendly web application designed to help
   
 **Start the Development Server**
     npm run dev
-    # or
+     or
   yarn dev
   
   
